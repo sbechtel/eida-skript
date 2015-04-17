@@ -1,0 +1,160 @@
+\documentclass[12pt]{scrartcl}%{article} % Beginn der LaTeX-Datei
+\usepackage{amsmath,amssymb,amsthm}  % erleichtert Mathe 
+\addtolength{\jot}{0.2em}
+\usepackage{enumitem}% schicke Nummerierung
+\newcommand{\sbt}{\,\begin{picture}(-1,1)(-1,-3)\circle*{3}\end{picture}\ }
+\renewcommand{\labelitemi}{\sbt}
+
+\usepackage{graphicx} % für Grafik-Einbindung
+\usepackage{float} 
+%\usepackage[dvips]{hyperref}
+
+\usepackage[ngerman]{babel}
+\usepackage[autostyle=true,german=quotes]{csquotes}
+%\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+% Einstellungen, wenn man deutsch schreiben will, z.B. Trennregeln
+\usepackage[utf8]{inputenc}  % für Unix-Systeme
+
+% environments
+\newtheorem{thm}{Theorem}
+\newtheorem{lemma}{Lemma}
+% definition-like stuff
+\theoremstyle{definition}
+\newtheorem*{defn}{Definition}
+\newtheorem{ex}{Beispiel}
+% remark-like stuff
+\theoremstyle{remark}
+\newtheorem*{notation}{Notation}
+\newtheorem*{nb}{Bemerkung}
+
+% commands
+\newcommand{\powerset}{\mathcal{P}}
+\newcommand{\implies}{\Rightarrow}
+\newcommand{\sym}{\text{Sym}}
+\newcommand{\gl}{\text{GL}}
+\newcommand{\abb}{\text{Abb}}
+\newcommand{\inv}[1]{\left(#1\right)^{-1}}
+\newcommand{\Inv}[1]{#1^{-1}}
+
+\begin{document}
+
+\author{Sebastian Bechtel}
+\title{Einführung in die Algebra}
+\date{15. April 2015}
+
+\maketitle % erzeugt den Kopf
+
+\section{Gruppen}
+
+\begin{defn}
+    Eine (innere) \underline{Verknüpfung} auf einer Menge $M\neq \emptyset$ ist eine Abbildung $M\times M\to M, (a,b)\mapsto a\cdot b$.
+\end{defn}
+
+\begin{defn}
+    Eine \underline{Gruppe} ist eine Menge $G\neq \emptyset$ zusammen mit einer Verknüpfung $\cdot$, sodass Assoziativität (A), Existenz eines neutralen Elements (N) und Existenz inverser Elemente (I) erfüllt sind. $G$ ist \underline{abelsch}, falls Kommutativität (K) gilt.
+\end{defn}
+
+\begin{bsp}
+    \begin{enumerate}
+        \item $\mathbb{Z}, \mathbb{Q}, \mathbb{R}, \mathbb{C}$ sind abelsche Gruppen mit $+$ als Verknüpfung.
+        \item $\mathbb{Q}^*=\mathbb{Q}\setminus \{0\}, \mathbb{R}^*, \mathbb{C}^*$ mit Multiplikation sind abelsche Gruppen.
+        \item Für eine Menge $M$ ist $\sym(M)$ ist eine Gruppe, aber nicht abelsch.
+    \end{enumerate}
+\end{bsp}
+
+\begin{lemma}
+    \begin{enumerate}[label=\alph*)]
+        \item Das neutrale Element ist eindeutig.
+        \item Inverse Elemente sind eindeutig.
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    \begin{enumerate}[label=\alph*)]
+        \item Seien $e,f$ neutrale Elemente, dann gilt $e=ef=f$.
+        \item Sei $a\in G$ und $b,b'\in G$ inverse Elemente. Dann gilt $b'=b'e=b'(ab)=(b'a)b=eb=b$. 
+    \end{enumerate}
+\end{proof}
+
+\begin{notation}
+    multiplikativ: $a\cdot b$ oder $ab$, neutrales Element $e$ oder $1$, inverses Element von $a\in G$ ist $\Inv a$.
+\end{notation}
+
+\begin{lemma}
+    Es sei $\mathcal{G}=(G,\cdot)$ eine Menge mit assoziativer Verknüpfung, einem linksneutralen Element und linksinversen Elementen, dann ist $\mathcal{G}$ eine Gruppe.
+\end{lemma}
+
+\begin{proof}
+    Sei $a\in G$ und $b\in G$ mit $ba=e$. Nach (I') gibt es $c\in G$ mit $cb=e$. Also $ab=eab=cbab=ceb=cb=e$.
+
+    Sei nun $a\in G$, es gilt $ae=a(\Inv aa)=ea=e$.
+\end{proof}
+
+\begin{lemma}
+    \begin{enumerate}
+        \item $\inv{\Inv{a}}=a$, $\inv{ab}=\Inv b\Inv a$
+        \item $ab=ac \implies b=c$ für alle $a,b,c\in G$.
+        \item für $a,b\in G$ gibt es genau ein $x\in G$, sodass $ax=b$.
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    \begin{enumerate}
+        \item $\inv{\Inv a}=a$ klar. Für $a,b,c\in G$: $(\Inv b\Inv a)ab=\Inv b(\Inv aa)b=\Inv beb=\Inv bb=e$ (andere Richtung analog)
+        \item $ab=ac\implies \Inv a(ab)=\Inv a(ac)\implies b=c$
+        \item Setze $x=\Inv ab$, dann erhält man $ax=a(\Inv ab)=(a\Inv a)b=eb=b$
+    \end{enumerate}
+\end{proof}
+
+\begin{defn}
+    Sei $a\in G$, $(G,\cdot)$ Gruppe. Für $n\in \mathbb{Z}$ definiere:
+    
+    $$a^0:=e, \quad a^n:=a^{n-1}a \quad \text{ für } n\geq 1$$
+    $$a^n:=\left(\Inv a\right)^{-n} \quad \text{ für } n < 0$$
+\end{defn}
+
+\begin{lemma}
+    Für $a\in G$ gilt: $a^n a^m=a^{n+m}=a^m a^n$, $\left(a^m \right)^n = a^{n\cdot m}$, $ab=ba \implies \left(ab \right)^n = a^n b^n$
+\end{lemma}
+
+\begin{bsp}
+    \begin{enumerate}
+        \item $K$ Körper, dann ist $\gl_n(K)$ ein Gruppe bzgl. Matrixmultiplikation.
+        \item $M\neq \emptyset$ Menge, $(G, \cdot)$ Gruppe, definiere $\abb(M,G):=G^M$. Für $f,g\in \abb(M,G)$ ist $f\cdot g$ gegeben durch $(f\cdot g)(m)=f(m)\cdot g(m)$ für $m\in M$. Dann ist $(\abb(M,G), \cdot)$ eine Gruppe.
+    \end{enumerate}
+\end{bsp}
+
+\section{Untergruppen}
+
+\begin{defn}
+    Sei $(G, \cdot)$ Gruppe. Eine Teilmenge $H\subset G$ heißt Untergruppe von $G$, falls $(H, \cdot)$ eine Gruppe ist.
+
+    Äquivalent dazu:
+
+    \begin{enumerate}[label=(\roman*)]
+        \item Für $a,b\in H$ gilt $ab\in H$ (Abgeschlossenheit)
+        \item $e\in H$
+        \item für $a\in H$ ist $\Inv a \in H$
+    \end{enumerate}
+\end{defn}
+
+\begin{thm}
+    Sei $(G, \cdot)$ Gruppe und $H\subset G$ nicht-leer. Dann gilt: $H$ induziert Untergruppe von $(G, \cdot)$ gdw. $a\Inv b\in H$ für $a,b\in H$.
+\end{thm}
+
+\begin{proof}
+    "$\Rightarrow$" \surd
+
+    "$\Leftarrow$" 
+
+    \begin{itemize} 
+        \item $a=b \implies e\in H$
+        \item $e,a\in H \implies e\Inv a\in H \implies \Inv a \in H$
+        \item $a,\Inv b\in H \implies a\inv{\Inv b} \in H \implies ab\in H$
+    \end{itemize}
+\end{proof}
+
+\end{proof}
+
+\end{document}
