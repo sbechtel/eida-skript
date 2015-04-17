@@ -55,13 +55,13 @@
     Eine \underline{Gruppe} ist eine Menge $G\neq \emptyset$ zusammen mit einer Verknüpfung $\cdot$, sodass Assoziativität (A), Existenz eines neutralen Elements (N) und Existenz inverser Elemente (I) erfüllt sind. $G$ ist \underline{abelsch}, falls Kommutativität (K) gilt.
 \end{defn}
 
-\begin{bsp}
+\begin{ex}
     \begin{enumerate}
         \item $\mathbb{Z}, \mathbb{Q}, \mathbb{R}, \mathbb{C}$ sind abelsche Gruppen mit $+$ als Verknüpfung.
         \item $\mathbb{Q}^*=\mathbb{Q}\setminus \{0\}, \mathbb{R}^*, \mathbb{C}^*$ mit Multiplikation sind abelsche Gruppen.
         \item Für eine Menge $M$ ist $\sym(M)$ ist eine Gruppe, aber nicht abelsch.
     \end{enumerate}
-\end{bsp}
+\end{ex}
 
 \begin{lemma}
     \begin{enumerate}[label=\alph*)]
@@ -118,12 +118,12 @@
     Für $a\in G$ gilt: $a^n a^m=a^{n+m}=a^m a^n$, $\left(a^m \right)^n = a^{n\cdot m}$, $ab=ba \implies \left(ab \right)^n = a^n b^n$
 \end{lemma}
 
-\begin{bsp}
+\begin{ex}
     \begin{enumerate}
         \item $K$ Körper, dann ist $\gl_n(K)$ ein Gruppe bzgl. Matrixmultiplikation.
         \item $M\neq \emptyset$ Menge, $(G, \cdot)$ Gruppe, definiere $\abb(M,G):=G^M$. Für $f,g\in \abb(M,G)$ ist $f\cdot g$ gegeben durch $(f\cdot g)(m)=f(m)\cdot g(m)$ für $m\in M$. Dann ist $(\abb(M,G), \cdot)$ eine Gruppe.
     \end{enumerate}
-\end{bsp}
+\end{ex}
 
 \section{Untergruppen}
 
@@ -155,6 +155,15 @@
     \end{itemize}
 \end{proof}
 
-\end{proof}
+\begin{ex}
+    \begin{enumerate}[label=(\alph*)]
+        \item $\{e\}, G$ induziert Untergruppe für alle Gruppen $(G,\cdot)$.
+        \item $K$ Körper. $\text{SL}_n(K)=\{A\in M_n(K): \det(A)=1\}$ induziert Untergruppe von $\gl_n(K)$, die spezielle lineare Gruppe.
+    \end{enumerate}
+\end{ex}
+
+\begin{defn}
+    Eine Untergruppe heißt \underline{echt}, falls sie nicht trivial ist.
+\end{defn}
 
 \end{document}
