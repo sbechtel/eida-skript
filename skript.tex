@@ -8,18 +8,21 @@
 \usepackage{graphicx} % für Grafik-Einbindung
 \usepackage{float} 
 %\usepackage[dvips]{hyperref}
+\usepackage[arrow, matrix]{xy} % für kommutative Diagramme
 
 \usepackage[ngerman]{babel}
 \usepackage[autostyle=true,german=quotes]{csquotes}
 %\usepackage[T1]{fontenc}
 %\usepackage{lmodern}
 % Einstellungen, wenn man deutsch schreiben will, z.B. Trennregeln
+%\usepackage[applemac]{inputenc}
 \usepackage[utf8]{inputenc}  % für Unix-Systeme
 
 
 % environments
 \newtheorem{thm}{Theorem}
 \newtheorem{lemma}{Lemma}
+\newtheorem{kor}{Korollar}
 % definition-like stuff
 \theoremstyle{definition}
 \newtheorem*{defn}{Definition}
@@ -31,7 +34,6 @@
 
 % commands
 \newcommand{\powerset}{\mathcal{P}}
-\newcommand{\implies}{\Rightarrow}
 \newcommand{\sym}{\text{Sym}}
 \newcommand{\gl}{\text{GL}}
 \newcommand{\abb}{\text{Abb}}
@@ -40,11 +42,11 @@
 
 \begin{document}
 
-\author{Sebastian Bechtel, Isburg Knof}
+\author{Sebastian Bechtel, Isburg Knof, Theresa Tran}
 \title{Einführung in die Algebra}
 \date{15. April 2015}
 
-\maketitle % erzeugt den Kopf
+\maketitle
 
 \section{Gruppen}
 
@@ -95,7 +97,7 @@
 \begin{lemma}
     \begin{enumerate}
         \item $\inv{\Inv{a}}=a$, $\inv{ab}=\Inv b\Inv a$
-        \item $ab=ac \implies b=c$ für alle $a,b,c\in G$.
+        \item $ab=ac$ impliziert $b=c$ für alle $a,b,c\in G$.
         \item für $a,b\in G$ gibt es genau ein $x\in G$, sodass $ax=b$.
     \end{enumerate}
 \end{lemma}
@@ -103,7 +105,7 @@
 \begin{proof}
     \begin{enumerate}
         \item $\inv{\Inv a}=a$ klar. Für $a,b,c\in G$: $(\Inv b\Inv a)ab=\Inv b(\Inv aa)b=\Inv beb=\Inv bb=e$ (andere Richtung analog)
-        \item $ab=ac\implies \Inv a(ab)=\Inv a(ac)\implies b=c$
+        \item $ab=ac$ impliziert $\Inv a(ab)=\Inv a(ac)$ impliziert $b=c$
         \item Setze $x=\Inv ab$, dann erhält man $ax=a(\Inv ab)=(a\Inv a)b=eb=b$
     \end{enumerate}
 \end{proof}
@@ -116,7 +118,7 @@
 \end{defn}
 
 \begin{lemma}
-    Für $a\in G$ gilt: $a^n a^m=a^{n+m}=a^m a^n$, $\left(a^m \right)^n = a^{n\cdot m}$, $ab=ba \implies \left(ab \right)^n = a^n b^n$
+    Für $a\in G$ gilt: $a^n a^m=a^{n+m}=a^m a^n$, $\left(a^m \right)^n = a^{n\cdot m}$, $ab=ba$ impliziert $\left(ab \right)^n = a^n b^n$
 \end{lemma}
 
 \begin{ex}
@@ -125,6 +127,8 @@
         \item $M\neq \emptyset$ Menge, $(G, \cdot)$ Gruppe, definiere $\abb(M,G):=G^M$. Für $f,g\in \abb(M,G)$ ist $f\cdot g$ gegeben durch $(f\cdot g)(m)=f(m)\cdot g(m)$ für $m\in M$. Dann ist $(\abb(M,G), \cdot)$ eine Gruppe.
     \end{enumerate}
 \end{ex}
+
+
 
 \section{Untergruppen}
 
@@ -150,9 +154,9 @@
     "$\Leftarrow$" 
 
     \begin{itemize} 
-        \item $a=b \implies e\in H$
-        \item $e,a\in H \implies e\Inv a\in H \implies \Inv a \in H$
-        \item $a,\Inv b\in H \implies a\inv{\Inv b} \in H \implies ab\in H$
+        \item $a=b$ impliziert $e\in H$
+        \item $e,a\in H$ impliziert $e\Inv a\in H$ impliziert $\Inv a \in H$
+        \item $a,\Inv b\in H$ impliziert $a\inv{\Inv b} \in H$ impliziert $ab\in H$
     \end{itemize}
 \end{proof}
 
@@ -282,5 +286,143 @@
 \begin{defn}
 	$H \backslash G$ ist die \underline{Menge der Rechtsnebenklassen}. Dann gilt: $\vert H \backslash G \vert = \vert G/H \vert$ \newline $\lceil$Bijektion: $H \backslash G \rightarrow G/H, Hb \mapsto b^{-1}H \rfloor$
 \end{defn}
+
+
+
+% Hier fehlt die Vorlesung vom 28.April. Viel Spaß beim texen, Philipp :D
+
+\newpage
+\thispagestyle{empty}
+Hier fehlt die Vorlesung vom 28.April. Viel Spaß beim texen, Philipp :D
+
+\newpage
+
+
+
+
+
+\begin{defn}
+	A, B, C Gruppen, $ f: G \rightarrow H$ Gruppenhomomorphismus. \\
+	Das \underline{Bild von $f$} ist: $im(f) = \{f(g) | g \in G\} \subseteq H$. \\
+	Der \underline{Kern von $f$} ist: $ker(f) = \{g \in G | f(g) = e_H\} \subseteq G$.
+\end{defn}
+
+\begin{lemma}
+	Für jeden Gruppenhomomorphismus $ f: G \rightarrow H$ gilt:
+	\begin{enumerate}[label=(\roman*)]
+		\item $im(f)$ ist eine Untergruppe von H.
+		\item $ker(f)$ ist eine normale Untergruppe von G.
+		\item $f$ injektiv (bzw. surjektiv) $ \Leftrightarrow ker(f) = {e_G}$ (bzw. $im(f) = H$).
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}[label=(\roman*)]
+		\item $im(f)$ ist wegen der Definition von Gruppenhomomorphismen unter $\cdot_H$ abgeschlossen, enthält $e_H = f(e_G)$ (Eigenschaft (i)) und die Inversen aller seiner Elemente (Eigenschaft (ii)).
+		\item Für alle $a, b \in ker(f)$ gilt:
+			$$ f(ab^{-1}) = f(a)f(b^{-1}) = f(a)(f(b))^{-1} = ee^{-1} = e.$$
+			Somit ist $ker(f)$ eine Untergruppe. \\
+			Für jedes $ g \in ker(f)$ und $x \in G$ gilt:
+			$$ f(x^{-1}gx) = f(x^{-1})f(g)f(x) = f(x^{-1}) e f(x) = f(x^{-1})f(x) = f(x^{-1}x) = f(e) = e.$$
+			Also ist $x^{-1}gx \in ker(f) $ und somit ist $ker(f)$ ein Normalteiler.
+		\item Subjektivität: offentsichtlich. Injektivität: vgl. Übung 2, Aufgabe 1.
+	\end{enumerate}	
+\end{proof}
+
+\begin{nb}
+	\begin{itemize}
+		\item Ein bijektiver Homomorphismus wird \underline{Isomorphismus} genannt. Die Umkehrfunktion ist dann wieder ein Isomorphismus.
+		\item Ein Gruppenhomomorphismus $G \rightarrow G$ heißt \underline{Endomorphismus von G}.
+		\item Ein Gruppenisomorphismus $G \rightarrow G$ heißt \underline{Endomorphismus von G}.
+	\end{itemize}
+\end{nb}
+
+\begin{defn}
+	$G/N$ heißt \underline{Faktorgruppe von $N$ in $G$}, wenn $N$ normale Untergruppe von $G$ ist. \\
+	Gruppenstruktur: $aN \cdot bN = abN$, $eN = N$ neutrales Element \\
+	Die \underline{natürliche Projektion} $\pi : G \rightarrow G/N, a \mapsto aN$ ist ein surjektiver Gruppenhomomorphismus mit $ker(\pi) = N, im(\pi) = G/N$.
+\end{defn}
+
+\begin{thm}[Homomorphiesatz]
+	Es sei $f: G \rightarrow G'$ ein Gruppenhomomorphismus und N ein Normalteiler von G. Ist N im $ker(f)$ enthalten, so gibt es genau einen Gruppenhomomorphismus $\bar{f}: G/N \rightarrow G'$, so dass das folgende Diagramm kommutiert:
+	\centering
+	\begin{xy}
+ 		\xymatrix{
+      			G \ar[rr]^{f = \bar{f} \circ \pi} \ar[rd]_{\pi}	&					& G'	\\
+      											& G/N \ar[ur]_{\bar{f}}	&
+  		}
+	\end{xy}
+\end{thm}
+
+\begin{nb}
+	Es gilt $ker(\bar{f}) = \pi(ker(f))$ und $im(\bar{f}) = im(f)$. 
+\end{nb}
+
+\begin{kor}
+	Wenn $f: G \rightarrow G'$ ein surjektiver Homomorphismus ist, dann ist $\bar{f}: G/ker(f) \rightarrow G'$ ein Isomorphismus.
+\end{kor}
+
+\begin{proof}[Beweis des Satzes]
+	Aus dem kommutativen Diagramm folgt, dass $\bar{f}(aN) = f(a)$ sein sollte für jedes $aN \in G/N$. \\
+	Wir zeigen zuerst, dass $\bar{f}$ wohldefiniert ist. Es seien $a, b \in G$ mit $aN = bN$. Dann gilt $a \sim_{N} b$ und also $b^{-1}a \in N$. Daraus folgt
+	$$f(a) = f(ea) = f(b(b^{-1}a)) = f(b) f(b^{-1}a) \stackrel{b^{-1}a \in N \subseteq ker(f)}{=} f(b)e = f(b).$$
+	Die Abbildung $\bar{f}: G/N \rightarrow G'$ existiert somit und ist offensichtlich ein Gruppenhomomorphismus, denn
+	$$\bar{f}(abN) = f(ab) = f(a)f(b) = \bar{f}(aN)\bar{f}(bN)$$ for all $a, b \in G$.
+\end{proof}
+
+\begin{proof}[Beweis der Bemerkung]
+		\begin{itemize}
+		\item $aN \in ker(\bar{f}) \stackrel{Def. ~ von ~ \bar{f}}{\Leftrightarrow} a \in ker(f)\stackrel{Def. ~ von ~ \pi}{\Leftrightarrow} aN \in \pi(ker(f))$
+		\item $im(f) = im(\bar{f} \circ \pi) = \bar{f}(im(\pi)) \stackrel{\pi ~ surj.}{=} \bar{f}(G/N) = im(\bar{f})$
+	\end{itemize}
+\end{proof}
+
+\begin{thm}[1. Isomorphiesatz]
+	
+\end{thm}
+
+\begin{proof}
+	
+\end{proof}
+
+\begin{thm}[2. Isomorphiesatz]
+	
+\end{thm}
+
+\begin{proof}
+	
+\end{proof}
+
+\begin{notation}
+	
+\end{notation}
+
+\begin{ex}
+	
+\end{ex}
+
+
+
+\section{Produkte von Gruppen}
+
+\begin{defn}
+	
+\end{defn}
+
+\begin{notation}
+	
+\end{notation}
+
+\begin{lemma}
+	
+\end{lemma}
+
+\begin{proof}
+	
+\end{proof}
+
+\begin{nb}
+	
+\end{nb}
 
 \end{document}
