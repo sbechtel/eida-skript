@@ -68,11 +68,7 @@
 
 \begin{lemma}
     \begin{enumerate}[label=\alph*)]
-<<<<<<< HEAD
-        \item Das neutrale Element ist eindeutig. :)
-=======
-        \item Das ultra neutrale Element ist eindeutig.
->>>>>>> 4d0f9a50604e4829ff725012cdc5523b02869f0e
+        \item Das neutrale Element ist eindeutig.
         \item Inverse Elemente sind eindeutig.
     \end{enumerate}
 \end{lemma}
@@ -375,34 +371,57 @@ Hier fehlt die Vorlesung vom 28.April. Viel Spaß beim texen, Philipp :D
 \end{proof}
 
 \begin{proof}[Beweis der Bemerkung]
-		\begin{itemize}
+	\begin{itemize}
 		\item $aN \in ker(\bar{f}) \stackrel{Def. ~ von ~ \bar{f}}{\Leftrightarrow} a \in ker(f)\stackrel{Def. ~ von ~ \pi}{\Leftrightarrow} aN \in \pi(ker(f))$
 		\item $im(f) = im(\bar{f} \circ \pi) = \bar{f}(im(\pi)) \stackrel{\pi ~ surj.}{=} \bar{f}(G/N) = im(\bar{f})$
 	\end{itemize}
 \end{proof}
 
 \begin{thm}[1. Isomorphiesatz]
-	
+	Es seien $G$ eine Gruppe, $H \subseteq G$ eine Untergruppe und $N$ ein Normalteiler von $G$. Dann ist $NH = \{nh | n \in N, h \in H\}$ Untergruppe von $G$ und $N \cap H$ ein Normalteiler von $H$. Ferner ist $H/(N \cap H) \rightarrow (NH)/N, a(N \cap H) \mapsto aN$ ein Isomorphismus.
 \end{thm}
 
 \begin{proof}
-	
+	Es seien $n_1, n_2 \in N, h_1, h_2 \in H$. Dann gilt:
+	$$ (n_1h_1)(n_2h_2)^{-1} = n_1h_1h_2^{-1}n_2^{-1} = n_1(h_1h_2^{-1}n_2^{-1}) = \dotsb $$
+	[Da $N$ normal, gilt $h_1h_2^{-1}N = Nh_1h_2^{-1}$. Es gibt also ein $n_3 \in N$ mit $h_1h_2^{-1}n_2^{-1} = n_3h_1h_2^{-1}$.]
+	$$ \dotsb = (n_1n_3)(h_1h_2^{-1}) \in NH.$$
+	Daraus folgt, dass $NH$ Untergruppe von $G$ ist. \\
+	Nun betrachten wir $f: H \rightarrow (NH)/N, a \mapsto aN = Na$. $f$ ist ein surjektiver Gruppenhomomorphismus mit $ker(f) = N \cap H$. Aus dem Homomorphiesatz (+ Korollar) folgt dann, dass $\bar{f}: H/(N \cap H) \rightarrow (NH)/N$ ein Isomorphismus ist.
 \end{proof}
 
 \begin{thm}[2. Isomorphiesatz]
-	
+	Es seien $M, N$ normale Untergruppen einer Gruppe $G$. Gilt $N \subseteq M$, so ist $M/N$ eine normale Untergruppe von $G/N$ und die Abbildung $(G/N)/(M/N) \rightarrow G/M, (aN)M/N \mapsto aM$ ist ein Isomorphismus.
 \end{thm}
 
 \begin{proof}
-	
+	$f: G/N \rightarrow G/M, aN \mapsto aM$ (wohldefiniert wegen $N \subseteq M$) ist surjektiver Gruppenhomomorphismus mit $ker(f) = M/N$. Die Aussage folgt dann aus dem Korollar zum Homomorphiesatz.
 \end{proof}
 
 \begin{notation}
-	
+	Seien $A, B, C$ Gruppen, $\alpha: A \rightarrow B$, $\beta: B \rightarrow C$ Gruppenhomomorphismen.
+	\begin{itemize}
+		\item Falls $im(\alpha) = ker(\beta)$, so sagt man, dass die Folge $A \stackrel{\alpha}{\longrightarrow} B \stackrel{\beta}{\longrightarrow} C$ bei $B$ \underline{exakt} ist.
+		\item $\alpha$ ist surjektiv, falls $A \stackrel{\alpha}{\longrightarrow} B \longrightarrow  \{e\}$ bei $B$ exakt ist. \\
+		\begin{tabular}{p{4.3cm}p{.1cm}p{.3cm}l}
+			& $b$ & $\mapsto$ & $e$
+		\end{tabular}
+		\item $\alpha$ ist injektiv, falls $\{e\} \longrightarrow A \stackrel{\alpha}{\longrightarrow} B$ bei $A$ exakt ist. \\
+		\begin{tabular}{p{3.1cm}p{.1cm}p{.3cm}l}
+			& $e$ & $\mapsto$ & $e_A$
+		\end{tabular}
+		\item Notation: $\{e\} =: 1$. Eine exakte Folge der Form
+		$$ 1 \longrightarrow A \stackrel{\alpha}{\longrightarrow} B \stackrel{\beta}{\longrightarrow} C \longrightarrow 1$$
+		(d.h. $\alpha$ injekiv, $\beta$ surjekiv und $im(\alpha) = ker(\beta)$), heißt \underline{kurze exakte Folge}.
+	\end{itemize}
 \end{notation}
 
-\begin{ex}
-	
+\begin{ex}[für kurze exakte Folgen]
+	\begin{itemize}
+		\item $1 \longrightarrow N \stackrel{\alpha}{\longrightarrow} G \stackrel{\beta}{\longrightarrow} G/N \longrightarrow 1$ ist exakt für jeden Normalteiler $N$ von $G$.
+		\item Für G abelsch ($\{e\} =: 0$): \\
+		$0 \longrightarrow H \stackrel{\alpha}{\longrightarrow} G \stackrel{\beta}{\longrightarrow} G/H \longrightarrow 0$ ist exakt für jede Untergruppe $H$ von $G$.
+	\end{itemize}
 \end{ex}
 
 
@@ -410,23 +429,34 @@ Hier fehlt die Vorlesung vom 28.April. Viel Spaß beim texen, Philipp :D
 \section{Produkte von Gruppen}
 
 \begin{defn}
-	
+	Es sei $(G_i)_{i \in I}$ eine Familie von Gruppen. Das \underline{äußere direkte Produkt} der Familie ist das kartesische Produkt $\prod_{i \in I}G_i$ mit der Verknüpfung $(a_i)_{i \in I} (b_i)_{i \in I} = (a_ib_i)_{i \in I}$. Neutrales Element: $(e_i)_{i \in I}$ mit $e_i \in G_i$ neutral.
 \end{defn}
 
 \begin{notation}
-	
+	$G_1 \times G_2 \times \dotsb \times G_n$ für endliche Produkte. \\
+	$G_1 \oplus G_2 \oplus \dotsb \oplus G_n$ für endliche Produkte, $G_i$ abelsch [additiv].
 \end{notation}
 
 \begin{lemma}
-	
+	Für jedes $i_0 \in I$ ist die Teilmenge
+	$$ \overline{G_{i_0}} = \{(b_i)_{i \in I} \in \prod_{i \in I}G_i | b_i = e_i \text{ für } i \neq i_0\} $$
+	ein Normalteiler von $\prod_{i \in I}G_i$, isomorph zu $G_{i_0}$.
 \end{lemma}
 
 \begin{proof}
-	
+	$\overline{G_{i_0}}$ ist der Kern des Gruppenhomomorphismus
+	$$p_{i_0}: \prod_{i \in I}G_i \rightarrow \prod_{i \in I-\{i_0\}}G_i, (b_i)_{i \in I} \mapsto (b_i)_{i \in I-\{i_0\}}.$$
+	Ferner ist
+	$$j_{i_0}: G_{i_0} \rightarrow \prod_{i \in I}G_i, a \mapsto (b_i)_{i \in I} \text{ mit } b_{i_0}=a \text{ und } b_i = e_i \text{ für } i \neq i_0.$$
+	Das Bild ist $\overline{G_{i_0}}$ und $j_{i_0}$ ist injektiv, weil
+	$$(b_i)_{i \in I} = (e_i)_{i \in I} \Leftrightarrow b_i = e_i \text{ für alle } i \in I.$$
 \end{proof}
 
 \begin{nb}
-	
+	\begin{itemize}
+		\item $1 \longrightarrow G_{i_0} \stackrel{j_{i_0}}{\longrightarrow} \prod_{i \in I}G_i \stackrel{p_{i_0}}{\longrightarrow} \prod_{i \in I-\{i_0\}}G_i \longrightarrow 1$ ist kurze exakte Folge.
+		\item Der Beweis liefert $\overline{G_{i_0}} \cap \langle \bigcup_{i \in I-\{i_0\}}G_i \rangle = \{e\}$.
+	\end{itemize}
 \end{nb}
 
 \end{document}
