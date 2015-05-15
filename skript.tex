@@ -8,7 +8,6 @@
 \usepackage{graphicx} % für Grafik-Einbindung
 \usepackage{float} 
 %\usepackage[dvips]{hyperref}
-\usepackage[arrow, matrix]{xy} % für kommutative Diagramme 
 \usepackage{tikz-cd}
 \tikzset{ % das braucht man für die kommutativen Diagramme, wenn man babel german benutzt!!
   every picture/.append style={
@@ -352,13 +351,11 @@ Hier fehlt die Vorlesung vom 28.April. Viel Spaß beim texen, Philipp :D
 
 \begin{thm}[Homomorphiesatz]
 	Es sei $f: G \rightarrow G'$ ein Gruppenhomomorphismus und N ein Normalteiler von G. Ist N im $ker(f)$ enthalten, so gibt es genau einen Gruppenhomomorphismus $\bar{f}: G/N \rightarrow G'$, so dass das folgende Diagramm kommutiert:
-	\centering
-	\begin{xy}
- 		\xymatrix{
-      			G \ar[rr]^{f = \bar{f} \circ \pi} \ar[rd]_{\pi}	&					& G'	\\
-      											& G/N \ar[ur]_{\bar{f}}	&
-  		}
-	\end{xy}
+
+    \[ \begin{tikzcd}
+            G \arrow[rr,"f=\bar f\circ \pi"] \arrow[rd,"\pi"] & & G'  \\
+                                             & G/N \arrow[ru,"\bar f"] &
+    \end{tikzcd} \]
 \end{thm}
 
 \begin{nb}
