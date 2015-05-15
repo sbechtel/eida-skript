@@ -1,5 +1,5 @@
 \documentclass[12pt]{scrartcl}%{article} % Beginn der LaTeX-Datei
-\usepackage{amsmath,amssymb,amsthm}  % erleichtert Mathe 
+\usepackage{mathtools,amsmath,amssymb,amsthm}  % erleichtert Mathe 
 \addtolength{\jot}{0.2em}
 \usepackage{enumitem}% schicke Nummerierung
 \newcommand{\sbt}{\,\begin{picture}(-1,1)(-1,-3)\circle*{3}\end{picture}\ }
@@ -8,16 +8,15 @@
 \usepackage{graphicx} % für Grafik-Einbindung
 \usepackage{float} 
 %\usepackage[dvips]{hyperref}
-\usepackage[arrow, matrix]{xy} % für kommutative Diagramme
-
-\usepackage[ngerman]{babel}
-\usepackage[autostyle=true,german=quotes]{csquotes}
-%\usepackage[T1]{fontenc}
-%\usepackage{lmodern}
-% Einstellungen, wenn man deutsch schreiben will, z.B. Trennregeln
-%\usepackage[applemac]{inputenc}
-\usepackage[utf8]{inputenc}  % für Unix-Systeme
-
+\usepackage[arrow, matrix]{xy} % für kommutative Diagramme 
+\usepackage{tikz-cd}
+\tikzset{ % das braucht man für die kommutativen Diagramme, wenn man babel german benutzt!!
+  every picture/.append style={
+    execute at begin picture={\shorthandoff{"}},
+    execute at end picture={\shorthandon{"}}
+  }
+}
+\usepackage{nicefrac}
 
 % environments
 \newtheorem{thm}{Theorem}
@@ -39,6 +38,14 @@
 \newcommand{\abb}{\text{Abb}}
 \newcommand{\inv}[1]{\left(#1\right)^{-1}}
 \newcommand{\Inv}[1]{#1^{-1}}
+
+\usepackage[ngerman]{babel}
+\usepackage[autostyle=true,german=quotes]{csquotes}
+%\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+% Einstellungen, wenn man deutsch schreiben will, z.B. Trennregeln
+%\usepackage[applemac]{inputenc}
+\usepackage[utf8]{inputenc}  % für Unix-Systeme
 
 \begin{document}
 
@@ -459,4 +466,159 @@ Hier fehlt die Vorlesung vom 28.April. Viel Spaß beim texen, Philipp :D
 	\end{itemize}
 \end{nb}
 
+\begin{defn}
+    Sei $G$ eine Gruppe und $(N_i)_{i\in I}$ eine Familie von normalen Untergruppen, so dass gilt:
+
+    \begin{enumerate}[label=(\roman*)]
+        \item $G=<\cup_{i\in I} N_i>$
+        \item $N_{i_0} \cap <\cup_{i\in I \setminus \{i_0\}} N_i> = \{e\}$ für jedes $i_0\in I$.
+    \end{enumerate}
+
+    Dann ist $G$ das \underline{innere Produkt} von $(N_i)_{i\in I}$.
+\end{defn}
+
+\begin{lemma}
+    Es sei $G$ das innere Produkt von $(N_i)_{i\in I}$. Dann gilt $ab=ba$ für $a\in N_i, b\in N_j$ mit $i\neq j$.
+\end{lemma}
+
+\begin{proof}
+    Man rechnet: $$ab\inv{ba}=ab\Inv{a}\Inv{b}=(ab\Inv{a})\Inv{b}=a(b\Inv{a}\Inv{b}) \in N_i\cap N_j$$ Somit folgt $ab\inv{ba}=e$, also $ab=ba$.
+\end{proof}
+
+Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
+
+\begin{lemma}
+    Sei $G$ Gruppe, $N_1,\dots,N_r$ normale Untergruppen von $G$. Dann ist $G$ genau dann das innere Produkt von $N_1,\dots,N_r$, wenn gilt:
+
+    \begin{enumerate}[label=(\roman*)']
+        \item $G=N_1\dots N_r$
+        \item Die Darstellung $a=n_1\dots n_r$ mit $n_j\in N_j$ ist für jedes $a\in G$ eindeutig bestimmt.
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    (i) äquivalent (i)': folgt aus $$<\bigcup_{i=1}^r N_i> = \{a_1^{\xi_1}\dots a_k^{\xi_k}: a_j\in N_1\cup\dots \cup N_r, \xi_j = \pm 1\}$$ und der Tatsache, dass die $N_j$ normale Untergruppen sind die für paarweise verschiedene $j\neq j'$ kommutieren.
+
+    (ii)' impliziert (ii): oBdA gelte $i_0=1$. Wir möchten zeigen, dass $$N_1\cap <N_2\cup\dots \cup N_r> = N_1 \cap (N_2\dots N_r)= \{e\}$$ Sei $x\in N_1\cap <N_2\dots N_r>$. Dann gilt $x=n_1\in N_1$ und $x=n_2\dots n_r$ mit $n_i\in N_i$ für $i\geq 2$. Also $x=n_1e\dots e=en_2\dots n_r$, somit $n_i=e$ für alle $i$, also $x=e$.
+
+    (ii) impliziert (ii)': Aus $n_1\dots n_r=n_1'\dots n_r'$ mit $n_i,n_i'\in N_i$ folgt $$\inv{n_1'}n_1=(n_2'\dots n_r')\inv{n_2\dots n_r} = \{e\}$$ Die letzte Gleichheit gilt nach (ii). Also folgt $n_i=n_i'$. Vertauschen der Reihenfolge liefert dies für $i\neq 1$.
+\end{proof}
+
+\begin{thm}
+    Das innere Produkt $G$ von normalen Untergruppen $N_1,\dots,N_r$ ist zum äußeren Produkt $N_1\times\dots \times N_r$ kanonisch isomorph. Folgerung: Wir brauchen nicht zwischen den $\overline{G_i}=N_i$ und den $G_i$ zu unterscheiden.
+\end{thm}
+
+\begin{proof}
+    Wir definieren $$N_1\times\dots\times N_r \overset{\pi}{\longrightarrow} G,\quad (n_1,\dots,n_r)\mapsto n_1\dots n_r$$ Da das Bild von $\pi$ die Untergruppe $N_1\dots N_r \overset{(i)'}{=} G$ ist, ist $\pi$ surjektiv. Aus (ii)' folgt, dass $\pi$ auch injektiv ist. $\pi$ ist auch Gruppenhomomorphismus: 
+    
+    \begin{align*}
+        \pi((m_1,\dots,m_r)\cdot (n_1,\dots,n_r)) \\
+        =\pi((m_1n_1,\dots,m_rn_r))=m_1n_1\dots m_rn_r=m_1\dots m_rn_1\dots n_r \\
+        \pi(\bar m)\pi(\bar n)
+    \end{align*}
+    
+    Dabei gilt die vorletzte Gleichheit, weil wir Elemente aus verschiedenen Untergruppen vertauschen dürfen.
+\end{proof}
+
+\begin{defn}
+    Für $N,H$ Gruppen ist eine Gruppenerweiteruung von $N$ durch eine kurze, exakte Folge von Gruppen
+    
+    \[ \begin{tikzcd}
+        1 \arrow[r] & N \arrow[r] & G \arrow[r] & H \arrow[r] & 1
+    \end{tikzcd} \]
+    
+    gegeben, wobei $i$ injektiv, $p$ surjektiv, $\text{im } i = \ker p$ ($\nicefrac{G}{H} \cong H$).
+
+\end{defn}
+
+\begin{ex}
+    $G=N\times H$ Diese ist i.A. nicht die einzige Gruppenerweiterung.
+\end{ex}
+
+\begin{defn}
+    Es seien $G$ eine Gruppe, $N\subseteq G$ Normalteiler von $G$ und $H\subseteq G$ beliebige Untergruppe, so dass gilt: $$G=NH \quad \text{und} \quad N\cap H = \{e\}$$ Dann ist $G$ das \underline{semidirekte Produkt} von $N$ und $H$, Notation: $G=N\rtimes H$.
+\end{defn}
+
+\begin{nb}
+    Jedes $a\in G$ hat eine eindeutige Darstellung $a=nh$ mit $n\in N, h\in H$. Dies liefert eine Bijektion $$N\times H \to G=N\rtimes H, (n,h)\mapsto nh$$
+\end{nb}
+
+\begin{thm}
+    Für jedes $h\in H$ ist die Konjugationsabbildung $$\gamma_h: N\to N, \quad n\mapsto hn\Inv{h}$$ ein Automorphismus von $N$. Dies ergibt den Homomorphismus $$H\overset{\gamma}{\longrightarrow} \text{Aut}(N), h\mapsto \gamma_h$$
+\end{thm}
+
+\begin{proof}
+    $\gamma$ ist Homomorphismus:
+
+    \begin{gather*}
+        \gamma_{h_1h_2}(n)=(h_1h_2)n\inv{h_1h_2}=h_1h_2n\Inv{h_2}\Inv{h_1} \\
+        = h_1\gamma_{h_2}(n)\Inv{h_1}=(\gamma_{h_1}\circ\gamma_{h_2})(n)
+    \end{gather*}
+
+    für $n\in N$.
+\end{proof}
+
+\begin{nb}
+    \begin{enumerate}[label=(\arabic*)]
+        \item Das semidirekte Produkt von $N$ und $H$ wird von $\gamma: H\to \text{Aut}(N)$ eindeutig festgelegt. Es gilt nämlich: $$(n_1h_1)(n_2h_2)=n_1(h_1n_2\Inv{h_1})h_1h_2=n_1\gamma_{h_1}(n_2)h_1h_2$$ wobei $$n_1\gamma_{h_1}(n_2)\in N, h_1h_2\in H$$.
+        \item Umgekehrt definiert $\gamma: H\to \text{Aut}(N)$ immer ein semidirektes Produkt $N\rtimes H$:
+
+            \begin{gather*}
+                G=(N\times H, \cdot_\gamma) \\
+                (n_1,h_1)\cdot_\gamma (n_2,h_2)=(n_1\gamma_{h_1}(n_2), h_1h_2)
+            \end{gather*}
+
+            ist Gruppe mit neutralem Element $(e_N, e_H)$ und inversen Elementen $$\Inv{(n,h)}=(\gamma_{\Inv{h}}(\Inv{n}),\Inv{h})$$
+
+            Definiere:
+
+            \begin{gather*}
+                N^*\coloneqq = \{(n, e_H): n\in N\} \cong N, \\
+                H^*\coloneqq = \{(e_N, h): h\in H\} \cong H
+            \end{gather*}
+
+            $N^*,H^*$ sind Untergruppen von $G$, isomorph zu $N$ bzw. $H$. $$\pi: G\longrightarrow H, \quad (n,h)\mapsto h$$ ist ein Homomorphismus mit $\ker \pi = N^*$, also ist $N^*$ normale Untergruppe.
+
+            Das $N^*\cap H^* = \{e\}$ ist klar. $$(n,h)=(n,e_H)\cdot_\gamma (e_N, h)$$ liefert $G=N^*H^*$.
+    \end{enumerate}
+\end{nb}
+
+\begin{defn}
+    Eine kurze exakte Folge 
+
+    \[ \begin{tikzcd}
+        1 \arrow[r] & N \arrow[r, "i"] & G \arrow[r, "p"] & H \arrow[l, bend left, dashed, "s"] \arrow[r] & 1
+    \end{tikzcd} \]
+
+    spaltet, falls ein Homomorphismus $s: H\to G$ existiert, mit $p\circ s = \text{id}_h$. $p$ heißt ein \underline{Schnitt} von $p$.
+\end{defn}
+
+Für $G=N\rtimes H$ Gruppenerweiterung:
+
+\[ \begin{tikzcd}
+        1 \arrow[r] & N \arrow[r,"i"] & G \arrow[r,"p"] & H \arrow[r] & 1
+\end{tikzcd} \]
+
+wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\mapsto (e_N,h)$ Schnitt. $H$ ist Untergruppe. Man rechnet $(p\circ j)(h)=p(e_N,h)=h$
+
+\begin{thm}
+    Es sei
+
+    \[ \begin{tikzcd}
+        1 \arrow[r] & N \arrow[r] & G \arrow[r] & H \arrow[r] & 1
+    \end{tikzcd} \]
+
+    eine Gruppenerweiterung, die mit einem Schnitt $s:H\to G$ spaltet. Dann ist $G$ das semidirekte Produkt von $N$ und $H$, definiert durch $$\gamma: H\to \text{Aut}(N), \quad h\mapsto \gamma_h$$
+\end{thm}
+
+\begin{proof}
+    Wir setzen $\rho: N\rtimes H \to G, (n,h)\mapsto i(n)s(h)$. Zeige, dass $\rho$ Homomorphismus ist:
+
+    \begin{gather*}
+        \rho((n_1,h_1)\cdot (n_2,h_2)) = \rho(n_1\gamma_{h_1}(n_2), h_1h_2) \\
+        = i(n_1)i(\gamma_{h_1}(n_2))s(h_1)s(h_2) = i(n_1)s(h_1)i(n_2)\Inv{s(h_1)}s(h_1)s(h_2) \\
+        = \rho(n_1,h_1)\rho(n_2,h_2)
+    \end{gather*}
+\end{proof}
+ 
 \end{document}
