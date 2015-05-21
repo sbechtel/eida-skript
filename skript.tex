@@ -293,9 +293,93 @@
 	$H \backslash G$ ist die \underline{Menge der Rechtsnebenklassen}. Dann gilt: $\vert H \backslash G \vert = \vert G/H \vert$ \newline $\lceil$Bijektion: $H \backslash G \rightarrow G/H, Hb \mapsto b^{-1}H \rfloor$
 \end{defn}
 
-
-
 % Hier fehlt die Vorlesung vom 28.April. Viel Spaß beim texen, Philipp :D
+\begin{lemma} 
+Die Funktion
+$$  	H\backslash G   \xrightarrow{f} G/H $$
+$$	Hb \rightarrow b^{-1}H$$
+ist eine Bijektion
+
+\end{lemma}
+
+\begin{proof}
+1) f ist wohldefiniert:\\
+Gilt $Hb_{1}=Hb_{2}$ für $b_{1},b_{2} \in G$
+das heißt $b_{1} {_{\ H}}\sim b_{2}$ \\
+existiert ein $h \in H$ mit $b_1 = hb_2$ \\
+$b^{-1}*H = (hb_2)^{-1}*H = b_{2}^{-1}*h*H =  b_{2}^{-1}*H$ 
+
+2) f ist Bijektion, da sie wohldefiniert ist:\\
+$$  	G/H   \xrightarrow{g} H\backslash G $$
+$$	Ha \rightarrow Ha^{-1}$$
+ist wohldefiniert, ähnlich zu (1).\\
+$g \circ f = Id_{H \backslash G}$ weil $G \circ f(Hb) = gb^{-1}H=H(b^{-1})^{-1}=Hb$ \\
+$f \circ g = Id_{G \slash H}$ analog.
+\end{proof}
+
+\begin{theorem}
+Es seien $H$,$K$ Untergruppen von $G$ mit $K \subset H \subset G$. Dann gilt: $$[G:K]=[H:K]*[G*H]$$
+\end{theorem}
+
+\begin{proof}
+Wir nehmen an, dass $[G:H]=m$ und $[H:K]=n$ endlich sind. 
+Dann gibt es $a_1,.....,a_n \in H$, so dass
+$H/K=\{ a_1K,...,a_nK\}$ und $b_1,...,b_m \in G$ mit
+$G\backslash H=\{ b_1H,...,b_mH\}$
+
+Dann gilt:
+$$G=\bigcup\limits_{\begin{subarray}{1}i=1...m \\ j=1...n\end{subarray}} b_ia_jK$$
+mit $b_ia_jK$ paarweise disunkt.
+
+$b_{i_{1}}a_{j_{1}}K=b_{i_{2}}a_{j_{2}}K$ mit $i_1,i_2 \in \{1,...,n \}$ und $j_1,j_2 \in \{1,...,m \}$
+
+$\Rightarrow b_{i_{1}}H$ und $b_{i_{2}}H$ sind nicht disjunkt.
+
+$\Rightarrow b_{i_{1}}H=b_{i_{2}}H$
+
+Dann gilt: $b_{i_{1}}a_{j_{1}}K=b_{i_{1}}a_{j_{2}}K$
+
+$\overset{*b^{-1}}{\Rightarrow} a_{j_{1}}K=a_{j_{2}}K \Rightarrow a_{j_{1}}=a_{j_{2}}$ \\
+Also: Es gibt genau $m*n$ Linksnebenklassen von $K$ in $G$.
+
+$\bigcup\limits_{\begin{subarray}{1}i=1...m \\ j=1...n\end{subarray}} b_ia_jK =  \bigcup\limits_i b_i( \bigcup\limits_j a_jK)= \bigcup\limits_i b_iH=G$
+
+\end{proof}
+
+\begin{remark}
+Der Beweis lässt sich zum Fall von unendlichem Index erweitern. Dies liefert eine Bijektion $G/H \times H/K \to G/K$
+\end{remark}
+
+\begin{corollary}{Satz von Lagrange}\\
+Es gilt $\vert G\vert = [G:H]*\vert H\vert$ für jede Untergruppe  $H$ von $G$. Besonders gilt: $\vert H\vert$ teilt $\vert G\vert$ und $ord(g)$ ist ein Teiler von  $\vert G\vert$ für jedes $g\in G$.
+\end{corollary}
+
+\begin{proof}
+$K= \{ e\}$ im vorigen Satz.
+\end{proof}
+
+\begin{example}
+$G$ endlich mit $\vert G\vert=p$ Primzahl. Dann existiert ein $g \in G$ mit $g \neq e$
+
+$ord(g)=p \Rightarrow <g> besteht aus genau p Elementen.$\\
+Also $<g>=G$ und $G$ ist die von $g$ erzeugte zyklische Gruppe.
+\end{example}
+
+\section{Normalen Untergruppen und Gruppenhomomorphismen}
+
+\begin{theorem}
+Es sei $G$ eine Gruppe unf $H\in G$ eine Untergruppe.
+
+Die folgenden Bedingungen sind äquivalent:
+
+(i) es gilt: $bH=Hb$ für alle $b\in G$
+(ii) es gilt: $b^{-1}Hb=H$ für alle $b\in G$
+(iii) es gilt: $b^{-1}hb=H$ für alle $b\in G$ und $h\in H$
+\end{theorem}
+
+\begin{definition}
+Eine Untergruppe $H$, die eine der Bedingungen (i)-(iii) erfüllt, nennt man eine normale Untergruppe (oder Normalteiler) von $G$.
+\end{definition}
 
 \newpage
 \thispagestyle{empty}
