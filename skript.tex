@@ -46,6 +46,10 @@
 %\usepackage[applemac]{inputenc}
 \usepackage[utf8]{inputenc}  % für Unix-Systeme
 
+% TODO Bspw. ord wird zZ als drei vAriablen (o, r, d) gesetzt. Zu einem vernünftigen Operator ändern?
+% TODO Anführungszeichen sind bei mir alle falsch. Funktioniert das bei euch?
+% TODO Einige Beweise sind schrecklich strukturiert und zum Teil rettbar fehlerhaft. Darf ich?
+
 \begin{document}
 
 \author{Sebastian Bechtel, Isburg Knof, Theresa Tran}
@@ -97,7 +101,7 @@
 \begin{proof}
     Sei $a\in G$ und $b\in G$ mit $ba=e$. Nach (I') gibt es $c\in G$ mit $cb=e$. Also $ab=eab=cbab=ceb=cb=e$.
 
-    Sei nun $a\in G$, es gilt $ae=a(\Inv aa)=ea=e$.
+    Sei nun $a\in G$, es gilt $ae=a(\Inv aa)=ea=a$.
 \end{proof}
 
 \begin{lemma}
@@ -110,9 +114,10 @@
 
 \begin{proof}
     \begin{enumerate}
-        \item $\inv{\Inv a}=a$ klar. Für $a,b,c\in G$: $(\Inv b\Inv a)ab=\Inv b(\Inv aa)b=\Inv beb=\Inv bb=e$ (andere Richtung analog)
+        \item $\inv{\Inv a}=a$ klar. Für $a,b\in G$: $(\Inv b\Inv a)ab=\Inv b(\Inv aa)b=\Inv beb=\Inv bb=e$ (andere Richtung analog) % FIXME Welche andere Richtung?
         \item $ab=ac$ impliziert $\Inv a(ab)=\Inv a(ac)$ impliziert $b=c$
-        \item Setze $x=\Inv ab$, dann erhält man $ax=a(\Inv ab)=(a\Inv a)b=eb=b$
+        \item Setze $x=\Inv ab$, dann erhält man $ax=a(\Inv ab)=(a\Inv a)b=eb=b$.
+       	Die Eindeutigkeit folgt aus Punkt 2. \qedhere
     \end{enumerate}
 \end{proof}
 
@@ -124,7 +129,8 @@
 \end{defn}
 
 \begin{lemma}
-    Für $a\in G$ gilt: $a^n a^m=a^{n+m}=a^m a^n$, $\left(a^m \right)^n = a^{n\cdot m}$, $ab=ba$ impliziert $\left(ab \right)^n = a^n b^n$
+    Für $a\in G$ gelten $a^n a^m=a^{n+m}=a^m a^n$ und $\left(a^m \right)^n = a^{n\cdot m}$.
+    $ab=ba$ impliziert $\left(ab \right)^n = a^n b^n$.
 \end{lemma}
 
 \begin{ex}
@@ -146,7 +152,7 @@
     \begin{enumerate}[label=(\roman*)]
         \item Für $a,b\in H$ gilt $ab\in H$ (Abgeschlossenheit)
         \item $e\in H$
-        \item für $a\in H$ ist $\Inv a \in H$
+        \item Für $a\in H$ ist $\Inv a \in H$
     \end{enumerate}
 \end{defn}
 
@@ -158,27 +164,26 @@
     "$\Rightarrow$" \checkmark
 
     "$\Leftarrow$" 
-
     \begin{itemize} 
         \item $a=b$ impliziert $e\in H$
         \item $e,a\in H$ impliziert $e\Inv a\in H$ impliziert $\Inv a \in H$
-        \item $a,\Inv b\in H$ impliziert $a\inv{\Inv b} \in H$ impliziert $ab\in H$
+        \item $a,\Inv b\in H$ impliziert $a\inv{\Inv b} \in H$ impliziert $ab\in H$ \qedhere
     \end{itemize}
 \end{proof}
 
 \begin{ex}
     \begin{enumerate}[label=(\alph*)]
-        \item $\{e\}, G$ induziert Untergruppe für alle Gruppen $(G,\cdot)$.
+        \item $\{e\}, G$ induzieren je eine Untergruppe für alle Gruppen $(G,\cdot)$.
         \item $K$ Körper. $\text{SL}_n(K)=\{A\in M_n(K): \det(A)=1\}$ induziert Untergruppe von $\gl_n(K)$, die spezielle lineare Gruppe.
     \end{enumerate}
 \end{ex}
 
 \begin{defn}
-    Eine Untergruppe heißt \underline{echt}, falls sie nicht trivial ist.
+    Eine Untergruppe heißt \underline{echt}, falls sie nicht trivial ist. % FIXME Welche sind trivial? {e} und G?
 \end{defn}
 
 \begin{lemma}
-	Es sei $(H_{j})_{j \in J}$ eine Familie von Untergruppen $H_{j} \subset G$. Dann ist $\bigcap_{j 		\in J}H_{j}$ eine Untergruppe von G.
+	Es sei $(H_{j})_{j \in J}$ eine Familie von Untergruppen $H_{j} \subset G$. Dann ist $\bigcap_{j \in J}H_{j}$ eine Untergruppe von G.
 \end{lemma}
 
 \begin{proof}
@@ -186,11 +191,11 @@
 \end{proof}
 
 \begin{defn}
-	Es sei M eine Teilmenge von G. Die \underline{von M erzeugte Untergruppe} ist der Durchschnitt 	aller Untergruppen, die M enthalten.
+	Es sei $M$ eine Teilmenge von $G$. Die \underline{von $M$ erzeugte Untergruppe} ist der Durchschnitt aller Untergruppen, die $M$ enthalten.
 \end{defn}
 
 \begin{notation}
-	$\langle M \rangle =\bigcup_{M \subset H \subset G}H$, wobei H Untergruppe
+	$\langle M \rangle =\bigcap_{M \subset H \subset G}H$, wobei $H$ Untergruppe
 \end{notation}
 
 \begin{nb}
@@ -202,8 +207,8 @@
 \end{nb}
 
 \begin{defn}
-	G heißt \underline{zyklisch}, falls $G = \langle g \rangle$ für ein $g \in G$ gilt. \newline
-	Ist $G = \langle M \rangle$ mit M endlich, so heißt G \underline{endlich erzeugt}.
+	$G$ heißt \underline{zyklisch}, falls $G = \langle g \rangle$ für ein $g \in G$ gilt. \newline
+	Ist $G = \langle M \rangle$ mit $M$ endlich, so heißt $G$ \underline{endlich erzeugt}.
 \end{defn}
 
 \begin{defn}
@@ -221,11 +226,11 @@
 \begin{thm}
 	Sei $G$ Gruppe, $g \in G$
 	\begin{enumerate}
-		\item g hat endliche Ordnung $\Longleftrightarrow$ alle Potenzen von g sind verschieden
+		\item g hat nicht endliche Ordnung $\Longleftrightarrow$ alle Potenzen von g sind verschieden
 		\item g hat endliche Ordnung $\Longleftrightarrow$ $\exists m>0: g^{m}=e$ \newline Dann gilt:
 			\begin{enumerate}[label=(\alph*)]
-				\item $n := ord(g) = min \lbrace m>0 : g^{m}=e \rbrace$
-				\item $g^{m}=e \Longleftrightarrow m=nk$ mit $k \in \mathbb{Z}$
+				\item $n := ord(g) = \min \lbrace m>0 : g^{m}=e \rbrace$
+				\item $g^{m}=e \Longleftrightarrow m=nk$ für ein $k \in \mathbb{Z}$
 				\item $\langle g \rangle = \lbrace e, g^{1},...,g^{n-1}\rbrace$
 			\end{enumerate}
 		\item $ord(g^{s}) = \frac{n}{(n,s)}$ für $n = ord(g)$ endlich
@@ -234,14 +239,33 @@
 
 \begin{proof}
 	\begin{enumerate}
-		\item Wir nehmen an: Für $i,j \in \mathbb{Z}$, oBdA $j>i$ gilt $g^{i}=g^{j}$. \newline Dann gilt $g^{j-i}=g^{j}(g^{i})^{-1}=e$. \newline Es sei dann n die kleinste positive Zahl, die $g^{n}=e$ erfüllt. Sei $m \in \mathbb{Z}$ beliebig. Der Divisionsalgorithmus liefert: $m=kn+r$ für $0 \leq r < n$ und $k,r \in \mathbb{Z}$. Dann gilt: \newline $g^{m}=g^{kn+r}=g^{kn}g^{r}=(g^{n})^{k}g^{r}=eg^{r}=g^{r}$. \newline Daraus folgt $\langle g \rangle = \lbrace g^{m} : m \in \mathbb{Z}\rbrace = \lbrace g^{r} : r=0,...,n-1\rbrace$. Besonders gilt $ord(g)=n$ ist endlich. \newline $\lceil$ Dies zeigt $\Rightarrow$, $\Leftarrow$ klar, dann ist $\langle g \rangle = \lbrace g^{m} : m \in \mathbb{Z}\rbrace$ unendlich $\rfloor$
-		\item Alle $g^{r}$ mit $0 \leq r \leq n-1$ sind verschieden, da: \newline $g^{i}=g^{j} \Rightarrow g^{j-i}=e \Rightarrow j-i = kn$ mit $k \in \mathbb{Z} \Rightarrow i \equiv j (modn) \Rightarrow i=j$ falls $0<i,j<n-1$. \newline Dies liefert $g^{r}$ mit $0 \leq r \leq n-1$ sind paarweise verschieden und es gilt: \newline $ord(g)=n$. $\lceil a$ und $c\rfloor$ \newline Aus dem Divisionsalgorithmus folgt b: $g^{m}=e \Leftrightarrow e=g^{kn+r}=g^{r}$ mit $m = kn+r, 0 \leq r < n \Leftrightarrow r=0$. Also $m=kn$ mit $k \in \mathbb{Z}$.
-		\item Es sei $m=ord(g^{s}), n =ord(g)$. Aus $(g^{s})^{m}=e$ folgt (siehe 2), dass $n$ ein Teiler von $sm$ ist. Dies liefert: $\frac{n}{(s,n)} \vert \frac{s}{(s,n)}m$. Somit $\frac{n}{(s,n)} \vert m$. \newline Nun möchten wir noch zeigen: $m \vert \frac{n}{(s,n)}$. $(g^{s})^{\frac{n}{(s,n)}} = (g^{n})^{\frac{s}{(s,n)}}=e^{\frac{s}{(s,n)}}=e$. Daraus folgt $m \vert \frac{n}{(s,n)}$ (wegen 2). \newline Also gilt $m = \frac{n}{(s,n)}$. 
+		\item Wir nehmen an: Für $i,j \in \mathbb{Z}$, oBdA $j>i$ gilt $g^{i}=g^{j}$.
+		Dann gilt $g^{j-i}=g^{j}(g^{i})^{-1}=e$.
+		Es sei dann n die kleinste positive Zahl, die $g^{n}=e$ erfüllt.
+		Sei $m \in \mathbb{Z}$ beliebig.
+		Der Divisionsalgorithmus liefert: $m=kn+r$ für $0 \leq r < n$ und $k,r \in \mathbb{Z}$.
+
+		Dann gilt:
+		$g^{m}=g^{kn+r}=g^{kn}g^{r}=(g^{n})^{k}g^{r}=eg^{r}=g^{r}$.
+		Daraus folgt $\langle g \rangle = \lbrace g^{m} : m \in \mathbb{Z}\rbrace = \lbrace g^{r} : r=0,...,n-1\rbrace$.
+		Besonders gilt $ord(g)=n$ ist endlich.
+		$\lceil$ Dies zeigt $\Rightarrow$, $\Leftarrow$ klar, dann ist $\langle g \rangle = \lbrace g^{m} : m \in \mathbb{Z}\rbrace$ unendlich $\rfloor$
+		\item Alle $g^{r}$ mit $0 \leq r \leq n-1$ sind verschieden, da:
+		$g^{i}=g^{j} \Rightarrow g^{j-i}=e \Rightarrow j-i = kn$ mit $k\in\mathbb{Z} \Rightarrow i \equiv j \pmod{n} \Rightarrow i=j$ falls $0\leq i,j\leq n-1$.
+		Dies liefert $g^{r}$ mit $0 \leq r \leq n-1$ sind paarweise verschieden und es gilt: $ord(g)=n$. $\lceil a$ und $c\rfloor$
+		Aus dem Divisionsalgorithmus folgt (b): $g^{m}=e \Leftrightarrow e=g^{kn+r}=g^{r}$ mit $m = kn+r, 0 \leq r < n \Leftrightarrow r=0$.
+		Also $m=kn$ mit $k \in \mathbb{Z}$. % FIXME Scoping-Katastrophe.
+		\item Es sei $m=ord(g^{s}), n =ord(g)$.
+		Aus $(g^{s})^{m}=e$ folgt (siehe 2), dass $n$ ein Teiler von $sm$ ist.
+		Dies liefert: $\frac{n}{(s,n)} \vert \frac{s}{(s,n)}m$. Somit $\frac{n}{(s,n)} \vert m$.
+		Nun möchten wir noch zeigen: $m \vert \frac{n}{(s,n)}$. $(g^{s})^{\frac{n}{(s,n)}} = (g^{n})^{\frac{s}{(s,n)}}=e^{\frac{s}{(s,n)}}=e$.
+		Daraus folgt $m \vert \frac{n}{(s,n)}$ (wegen 2).
+		Also gilt $m = \frac{n}{(s,n)}$. \qedhere
 	\end{enumerate}
 \end{proof}
 
 \begin{lemma}
-	Wir können alle Untergruppen einer zyklischen Gruppe beschreiben mit $G = \langle g \rangle, H \subset G$, es sei $h \in H, h \neq e$. Dann gilt: $h = g^{k}$.
+	Wir können alle Untergruppen einer zyklischen Gruppe beschreiben mit $G = \langle g \rangle, H \subset G$, es sei $h \in H, h \neq e$. Dann gilt: $h = g^{k}$. % FIXME Aussage des Lemmas unverständlich. Kann den Beweis nicht überprüfen.
 \end{lemma}
 
 \begin{proof}
@@ -255,11 +279,11 @@
 Ähnlich kann man zeigen:
 
 \begin{thm}
-	Alle Untergruppen einer zyklischen Gruppe sind zyklisch. Ist $ord(G)=n$ endlich und $m$ ein Teiler von $n$, so ist $H = \langle g^{\frac{n}{m}}\rangle$ die einzige Untergruppe der Ordnung $m$.
+	Alle Untergruppen einer zyklischen Gruppe sind zyklisch. Ist $ord(G)=n$ endlich und $m$ ein Teiler von $n$, so ist $H = \langle g^{\frac{n}{m}}\rangle$ die einzige Untergruppe der Ordnung $m$. % FIXME Beweis?
 \end{thm}
 
 \begin{defn}
-	Sei $H$ eine Untergruppe der Gruppe $G$. Dann kann man die folgende Äquivalenzrelation definieren: \newline $(x,y) \in G^{2}: x \sim_{H} y \Leftrightarrow x = yh$ für $h \in H$ \newline $\lceil$Äquivalenzrelation wegen Gruppenaxiomen für $H\rfloor$
+	Sei $H$ eine Untergruppe der Gruppe $G$. Dann kann man die folgende Äquivalenzrelation definieren: \newline $(x,y) \in G^{2}: x \sim_{H} y \Leftrightarrow x = yh$ für ein $h \in H$ \newline $\lceil$Äquivalenzrelation wegen Gruppenaxiomen für $H\rfloor$
 \end{defn}
 
 \begin{defn}
@@ -267,14 +291,14 @@
 \end{defn}
 
 \begin{notation}
-	Für $a \in G, aH = {ah : h \in H}$
+	Für $a \in G, aH = \{ah : h \in H\}$
 \end{notation}
 
 \begin{nb}
 	Es gelten folgende Eigenschaften: 
 	\begin{itemize}
 		\item Die Abbildung $H \rightarrow aH, h \mapsto ah$ ist eine Bijektion. Besonders gilt: $\vert aH \vert = \vert H \vert$ für alle $a \in G$. \newline $\lceil$Die Abbildung ist bijektiv, da sie umkehrbar ist: $aH \rightarrow H, b \mapsto a^{-1}b$ ist die Umkehrfunktion$\rfloor$
-		\item $aH \neq bH \Rightarrow aH \cap bH = \emptyset$, d.h. sie sind disjunkt. \newline $\lceil x \in aH \neq bH \Rightarrow x = ah_{1} = bh_{2}$ für $h_{1},h_{2} \in H \Rightarrow a=bh_{2}h_{1}^{-1} \in bH \Rightarrow ah= b(h_{2}h_{1}^{-1}h) \in bH$ für alle $h \in H \Rightarrow aH \subset bH$. Ähnlich gilt $bH \subset aH$. Daraus folgt $aH=bH.\rfloor$
+		\item $aH \neq bH \Rightarrow aH \cap bH = \emptyset$, d.h. sie sind disjunkt. \newline $\lceil x \in aH \neq bH \Rightarrow x = ah_{1} = bh_{2}$ für $h_{1},h_{2} \in H \Rightarrow a=bh_{2}h_{1}^{-1} \in bH \Rightarrow ah= b(h_{2}h_{1}^{-1}h) \in bH$ für alle $h \in H \Rightarrow aH \subset bH$. Ähnlich gilt $bH \subset aH$. Daraus folgt $aH=bH.\rfloor$ % TODO Äquivalenzklassen sind immer disjunkt. Wieso der Aufwand?
 	\end{itemize}
 \end{nb}
 
@@ -285,7 +309,8 @@
 \begin{nb}
 	\begin{itemize}
 	 	\item $\vert G \vert = [G:H]\vert H\vert$
-	 	\item Analog ist $a \sim_{H} b$ mit $a,b \in G \Leftrightarrow a=hb$ für ein $h \in H$ ("rechtsäquivalent bzgl. H") eine Äquivalenzrelation. \newline \underline{Rechtsnebenklassen}: $Ha=\lbrace ha : h \in \mathbb{Z} \rbrace$ mit $a \in G$ \newline Bijektion: Für $a \in G$ $aH \rightarrow Ha, x \mapsto a^{-1}xa$
+	 	\item Analog ist $a \sim_{H} b$ mit $a,b \in G \Leftrightarrow a=hb$ für ein $h \in H$ ("rechtsäquivalent bzgl. H") eine Äquivalenzrelation.
+		\underline{Rechtsnebenklassen}: $Ha=\lbrace ha : h \in H\rbrace$ mit $a \in G$ \newline Bijektion: Für $a \in G$ $aH \rightarrow Ha, x \mapsto a^{-1}xa$
 	\end{itemize}
 \end{nb}
 
@@ -381,9 +406,11 @@ Die folgenden Bedingungen sind äquivalent:
 Eine Untergruppe $H$, die eine der Bedingungen (i)-(iii) erfüllt, nennt man eine normale Untergruppe (oder Normalteiler) von $G$.
 \end{definition}
 
+% TODO Falls, was auch immer Philipp vom TeXen abhält, nicht behoben ist, sollte diese Vorlesung so langsam neu vergeben werden.
+
 \newpage
 \thispagestyle{empty}
-Hier fehlt die Vorlesung vom 28.April. Viel Spaß beim texen, Philipp :D
+Hier fehlt die Vorlesung vom 28.April. Viel Spaß beim \TeX en, Philipp :D
 
 \newpage
 
