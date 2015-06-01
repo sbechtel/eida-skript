@@ -318,7 +318,10 @@
 	$H \backslash G$ ist die \underline{Menge der Rechtsnebenklassen}. Dann gilt: $\vert H \backslash G \vert = \vert G/H \vert$ \newline $\lceil$Bijektion: $H \backslash G \rightarrow G/H, Hb \mapsto b^{-1}H \rfloor$
 \end{defn}
 
-% Hier fehlt die Vorlesung vom 28.April. Viel Spaß beim texen, Philipp :D
+% Tut mir Leid, dass es so lang gedauert hat, habe das GitHub noch nicht ganz durchdrungen.
+\newpage
+\thispagestyle{empty}
+
 \begin{lemma} 
 Die Funktion
 $$  	H\backslash G   \xrightarrow{f} G/H $$
@@ -342,9 +345,9 @@ $g \circ f = Id_{H \backslash G}$ weil $G \circ f(Hb) = gb^{-1}H=H(b^{-1})^{-1}=
 $f \circ g = Id_{G \slash H}$ analog.
 \end{proof}
 
-\begin{theorem}
+\begin{thm}
 Es seien $H$,$K$ Untergruppen von $G$ mit $K \subset H \subset G$. Dann gilt: $$[G:K]=[H:K]*[G*H]$$
-\end{theorem}
+\end{thm}
 
 \begin{proof}
 Wir nehmen an, dass $[G:H]=m$ und $[H:K]=n$ endlich sind. 
@@ -371,48 +374,133 @@ $\bigcup\limits_{\begin{subarray}{1}i=1...m \\ j=1...n\end{subarray}} b_ia_jK = 
 
 \end{proof}
 
-\begin{remark}
+\begin{nb}
 Der Beweis lässt sich zum Fall von unendlichem Index erweitern. Dies liefert eine Bijektion $G/H \times H/K \to G/K$
-\end{remark}
+\end{nb}
 
-\begin{corollary}{Satz von Lagrange}\\
+\begin{kor}{Satz von Lagrange}\\
 Es gilt $\vert G\vert = [G:H]*\vert H\vert$ für jede Untergruppe  $H$ von $G$. Besonders gilt: $\vert H\vert$ teilt $\vert G\vert$ und $ord(g)$ ist ein Teiler von  $\vert G\vert$ für jedes $g\in G$.
-\end{corollary}
+\end{kor}
 
 \begin{proof}
 $K= \{ e\}$ im vorigen Satz.
 \end{proof}
 
-\begin{example}
+\begin{ex}
 $G$ endlich mit $\vert G\vert=p$ Primzahl. Dann existiert ein $g \in G$ mit $g \neq e$
 
-$ord(g)=p \Rightarrow <g> besteht aus genau p Elementen.$\\
+$ord(g)=p \Rightarrow <g>$ besteht aus genau p Elementen.\\
 Also $<g>=G$ und $G$ ist die von $g$ erzeugte zyklische Gruppe.
-\end{example}
+\end{ex}
 
 \section{Normalen Untergruppen und Gruppenhomomorphismen}
 
-\begin{theorem}
+\begin{thm}
 Es sei $G$ eine Gruppe unf $H\in G$ eine Untergruppe.
 
-Die folgenden Bedingungen sind äquivalent:
-
-(i) es gilt: $bH=Hb$ für alle $b\in G$
-(ii) es gilt: $b^{-1}Hb=H$ für alle $b\in G$
+Die folgenden Bedingungen sind {\"a}quivalent:\\
+(i) es gilt: $bH=Hb$ für alle $b\in G$\\
+(ii) es gilt: $b^{-1}Hb=H$ für alle $b\in G$\\
 (iii) es gilt: $b^{-1}hb=H$ für alle $b\in G$ und $h\in H$
-\end{theorem}
+\end{thm}
 
-\begin{definition}
+\begin{defn}
 Eine Untergruppe $H$, die eine der Bedingungen (i)-(iii) erfüllt, nennt man eine normale Untergruppe (oder Normalteiler) von $G$.
-\end{definition}
+\end{defn}
+
+\begin{proof}
+(i)$\Rightarrow$(ii)\\
+Es sei $b \in G$ mit$bH=Hb$
+Dann gilt für alle $x \in b^{-1}Hb$:\\
+$x=b^{-1}hb \Rightarrow bx=hb \in Hb=bH$ mit $h \in H$\\
+$\Rightarrow$ es gibt ein $h' \in H$ mit $bx=bh'$\\
+$\Rightarrow b^{-1}xb=b$ also $x=b^{-1}bh'=h'\in H$\\
+$\Rightarrow b^{-1}Hb \subset H$\\
+Für $h' \in H$ gilt: $bh' \in bH = Hb$ Daraus folgt: $bh'=hb$ für ein $h \in h$ und
+$h'=b^{-1}hh'=b^{-1}hb \in b^{-1}Hb$ also $H \subset b^{-1}Hb$\\
+(ii) $Rightarrow$ (iii) ist klar.\\
+(iii) $Rightarrow$ (i)\\
+Für $b \in G$, $h\in $ gilt:\\
+$bh=bh(b^{-1}b)=((b^{-1})^{-1}hb^{-1})b \in Hb$\\
+(iii) für $b^{-1} \in G$ $hb=bb^{-1}hb \in bH$\\
+Daraus folgt: $bH=Hb$
+\end{proof}
+
+\begin{nb}
+Ist $N$ normal, so gilt:\\
+$(aN)(bN)=abN$
+\end{nb}
+
+\begin{proof}
+$(aN)(bN)=(Na)(bN)=N(ab)N=(abN)N=abN$
+\end{proof}
+
+\textbf{Beispiele:}\\
+(1) Die trivialen Untergruppen $\{e\}$, $G$ sind normal.\\
+\begin{defn}
+Eine Gruppe $G$ sodass $\{e\}$ und $G$ die einzigen normalen Untergruppen sind, nennt man einfache Gruppe.
+\end{defn}
+(2) jede Untergruppe einer abelschen Gruppe ist normal.\\
+(3) $SL_n(K)$ ist normale Untergruppe von $GL_n(K)$ ($K$ Körper)
+
+\begin{defn}
+Es seien $(G,\cdot_G)$ und $(H,\cdot_H)$ Gruppen. Ein Gruppenhomomorphismus von $G$ in $H$ ist eine Abbildung 
+$f:G\rightarrow H$, so dass gilt:\\
+$f(a\cdot_{G}b)=f(a)\cdot_{H}f(b)$ für alle $a,b\in G$ 
+\end{defn}
+
+\textbf{Eigenschaften}\\
+(i) $f(e_G)=e_H.$\\
+Für $g\in G$ beliebig gilt:\\
+$f(g)=f(e_{G}\cdot_{G}g)=f(e_G)\cdot_{H}f(g)$\\
+$\Rightarrow f(e_G)=f(e_G)\cdot_{H}(f(g)\cdot_{H}f(g)^{-1})=f(g)\cdot_{H}f(g)^{-1}=e_H$\\
+(ii) $f(g^{-1})=g(g)^{-1}$ für alle $g\in G$\\
+$e_H=f(e_G)=f(g\cdot_G g^{-1})=f(g)\cdot_{H}f(g^{-1}) \Rightarrow f(g^{-1})=f(g)^{-1}$\\
+(iii) Seien $a_1: G_1\rightarrow G_2$ und $a_2: G_2\rightarrow G_3$ Gruppenhomomorphismen, 
+dann ist $a_1\circ a_2: G_1\rightarrow G_3$ ein Gruppenhomomorphismus.\\
+
+\textbf{Beispiele}\\
+(1) F{\"u}r jedes $g \in G$ ist\\
+$\mathbb{Z} \rightarrow G$\\
+$n \rightarrow g^n$\\
+ein Gruppenhomomorphismus.\\
+(2) (Exponentialabbildung) \\
+$(\mathbb{R},+)\rightarrow(\mathbb{R}^*,\cdot)$\\
+$x\rightarrow e^x$\\
+ist ein gruppenhomomorphismus.\\
+(3) F{\"u}r $(G,+)$ ablegt ist\\
+$G\rightarrow G$\\
+$a\rightarrow na = a+...+a$(n-mal)\\
+ein Gruppenhomomorphismus.
+
+\begin{defn}
+Ist $N$ eine normale Untergruppe von $G$, so ist $G/N$ eine Gruppe, die man als Faktorgruppe von $G$ bezüglich $N$ bezeichnet (oder von $N$ in $G$).
+Die natürliche Projektion\\
+$G\rightarrow G/N$\\
+$a\rightarrow aN$\\
+ist dann ein surjektiver Gruppenhomomorphismus.
+\end{defn}
+
+\begin{defn}
+$G$, $H$ Gruppen, $f: G\rightarrow H$ ein Gruppenhomomorphismus.\\
+Bild von $f$: $im(f)=\{f(g),g\in G\}$\\
+Kern von $f$: $ker(f)=\{g\in G,f(g)=e_H\}$
+\end{defn}
+
+\begin{lemma}
+F{\"u}r einen Gruppenhomomorphismus $f: G \rightarrow H$ gilt:\\
+(i) im(f) ist eine Untergruppe von $H$.//
+(ii) ker(f) ist eine normale Untergruppe von $G$.
+\end{lemma}
+
+\begin{proof}
+(i) folgt aus Eigenschaften (i) und (ii) für Gruppenhomomorphismen.\\
+(ii) f{\"u}r $a,b \in ker(f): f(ab^{-1})=f(a)f(b^{-1}=e_H$\\
+$\Rightarrow ab^{-1} \in ker(f)$
+\end{proof}
 
 % TODO Falls, was auch immer Philipp vom TeXen abhält, nicht behoben ist, sollte diese Vorlesung so langsam neu vergeben werden.
 
-% TODO Falls, was auch immer Philipp vom TeXen abhält, nicht behoben ist, sollte diese Vorlesung so langsam neu vergeben werden.
-
-\newpage
-\thispagestyle{empty}
-Hier fehlt die Vorlesung vom 28.April. Viel Spaß beim \TeX en, Philipp :D
 
 \newpage
 
