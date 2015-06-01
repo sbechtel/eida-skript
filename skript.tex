@@ -18,7 +18,7 @@
 \usepackage{nicefrac}
 
 % environments
-\newtheorem{thm}{Theorem}
+\newtheorem{thm}{Satz}
 \newtheorem{lemma}{Lemma}
 \newtheorem{kor}{Korollar}
 % definition-like stuff
@@ -408,6 +408,8 @@ Eine Untergruppe $H$, die eine der Bedingungen (i)-(iii) erfüllt, nennt man ein
 
 % TODO Falls, was auch immer Philipp vom TeXen abhält, nicht behoben ist, sollte diese Vorlesung so langsam neu vergeben werden.
 
+% TODO Falls, was auch immer Philipp vom TeXen abhält, nicht behoben ist, sollte diese Vorlesung so langsam neu vergeben werden.
+
 \newpage
 \thispagestyle{empty}
 Hier fehlt die Vorlesung vom 28.April. Viel Spaß beim \TeX en, Philipp :D
@@ -450,7 +452,7 @@ Hier fehlt die Vorlesung vom 28.April. Viel Spaß beim \TeX en, Philipp :D
 	\begin{itemize}
 		\item Ein bijektiver Homomorphismus wird \underline{Isomorphismus} genannt. Die Umkehrfunktion ist dann wieder ein Isomorphismus.
 		\item Ein Gruppenhomomorphismus $G \rightarrow G$ heißt \underline{Endomorphismus von G}.
-		\item Ein Gruppenisomorphismus $G \rightarrow G$ heißt \underline{Endomorphismus von G}.
+		\item Ein Gruppenisomorphismus $G \rightarrow G$ heißt \underline{Automorphismus von G}.
 	\end{itemize}
 \end{nb}
 
@@ -698,7 +700,7 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
         1 \arrow[r] & N \arrow[r, "i"] & G \arrow[r, "p"] & H \arrow[l, bend left, dashed, "s"] \arrow[r] & 1
     \end{tikzcd} \]
 
-    spaltet, falls ein Homomorphismus $s: H\to G$ existiert, mit $p\circ s = \text{id}_h$. $p$ heißt ein \underline{Schnitt} von $p$.
+    spaltet, falls ein Homomorphismus $s: H\to G$ existiert, mit $p\circ s = \text{id}_H$. $p$ heißt ein \underline{Schnitt} von $p$.
 \end{defn}
 
 Für $G=N\rtimes H$ Gruppenerweiterung:
@@ -713,7 +715,7 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
     Es sei
 
     \[ \begin{tikzcd}
-        1 \arrow[r] & N \arrow[r] & G \arrow[r] & H \arrow[r] & 1
+        1 \arrow[r] & N \arrow[r,"i"] & G \arrow[r,"p"] & H \arrow[r] & 1
     \end{tikzcd} \]
 
     eine Gruppenerweiterung, die mit einem Schnitt $s:H\to G$ spaltet. Dann ist $G$ das semidirekte Produkt von $N$ und $H$, definiert durch $$\gamma: H\to \text{Aut}(N), \quad h\mapsto \gamma_h$$
@@ -725,8 +727,180 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
     \begin{gather*}
         \rho((n_1,h_1)\cdot (n_2,h_2)) = \rho(n_1\gamma_{h_1}(n_2), h_1h_2) \\
         = i(n_1)i(\gamma_{h_1}(n_2))s(h_1)s(h_2) = i(n_1)s(h_1)i(n_2)\Inv{s(h_1)}s(h_1)s(h_2) \\
-        = \rho(n_1,h_1)\rho(n_2,h_2)
+        = \rho(n_1,h_1)\rho(n_2,h_2).
     \end{gather*}
+    Es bleibt zu zeigen, dass $\rho$ bijektiv ist.
+    
+    
+    
+    % VL 19.05.
+    \begin{enumerate}
+    \item{Injektivität}
+    
+    Sei $(n,h)\in \ker(\rho)$. Dann gilt
+
+    $i(n)\cdot s(h) = e_G \Rightarrow e_H = p(e_G) = p(i(n)\cdot s(h)) = p(i(n))\cdot p(s(h))$.
+
+    Aber $p(i(n)) = e_H$ wegen der kurzen exakten Folge und $p(s(h)) = h$. Also $e_H = h$.
+
+    Damit ist $i(n)\cdot s(h) = i(n)\cdot s(e_H) = i(n)\cdot e_G = i(n)$. Da $(n,h)\in\ker(\rho)$ folgt $i(n) = e_G$ und somit $n=e_N$, da $i$ injektiv ist.
+
+    Daraus folgt $\ker(\rho) = \{(e_N,e_H)\}$. Somit ist $\rho$ injektiv.
+    \item{Surjektivität}
+    
+    Sei $a\in G$ beliebig. Wir setzen: $b := a\cdot\inv{s(p(a)}$. Wegen der Schnitteigenschaft von $s$ ist $p\circ s = \text{id}_H$ und somit
+
+    $p(b) = p(a)\cdot (p\circ s)(\Inv{p(a)})=p(a)\cdot\Inv{p(a)}=e_G$. Daraus folgt $b\in\ker(p)= \text{im}(i)$. Und somit $\exists n\in N$ mit $i(n) = b$. Dies liefert:
+
+    $\rho(n,p(a)) = b\cdot s(p(a))=a\cdot s(p(a))^{-1}s(p(a))=a$.
+    \end{enumerate}
+    
 \end{proof}
+
+\begin{ex}
+
+\begin{enumerate}[label=(\alph*)]
+    \item Für einen beliebigen Körper $K$ zerfällt (bzw. spaltet)
+    \[ \begin{tikzcd}
+         1 \arrow[r] & SL_n(K) \arrow[r] & GL_n(K) \arrow[r,"\det"] & K^* \arrow[r] & 1.
+    \end{tikzcd} \]
+    Das heißt $GL_n(K) = SL_n(K)\rtimes K^*$.
+    
+    \item Es sei $N$ eine beliebige abelsche Gruppe und $H := (\{\pm 1\},\cdot)\left[\cong(\mathbb{Z}/2\mathbb{Z},+)\right]$. Für $h\in H$ sei $\gamma_h$ definiert als $\gamma_h:N\to N, \gamma_h(n) := n^h$.
+    
+    Dann heißt $D_n := N \rtimes H$ verallgemeinerte Diedergruppe. Diese hat die Verknüpfung 
+    $(n_1,\epsilon_1)\cdot(n_2,\epsilon_2) = (n_1 n_2^{\epsilon_1},\epsilon_1\epsilon_2)$. Es ist $N \cong N\times\{1\}$ eine normale Untergruppe von $D_N$ mit Index $[D_N:N] = 2$.
+    
+    \item Spezialfall: $N = \mathbb{Z}/k\mathbb{Z}$, $D_{2k} := D_{\mathbb{Z}/k\mathbb{Z}}$ heißt Diedergruppe der Ordnung $2k$. Dann ist $D_{2k}$ die Symmetriegruppe des regelmäßigen k-Gons. Die Untergruppe $N\subset D_{2k}$ ist gerade die Menge der Drehungen.
+    
+    Ist $G$ eine von zwei Elementen $n,h\in G$ erzeugt, also $G = \left< n,h\right>$, mit $ord(n) = k$ ($\cong$ Drehung) und $ord(h) = 2$ ($\cong$ Spiegelung) und außerdem $h^{-1}nh=n^{-1}$, so gilt $G\cong D_{2k}$.
+\end{enumerate}
+
+\end{ex}
+
+\section{Die symmetrische Gruppe}
+
+\begin{defn}
+    Für eine Menge $M\neq\emptyset$ bildet $S_M$ als Menge aller Bijektionen von $M\to M$ mit Verkettung von Funktionen als Verknüpfung und der Identität als neutrales Element eine Gruppe, die \emph{symmetrische Gruppe von $M$}. Die Elemente von $S_M$ heißen \emph{Permutationen}.
+\end{defn}
+
+\begin{thm}[Satz von Cayley]
+    Jede Gruppe $G$ ist isomorph zu einer Untergruppe von $S_G$.
+\end{thm}
+\begin{proof}
+
+    Für jedes Element $a\in G$ ist die Linkstranslation um $a$, also $\lambda_a:G\to G, b\mapsto a\cdot b$ eine Permutation.
+
+    Die Abbildung $\lambda:G\to S_G, a\mapsto \lambda_a$ ist ein Homomorphismus, denn für $a,b,h\in G$ gilt
+
+\[\lambda_{ab}(h) = abh = a(bh) = a\lambda_b(h) = \lambda_a(\lambda_b(h)) = (\lambda_a\circ\lambda_b)(h).\]
+
+    Es sei $a\in \ker(\lambda)$. Dann gilt $\lambda_a = \text{id}_G \Rightarrow ah = h$ für alle $h\in G $ und damit
+    \[a = a\cdot e = \lambda_a(e) = e \Rightarrow \ker(\lambda) = \{e\}.\]
+    
+    Also ist $\lambda$ injektiv und somit $G\cong\text{im}(\lambda)$.
+\end{proof}
+
+\begin{defn}
+    Es sei $M\neq\emptyset$ eine Menge und $\sigma$ eine Permutation von $M$.
+    \begin{enumerate}
+        \item Der Träger von $\sigma$ ist $\text{supp}(\sigma) := \{m\in M: \sigma(m)\neq m\}$.
+    
+        \item Ein Zyklus der Länge $l$ ist eine Permutation $\sigma\in S_M$ mit $l = |supp(\sigma)|$, so dass
+    \[supp(\sigma) = \{m_1,m_2,\dots,m_l\}\text{ mit }\sigma(m_j) = m_{j+1},\; 1\leq j<l,\; \sigma(m_l) = m_1.\]
+    Für einen solchen Zyklus schreiben wir $\sigma = (m_1m_2\dots m_l)$.
+    
+        \item 2-Zyklen werden Transpositionen genannt.
+    \end{enumerate}
+\end{defn}
+
+
+\begin{nb}
+    Sind $\sigma,\tau\in S_M$ mit $supp(\sigma)\cap supp(\tau) = \emptyset$, so gilt $\sigma\circ\tau = \tau\circ\sigma$.
+\end{nb}
+
+
+\begin{defn}
+    Im Spezialfall $M=\{1,2,\dots,n\}$ schreibt man $S_n := S_M$. Ein Element $\sigma\in S_n$ schreibt man als \[\sigma = \begin{pmatrix}
+     1 & 2 & \dots & n \\
+     \sigma(1) & \sigma(2) & \dots & \sigma(n) \end{pmatrix}.\]
+\end{defn}
+
+\begin{ex}
+     $\sigma = \begin{pmatrix}
+     1 & 2 & 3 & 4 \\
+     4 & 2 & 1 & 3 \end{pmatrix} \in S_4$.
+    $\sigma$ ist der 3-Zyklus $(143) = (431) = (314)$.
+\end{ex}
+
+
+\begin{thm}
+\begin{enumerate}[label=(\alph*)]
+    \item Jede Permutation $\sigma\in S_n, \sigma\neq Id$, kann als Produkt von Zyklen mit disjunkten Trägern geschrieben werden. Diese Darstellung ist bis auf die Reihenfolge der Faktoren eindeutig bestimmt.
+    \item Für einen beliebigen l-Zyklus $(m_1m_2\dots m_l)\in S_n$ und $\sigma\in S_n$ gilt 
+    \[\sigma\circ(m_1m_2\dots m_l)\circ\sigma^{-1} = (\sigma(m_1)\sigma(m_2)\dots\sigma(m_l)).\]
+    \item Die symmetrische Gruppe $S_n$ wird von den Transpositionen erzeugt.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}
+\begin{enumerate}[label=(\alph*)] % (a), (b), (c)
+    \item Es sei $\sigma\in S_n, \sigma\neq\text{id}$. Für $m_1,m_2\in\{1,\dots,n\}=:M$ definieren wir 
+    \[m_1\sim m_2 :\Leftrightarrow m_1 = \sigma^l(m_2)\qquad\text{für ein }l\in\mathbb{Z}.\]
+    Dann ist $\sim$ eine Äquivalenzrelation auf $M$. Es sei $M = K_1\cup K_2\cup\dots\cup K_r$ die Zerlegung von $M$ in disjunkte Äquivalenzklassen. Wir betrachten $a_j\in K_j$ beliebig. Es sei $l_j$ die kleinste positive Zahl mit $\sigma^{l_j}(a_j) = a_j$. Das liefert uns
+    \[a_j,\sigma(a_j),\sigma^2(a_j),\dots,\sigma^{l_j-1}(a_j)\in K_j\]
+    und diese Elemente sind paarweise verschieden. Aus der Definition folgt, dass $\sigma\upharpoonright_{K_j}=(a_j\sigma(a_j)\dots\sigma^{l_j-1}(a_j))\in S_{K_j}$ ein Zyklus der Länge $l_j$ ist. Wenn wir dies für alle $j=1,\dots,r$ tun, erhalten wir:
+    \[\sigma = (a_1\dots\sigma^{l_1-1}(a_1))(a_2\dots\sigma^{l_2-1}(a_2))\dots(a_r\dots\sigma^{l_1-r}(a_r)).\]
+    Dies ist genau die gesuchte Darstellung, wenn man zudem $(a_j):=\text{id}$ für $l_j = 1$ definiert.
+
+    Eindeutigkeit: Es sei für $s\in\mathbb{N}$ $\sigma = \tau_1\tau_2\dots\tau_s$ eine andere Darstellung. Dann ist $\sigma\upharpoonright_{supp(\tau_k)} = \tau_k$ für alle $k$ ein Zyklus. Damit ist $supp(\tau_k) = K_j$ für ein $j=1,\dots,r$ und somit ist $\tau_k$ gerade ein solcher Zyklus wie in unserer Konstruktion. Diese ist also eindeutig.
+
+    \item Es sei $\sigma\in S_n$ und $(m_1\dots m_k)$ ein Zyklus. Dann gilt
+    \[(\sigma(m_1\dots m_k)\Inv\sigma)(\sigma(m_{\alpha}))=(\sigma(m_1\dots m_k))(m_{\alpha}) = \sigma(m_{\alpha+1})\text{ mit }m_{k+1}:=m_1.\] 
+    Für $m\notin \{m_1,\dots,m_k\}$ gilt $(\sigma(m_1\dots m_k)\sigma^{-1})(\sigma(m))=(\sigma(m_1\dots m_k))(m) = \sigma(m)$. Daraus folgt $\sigma\circ(m_1m_2\dots m_l)\circ\sigma^{-1} = (\sigma(m_1)\sigma(m_2)\dots\sigma(m_l))$.
+
+    \item Wegen (a) genügt es zu zeigen, dass für alle $k\in\mathbb{N}$ alle k-Zyklen Produkte von Transpositionen sind. Für einen beliebigen Zyklus gilt
+    \[(m_1\dots m_k) = (m_1m_2)(m_2m_3)\dots (m_{k-1}m_k).\]
+    Beispiel: $(1234) = (12)(23)(34)$. Graphisch veranschaulicht:
+    \[\begin{pmatrix}
+        1 & 2 & 3 & 4 \\ % (34)
+        1 & 2 & 4 & 3 \\ % (23)
+        1 & 3 & 4 & 2 \\ % (12)
+        2 & 3 & 4 & 1
+    \end{pmatrix}.\]
+    
+    Anmerkung: Es reichen deutlich weniger Transpositionen aus, um $S_n$ zu erzeugen.
+\end{enumerate}
+
+\end{proof}
+
+\begin{defn}
+Für $\sigma\in S_n$ ist das Signum von $\sigma$ definiert als
+    \[sgn(\sigma) := \prod_{i<j}\frac{\sigma(i)-\sigma(j)}{i-j}\qquad(\in\{\pm 1\}).\]
+Permutationen $\sigma\in S_n$ mit $sgn(\sigma) = 1$ (bzw. $-1$) heißen gerade (bzw. ungerade) Permutationen.
+\end{defn}
+
+\begin{lemma}
+Die Abbildung $sgn:S_n\to\{\pm 1\}$ ist ein Gruppenhomomorphismus.
+\end{lemma}
+
+\begin{proof}
+Es seien $\sigma,\tau\in S_n$ beliebig. Dann gilt 
+
+\begin{equation*}
+    \begin{split}
+        sgn(\sigma\tau) &= \prod_{i<j}\frac{\sigma\tau(i)-\sigma\tau(j)}{i-j} = \prod_{i<j}\frac{\sigma\tau(i)-\sigma\tau(j)}{\tau(i)-\tau(j)}\cdot\prod_{i<j}\frac{\tau(i)-\tau(j)}{i-j} \\
+        &= \left(\prod_{\substack{i<j,\\\tau(i)<\tau(j),\\ i':=\tau(i),j':=\tau(j)}}\frac{\sigma\tau(i)-\sigma\tau(j)}{\tau(i)-\tau(j)}\cdot \prod_{\substack{i<j,\\\tau(j)<\tau(i),\\ i':=\tau(j),j':=\tau(i)}}\frac{\sigma\tau(i)-\sigma\tau(j)}{\tau(i)-\tau(j)}\right)\cdot sgn(\tau) \\
+        &=\prod_{i'<j'}\frac{\sigma(i')-\sigma(j')}{i'-j'}\cdot sgn(\tau) \\
+        &= sgn(\sigma)\cdot sgn(\tau).
+    \end{split}
+\end{equation*}
+\end{proof}
+
+
+
+
+
+
  
 \end{document}
