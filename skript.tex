@@ -985,10 +985,86 @@ Es seien $\sigma,\tau\in S_n$ beliebig. Dann gilt
 \end{equation*}
 \end{proof}
 
+\newpage
+% Hier fehlt die VL vom 2.6. (Isburg)
 
+\begin{proof}
+\begin{enumerate}
 
+	\item Beweis zu eins...
+\newpage
+	Da $b$ im Zentrum von $G$ liegt, ist $\langle b \rangle$ eine normalte Untergruppe von $G$. Wir betrachten die Faktorgruppe $G/ \langle b \rangle$. Es gilt
+	$$ |G/ \langle b \rangle | = \frac{|G|}{| \langle b \rangle |} = p^{n-1}q < p^nq. $$
+	Nach Induktionsvoraussetzung enthält $G / \langle b \rangle$ eine Untergruppe $\bar{S}$ der Ordnung $p^{\alpha - 1}$. Es sei $S = \{ x \in G : x \langle b \rangle \in \bar{S} \}$. $S$ ist eine Untergruppe von G und es gilt $ \bar{S} \cong S/ \langle b \rangle$, denn für die natürliche Projektion $p: S \rightarrow \bar{S} \text{ gilt } ker(p) = \langle b \rangle$ und somit ist der Homomorphiesatz anwendbar. Das liefert
+	$$ p^{\alpha - 1} = |\bar{S}| = \frac{|S|}{| \langle b \rangle |} = \frac{|S|}{p}. $$
+	Somit gilt $|S| = p^{\alpha}$ und $S$ ist die gesuchte $p$-Gruppe.
+	
+	\item Sei $H$ ein $p$-Untergruppe und $S$ ein $p$-Sylowuntergruppe. $H$ operiert auf die Menge $X = G/S$ durch
+	$$ H \times X \rightarrow X, h \cdot gS := (hg)S.$$
+	Es gilt $|X| = \frac{|G|}{|S|} = \frac{p^nq}{p^n} = q$. Da $H$ eine $p$-Gruppe ist, gilt $|X^H| = |X| = q \ (modp)$. Da $q$ prim zu $p$ ist, ist $|X^H|$ nicht durch $p$ teilbar. Insbesondere kann $X^H$ nicht leer sein, denn $p|0$. Es gibt also ein $g \in G$ mit $gS \in X^H$. Für alle $h \in H$ gilt dann $(hg)S = gS$ und somit $g^{-1}hg \in S$ und $h \in gSg^{-1}$. Dies liefert, dass $H$ in $gSg^{-1}$ enthalten ist.
+	
+	\item siehe unten.
+\end{enumerate}
+\end{proof}
 
+\begin{kor}
+	Dei $p$-Sylowuntergruppen bilden eine Klasse von konjugierten Untergruppen von $G$.
+\end{kor}
 
+\begin{proof}
+	Sei $S$ ein $p$-Sylowuntergruppe d.h. $|S| = p^n$. Dann ist $gSg^{-1}$ ein Untergruppe der Ordnung $p^n$ (für $g \in G$ beliebig), d.h. $gSg^{-1}$ ist eine $p$-Sylowuntergruppe. Es sei $S'$ ein beliebige Sylowuntergruppe von $G$. Aus 2. folgt: $S' \subseteq gSg^{-1}$ für ein $g \in G$. $|S'| = p^n = |gSg^{-1}|$ impliziert $S' = gSg^{-1}$.
+\end{proof}
 
- 
+Bevor wir den dritten Teil des Sylow-Satzes beweisen, wenden wir uns folgender allgemeiner Frage zu: Wie bestimmt man die Anzahl der zu einer gegebenen Untergruppe konjugierten Untergruppen? Es sei $\mathcal{U}$ die Menge aller Untergruppen von G und $ G \times \mathcal{U} \rightarrow \mathcal{U}, g \cdot H \mapsto gHg^{-1} $ eine Gruppenoperation.
+
+\begin{defn}
+	Der Stabilisator einer Untergruppe $H$ von $G$ unter dieser Operation heißt \underline{Normalisator} von $H$: $N_G(H) = \{ g \in G: gHg^{-1} = H \}$. \\
+	Die zu $H$ konjugierten Untergruppen bilden die Bahn $G \cdot H$ von $H$. Es gilt also
+	$$ |G \cdot H| = | \{ A \in \mathcal{U} : A = gHg^{-1} \text{ mit } g \in G \} | = [G:N_G(H)] .$$
+	Für eine endliche Gruppe $G$ ist diese Anzahl immer ein Teiler von $|G|$.
+\end{defn}
+
+Für den Beweis des dritten Teils benötigen wir folgendes Lemma:
+
+\begin{lemma}\label{lem:Sylow}
+	Sei $T$ eine $p$-Sylowuntergruppe von $G$ und $H$ eine $p$-Untergruppe. Wenn $H \subseteq N_G(T)$ gilt, gilt bereits $H \subseteq T$.
+\end{lemma}
+
+\begin{proof}
+	Da $T$ eine normale Untergruppe von $N_G(T)$ ist und $H$ eine Untergruppe von $N_G(T)$ ist, kann man den ersten Isomorphiesatz anwenden: $TH = \{ gh : g \in T, h \in H \}$ ist eine Untergruppe von $N_G(T)$ und es gilt $H/(T \cap H) \cong TH/T$. Daraus folgt
+	$$ [TH : T] = [H : T \cap H] = \frac{|H|}{|T \cap H|} = \frac{p^{\alpha}}{|T \cap H|} = p^{\alpha '} \text{ mit } 0 \leq \alpha ' \leq \alpha.$$
+	$TH/T$ ist also eine $p$-Gruppe. Es gilt: $|TH/T| = 1 \Leftrightarrow T \cap H = H \Leftrightarrow H \subseteq T$. \\
+	Die Inklusionskette $T \subseteq TH \subseteq G$ von Untergruppen ergibt
+	$$[G:T] = [G:TH][TH:T] \Leftrightarrow q = [G:TH]p^{\alpha '} \text{, d.h. } p^{\alpha '} | q.$$
+	Da $q$ nicht durch $p$ teilbar ist, muss $p^{\alpha '} = 1$ sein. Also ist $H$ in $T$ enthalten.
+\end{proof}
+
+\begin{proof}[Beweis des dritten Teils des Sylow-Satzes]
+	Sei $X$ die Menge aller $p$-Sylowuntergruppen von $G$, $S \in X$ beliebig (Existenz: siehe Teil 1), $s := |X|$. Es gilt $s = [G:N_G(S)]$. \\
+	Aus der Inklusionskette $S \subseteq N_G(S) \subseteq G$ folgt
+	$$[N_G(S):S] [G:N_G(S)] = [G:S] \Leftrightarrow [N_G(S):S] s = q \text{, d.h. } s | q.$$
+	Wir lassen $S$ wie folgt auf X operieren:
+	$$S \times X \rightarrow X, g \cdot T \mapsto gTg^{-1}.$$
+	$S \in X$ ist ein Fixpunkt dieser Operation. Wir möchten zeigen, dass dieser der einzige Fixpunkt ist. Da $S$ eine $p$-Gruppe ist, gilt dann: $s = |X| = |X^S| = 1 \pmod{p}$ (was zu zeigen war).
+	\begin{align*}
+		T \in X^S &\Leftrightarrow &gTg^{-1} = T \text{ für alle } g \in S \\
+		&\Leftrightarrow &g \in N_G(T) \text{ für alle } g \in S \\
+		&\Leftrightarrow &S \subseteq N_G(T)
+	\end{align*}
+	Aus $S \subseteq N_G(T)$ folgt mit Lemma~\ref{lem:Sylow}, dass $S \subseteq T$ und somit $S = T$ (da $|S| = |T| = p^n$). $S \in X$ ist damit der einzige Fixpunkt.
+\end{proof}
+
+\underline{Anwendungen/Folgerungen des Sylow-Satzes}
+
+\begin{thm}
+	Es seien $p, q$ Primzahlen mit $p < q$ und $p \nmid q-1$. Dann ist jede Gruppe $G$ der Ordnung $pq$ eine zyklische Gruppe.
+\end{thm}
+
+\begin{proof}
+	Es sei $s$ die Anzahl der $p$-Sylowuntergruppen von $G$. Aus Teil 3 des Sylow-Satzes folgt $s | q, s \equiv 1 \pmod{p}$. Da $q \not \equiv 1 \pmod{p}$, muss $s = 1$ gelten, denn die Primzahl $q$ ist nur durch $1$ und $q$ teilbar. \\
+	Es gibt also eine einzige $p$-Sylowuntergruppe $S$ von $G$. Aus Teil 2 des Sylow-Satzes folgt $gSg^{-1} = S$ für alle $g \in G$. Somit ist $S$ eine normale Untergruppe. \\
+	Für die Anzahl $r$ der $q$-Sylowuntergruppen gilt: $r | p$ und $r \equiv 1 \pmod{q}$. Wenn $r = p$, dann gilt $r = p \not = 1 \pmod{q}$ (wegen $p < q$). Dies ist also nicht möglich. Es gilt dann $r = 1$. Es existiert genau eine $q$-Sylowuntergruppe $R$ von $G$ und $R$ ist deswegen ein Normalteiler von $G$. Da $S$ und $R$ normal sind, ist $SR = \{ ab : a \in S, b \in R\}$ eine normale Untergruppe. \\
+	$S \cap R = \{ e\}$ (die Elemente müssen Ordnung $1$ haben). Dies ergibt, dass $SR$ das (innere) direkte Produkt von $S$ und $R$ ist. Insbesondere gilt $|SR| = |S \times R| = |S||R| = pq = |G|$. Folglich gilt $G = S \times R$. Man zeigt dann, $G = \langle ab \rangle \text{ mit } \langle a \rangle = S, \langle b \rangle = R$ zyklisch.
+\end{proof}
+
 \end{document}
