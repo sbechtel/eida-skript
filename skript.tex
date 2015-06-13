@@ -318,7 +318,6 @@
 	$H \backslash G$ ist die \underline{Menge der Rechtsnebenklassen}. Dann gilt: $\vert H \backslash G \vert = \vert G/H \vert$ \newline $\lceil$Bijektion: $H \backslash G \rightarrow G/H, Hb \mapsto b^{-1}H \rfloor$
 \end{defn}
 
-% Tut mir Leid, dass es so lang gedauert hat, habe das GitHub noch nicht ganz durchdrungen.
 \newpage
 \thispagestyle{empty}
 
@@ -498,9 +497,6 @@ F{\"u}r einen Gruppenhomomorphismus $f: G \rightarrow H$ gilt:\\
 (ii) f{\"u}r $a,b \in ker(f): f(ab^{-1})=f(a)f(b^{-1}=e_H$\\
 $\Rightarrow ab^{-1} \in ker(f)$
 \end{proof}
-
-% TODO Falls, was auch immer Philipp vom TeXen abhält, nicht behoben ist, sollte diese Vorlesung so langsam neu vergeben werden.
-
 
 \newpage
 
@@ -985,6 +981,178 @@ Es seien $\sigma,\tau\in S_n$ beliebig. Dann gilt
 \end{equation*}
 \end{proof}
 
+% VL 26.5.
+\newpage
+	\begin{kor}
+	Jede gerade Permutation ist das Produkt einer geraden Anzahl von Transpositionen. Jede ungerade Permutation ist Produkt einer ungeraden Anzahl von Transpositionen.
+	\end{kor}
+
+	\begin{ex}
+	m-Zyklus $(n_1n_2...n_m)$ ist das Produkt von $m-1$ Transpositionen.  
+	
+	$\Rightarrow sgn((n_1n_2....n_m))=(-1)^{m-1}$
+	\end{ex}
+
+	\begin{kor}
+	$\sigma = (m_1....m_{k_1})(m_{k_1+1}...m_{k_2})...(m_{k_{r-1}}....m_{k_r})$	$\Rightarrow sgn(\sigma)=(-1)^{k_r-r}$
+	\end{kor}
+
+	\begin{defn}
+	Die normale Untergruppe $A_n=ker(sgn)$ der geraden Permutationen wird die alternierende Gruppe genannt.
+	\end{defn}
+	
+	\begin{nb}
+	Index von $A_n$ ist $S_n$ ist 2 $\Rightarrow ord(A_n)=\frac{1}{2}ord(S_n)$\\
+	$ord(S_n)=n(n-1)...1=n!$
+	\end{nb}
+	
+	\begin{lemma}
+	$A_n$ wird durch die 3-Zyklen von$S_n$ erzeugt.
+	\end{lemma}
+	
+	\begin{proof}
+	Es sei $\sigma \in A_n$ eine gerade Permutation. Wir schreiben $\sigma$ als Produkt von Transpositionen:
+	$\sigma =(a_1b_1)(a_2b_2)....(a_nb_n)$\\
+	Für disjunkte Träger gilt:\\
+	$(a_{2_{j-1}b_{2_{j-1}}})(a_{2_j}b_{2_j})=(a_{2_{j-1}}a_{2_j})(a_{2_j}b_{2_{j-1}})(a_{2_{j-1}}a_{2_j})(a_{2_j}b_{2_j})=(a_{2_{j-1}}a_{2_j}b_{2_{j-1}})(a_{2_{j-1}}a_{2j}b_{2j})$\\
+	Produkt von 3-Zyklen.
+	
+	Wenn es ein gemeinsames Element gibt: ob $b_{2_{j-1}}=a_{2_j}$\\
+	$(a_{2_{j-1}}a_{2_j})(a_{2_j}b_{2_j})=(a_{2_{j-1}}a_{2j}b_{2j})$ e-Zyklus\\
+	Für $\{ a_{2_{j-1}}b_{2_{j-1}}\} =\{ a_{2_j}b_{2_j} \} : (a_{2_{j-1}}b_{2_{j-1}})(a_{2_j}b_{2_j})=id$\\
+	Daraus folgt: $\sigma$ ist das Produkt von 3-Zykeln.
+	\end{proof}
+	
+	\begin{ex}
+	\begin{enumerate}
+		\item $S_1=\{ (1)\}$
+		\item $S_2=\{ id, (12)\}$ zyklisch der Ordnung 2
+		\item $S_3=\{ id,(12),(13);(23),(123),(132)\} \supsetneq A_3=\{ id,(123),(132)\}$
+		\item $S_3=A_3\rtimes \mathbb{Z}/2\mathbb{Z} \cong  \mathbb{Z}/3\mathbb{Z} \rtimes \mathbb{Z}/2\mathbb{Z} = D_6$ Diedergruppe mit 6 Elementen.
+	\end{enumerate}
+	\end{ex}
+	 
+\section{Gruppenhoperationen}
+	\begin{defn}
+	Es sei $(G, \bullet)$ eine Gruppe und $X$ eine Menge. Eine Operation von G auf X ist eine Abbildung:
+	$$G \times X \rightarrow X$$
+	$$(g,x \rightarrow g\bullet x)$$
+	welche folgende Bedingungen erfüllt:
+	\begin{enumerate}
+		\item $e \bullet x = x$ ($e\in G$ neutral)
+		\item $(a\bullet b)\bullet x = a\bullet (b\bullet x) \forall a,b\in G, x\in X$
+	\end{enumerate}
+	\end{defn}
+	
+	\begin{ex}
+	$V$, $K$-Vektorraum, die allgemeine lineare Gruppe $GL_k(V)$ operiert auf $V$:
+	$$GL_k(V) \times X \rightarrow V$$
+	$$(A,v)\rightarrow Av$$
+	\end{ex}
+
+	\begin{notation}
+	Wenn $G$ auf $X$ operiert, sagt man, dass $X$ eine $G$-Menge ist. Bezeichnung: $G\circlearrowright X$
+	\end{notation}
+
+	\begin{nb}
+	F\"ur jedes Element $g\in G$ existiert
+	$$\tau_g: X \rightarrow X$$
+	$$x \rightarrow gx$$
+	\end{nb}
+	
+	$\tau_g$ ist eine Bijektion mit Inverse $\tau_{g^{-1}}$ Aus 1. und 2. folgt:
+	$$\tau G \rightarrow S_X$$
+	$$g \rightarrow \tau_g$$
+	
+	ist ein Gruppen homomorphismus. Umgekehrt definiert jeder Gruppenhomomorphismus $\tau: G \rightarrow S_X$ durch 
+	$g: x=(\tau(g))(x)$ eine Gruppenoperation.
+	
+	\begin{defn}
+	\begin{enumerate}
+		\item Es sei $\tau: G \times X \rightarrow X$ eine Gruppenoperation. F\"ur $x\in X$ heißt $Gx=\{ gx : g \in G\}$ die Bahn (oder Orbit) von X. 
+		\item Die Untergruppe $G_x=\{ g\in G : gx=x\}$ heißt Isotropiegruppe (oder Stabilisator) von $X$.
+		\item Menge der Fixpunkte unter $G$: $X^G=\{ x \in X : gx=x \forall g \in G\}$
+		\item Die Gruppenoperation ist treu, falls $G \rightarrow S_X$ injektiv ist.
+		\item Die Gruppenoperation ist transitiv, wenn $X$ eine Bahn ist.
+	\end{enumerate}
+	\end{defn}
+	
+	\begin{ex}
+	\begin{enumerate}
+		\item Der Satz von Cayley ergibt einen Invektiven Homomorphismus.
+		$$G \rightarrow S_G$$
+		$$a \rightarrow \lambda_a$$
+		wobei
+		$$\lambda_a: G \rightarrow G$$
+		$$b \rightarrow ab$$
+		Das heißt: 
+		$$(G\times G) \rightarrow G$$
+		$$(a,b) \rightarrow ab$$
+		ist eine treue Operation von G auf G.
+		Diese Operation ist transitiv: es gilt $eG=G$, d.h. $G$ ist eine Bahn.
+		
+		\item Die Rechtstranslation
+		$$\varphi : G \rightarrow G$$
+		$$b \rightarrow ba^{1}$$
+		für beliebiges $a\in G$ definiert eine treue und transitive Gruppenoperation von $G$ auf $G$:
+		$$(G,G) \rightarrow G$$
+		$$a \bullet b := ba^{-1}$$	
+		
+		\item $G$ operiert auf sich selbst durch Konjugation:
+		$$a /in G i_a : G \rightarrow G$$
+		$$x \rightarrow axa^{-1}$$	
+		Die Konjugation mit $a$ ist immer ein Automorphismus von G.
+		$$G \xrightarrow{i} Aut(G) \subset S_G$$
+		$$a \rightarrow i_a$$
+		ein gruppenhomomorphismus, d.h. eine Operation von $G$ auf sich selbst.
+		\begin{proof}
+		$a,b \in G$ $i_{ab}(x)=abx(ab)^{-1}=abxb^{-1}a^{-1}$\\
+		$=a(i_b(x))a^{-1}=i_a\circ i_b(x) \forall x\in G$
+		\end{proof}
+		\begin{nb}
+		Die Bahnen von $i$ heißen Konjugationsklassen. Der Kern von $i$ heißt Zentrum von $G$.\\
+		$Z(G)=ker(i)\{ a \in G : axa^{-1}=x$ $\forall x \in G\} = \{a \in G : ax =xa$ $\forall x \in G\}$\\
+		Es gilt $G^G=\{ y \in G : byb^{-1}=y$ $\forall b \in G\}=\{ y \in G : by =yb$ $\forall b \in G\}=Z(G)$\\
+		
+		D.h. $Z(G)$ ist auch die Menge der Fixpunkte. Der Stabilisator von $x \in G$:\\
+		$G_x=\{a \in G : axa^{-1}=x\}=\{ a \in G : ax = xa\}=:C_G(x)$
+		\end{nb}		
+	\end{enumerate}
+	\end{ex}
+	
+	\begin{thm}
+	$G \times X \rightarrow X$ Gruppenoperation. Dann ist die Abbildung
+	$$p: G/G_x \rightarrow G_x$$
+	$$gG_x \rightarrow gx$$
+	ein bijektiver $G$-Homomorphismus für alle $X \in X$.
+	\end{thm}
+	
+	\begin{defn}
+	$X$,$Y$ $G$-Mengen $f: X \rightarrow Y$ ist ein $G$-Homomorphismus, falls $f(gx)=g(f(x))$
+	\end{defn}
+	
+	\begin{kor}
+	$|G_x|=|G/G_x|=[G:G_x]$ Index
+	\end{kor}
+	
+	\begin{proof}
+	$p$ ist wohldefiniert: $\forall a,b,x \in G$ gilt:
+	$$aG_x=b_Gx \Leftrightarrow b^{-1}ax=x \Leftrightarrow ax=bx \Leftrightarrow p(a)=p(b)$$
+	D.h. $p$ ist wohldefiniert LA ich bijektiv.
+	$p$ ist ein $G$-Homomorphismus: $\forall a,b \in G$:
+	$$p(a(b(G_x)))=p(ab(G_x))=abx=ap(bG_x)$$
+	Die Bahnen einer $G$-Operation sind die \"Aquivalenzklassen bezüglich der \"Aquivalenzrelation:
+	
+	$x,y \in X : x \sim y \xLeftrightarrow{Def} x=gy$ f\"ur ein $g\in G$\\
+	D.h. die Bahnen bilden eine Partition von $X$.
+	
+	F\"ur ein Repräsentantensystem $\{ x_i\}_{i\in I}$ der Bahnen von G gilt die Bahnengleichung:
+
+	$$|X|=\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}|G_{x_i}|=\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}[G:G_{x_i}]=|X^G|+\sum\limits_{\begin{subarray}{1}i \in I\\ x_i \notin X^G\end{subarray}}[G:G_{x_i}]$$
+	
+	
+	\end{proof}
+	
 \newpage
 % Hier fehlt die VL vom 2.6. (Isburg)
 
