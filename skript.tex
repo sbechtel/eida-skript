@@ -972,9 +972,7 @@ Es seien $\sigma,\tau\in S_n$ beliebig. Dann gilt
 \end{equation*}
 \end{proof}
 
-=======
 % VL 26.5.
-\newpage
 	\begin{kor}
 	Jede gerade Permutation ist das Produkt einer geraden Anzahl von Transpositionen. Jede ungerade Permutation ist Produkt einer ungeraden Anzahl von Transpositionen.
 	\end{kor}
@@ -1024,15 +1022,15 @@ Es seien $\sigma,\tau\in S_n$ beliebig. Dann gilt
 	\end{enumerate}
 	\end{ex}
 	 
-\section{Gruppenhoperationen}
+\section{Gruppenoperationen}
 	\begin{defn}
-	Es sei $(G, \bullet)$ eine Gruppe und $X$ eine Menge. Eine Operation von G auf X ist eine Abbildung:
+	Es sei $(G, \cdot)$ eine Gruppe und $X$ eine Menge. Eine Operation von G auf X ist eine Abbildung:
 	$$G \times X \rightarrow X$$
-	$$(g,x \rightarrow g\bullet x)$$
+	$$(g,x) \mapsto g\bullet x$$
 	welche folgende Bedingungen erfüllt:
 	\begin{enumerate}
 		\item $e \bullet x = x$ ($e\in G$ neutral)
-		\item $(a\bullet b)\bullet x = a\bullet (b\bullet x) \forall a,b\in G, x\in X$
+		\item $(a\cdot b)\bullet x = a\bullet (b\bullet x) \forall a,b\in G, x\in X$
 	\end{enumerate}
 	\end{defn}
 	
@@ -1056,12 +1054,12 @@ Es seien $\sigma,\tau\in S_n$ beliebig. Dann gilt
 	$$\tau G \rightarrow S_X$$
 	$$g \rightarrow \tau_g$$
 	
-	ist ein Gruppen homomorphismus. Umgekehrt definiert jeder Gruppenhomomorphismus $\tau: G \rightarrow S_X$ durch 
+	ist ein Gruppenhomomorphismus. Umgekehrt definiert jeder Gruppenhomomorphismus $\tau: G \rightarrow S_X$ durch 
 	$g: x=(\tau(g))(x)$ eine Gruppenoperation.
 	
-	\begin{defn}
+	\begin{defn} Es sei $\tau: G \times X \rightarrow X$ eine Gruppenoperation.
 	\begin{enumerate}
-		\item Es sei $\tau: G \times X \rightarrow X$ eine Gruppenoperation. Für $x\in X$ heißt $Gx=\{ gx : g \in G\}$ die Bahn (oder Orbit) von X. 
+		\item Für $x\in X$ heißt $Gx=\{ gx : g \in G\}$ die Bahn (oder Orbit) von X. 
 		\item Die Untergruppe $G_x=\{ g\in G : gx=x\}$ heißt Isotropiegruppe (oder Stabilisator) von $X$.
 		\item Menge der Fixpunkte unter $G$: $X^G=\{ x \in X : gx=x \forall g \in G\}$
 		\item Die Gruppenoperation ist treu, falls $G \rightarrow S_X$ injektiv ist.
@@ -1114,8 +1112,8 @@ Es seien $\sigma,\tau\in S_n$ beliebig. Dann gilt
 	
 	\begin{thm}
 	$G \times X \rightarrow X$ Gruppenoperation. Dann ist die Abbildung
-	$$p: G/G_x \rightarrow Gx$$
-	$$gG_x \rightarrow gx$$
+	$$p: G/G_x \to Gx$$
+	$$gG_x \mapsto gx$$
 	ein bijektiver $G$-Homomorphismus für alle $X \in X$.
 	\end{thm}
 	
@@ -1205,7 +1203,7 @@ Es sei G eine abelsche Gruppe der Ordnung $pn$. Dann existiert immer ein $a \in 
 \begin{proof}
 Induktion auf $n=\dfrac{|G|}{p}$
 \begin{itemize}
-\item \underline{Basis:} n=1, d.h. $|G|=p$. Daraus folgt: $G=<a>$ ist zyklisch und der Erzeuger a hat Ordnung p.
+\item \underline{Induktionsstart:} n=1, d.h. $|G|=p$. Daraus folgt: $G=<a>$ ist zyklisch und der Erzeuger a hat Ordnung p.
 \item \underline{Induktionsschritt:} Wir nehmen an, dass die Aussage für eine Gruppe der Ordnung $pm^,$ mit $m^,<n$ gilt.\\
 Es sei $n\neq e$ ein beliebiges Element von G, und $m:=ord(h)$. Wenn m durch p teilbar ist, enthält die zyklische Untergruppe $<h>$ ein Element der Ordnung p. \\
 Wenn p kein Teiler von m ist, so ist p ein Teiler von $|G/<n>|=\dfrac{|G|}{|<n>|}=\dfrac{pn}{m}<pn$. Nach Induktionsvoraussetzung enthält die Gruppe $|G/<n>|$ ein Element $a<n>$ der Ordnung p. Es sei $k:=ord(a)$ die Ordnung der gewählten Repr. ($a \in G$). \\
@@ -1221,7 +1219,7 @@ Ist p eine Primzahl, die die Ordnung der endl. Gruppe G teilt, so enthält G ein
 \begin{proof}
 Induktion auf $ord(G)$
 \begin{itemize}
-\item \underline{Basis:} ord(G)=1 ist klar
+\item \underline{Induktionsstart:} ord(G)=1 ist klar
 \item \underline{Induktionsschritt:} Wir nehmen an, dass die Aussage für alle Gruppen T gilt mit $ord(T)<ord(G)$. \\
 Wenn G eine Untergruppe H enthält, deren Ordnung durch p teilbar ist, so enthält H ein Element der Ordnung p. \\
 Wir können annehmen, dass die Ordnung jeder Untergruppe $H\neq G$ nicht durch p teilbar ist. \\
