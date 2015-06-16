@@ -318,6 +318,7 @@
 	$H \backslash G$ ist die \underline{Menge der Rechtsnebenklassen}. Dann gilt: $\vert H \backslash G \vert = \vert G/H \vert$ \newline $\lceil$Bijektion: $H \backslash G \rightarrow G/H, Hb \mapsto b^{-1}H \rfloor$
 \end{defn}
 
+% Tut mir Leid, dass es so lang gedauert hat, habe das GitHub noch nicht ganz durchdrungen.
 \newpage
 \thispagestyle{empty}
 
@@ -497,6 +498,9 @@ F{\"u}r einen Gruppenhomomorphismus $f: G \rightarrow H$ gilt:\\
 (ii) f{\"u}r $a,b \in ker(f): f(ab^{-1})=f(a)f(b^{-1}=e_H$\\
 $\Rightarrow ab^{-1} \in ker(f)$
 \end{proof}
+
+% TODO Falls, was auch immer Philipp vom TeXen abhält, nicht behoben ist, sollte diese Vorlesung so langsam neu vergeben werden.
+
 
 \newpage
 
@@ -981,258 +985,139 @@ Es seien $\sigma,\tau\in S_n$ beliebig. Dann gilt
 \end{equation*}
 \end{proof}
 
-% VL 26.5.
-\newpage
-	\begin{kor}
-	Jede gerade Permutation ist das Produkt einer geraden Anzahl von Transpositionen. Jede ungerade Permutation ist Produkt einer ungeraden Anzahl von Transpositionen.
-	\end{kor}
+%VL 2.6.15
+Für die Operation von G auf sich selbst durch Konjugation gilt:
+\begin{thm} [Klassengleichung]
+Ist $\{x_{i}\}_{i \in I}$ ein Repräsentantensystem für die Konjugationsklassen der Gruppe G, so gilt: 
+\begin{gather*}
+|G|= |Z(G)|+\sum_{x_{i}\notin Z(G)}[G:C_{G}(x_{i})] \\ 
+Z(G)=\{a \in G :ag=ga\ \ \forall g \in G\}\ \ Zentrum \\
+C_{G}(x_{i})= \{a \in G :ax_{i}=x_{i}a\}\ \ Zentralisator \\
+\end{gather*}
+Für endliche Gruppen: $[G:G_{x_{i}}]=\dfrac{|G|}{|G_{x_{i}}|}$
+\end{thm}
 
-	\begin{ex}
-	m-Zyklus $(n_1n_2...n_m)$ ist das Produkt von $m-1$ Transpositionen.  
-	
-	$\Rightarrow sgn((n_1n_2....n_m))=(-1)^{m-1}$
-	\end{ex}
+\begin{nb}
+Anwendung: Existenz von Fixpunkten
+\end{nb}
 
-	\begin{kor}
-	$\sigma = (m_1....m_{k_1})(m_{k_1+1}...m_{k_2})...(m_{k_{r-1}}....m_{k_r})$	$\Rightarrow sgn(\sigma)=(-1)^{k_r-r}$
-	\end{kor}
-
-	\begin{defn}
-	Die normale Untergruppe $A_n=ker(sgn)$ der geraden Permutationen wird die alternierende Gruppe genannt.
-	\end{defn}
-	
-	\begin{nb}
-	Index von $A_n$ ist $S_n$ ist 2 $\Rightarrow ord(A_n)=\frac{1}{2}ord(S_n)$\\
-	$ord(S_n)=n(n-1)...1=n!$
-	\end{nb}
-	
-	\begin{lemma}
-	$A_n$ wird durch die 3-Zyklen von$S_n$ erzeugt.
-	\end{lemma}
-	
-	\begin{proof}
-	Es sei $\sigma \in A_n$ eine gerade Permutation. Wir schreiben $\sigma$ als Produkt von Transpositionen:
-	$\sigma =(a_1b_1)(a_2b_2)....(a_nb_n)$\\
-	Für disjunkte Träger gilt:\\
-	$(a_{2_{j-1}b_{2_{j-1}}})(a_{2_j}b_{2_j})=(a_{2_{j-1}}a_{2_j})(a_{2_j}b_{2_{j-1}})(a_{2_{j-1}}a_{2_j})(a_{2_j}b_{2_j})=(a_{2_{j-1}}a_{2_j}b_{2_{j-1}})(a_{2_{j-1}}a_{2j}b_{2j})$\\
-	Produkt von 3-Zyklen.
-	
-	Wenn es ein gemeinsames Element gibt: ob $b_{2_{j-1}}=a_{2_j}$\\
-	$(a_{2_{j-1}}a_{2_j})(a_{2_j}b_{2_j})=(a_{2_{j-1}}a_{2j}b_{2j})$ e-Zyklus\\
-	Für $\{ a_{2_{j-1}}b_{2_{j-1}}\} =\{ a_{2_j}b_{2_j} \} : (a_{2_{j-1}}b_{2_{j-1}})(a_{2_j}b_{2_j})=id$\\
-	Daraus folgt: $\sigma$ ist das Produkt von 3-Zykeln.
-	\end{proof}
-	
-	\begin{ex}
-	\begin{enumerate}
-		\item $S_1=\{ (1)\}$
-		\item $S_2=\{ id, (12)\}$ zyklisch der Ordnung 2
-		\item $S_3=\{ id,(12),(13);(23),(123),(132)\} \supsetneq A_3=\{ id,(123),(132)\}$
-		\item $S_3=A_3\rtimes \mathbb{Z}/2\mathbb{Z} \cong  \mathbb{Z}/3\mathbb{Z} \rtimes \mathbb{Z}/2\mathbb{Z} = D_6$ Diedergruppe mit 6 Elementen.
-	\end{enumerate}
-	\end{ex}
-	 
-\section{Gruppenhoperationen}
-	\begin{defn}
-	Es sei $(G, \bullet)$ eine Gruppe und $X$ eine Menge. Eine Operation von G auf X ist eine Abbildung:
-	$$G \times X \rightarrow X$$
-	$$(g,x \rightarrow g\bullet x)$$
-	welche folgende Bedingungen erfüllt:
-	\begin{enumerate}
-		\item $e \bullet x = x$ ($e\in G$ neutral)
-		\item $(a\bullet b)\bullet x = a\bullet (b\bullet x) \forall a,b\in G, x\in X$
-	\end{enumerate}
-	\end{defn}
-	
-	\begin{ex}
-	$V$, $K$-Vektorraum, die allgemeine lineare Gruppe $GL_k(V)$ operiert auf $V$:
-	$$GL_k(V) \times X \rightarrow V$$
-	$$(A,v)\rightarrow Av$$
-	\end{ex}
-
-	\begin{notation}
-	Wenn $G$ auf $X$ operiert, sagt man, dass $X$ eine $G$-Menge ist. Bezeichnung: $G\circlearrowright X$
-	\end{notation}
-
-	\begin{nb}
-	F\"ur jedes Element $g\in G$ existiert
-	$$\tau_g: X \rightarrow X$$
-	$$x \rightarrow gx$$
-	\end{nb}
-	
-	$\tau_g$ ist eine Bijektion mit Inverse $\tau_{g^{-1}}$ Aus 1. und 2. folgt:
-	$$\tau G \rightarrow S_X$$
-	$$g \rightarrow \tau_g$$
-	
-	ist ein Gruppen homomorphismus. Umgekehrt definiert jeder Gruppenhomomorphismus $\tau: G \rightarrow S_X$ durch 
-	$g: x=(\tau(g))(x)$ eine Gruppenoperation.
-	
-	\begin{defn}
-	\begin{enumerate}
-		\item Es sei $\tau: G \times X \rightarrow X$ eine Gruppenoperation. F\"ur $x\in X$ heißt $Gx=\{ gx : g \in G\}$ die Bahn (oder Orbit) von X. 
-		\item Die Untergruppe $G_x=\{ g\in G : gx=x\}$ heißt Isotropiegruppe (oder Stabilisator) von $X$.
-		\item Menge der Fixpunkte unter $G$: $X^G=\{ x \in X : gx=x \forall g \in G\}$
-		\item Die Gruppenoperation ist treu, falls $G \rightarrow S_X$ injektiv ist.
-		\item Die Gruppenoperation ist transitiv, wenn $X$ eine Bahn ist.
-	\end{enumerate}
-	\end{defn}
-	
-	\begin{ex}
-	\begin{enumerate}
-		\item Der Satz von Cayley ergibt einen Invektiven Homomorphismus.
-		$$G \rightarrow S_G$$
-		$$a \rightarrow \lambda_a$$
-		wobei
-		$$\lambda_a: G \rightarrow G$$
-		$$b \rightarrow ab$$
-		Das heißt: 
-		$$(G\times G) \rightarrow G$$
-		$$(a,b) \rightarrow ab$$
-		ist eine treue Operation von G auf G.
-		Diese Operation ist transitiv: es gilt $eG=G$, d.h. $G$ ist eine Bahn.
-		
-		\item Die Rechtstranslation
-		$$\varphi : G \rightarrow G$$
-		$$b \rightarrow ba^{1}$$
-		für beliebiges $a\in G$ definiert eine treue und transitive Gruppenoperation von $G$ auf $G$:
-		$$(G,G) \rightarrow G$$
-		$$a \bullet b := ba^{-1}$$	
-		
-		\item $G$ operiert auf sich selbst durch Konjugation:
-		$$a /in G i_a : G \rightarrow G$$
-		$$x \rightarrow axa^{-1}$$	
-		Die Konjugation mit $a$ ist immer ein Automorphismus von G.
-		$$G \xrightarrow{i} Aut(G) \subset S_G$$
-		$$a \rightarrow i_a$$
-		ein gruppenhomomorphismus, d.h. eine Operation von $G$ auf sich selbst.
-		\begin{proof}
-		$a,b \in G$ $i_{ab}(x)=abx(ab)^{-1}=abxb^{-1}a^{-1}$\\
-		$=a(i_b(x))a^{-1}=i_a\circ i_b(x) \forall x\in G$
-		\end{proof}
-		\begin{nb}
-		Die Bahnen von $i$ heißen Konjugationsklassen. Der Kern von $i$ heißt Zentrum von $G$.\\
-		$Z(G)=ker(i)\{ a \in G : axa^{-1}=x$ $\forall x \in G\} = \{a \in G : ax =xa$ $\forall x \in G\}$\\
-		Es gilt $G^G=\{ y \in G : byb^{-1}=y$ $\forall b \in G\}=\{ y \in G : by =yb$ $\forall b \in G\}=Z(G)$\\
-		
-		D.h. $Z(G)$ ist auch die Menge der Fixpunkte. Der Stabilisator von $x \in G$:\\
-		$G_x=\{a \in G : axa^{-1}=x\}=\{ a \in G : ax = xa\}=:C_G(x)$
-		\end{nb}		
-	\end{enumerate}
-	\end{ex}
-	
-	\begin{thm}
-	$G \times X \rightarrow X$ Gruppenoperation. Dann ist die Abbildung
-	$$p: G/G_x \rightarrow G_x$$
-	$$gG_x \rightarrow gx$$
-	ein bijektiver $G$-Homomorphismus für alle $X \in X$.
-	\end{thm}
-	
-	\begin{defn}
-	$X$,$Y$ $G$-Mengen $f: X \rightarrow Y$ ist ein $G$-Homomorphismus, falls $f(gx)=g(f(x))$
-	\end{defn}
-	
-	\begin{kor}
-	$|G_x|=|G/G_x|=[G:G_x]$ Index
-	\end{kor}
-	
-	\begin{proof}
-	$p$ ist wohldefiniert: $\forall a,b,x \in G$ gilt:
-	$$aG_x=b_Gx \Leftrightarrow b^{-1}ax=x \Leftrightarrow ax=bx \Leftrightarrow p(a)=p(b)$$
-	D.h. $p$ ist wohldefiniert LA ich bijektiv.
-	$p$ ist ein $G$-Homomorphismus: $\forall a,b \in G$:
-	$$p(a(b(G_x)))=p(ab(G_x))=abx=ap(bG_x)$$
-	Die Bahnen einer $G$-Operation sind die \"Aquivalenzklassen bezüglich der \"Aquivalenzrelation:
-	
-	$x,y \in X : x \sim y \xLeftrightarrow{Def} x=gy$ f\"ur ein $g\in G$\\
-	D.h. die Bahnen bilden eine Partition von $X$.
-	
-	F\"ur ein Repräsentantensystem $\{ x_i\}_{i\in I}$ der Bahnen von G gilt die Bahnengleichung:
-
-	$$|X|=\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}|G_{x_i}|=\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}[G:G_{x_i}]=|X^G|+\sum\limits_{\begin{subarray}{1}i \in I\\ x_i \notin X^G\end{subarray}}[G:G_{x_i}]$$
-	
-	
-	\end{proof}
-	
-\newpage
-% Hier fehlt die VL vom 2.6. (Isburg)
-
-\begin{proof}
-\begin{enumerate}
-
-	\item Beweis zu eins...
-\newpage
-	Da $b$ im Zentrum von $G$ liegt, ist $\langle b \rangle$ eine normalte Untergruppe von $G$. Wir betrachten die Faktorgruppe $G/ \langle b \rangle$. Es gilt
-	$$ |G/ \langle b \rangle | = \frac{|G|}{| \langle b \rangle |} = p^{n-1}q < p^nq. $$
-	Nach Induktionsvoraussetzung enthält $G / \langle b \rangle$ eine Untergruppe $\bar{S}$ der Ordnung $p^{\alpha - 1}$. Es sei $S = \{ x \in G : x \langle b \rangle \in \bar{S} \}$. $S$ ist eine Untergruppe von G und es gilt $ \bar{S} \cong S/ \langle b \rangle$, denn für die natürliche Projektion $p: S \rightarrow \bar{S} \text{ gilt } ker(p) = \langle b \rangle$ und somit ist der Homomorphiesatz anwendbar. Das liefert
-	$$ p^{\alpha - 1} = |\bar{S}| = \frac{|S|}{| \langle b \rangle |} = \frac{|S|}{p}. $$
-	Somit gilt $|S| = p^{\alpha}$ und $S$ ist die gesuchte $p$-Gruppe.
-	
-	\item Sei $H$ ein $p$-Untergruppe und $S$ ein $p$-Sylowuntergruppe. $H$ operiert auf die Menge $X = G/S$ durch
-	$$ H \times X \rightarrow X, h \cdot gS := (hg)S.$$
-	Es gilt $|X| = \frac{|G|}{|S|} = \frac{p^nq}{p^n} = q$. Da $H$ eine $p$-Gruppe ist, gilt $|X^H| = |X| = q \ (modp)$. Da $q$ prim zu $p$ ist, ist $|X^H|$ nicht durch $p$ teilbar. Insbesondere kann $X^H$ nicht leer sein, denn $p|0$. Es gibt also ein $g \in G$ mit $gS \in X^H$. Für alle $h \in H$ gilt dann $(hg)S = gS$ und somit $g^{-1}hg \in S$ und $h \in gSg^{-1}$. Dies liefert, dass $H$ in $gSg^{-1}$ enthalten ist.
-	
-	\item siehe unten.
-\end{enumerate}
-\end{proof}
-
-\begin{kor}
-	Dei $p$-Sylowuntergruppen bilden eine Klasse von konjugierten Untergruppen von $G$.
-\end{kor}
-
-\begin{proof}
-	Sei $S$ ein $p$-Sylowuntergruppe d.h. $|S| = p^n$. Dann ist $gSg^{-1}$ ein Untergruppe der Ordnung $p^n$ (für $g \in G$ beliebig), d.h. $gSg^{-1}$ ist eine $p$-Sylowuntergruppe. Es sei $S'$ ein beliebige Sylowuntergruppe von $G$. Aus 2. folgt: $S' \subseteq gSg^{-1}$ für ein $g \in G$. $|S'| = p^n = |gSg^{-1}|$ impliziert $S' = gSg^{-1}$.
-\end{proof}
-
-Bevor wir den dritten Teil des Sylow-Satzes beweisen, wenden wir uns folgender allgemeiner Frage zu: Wie bestimmt man die Anzahl der zu einer gegebenen Untergruppe konjugierten Untergruppen? Es sei $\mathcal{U}$ die Menge aller Untergruppen von G und $ G \times \mathcal{U} \rightarrow \mathcal{U}, g \cdot H \mapsto gHg^{-1} $ eine Gruppenoperation.
-
-\begin{defn}
-	Der Stabilisator einer Untergruppe $H$ von $G$ unter dieser Operation heißt \underline{Normalisator} von $H$: $N_G(H) = \{ g \in G: gHg^{-1} = H \}$. \\
-	Die zu $H$ konjugierten Untergruppen bilden die Bahn $G \cdot H$ von $H$. Es gilt also
-	$$ |G \cdot H| = | \{ A \in \mathcal{U} : A = gHg^{-1} \text{ mit } g \in G \} | = [G:N_G(H)] .$$
-	Für eine endliche Gruppe $G$ ist diese Anzahl immer ein Teiler von $|G|$.
+\begin{defn} 
+Eine endliche Gruppe G wird \underline{p-Gruppe} genannt, wobei p eine Primzahl ist, wenn die Ordnung von G eine Potenz $p^n$ von p ist $(n\geq 1)$.
 \end{defn}
 
-Für den Beweis des dritten Teils benötigen wir folgendes Lemma:
-
-\begin{lemma}\label{lem:Sylow}
-	Sei $T$ eine $p$-Sylowuntergruppe von $G$ und $H$ eine $p$-Untergruppe. Wenn $H \subseteq N_G(T)$ gilt, gilt bereits $H \subseteq T$.
-\end{lemma}
-
-\begin{proof}
-	Da $T$ eine normale Untergruppe von $N_G(T)$ ist und $H$ eine Untergruppe von $N_G(T)$ ist, kann man den ersten Isomorphiesatz anwenden: $TH = \{ gh : g \in T, h \in H \}$ ist eine Untergruppe von $N_G(T)$ und es gilt $H/(T \cap H) \cong TH/T$. Daraus folgt
-	$$ [TH : T] = [H : T \cap H] = \frac{|H|}{|T \cap H|} = \frac{p^{\alpha}}{|T \cap H|} = p^{\alpha '} \text{ mit } 0 \leq \alpha ' \leq \alpha.$$
-	$TH/T$ ist also eine $p$-Gruppe. Es gilt: $|TH/T| = 1 \Leftrightarrow T \cap H = H \Leftrightarrow H \subseteq T$. \\
-	Die Inklusionskette $T \subseteq TH \subseteq G$ von Untergruppen ergibt
-	$$[G:T] = [G:TH][TH:T] \Leftrightarrow q = [G:TH]p^{\alpha '} \text{, d.h. } p^{\alpha '} | q.$$
-	Da $q$ nicht durch $p$ teilbar ist, muss $p^{\alpha '} = 1$ sein. Also ist $H$ in $T$ enthalten.
-\end{proof}
-
-\begin{proof}[Beweis des dritten Teils des Sylow-Satzes]
-	Sei $X$ die Menge aller $p$-Sylowuntergruppen von $G$, $S \in X$ beliebig (Existenz: siehe Teil 1), $s := |X|$. Es gilt $s = [G:N_G(S)]$. \\
-	Aus der Inklusionskette $S \subseteq N_G(S) \subseteq G$ folgt
-	$$[N_G(S):S] [G:N_G(S)] = [G:S] \Leftrightarrow [N_G(S):S] s = q \text{, d.h. } s | q.$$
-	Wir lassen $S$ wie folgt auf X operieren:
-	$$S \times X \rightarrow X, g \cdot T \mapsto gTg^{-1}.$$
-	$S \in X$ ist ein Fixpunkt dieser Operation. Wir möchten zeigen, dass dieser der einzige Fixpunkt ist. Da $S$ eine $p$-Gruppe ist, gilt dann: $s = |X| = |X^S| = 1 \pmod{p}$ (was zu zeigen war).
-	\begin{align*}
-		T \in X^S &\Leftrightarrow &gTg^{-1} = T \text{ für alle } g \in S \\
-		&\Leftrightarrow &g \in N_G(T) \text{ für alle } g \in S \\
-		&\Leftrightarrow &S \subseteq N_G(T)
-	\end{align*}
-	Aus $S \subseteq N_G(T)$ folgt mit Lemma~\ref{lem:Sylow}, dass $S \subseteq T$ und somit $S = T$ (da $|S| = |T| = p^n$). $S \in X$ ist damit der einzige Fixpunkt.
-\end{proof}
-
-\underline{Anwendungen/Folgerungen des Sylow-Satzes}
-
 \begin{thm}
-	Es seien $p, q$ Primzahlen mit $p < q$ und $p \nmid q-1$. Dann ist jede Gruppe $G$ der Ordnung $pq$ eine zyklische Gruppe.
+Das Zentrum einer p-Gruppe G enthält nicht triviale Elemente $a \neq e$.
 \end{thm}
 
 \begin{proof}
-	Es sei $s$ die Anzahl der $p$-Sylowuntergruppen von $G$. Aus Teil 3 des Sylow-Satzes folgt $s | q, s \equiv 1 \pmod{p}$. Da $q \not \equiv 1 \pmod{p}$, muss $s = 1$ gelten, denn die Primzahl $q$ ist nur durch $1$ und $q$ teilbar. \\
-	Es gibt also eine einzige $p$-Sylowuntergruppe $S$ von $G$. Aus Teil 2 des Sylow-Satzes folgt $gSg^{-1} = S$ für alle $g \in G$. Somit ist $S$ eine normale Untergruppe. \\
-	Für die Anzahl $r$ der $q$-Sylowuntergruppen gilt: $r | p$ und $r \equiv 1 \pmod{q}$. Wenn $r = p$, dann gilt $r = p \not = 1 \pmod{q}$ (wegen $p < q$). Dies ist also nicht möglich. Es gilt dann $r = 1$. Es existiert genau eine $q$-Sylowuntergruppe $R$ von $G$ und $R$ ist deswegen ein Normalteiler von $G$. Da $S$ und $R$ normal sind, ist $SR = \{ ab : a \in S, b \in R\}$ eine normale Untergruppe. \\
-	$S \cap R = \{ e\}$ (die Elemente müssen Ordnung $1$ haben). Dies ergibt, dass $SR$ das (innere) direkte Produkt von $S$ und $R$ ist. Insbesondere gilt $|SR| = |S \times R| = |S||R| = pq = |G|$. Folglich gilt $G = S \times R$. Man zeigt dann, $G = \langle ab \rangle \text{ mit } \langle a \rangle = S, \langle b \rangle = R$ zyklisch.
+\begin{enumerate}
+\item \underline{n=1:} ord(G)=p ist eine Primzahl. Dann ist G eine zyklische Gruppe. Da G abelsch ist, gilt dann: G=Z(G).
+\item \underline{$n\geq 2$:} Aus dem Satz von Lagrange folgt, dass die Ordnung jeder Untergruppe H von G ein Teiler von $p^n$ ist, d.h. eine Primpotenz $p^k$ mit $0\leq k\leq n$. Es seien $x_{1},...,x_{m}$ Repräsentanten der Konjugationsklassen von G. \\
+$C_{G}(x_{i})$ Untergruppe $\Rightarrow |C_{G}(x_{i})|=p^k_{i}$ mit $0\leq k_{i} \leq n$ und $k_{i}=n \Leftrightarrow x_{i} \in Z(G)$  \\
+Klassengleichung: $p^n=|X|=|Z(G)|+\sum_{x_{i}\notin Z(G)}p^{n-k_{i}}$ mit $n-k_{i}>0$ \\
+$|Z(G)|= p^n-\sum_{x_{i}\notin Z(G)}p^{n-k_{i}}$ ist durch p teilbar. Wegen $|Z(G)|\geq 1$ gilt $|Z(G)|\geq p$. Es gibt also mindestens p-1 Elemente in Z(G), die vom neutralen Element verschieden sind.
+\end{enumerate}
 \end{proof}
 
+\begin{thm}
+Es sei G eine p-Gruppe, die auf einer endlichen Menge X operiert. Dann gilt:
+\begin{equation*}
+|X^G|\equiv |X|(mod\ \ p)
+\end{equation*}
+\end{thm}
+
+\begin{proof}
+Es sei $\{x_{1},...,x_{m}\}$ ein Repräsentantensystem der Bahnen. \\
+$|C_{G}(x_{i})|=p^k_{i}$ mit $0\leq k_{i} \leq n$ (aus dem Satz von Lagrange); $k_{i}=n\Leftrightarrow x_{i} \in X^G$ \\
+Die Bahnengleichung liefert $|X|-|X^G|=\sum_{x_{i}\notin Z(G)}p^{n-k_{i}}$ ist ein Vielfaches von p.
+\end{proof}
+
+\section{Strukturtheorie der Gruppen}
+
+\subsection{Die sylowschen Sätze}
+
+Satz von Lagrange $\Rightarrow ord(H)|ord(G)$ für jede Untergruppe H von G
+Aber: wenn h ein Teiler von ord(G), existiert dann auch H mit ord(H)=h?
+
+\begin{thm}
+Es sei G eine abelsche Gruppe der Ordnung $pn$. Dann existiert immer ein $a \in G$ der Ordnung p. 
+\end{thm}
+
+\begin{proof}
+Induktion auf $n=\dfrac{|G|}{p}$
+\begin{itemize}
+\item \underline{Basis:} n=1, d.h. $|G|=p$. Daraus folgt: $G=<a>$ ist zyklisch und der Erzeuger a hat Ordnung p.
+\item \underline{Induktionsschritt:} Wir nehmen an, dass die Aussage für eine Gruppe der Ordnung $pm^,$ mit $m^,<n$ gilt.\\
+Es sei $n\neq e$ ein beliebiges Element von G, und $m:=ord(h)$. Wenn m durch p teilbar ist, enthält die zyklische Untergruppe $<h>$ ein Element der Ordnung p. \\
+Wenn p kein Teiler von m ist, so ist p ein Teiler von $|G/<n>|=\dfrac{|G|}{|<n>|}=\dfrac{pn}{m}<pn$. Nach Induktionsvoraussetzung enthält die Gruppe $|G/<n>|$ ein Element $a<n>$ der Ordnung p. Es sei $k:=ord(a)$ die Ordnung der gewählten Repr. ($a \in G$). \\
+$(a<n>)^k=a^k<n>=<n>$ (neutrales Element) liefert $ p = \dfrac{ord(a<n>)}{k}$. \\
+Daraus folgt, dass $a^{\dfrac{k}{p}}$ ein Element von $<a>$ der Ordnung p ist.
+\end{itemize}
+\end{proof}
+
+\begin{thm} [Cauchy]
+Ist p eine Primzahl, die die Ordnung der endl. Gruppe G teilt, so enthält G ein Element der Ordnung p.
+\end{thm}
+
+\begin{proof}
+Induktion auf $ord(G)$
+\begin{itemize}
+\item \underline{Basis:} ord(G)=1 ist klar
+\item \underline{Induktionsschritt:} Wir nehmen an, dass die Aussage für alle Gruppen T gilt mit $ord(T)<ord(G)$. \\
+Wenn G eine Untergruppe H enthält, deren Ordnung durch p teilbar ist, so enthält H ein Element der Ordnung p. \\
+Wir können annehmen, dass die Ordnung jeder Untergruppe $H\neq G$ nicht durch p teilbar ist. \\
+Im Spezialfall der Zentralisation gilt: $p \nmid ord(C_{G}(a))$ für $a \notin Z(G)$ \\
+Klassengleichung: $|G|=|Z(G)|+\sum_{x_{i}\notin Z(G)}\dfrac{|G|}{|C_{G}(a)|}$ impliziert $p|\mid |Z(G)|$. Aus der Annahme folgt dann Z(G)=G. \\
+G ist also abelsch und die Aussage folgt aus dem vorherigen Satz.
+\end{itemize}
+\end{proof}
+
+\begin{kor}
+Die Ordnung einer endlichen Gruppe G ist genau dann eine Primpotenz für eine Primzahl p, wenn die Ordnung jedes Elements von G eine Primpotenz bezüglich p ist.
+\end{kor}
+
+\begin{proof}
+\begin{itemize}
+\item[$"\Rightarrow"$]ord(g) teilt $ord(G)=p^n$ (Lagrange) impliziert, dass $ord(g)=p^k$ gilt
+\item[$"\Leftarrow"$]Ist die Ordnung von G von der Form $ord(G)=p^\alpha q$ mit $q\neq 1$ prim zu p. Dann enthält G ein Element der Ordnung p für jeden Primfaktor von q, somit ist die Ordnung nicht von der Form $p^k$. Widerspruch!
+\end{itemize}
+\end{proof}
+
+\begin{nb}
+(unendliche) Gruppen G, für die gilt: $ord(a)=p^{n(a)}\ \ \forall a \in G$, p feste Primzahl, werden \underline{p-Gruppen} genannt.
+\end{nb}
+
+\begin{defn}
+Es sei p eine Primzahl, G eine endliche Gruppe. Man schreibt $|G|=p^n q$ mit $n \in \mathbb{N}$ und q teilerfremd zu p. Eine Untergruppe S von G ist eine \underline{p-Sylowuntergruppe}, wenn $|S|=p^n$ gilt.
+\end{defn}
+
+\begin{thm} [Sylow]
+Es sei G eine endliche Gruppe der Ordnung $|G|=p^n q$ mit p Primzahl, q teilerfremd zu p. Dann gilt:
+
+\begin{enumerate}
+\item G enthält eine Untergruppe der Ordnung $p^\alpha$ für jedes $1\leq \alpha \leq n$.
+\item Es sei H eine p-Untergruppe von G und S eine p-Sylowuntergruppe. Dann existiert ein $g \in G$ mit $H \subset gSg^{-1}$.
+\item Die Anzahl der p-Sylowuntergruppen ist ein Teiler von q von der Form $s=1+kp$ mit $k \in \mathbb{N}$.
+\end{enumerate}
+\end{thm}
+
+\begin{proof} 
+(von (1)) Induktion auf $ord(G)$ \\
+Wir nehmen an, dass die Aussage für alle Gruppen der Ordnung $< ord(G)$ gilt. \\
+Wenn G eine echte Untergruppe H enthält, wobei $|H|$ durch p teilbar ist, existiert nach der Induktionsvor. eine Untergruppe von H von der Ordnung $p^\alpha$.(fertig) \\
+Wir können uns auf den Fall beschränken, dass $p^n \nmid ord(H)$ für alle Untergruppen $H\neq G$gilt. \\
+$(a_{i}){i \in I}$ Repräsentantensystem der Konjugationsklassen. \\
+$p^n q=|G|=|Z(G)|+\sum_{x_{i}\notin Z(G)}\dfrac{|G|}{|C_{G}(a_{i})|}$ \\
+$p^n \nmid |C_{G}(a_{i})|$ ergibt sich aus der Annahme $p^n \mid |G|$. \\
+Daraus folgt: $\dfrac{|G|}{|C_{G}(a_{i})|}$ ist durch p teilbar. Daraus folgt, dass $|Z(G)|$ durch p teilbar ist. Aus dem Satz von Cauchy folgt dann, dass $b \in Z(G)$ mit $ord(b)=p$ existiert.
+\end{proof}
+
+
+
+
+
+
+
+
+ 
 \end{document}
