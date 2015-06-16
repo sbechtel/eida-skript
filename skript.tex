@@ -972,29 +972,6 @@ Es seien $\sigma,\tau\in S_n$ beliebig. Dann gilt
 \end{equation*}
 \end{proof}
 
-%VL 2.6.15
-Für die Operation von G auf sich selbst durch Konjugation gilt:
-\begin{thm} [Klassengleichung]
-Ist $\{x_{i}\}_{i \in I}$ ein Repräsentantensystem für die Konjugationsklassen der Gruppe G, so gilt: 
-\begin{gather*}
-|G|= |Z(G)|+\sum_{x_{i}\notin Z(G)}[G:C_{G}(x_{i})] \\ 
-Z(G)=\{a \in G :ag=ga\ \ \forall g \in G\}\ \ Zentrum \\
-C_{G}(x_{i})= \{a \in G :ax_{i}=x_{i}a\}\ \ Zentralisator \\
-\end{gather*}
-Für endliche Gruppen: $[G:G_{x_{i}}]=\dfrac{|G|}{|G_{x_{i}}|}$
-\end{thm}
-
-\begin{nb}
-Anwendung: Existenz von Fixpunkten
-\end{nb}
-
-\begin{defn} 
-Eine endliche Gruppe G wird \underline{p-Gruppe} genannt, wobei p eine Primzahl ist, wenn die Ordnung von G eine Potenz $p^n$ von p ist $(n\geq 1)$.
-\end{defn}
-
-\begin{thm}
-Das Zentrum einer p-Gruppe G enthält nicht triviale Elemente $a \neq e$.
-\end{thm}
 =======
 % VL 26.5.
 \newpage
@@ -1165,8 +1142,31 @@ Das Zentrum einer p-Gruppe G enthält nicht triviale Elemente $a \neq e$.
 
 	$$|X|=\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}|Gx_i|=\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}[G:G_{x_i}]=|X^G|+\sum\limits_{\begin{subarray}{1}i \in I\\ x_i \notin X^G\end{subarray}}[G:G_{x_i}]$$
 	
-	
 	\end{proof}
+
+%VL 2.6.15
+Für die Operation von G auf sich selbst durch Konjugation gilt:
+\begin{thm} [Klassengleichung]
+Ist $\{x_{i}\}_{i \in I}$ ein Repräsentantensystem für die Konjugationsklassen der Gruppe G, so gilt: 
+\begin{gather*}
+|G|= |Z(G)|+\sum_{x_{i}\notin Z(G)}[G:C_{G}(x_{i})] \\ 
+Z(G)=\{a \in G :ag=ga\ \ \forall g \in G\}\ \ Zentrum \\
+C_{G}(x_{i})= \{a \in G :ax_{i}=x_{i}a\}\ \ Zentralisator \\
+\end{gather*}
+Für endliche Gruppen: $[G:G_{x_{i}}]=\dfrac{|G|}{|G_{x_{i}}|}$
+\end{thm}
+
+\begin{nb}
+Anwendung: Existenz von Fixpunkten
+\end{nb}
+
+\begin{defn} 
+Eine endliche Gruppe G wird \underline{p-Gruppe} genannt, wobei p eine Primzahl ist, wenn die Ordnung von G eine Potenz $p^n$ von p ist $(n\geq 1)$.
+\end{defn}
+
+\begin{thm}
+Das Zentrum einer p-Gruppe G enthält nicht triviale Elemente $a \neq e$.
+\end{thm}
 
 \begin{proof}
 \begin{enumerate}
