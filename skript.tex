@@ -1008,6 +1008,181 @@ Eine endliche Gruppe G wird \underline{p-Gruppe} genannt, wobei p eine Primzahl 
 \begin{thm}
 Das Zentrum einer p-Gruppe G enthält nicht triviale Elemente $a \neq e$.
 \end{thm}
+=======
+% VL 26.5.
+\newpage
+	\begin{kor}
+	Jede gerade Permutation ist das Produkt einer geraden Anzahl von Transpositionen. Jede ungerade Permutation ist Produkt einer ungeraden Anzahl von Transpositionen.
+	\end{kor}
+
+	\begin{ex}
+	m-Zyklus $(n_1n_2...n_m)$ ist das Produkt von $m-1$ Transpositionen.  
+	
+	$\Rightarrow sgn((n_1n_2....n_m))=(-1)^{m-1}$
+	\end{ex}
+
+	\begin{kor}
+	$\sigma = (m_1....m_{k_1})(m_{k_1+1}...m_{k_2})...(m_{k_{r-1}}....m_{k_r})$	$\Rightarrow sgn(\sigma)=(-1)^{k_r-r}$
+	\end{kor}
+
+	\begin{defn}
+	Die normale Untergruppe $A_n=ker(sgn)$ der geraden Permutationen wird die alternierende Gruppe genannt.
+	\end{defn}
+	
+	\begin{nb}
+	Index von $A_n$ ist $S_n$ ist 2 $\Rightarrow ord(A_n)=\frac{1}{2}ord(S_n)$\\
+	$ord(S_n)=n(n-1)...1=n!$
+	\end{nb}
+	
+	\begin{lemma}
+	$A_n$ wird durch die 3-Zyklen von$S_n$ erzeugt.
+	\end{lemma}
+	
+	\begin{proof}
+	Es sei $\sigma \in A_n$ eine gerade Permutation. Wir schreiben $\sigma$ als Produkt von Transpositionen:
+	$\sigma =(a_1b_1)(a_2b_2)....(a_nb_n)$\\
+	Für disjunkte Träger gilt:\\
+	$(a_{2_{j-1}b_{2_{j-1}}})(a_{2_j}b_{2_j})=(a_{2_{j-1}}a_{2_j})(a_{2_j}b_{2_{j-1}})(a_{2_{j-1}}a_{2_j})(a_{2_j}b_{2_j})=(a_{2_{j-1}}a_{2_j}b_{2_{j-1}})(a_{2_{j-1}}a_{2j}b_{2j})$\\
+	Produkt von 3-Zyklen.
+	
+	Wenn es ein gemeinsames Element gibt: ob $b_{2_{j-1}}=a_{2_j}$\\
+	$(a_{2_{j-1}}a_{2_j})(a_{2_j}b_{2_j})=(a_{2_{j-1}}a_{2j}b_{2j})$ e-Zyklus\\
+	Für $\{ a_{2_{j-1}}b_{2_{j-1}}\} =\{ a_{2_j}b_{2_j} \} : (a_{2_{j-1}}b_{2_{j-1}})(a_{2_j}b_{2_j})=id$\\
+	Daraus folgt: $\sigma$ ist das Produkt von 3-Zykeln.
+	\end{proof}
+	
+	\begin{ex}
+	\begin{enumerate}
+		\item $S_1=\{ (1)\}$
+		\item $S_2=\{ id, (12)\}$ zyklisch der Ordnung 2
+		\item $S_3=\{ id,(12),(13);(23),(123),(132)\} \supsetneq A_3=\{ id,(123),(132)\}$
+		\item $S_3=A_3\rtimes \mathbb{Z}/2\mathbb{Z} \cong  \mathbb{Z}/3\mathbb{Z} \rtimes \mathbb{Z}/2\mathbb{Z} = D_6$ Diedergruppe mit 6 Elementen.
+	\end{enumerate}
+	\end{ex}
+	 
+\section{Gruppenhoperationen}
+	\begin{defn}
+	Es sei $(G, \bullet)$ eine Gruppe und $X$ eine Menge. Eine Operation von G auf X ist eine Abbildung:
+	$$G \times X \rightarrow X$$
+	$$(g,x \rightarrow g\bullet x)$$
+	welche folgende Bedingungen erfüllt:
+	\begin{enumerate}
+		\item $e \bullet x = x$ ($e\in G$ neutral)
+		\item $(a\bullet b)\bullet x = a\bullet (b\bullet x) \forall a,b\in G, x\in X$
+	\end{enumerate}
+	\end{defn}
+	
+	\begin{ex}
+	$V$, $K$-Vektorraum, die allgemeine lineare Gruppe $GL_k(V)$ operiert auf $V$:
+	$$GL_k(V) \times X \rightarrow V$$
+	$$(A,v)\rightarrow Av$$
+	\end{ex}
+
+	\begin{notation}
+	Wenn $G$ auf $X$ operiert, sagt man, dass $X$ eine $G$-Menge ist. Bezeichnung: $G\circlearrowright X$
+	\end{notation}
+
+	\begin{nb}
+	F\"ur jedes Element $g\in G$ existiert
+	$$\tau_g: X \rightarrow X$$
+	$$x \rightarrow gx$$
+	\end{nb}
+	
+	$\tau_g$ ist eine Bijektion mit Inverse $\tau_{g^{-1}}$ Aus 1. und 2. folgt:
+	$$\tau G \rightarrow S_X$$
+	$$g \rightarrow \tau_g$$
+	
+	ist ein Gruppen homomorphismus. Umgekehrt definiert jeder Gruppenhomomorphismus $\tau: G \rightarrow S_X$ durch 
+	$g: x=(\tau(g))(x)$ eine Gruppenoperation.
+	
+	\begin{defn}
+	\begin{enumerate}
+		\item Es sei $\tau: G \times X \rightarrow X$ eine Gruppenoperation. F\"ur $x\in X$ heißt $Gx=\{ gx : g \in G\}$ die Bahn (oder Orbit) von X. 
+		\item Die Untergruppe $G_x=\{ g\in G : gx=x\}$ heißt Isotropiegruppe (oder Stabilisator) von $X$.
+		\item Menge der Fixpunkte unter $G$: $X^G=\{ x \in X : gx=x \forall g \in G\}$
+		\item Die Gruppenoperation ist treu, falls $G \rightarrow S_X$ injektiv ist.
+		\item Die Gruppenoperation ist transitiv, wenn $X$ eine Bahn ist.
+	\end{enumerate}
+	\end{defn}
+	
+	\begin{ex}
+	\begin{enumerate}
+		\item Der Satz von Cayley ergibt einen Invektiven Homomorphismus.
+		$$G \rightarrow S_G$$
+		$$a \rightarrow \lambda_a$$
+		wobei
+		$$\lambda_a: G \rightarrow G$$
+		$$b \rightarrow ab$$
+		Das heißt: 
+		$$(G\times G) \rightarrow G$$
+		$$(a,b) \rightarrow ab$$
+		ist eine treue Operation von G auf G.
+		Diese Operation ist transitiv: es gilt $eG=G$, d.h. $G$ ist eine Bahn.
+		
+		\item Die Rechtstranslation
+		$$\varphi : G \rightarrow G$$
+		$$b \rightarrow ba^{1}$$
+		für beliebiges $a\in G$ definiert eine treue und transitive Gruppenoperation von $G$ auf $G$:
+		$$(G,G) \rightarrow G$$
+		$$a \bullet b := ba^{-1}$$	
+		
+		\item $G$ operiert auf sich selbst durch Konjugation:
+		$$a /in G i_a : G \rightarrow G$$
+		$$x \rightarrow axa^{-1}$$	
+		Die Konjugation mit $a$ ist immer ein Automorphismus von G.
+		$$G \xrightarrow{i} Aut(G) \subset S_G$$
+		$$a \rightarrow i_a$$
+		ein gruppenhomomorphismus, d.h. eine Operation von $G$ auf sich selbst.
+		\begin{proof}
+		$a,b \in G$ $i_{ab}(x)=abx(ab)^{-1}=abxb^{-1}a^{-1}$\\
+		$=a(i_b(x))a^{-1}=i_a\circ i_b(x) \forall x\in G$
+		\end{proof}
+		\begin{nb}
+		Die Bahnen von $i$ heißen Konjugationsklassen. Der Kern von $i$ heißt Zentrum von $G$.\\
+		$Z(G)=ker(i)\{ a \in G : axa^{-1}=x$ $\forall x \in G\} = \{a \in G : ax =xa$ $\forall x \in G\}$\\
+		Es gilt $G^G=\{ y \in G : byb^{-1}=y$ $\forall b \in G\}=\{ y \in G : by =yb$ $\forall b \in G\}=Z(G)$\\
+		
+		D.h. $Z(G)$ ist auch die Menge der Fixpunkte. Der Stabilisator von $x \in G$:\\
+		$G_x=\{a \in G : axa^{-1}=x\}=\{ a \in G : ax = xa\}=:C_G(x)$
+		\end{nb}		
+	\end{enumerate}
+	\end{ex}
+	
+	\begin{thm}
+	$G \times X \rightarrow X$ Gruppenoperation. Dann ist die Abbildung
+	$$p: G/G_x \rightarrow Gx$$
+	$$gG_x \rightarrow gx$$
+	ein bijektiver $G$-Homomorphismus für alle $X \in X$.
+	\end{thm}
+	
+	\begin{defn}
+	$X$,$Y$ $G$-Mengen $f: X \rightarrow Y$ ist ein $G$-Homomorphismus, falls $f(gx)=g(f(x))$
+	\end{defn}
+	
+	\begin{kor}
+	$|Gx|=|G/G_x|=[G:G_x]$ Index
+	\end{kor}
+	
+	\begin{proof}
+	$p$ ist wohldefiniert: $\forall a,b,x \in G$ gilt:
+	$$aG_x=bG_x \Leftrightarrow b^{-1}a \in G_x \Leftrightarrow b^{-1}ax=x \Leftrightarrow ax=bx \Leftrightarrow p(a)=p(b)$$
+	D.h. $p$ ist wohldefiniert als auch bijektiv.
+	$p$ ist ein $G$-Homomorphismus: $\forall a,b \in G$:
+	$$p(a(b(G_x)))=p(ab(G_x))=abx=ap(bG_x)$$
+	Die Bahnen einer $G$-Operation sind die \"Aquivalenzklassen bezüglich der \"Aquivalenzrelation:
+	
+	$x,y \in X : x \sim y \xLeftrightarrow{Def} x=gy$ f\"ur ein $g\in G$\\
+	D.h. die Bahnen bilden eine Partition von $X$.
+	
+	F\"ur ein Repräsentantensystem $\{ x_i\}_{i\in I}$ der Bahnen von G gilt die Bahnengleichung:
+
+	$$|X|=\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}|Gx_i|=\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}[G:G_{x_i}]=|X^G|+\sum\limits_{\begin{subarray}{1}i \in I\\ x_i \notin X^G\end{subarray}}[G:G_{x_i}]$$
+	
+	
+	\end{proof}
+	
+\newpage
+% Hier fehlt die VL vom 2.6. (Isburg)
 
 \begin{proof}
 \begin{enumerate}
@@ -1112,12 +1287,155 @@ $p^n \nmid |C_{G}(a_{i})|$ ergibt sich aus der Annahme $p^n \mid |G|$. \\
 Daraus folgt: $\dfrac{|G|}{|C_{G}(a_{i})|}$ ist durch p teilbar. Daraus folgt, dass $|Z(G)|$ durch p teilbar ist. Aus dem Satz von Cauchy folgt dann, dass $b \in Z(G)$ mit $ord(b)=p$ existiert.
 \end{proof}
 
+% VL 16.06.
+\begin{thm}
+    Es existiert keine einfache Gruppe der Ordnung 30.
+\end{thm}
 
+\begin{proof}
+    Es ist $|G| = 30 = 2\cdot 3\cdot 5$. Es seien $s$ die Anzahl der 5-Sylowuntergruppen und $t$ die der 3-Sylowuntergruppen. Angenommen, $G$ sei einfach. Dann gilt: $s>1$ und $t>1$, denn mit $s=1$ (bzw. $t=1$) wäre die 5-Sylowuntergruppe (bzw. 3-Sylowuntergruppe) normal wegen Konjugiertheit der Sylowgruppen zueinander (Teil 2 im Satz). Aus Teil (3) folgt
+        \[ s|6,\; s\equiv 1(5)\Rightarrow s=6.\]
+    Also gibt es 6 verschiedene 5-Sylowuntergruppen, jede davon hat Ordnung $5$. Damit enthalten die 5-Sylowuntergruppen zusammen $6\cdot 4 =24$ Elemente und das neutrale Element. Analog gilt für $t$
+        \[ t|10,\; t\equiv 1(3) \Rightarrow t=10.\]
+    Damit enthalten die 3-Sylowuntergruppen $10\cdot 2=20$ Elemente und das neutrale Element.
+    
+    Aber: $20+24+1=45>30=\text{ord}(G)$. Also kann $G$ nicht einfach sein.
+\end{proof}
 
+\subsection{Normal- und Kompositionsreihen}
 
+\begin{defn}
+    Es sei $G$ eine Gruppe. Eine Normalreihe in $G$ ist eine Folge von Untergruppen
+        \[ \{e\} = G_0 \subseteq G_1 \subseteq G_2 \subseteq\dots\subseteq G_n=G\qquad n\geq 1\qquad(n=0\text{ für } G=\{e\})\]
+    so dass für alle $i,1\leq i\leq n$ $G_{i-1}$ Normalteiler von $G_i$ ist.
+\end{defn}
 
+\begin{nb}
+    Die $G_i,\;i\leq n-2,$ sind nicht notwendigerweise Normalteiler von $G$.
+\end{nb}
 
+\begin{defn}
+    Es seien 
+        \[\begin{split}
+            &\underline{G}: G_0\subseteq G_1 \subseteq\dots\subseteq G_n \\
+            &\underline{H}: H_0\subseteq H_1\subseteq\dots\subseteq H_m 
+        \end{split}\]
+    zwei Normalreihen.
+    \begin{itemize}
+        \item $\underline{H}$ ist eine Verfeinerung von $\underline{G}$, wenn $\underline{H}$ aus $\underline{G}$ durch das Einfügen von Untergruppen erhalten werden kann.
+        \item $\underline{G}$ und $\underline{H}$ heißen äquivalent, wenn $m=n$ gilt und es eine Permutation $\sigma\in S_n$ gibt, so dass 
+        \[ G_j/G_{j-1}\cong H_{\sigma(j)}/H_{\sigma(j)-1}\]
+            für alle $1\leq j\leq n$ gilt.
+    \end{itemize}
+\end{defn}
 
+\begin{thm}
+Es sei $G$ eine Gruppe, $\underline{G}$ und $\underline{H}$ Normalreihen in $G$. Dann besitzen $\underline{G}$ und $\underline{H}$ äquivalente Verfeinerungen.
+\end{thm}
 
- 
+\begin{proof}
+    Es seien 
+    \[\begin{split}
+            &\underline{G}: G_0\subseteq G_1 \subseteq\dots\subseteq G_n \\
+            &\underline{H}: H_0\subseteq H_1\subseteq\dots\subseteq H_m 
+        \end{split}\]
+    die beiden Normalreihen. Wir setzen nun $G_{ij}:=G_i\cdot(G_{i+1}\cap H_j), H_{ij} := H_j\cdot(G_i\cap H_{j+1}$ für alle $i,j$ mit $G_{n+1}:=G=:H_{m+1}$.
+    
+    Es gilt nun: $G_{i,m}=G_{i+1}=G_{i+1,0}$ und $H_{n,j}=H_{j+1}=H_{0,j+1}$, so dass $\{G_{ij}\}$ und $\{H_{ij}\}$ Folgen von Untergruppen sind. Es ist klar, dass diese Verfeinerungen von $G$ bzw. $H$ von selber Länge sind. Wir müssen noch zeigen:
+    \begin{enumerate}[label=(\alph*)]
+        \item $G_{ij}\subseteq G_{i,j+1}$ und $H_{ij}\subseteq H_{i,j+1}$ sind normal, damit beide Normalreihen sind,
+        \item $G_{i,j+1}/G_{i,j}$ und $H_{i+1,j}/H_{i,j}$ sind beide isomorph zu $\nicefrac{(G_{i+1}\cap H_{j+1})}{(G_{i+1}\cap H_{j})\cdot(G_{i}\cap H_{j+1})}$.
+    \end{enumerate}
+    Dann sind die beiden Verfeinerungen äquivalent. Beweis von (a) und (b) erfolgt mit Anwendung der Isomorphiesätze.
+\end{proof}
+
+\begin{defn}
+    Eine Normalreihe 
+        \[\{e\}=G_0\subsetneqq G_1 \subsetneqq\dots\subsetneqq G_{n-1}\subsetneqq G_n=G \]
+    heißt Kompositionsreihe, wenn sie keine echten Verfeinerungen besitzt.
+\end{defn}
+
+\begin{kor}[Satz von Jordan-Hölder]
+    Es sei $G$ eine Gruppe. Zwei Kompositionsreihen in $G$ sind immer zueinander äquivalent.
+\end{kor}
+
+\begin{thm}
+    Eine Normalreihe ist genau dann eine Kompositionsreihe, wenn die $G_i/G_{i-1}$ jeweils einfache Gruppen sind.
+\end{thm}
+
+\begin{proof}
+    "$\Rightarrow$": Angenommen, $G_i/G_{i-1}$ sei für ein $i\leq n$ nicht einfach. Es sei dann $\bar{N}\subset G_i/G_{i-1}$ eine nicht triviale normale Untergruppe. Nun setzen wir 
+        \[N:=\{g\in G_i: gG_{i-1}\in\bar{N}\}.\]
+    Dann ist $N$ eine normale Untergruppe mit $\nicefrac{N}{G_{i-1}}=\bar{N}$. Aus $\{eG_{i-1}\}\subsetneqq\bar{N}\subsetneqq\nicefrac{G_i}{G_{i-1}}$ folgt $G_{i-1}\subsetneqq N\subsetneqq G_i$. Somit können wir $\{G_i\}$ mit $N$ verfeinern, also ist $\{G_i\}$ keine Kompositionsreihe.
+    
+    "$\Leftarrow$": Wenn $G_0\subsetneqq G_1\subsetneqq\dots\subsetneqq G_n$ eine echte Verfeinerung besitzt, so gibt es eine normale Untergruppe $G_{i-1}\subsetneqq N\subsetneqq G_i$, die $G_{i-1}$ als Normalteiler enthält. Die Faktorgruppe $\bar{N}:=\nicefrac{N}{G_{i-1}}$ ist dann eine nicht-triviale normale Untergruppe von $\nicefrac{G_i}{G_{i-1}}$. Also ist $G_i/G_{i-1}$ nicht einfach.
+\end{proof}
+
+\begin{thm}
+    Jede endliche Gruppe besitzt eine Kompositionsreihe.
+\end{thm}
+
+\begin{proof}
+    Übungsaufgabe.
+\end{proof}
+
+\begin{ex}
+
+    \begin{itemize}
+        \item Unendliche Gruppen besitzen nicht immer Kompositionsreihen. So hat $(\mathbb{Z},+)$ keine Kompositionsreihe, da man jede Normalreihe beliebig verfeinern kann.
+        \item Jede symmetrische Gruppe $S_n,\; n\geq 3$ hat die Normalreihe
+            \[\{e\}\subsetneqq A_n \subsetneqq S_n.\]
+            In dieser Normalreihe haben wir die Faktorgruppen: $\nicefrac{S_n}{A_n}\cong\nicefrac{\mathbb{Z}}{2\mathbb{Z}}$ und $\nicefrac{A_n}{\{e\}}\cong A_n$. Nun ist $\nicefrac{\mathbb{Z}}{2\mathbb{Z}}$ einfach, da die Ordnung eine Primzahl ist, und für $n\neq 4$ ist $A_n$ einfach. Also ist die obige Normalreihe für diese Fälle eine Kompositionsreihe.
+    \end{itemize}
+\end{ex}
+
+\begin{kor}
+    Für $n\geq 3,n\neq 4$ ist $A_n$ die einzige Untergruppe von $S_n$ vom Index $2$. Damit ist $\{e\}\subset A_n\subset S_n$ die einzige Kompositionsreihe und $A_n$ die einzige nicht-triviale normale Untergruppe von $S_n$.
+\end{kor}
+
+\subsection{Auflösbare Gruppen}
+
+\begin{defn}
+    Eine Gruppe $G$ heißt auflösbar, wenn sie eine abelsche Normalreihe, das heißt eine Normalreihe mit abelschen Faktorgruppen besitzt.
+\end{defn}
+
+\begin{ex}
+    \begin{itemize}
+        \item Abelsche Gruppen sind immer auflösbar.
+        \item Die Gruppe $G=\left\{\begin{pmatrix}
+            a & b \\
+            c & d \end{pmatrix} \in \text{GL}_2(K):c=0\right\}$ ist für jeden Körper $K$ auflösbar.
+    \end{itemize}
+\end{ex}
+
+\begin{thm}
+    Es sei $G$ eine Gruppe.
+    \begin{itemize}
+        \item Ist $G$ auflösbar, so ist jede Untergruppe von $G$ auflösbar.
+        \item Ist $N$ eine normale Untergruppe von $G$, so ist $G$ genau dann auflösbar, wenn $N$ und $\nicefrac{G}{N}$ auflösbar sind.
+    \end{itemize}
+\end{thm}
+
+\begin{proof}
+    (Idee: $H\subset G$ Untergruppe, $G_0\subset G_1\subset\dots\subset G_n$ abelsche Normalreihe für $G$. Dann ist $(G_0\cap H)\subset(G_1\cap H)\subset\dots\subset(G_n\cap H)$ eine abelsche Normalreihe in $H$.)
+\end{proof}
+
+\begin{ex}
+Die symmetrische Gruppe $S_n$ ist auflösbar für $n\leq 4$. Die Fälle $n\leq 2$ sind sogar abelsch. Für $S_3$ erhalten wir die Kompositionsreihe
+        \[\{e\}\subset A_3=\langle(123)\rangle\subset S_3\]
+    mit Faktoren $\nicefrac{S_3}{A_3}\cong\nicefrac{\mathbb{Z}}{2\mathbb{Z}}$, $A_3\cong\nicefrac{\mathbb{Z}}{3\mathbb{Z}}$, die beide zyklisch und somit abelsch sind.
+    
+    Die Gruppe $S_4$ besitzt die Normalreihe
+        \[\{e\}\subset V_4\subset A_4\subset S_4\]
+    mit $V_4=\left\{\tau\in A_4:\tau^2=e\right\}=\{e,(12)(34),(13)(24),(14)(23)\}$, der kleinschen Vierergruppe. Dann ist $V_4\cong\nicefrac{\mathbb{Z}}{2\mathbb{Z}}\times\nicefrac{\mathbb{Z}}{2\mathbb{Z}}$ abelsch (denn die Ordnung ist $4=2^2=p^2$ für eine Primzahl $p$) und $\nicefrac{A_4}{V_4}\cong\nicefrac{\mathbb{Z}}{3\mathbb{Z}}$, $\nicefrac{S_4}{A_4}\cong\nicefrac{\mathbb{Z}}{2\mathbb{Z}}$ sind auch abelsch.
+\end{ex}
+
+\begin{thm}
+    Die symmetrische Gruppe $S_n,\;n\geq 5$ ist nicht auflösbar.
+\end{thm}
+
+\begin{proof}
+    Die Gruppe $A_n$ ist nicht auflösbar, da sie eine nicht abelsche einfache Gruppe ist. Da $A_n$ eine Untergruppe von $S_n$ ist, ist $S_n$ auch nicht auflösbar.
+\end{proof}
+
 \end{document}
