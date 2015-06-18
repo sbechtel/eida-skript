@@ -49,6 +49,8 @@
 % TODO Bspw. ord wird zZ als drei vAriablen (o, r, d) gesetzt. Zu einem vernünftigen Operator ändern?
 % TODO Anführungszeichen sind bei mir alle falsch. Funktioniert das bei euch?
 % TODO Einige Beweise sind schrecklich strukturiert und zum Teil rettbar fehlerhaft. Darf ich?
+% TODO einheitliche subset-Notation?
+% TODO emph statt underline?
 
 \begin{document}
 
@@ -157,7 +159,7 @@
 \end{defn}
 
 \begin{thm}
-    Sei $(G, \cdot)$ Gruppe und $H\subset G$ nicht-leer. Dann gilt: $H$ induziert Untergruppe von $(G, \cdot)$ gdw. $a\Inv b\in H$ für $a,b\in H$.
+    Sei $(G, \cdot)$ Gruppe und $H\subset G$ nicht-leer. Dann gilt: $H$ ist eine Untergruppe von $(G, \cdot)$ gdw. $a\Inv b\in H$ für $a,b\in H$.
 \end{thm}
 
 \begin{proof}
@@ -173,13 +175,13 @@
 
 \begin{ex}
     \begin{enumerate}[label=(\alph*)]
-        \item $\{e\}, G$ induzieren je eine Untergruppe für alle Gruppen $(G,\cdot)$.
+        \item Für alle Gruppen $(G,\cdot)$ sind $\{e\}, G$ jeweils Untergruppen, die sogenannten \emph{trivialen Untergruppen}.
         \item $K$ Körper. $\text{SL}_n(K)=\{A\in M_n(K): \det(A)=1\}$ induziert Untergruppe von $\gl_n(K)$, die spezielle lineare Gruppe.
     \end{enumerate}
 \end{ex}
 
 \begin{defn}
-    Eine Untergruppe heißt \underline{echt}, falls sie nicht trivial ist. % FIXME Welche sind trivial? {e} und G?
+    Eine Untergruppe heißt \underline{echt}, falls sie nicht trivial ist.
 \end{defn}
 
 \begin{lemma}
@@ -202,19 +204,19 @@
 	\begin{enumerate}[label=(\alph*)]
 		\item $\langle \emptyset \rangle = \lbrace e \rbrace$
 		\item Für $M \neq \emptyset$ gilt: $\langle M \rangle = \lbrace m_{1}^{\varepsilon_{1}} \cdot ... \cdot m_{n}^{\varepsilon_{n}} : m_{1},...,m_{n} \in M, \varepsilon_{1},...,\varepsilon_{n} \in \lbrace -1,+1\rbrace, n \geq 0 \rbrace$
-		\item Für $M = \lbrace g \rbrace$ gilt: $\langle g \rangle = \lbrace g^{n} : n \in \mathbb{Z} \rbrace$. Von g erzeugte zyklische Untergruppe von G.
+		\item Für $M = \lbrace g \rbrace$ gilt: $\langle g \rangle = \lbrace g^{n} : n \in \mathbb{Z} \rbrace$. Diese Untergruppe wird die von $g$ erzeugte zyklische Untergruppe von G genannt.
 	\end{enumerate}
 \end{nb}
 
 \begin{defn}
-	$G$ heißt \underline{zyklisch}, falls $G = \langle g \rangle$ für ein $g \in G$ gilt. \newline
+	Eine Gruppe $G$ heißt \underline{zyklisch}, falls $G = \langle g \rangle$ für ein $g \in G$ gilt. \newline
 	Ist $G = \langle M \rangle$ mit $M$ endlich, so heißt $G$ \underline{endlich erzeugt}.
 \end{defn}
 
 \begin{defn}
 	\begin{enumerate}[label=(\roman*)]
-		\item Die \underline{Ordnung einer Gruppe} $G$ ist $ord(G)=\vert G \vert$.
-		\item Die \underline{Ordnung eines Elements} $g \in G$ ist $ord(g)=ord(\langle g \rangle)$.
+		\item Die \underline{Ordnung einer Gruppe} $G$ ist $ord(G):=\vert G \vert$.
+		\item Die \underline{Ordnung eines Elements} $g \in G$ ist $ord(g):=ord(\langle g \rangle)$.
 		\item Ist $ord(g)$ endlich, dann hat g \underline{endliche Ordnung}.
 	\end{enumerate}
 \end{defn}
@@ -265,11 +267,11 @@
 \end{proof}
 
 \begin{lemma}
-	Wir können alle Untergruppen einer zyklischen Gruppe beschreiben mit $G = \langle g \rangle, H \subset G$, es sei $h \in H, h \neq e$. Dann gilt: $h = g^{k}$. % FIXME Aussage des Lemmas unverständlich. Kann den Beweis nicht überprüfen.
+	Es sei $G = \langle g \rangle$ eine zyklische Gruppe und $H \subset G,\; H\neq\{e\}$ eine Untergruppe von $G$. Dann gibt es ein $m\in\mathbb{N}$ mit $H=\langle g^m\rangle$.
 \end{lemma}
 
 \begin{proof}
-	Wir setzen: $m = min \lbrace k>0 : g^{k} \in H \rbrace$. \newline $\lceil$ Existiert: $G= \langle g \rangle = \langle g^{-1} \rangle, h = g^{k}, k<0$, dann ersetzen wir $h$ durch $h^{-1} \rfloor$ \newline Wir wollen zeigen: $\langle g^{m} \rangle = H$ 
+    Wir setzen: $m := min \lbrace k>0 : g^{k} \in H \rbrace$. Die betrachtete Menge ist dabei nicht-leer, denn ist $h \in H, h \neq e$, dann gilt $h = g^{k}$ für ein $k\in\mathbb{Z}$, da $g$ Erzeuger von $G$ ist. Ist $k>0$, so ist $k$ in der Menge. Ist $k<0$, so gilt $g^{-k}=\inv{{g^k}}=\Inv{h}\in H$ und damit ist $-k$ in der Menge enthalten. Wir wollen nun zeigen: $\langle g^{m} \rangle = H$.
 	\begin{enumerate}
 		\item $\langle g^{m} \rangle \subset H$ gilt wegen $g^{m} \in H$
 		\item Es sei $j \in  \mathbb{Z}$ mit $g^{j} \in H$. Divisionsalgorithmus liefert $j=lm+r$ mit $0 \leq r < m$: $g^{j} \in H \Rightarrow g^{r}=g^{-lm}g^{lm+r}=(g^{m})^{-l}g^{j}$. Also $g^{r} \in H$. Aus der Minimalität von M folgt $r=0$. Dies liefert $g^{j}=(g^{m})^{l} \in \langle g^{m} \rangle$ und somit gilt: $H \subset \langle g^{m} \rangle$ und die zwei Untergruppen stimmen überein.
@@ -321,7 +323,7 @@
 \begin{lemma} 
 Die Funktion
 $$  	H\backslash G   \xrightarrow{f} G/H $$
-$$	Hb \rightarrow b^{-1}H$$
+$$	Hb \mapsto b^{-1}H$$
 ist eine Bijektion
 
 \end{lemma}
@@ -335,14 +337,14 @@ $b^{-1}*H = (hb_2)^{-1}*H = b_{2}^{-1}*h*H =  b_{2}^{-1}*H$
 
 2) f ist Bijektion, da sie wohldefiniert ist:\\
 $$  	G/H   \xrightarrow{g} H\backslash G $$
-$$	Ha \rightarrow Ha^{-1}$$
+$$	Ha \mapsto Ha^{-1}$$
 ist wohldefiniert, ähnlich zu (1).\\
 $g \circ f = Id_{H \backslash G}$ weil $G \circ f(Hb) = gb^{-1}H=H(b^{-1})^{-1}=Hb$ \\
 $f \circ g = Id_{G \slash H}$ analog.
 \end{proof}
 
 \begin{thm}
-Es seien $H$,$K$ Untergruppen von $G$ mit $K \subset H \subset G$. Dann gilt: $$[G:K]=[H:K]*[G:H]$$
+Es seien $H$,$K$ Untergruppen von $G$ mit $K \subset H \subset G$. Dann gilt: $$[G:K]=[H:K]\cdot[G:H]$$
 \end{thm}
 
 \begin{proof}
@@ -375,7 +377,7 @@ Der Beweis lässt sich zum Fall von unendlichem Index erweitern. Dies liefert ei
 \end{nb}
 
 \begin{kor}{Satz von Lagrange}\\
-Es gilt $\vert G\vert = [G:H]*\vert H\vert$ für jede Untergruppe  $H$ von $G$. Besonders gilt: $\vert H\vert$ teilt $\vert G\vert$ und $ord(g)$ ist ein Teiler von  $\vert G\vert$ für jedes $g\in G$.
+Es gilt $\vert G\vert = [G:H]\cdot\vert H\vert$ für jede Untergruppe  $H$ von $G$. Besonders gilt: $\vert H\vert$ teilt $\vert G\vert$ und $ord(g)$ ist ein Teiler von  $\vert G\vert$ für jedes $g\in G$.
 \end{kor}
 
 \begin{proof}
@@ -385,8 +387,8 @@ $K= \{ e\}$ im vorigen Satz.
 \begin{ex}
 $G$ endlich mit $\vert G\vert=p$ Primzahl. Dann existiert ein $g \in G$ mit $g \neq e$
 
-$ord(g)=p \Rightarrow <g>$ besteht aus genau p Elementen.\\
-Also $<g>=G$ und $G$ ist die von $g$ erzeugte zyklische Gruppe.
+$ord(g)=p \Rightarrow\langle g\rangle$ besteht aus genau p Elementen.\\
+Also $\langle g\rangle=G$ und $G$ ist die von $g$ erzeugte zyklische Gruppe.
 \end{ex}
 
 \section{Normalen Untergruppen und Gruppenhomomorphismen}
@@ -459,22 +461,22 @@ $\Rightarrow f(e_G)=f(e_G)\cdot_{H}(f(g)\cdot_{H}f(g)^{-1})=f(g)\cdot_{H}f(g)^{-
 \item $f(g^{-1})=f(g)^{-1}$ für alle $g\in G$\\
 $e_H=f(e_G)=f(g\cdot_G g^{-1})=f(g)\cdot_{H}f(g^{-1}) \Rightarrow f(g^{-1})=f(g)^{-1}$\\
 \item Seien $a_1: G_1\rightarrow G_2$ und $a_2: G_2\rightarrow G_3$ Gruppenhomomorphismen, 
-dann ist $a_1\circ a_2: G_1\rightarrow G_3$ ein Gruppenhomomorphismus.
+dann ist $a_2\circ a_1: G_1\rightarrow G_3$ ein Gruppenhomomorphismus.
 \end{enumerate}
 
 \begin{ex}
 \begin{enumerate}
 \item Für jedes $g \in G$ ist\\
 $\mathbb{Z} \rightarrow G$\\
-$n \rightarrow g^n$\\
+$n \mapsto g^n$\\
 ein Gruppenhomomorphismus.\\
 \item (Exponentialabbildung) \\
 $(\mathbb{R},+)\rightarrow(\mathbb{R}^*,\cdot)$\\
-$x\rightarrow e^x$\\
-ist ein gruppenhomomorphismus.\\
+$x\mapsto e^x$\\
+ist ein Gruppenhomomorphismus.\\
 \item Für $(G,+)$ abelsch ist\\
 $G\rightarrow G$\\
-$a\rightarrow na = a+...+a$(n-mal)\\
+$a\mapsto na = a+...+a$(n-mal)\\
 ein Gruppenhomomorphismus.
 \end{enumerate}
 \end{ex}
@@ -483,14 +485,14 @@ ein Gruppenhomomorphismus.
 Ist $N$ eine normale Untergruppe von $G$, so ist $G/N$ eine Gruppe, die man als Faktorgruppe von $G$ bezüglich $N$ bezeichnet (oder von $N$ in $G$).
 Die natürliche Projektion\\
 $G\rightarrow G/N$\\
-$a\rightarrow aN$\\
+$a\mapsto aN$\\
 ist dann ein surjektiver Gruppenhomomorphismus.
 \end{defn}
 
 \begin{defn}
 	G,H Gruppen, $ f: G \rightarrow H$ Gruppenhomomorphismus. \\
-	Das \underline{Bild von $f$} ist: $im(f) = \{f(g) | g \in G\} \subseteq H$. \\
-	Der \underline{Kern von $f$} ist: $ker(f) = \{g \in G | f(g) = e_H\} \subseteq G$.
+	Das \underline{Bild von $f$} ist: $im(f) := \{f(g) | g \in G\} \subseteq H$. \\
+	Der \underline{Kern von $f$} ist: $ker(f) := \{g \in G | f(g) = e_H\} \subseteq G$.
 \end{defn}
 
 \begin{lemma}
@@ -498,7 +500,7 @@ ist dann ein surjektiver Gruppenhomomorphismus.
 	\begin{enumerate}[label=(\roman*)]
 		\item $im(f)$ ist eine Untergruppe von H.
 		\item $ker(f)$ ist eine normale Untergruppe von G.
-		\item $f$ injektiv (bzw. surjektiv) $ \Leftrightarrow ker(f) = {e_G}$ (bzw. $im(f) = H$).
+		\item $f$ injektiv (bzw. surjektiv) $ \Leftrightarrow ker(f) = \{e_G\}$ (bzw. $im(f) = H$).
 	\end{enumerate}
 \end{lemma}
 
@@ -647,8 +649,8 @@ ist dann ein surjektiver Gruppenhomomorphismus.
     Sei $G$ eine Gruppe und $(N_i)_{i\in I}$ eine Familie von normalen Untergruppen, so dass gilt:
 
     \begin{enumerate}[label=(\roman*)]
-        \item $G=<\cup_{i\in I} N_i>$
-        \item $N_{i_0} \cap <\cup_{i\in I \setminus \{i_0\}} N_i> = \{e\}$ für jedes $i_0\in I$.
+        \item $G=\langle\cup_{i\in I} N_i\rangle$
+        \item $N_{i_0} \cap \langle\cup_{i\in I \setminus \{i_0\}} N_i\rangle = \{e\}$ für jedes $i_0\in I$.
     \end{enumerate}
 
     Dann ist $G$ das \underline{innere Produkt} von $(N_i)_{i\in I}$.
@@ -674,9 +676,9 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
 \end{lemma}
 
 \begin{proof}
-    (i) äquivalent (i)': folgt aus $$<\bigcup_{i=1}^r N_i> = \{a_1^{\xi_1}\dots a_k^{\xi_k}: a_j\in N_1\cup\dots \cup N_r, \xi_j = \pm 1\}$$ und der Tatsache, dass die $N_j$ normale Untergruppen sind die für paarweise verschiedene $j\neq j'$ kommutieren.
+    (i) äquivalent (i)': folgt aus $$\langle\bigcup_{i=1}^r N_i\rangle = \{a_1^{\xi_1}\dots a_k^{\xi_k}: a_j\in N_1\cup\dots \cup N_r, \xi_j = \pm 1\}$$ und der Tatsache, dass die $N_j$ normale Untergruppen sind die für paarweise verschiedene $j\neq j'$ kommutieren.
 
-    (ii)' impliziert (ii): oBdA gelte $i_0=1$. Wir möchten zeigen, dass $$N_1\cap <N_2\cup\dots \cup N_r> = N_1 \cap (N_2\dots N_r)= \{e\}$$ Sei $x\in N_1\cap <N_2\dots N_r>$. Dann gilt $x=n_1\in N_1$ und $x=n_2\dots n_r$ mit $n_i\in N_i$ für $i\geq 2$. Also $x=n_1e\dots e=en_2\dots n_r$, somit $n_i=e$ für alle $i$, also $x=e$.
+    (ii)' impliziert (ii): oBdA gelte $i_0=1$. Wir möchten zeigen, dass $$N_1\cap \langle N_2\cup\dots \cup N_r\rangle = N_1 \cap (N_2\dots N_r)= \{e\}$$ Sei $x\in N_1\cap \langle N_2\dots N_r\rangle$. Dann gilt $x=n_1\in N_1$ und $x=n_2\dots n_r$ mit $n_i\in N_i$ für $i\geq 2$. Also $x=n_1e\dots e=en_2\dots n_r$, somit $n_i=e$ für alle $i$, also $x=e$.
 
     (ii) impliziert (ii)': Aus $n_1\dots n_r=n_1'\dots n_r'$ mit $n_i,n_i'\in N_i$ folgt $$\inv{n_1'}n_1=(n_2'\dots n_r')\inv{n_2\dots n_r} = \{e\}$$ Die letzte Gleichheit gilt nach (ii). Also folgt $n_i=n_i'$. Vertauschen der Reihenfolge liefert dies für $i\neq 1$.
 \end{proof}
@@ -701,7 +703,7 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
     Für $N,H$ Gruppen ist eine Gruppenerweiteruung von $N$ durch eine kurze, exakte Folge von Gruppen
     
     \[ \begin{tikzcd}
-        1 \arrow[r] & N \arrow[r] & G \arrow[r] & H \arrow[r] & 1
+        1 \arrow[r] & N \arrow[r, "i"] & G \arrow[r, "p"] & H \arrow[r] & 1
     \end{tikzcd} \]
     
     gegeben, wobei $i$ injektiv, $p$ surjektiv, $\text{im } i = \ker p$ ($\nicefrac{G}{H} \cong H$).
@@ -750,8 +752,8 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
             Definiere:
 
             \begin{gather*}
-                N^*\coloneqq = \{(n, e_H): n\in N\} \cong N, \\
-                H^*\coloneqq = \{(e_N, h): h\in H\} \cong H
+                N^*\coloneqq \{(n, e_H): n\in N\} \cong N, \\
+                H^*\coloneqq \{(e_N, h): h\in H\} \cong H
             \end{gather*}
 
             $N^*,H^*$ sind Untergruppen von $G$, isomorph zu $N$ bzw. $H$. $$\pi: G\longrightarrow H, \quad (n,h)\mapsto h$$ ist ein Homomorphismus mit $\ker \pi = N^*$, also ist $N^*$ normale Untergruppe.
@@ -911,7 +913,7 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 \end{thm}
 
 \begin{proof}
-\begin{enumerate}[label=(\alph*)] % (a), (b), (c)
+\begin{enumerate}[label=(\alph*)]
     \item Es sei $\sigma\in S_n, \sigma\neq\text{id}$. Für $m_1,m_2\in\{1,\dots,n\}=:M$ definieren wir 
     \[m_1\sim m_2 :\Leftrightarrow m_1 = \sigma^l(m_2)\qquad\text{für ein }l\in\mathbb{Z}.\]
     Dann ist $\sim$ eine Äquivalenzrelation auf $M$. Es sei $M = K_1\cup K_2\cup\dots\cup K_r$ die Zerlegung von $M$ in disjunkte Äquivalenzklassen. Wir betrachten $a_j\in K_j$ beliebig. Es sei $l_j$ die kleinste positive Zahl mit $\sigma^{l_j}(a_j) = a_j$. Das liefert uns
@@ -980,16 +982,16 @@ Es seien $\sigma,\tau\in S_n$ beliebig. Dann gilt
 	\end{kor}
 
 	\begin{defn}
-	Die normale Untergruppe $A_n=ker(sgn)$ der geraden Permutationen wird die alternierende Gruppe genannt.
+	Die normale Untergruppe $A_n=\ker(sgn)$ der geraden Permutationen wird die alternierende Gruppe genannt.
 	\end{defn}
 	
 	\begin{nb}
-	Index von $A_n$ ist $S_n$ ist 2 $\Rightarrow ord(A_n)=\frac{1}{2}ord(S_n)$\\
+	Index von $A_n$ in $S_n$ ist 2 $\Rightarrow ord(A_n)=\frac{1}{2}ord(S_n)$\\
 	$ord(S_n)=n(n-1)...1=n!$
 	\end{nb}
 	
 	\begin{lemma}
-	$A_n$ wird durch die 3-Zyklen von$S_n$ erzeugt.
+	$A_n$ wird durch die 3-Zyklen von $S_n$ erzeugt.
 	\end{lemma}
 	
 	\begin{proof}
@@ -1049,12 +1051,12 @@ Es seien $\sigma,\tau\in S_n$ beliebig. Dann gilt
 	ist ein Gruppenhomomorphismus. Umgekehrt definiert jeder Gruppenhomomorphismus $\tau: G \rightarrow S_X$ durch 
 	$g: x=(\tau(g))(x)$ eine Gruppenoperation.
 	
-	\begin{defn} Es sei $\tau: G \times X \rightarrow X$ eine Gruppenoperation.
+	\begin{defn} Es sei $\bullet: G \times X \rightarrow X$ eine Gruppenoperation.
 	\begin{enumerate}
 		\item Für $x\in X$ heißt $Gx=\{ gx : g \in G\}$ die Bahn (oder Orbit) von X. 
 		\item Die Untergruppe $G_x:=\{ g\in G : gx=x\}$ heißt Isotropiegruppe (oder Stabilisator) von $x$.
-		\item Menge der Fixpunkte unter $G$: $X^G=\{ x \in X : gx=x \forall g \in G\}$
-		\item Die Gruppenoperation ist treu, falls $G \rightarrow S_X$ injektiv ist.
+		\item Menge der Fixpunkte unter $G$: $X^G:=\{ x \in X : gx=x \forall g \in G\}$
+		\item Die Gruppenoperation ist treu, falls $\tau:G \rightarrow S_X$ injektiv ist.
 		\item Die Gruppenoperation ist transitiv, wenn $X$ eine Bahn ist.
 	\end{enumerate}
 	\end{defn}
@@ -1081,7 +1083,7 @@ Es seien $\sigma,\tau\in S_n$ beliebig. Dann gilt
 		$$a \bullet b := ba^{-1}$$	
 		
 		\item $G$ operiert auf sich selbst durch Konjugation:
-		$$a /in G i_a : G \to G$$
+		$$a \in G i_a : G \to G$$
 		$$x \mapsto axa^{-1}$$	
 		Die Konjugation mit $a$ ist immer ein Automorphismus von G.
 		$$G \xrightarrow{i} Aut(G) \subseteq S_G$$
@@ -1197,10 +1199,10 @@ Induktion nach $n=\dfrac{|G|}{p}$
 \begin{itemize}
 \item \underline{Induktionsstart:} n=1, d.h. $|G|=p$. Daraus folgt: $G=\langle a\rangle$ ist zyklisch und der Erzeuger a hat Ordnung p.
 \item \underline{Induktionsschritt:} Wir nehmen an, dass die Aussage für eine Gruppe der Ordnung $pm^,$ mit $m^,<n$ gilt.\\
-Es sei $n\neq e$ ein beliebiges Element von G, und $m:=ord(h)$. Wenn m durch p teilbar ist, enthält die zyklische Untergruppe $<h>$ ein Element der Ordnung p. \\
-Wenn p kein Teiler von m ist, so ist p ein Teiler von $|G/<n>|=\dfrac{|G|}{|<n>|}=\dfrac{pn}{m}<pn$. Nach Induktionsvoraussetzung enthält die Gruppe $|G/<n>|$ ein Element $a<n>$ der Ordnung p. Es sei $k:=ord(a)$ die Ordnung der gewählten Repr. ($a \in G$). \\
-$(a<n>)^k=a^k<n>=<n>$ (neutrales Element) liefert $ p = \dfrac{ord(a<n>)}{k}$. \\
-Daraus folgt, dass $a^{\dfrac{k}{p}}$ ein Element von $<a>$ der Ordnung p ist.
+Es sei $n\neq e$ ein beliebiges Element von G, und $m:=ord(h)$. Wenn m durch p teilbar ist, enthält die zyklische Untergruppe $\langle h\rangle$ ein Element der Ordnung p. \\
+Wenn p kein Teiler von m ist, so ist p ein Teiler von $|G/\langle n\rangle|=\dfrac{|G|}{|\langle n\rangle|}=\dfrac{pn}{m}<pn$. Nach Induktionsvoraussetzung enthält die Gruppe $|G/\langle n\rangle|$ ein Element $a\langle n\rangle$ der Ordnung p. Es sei $k:=ord(a)$ die Ordnung des gewählten Repr. ($a \in G$). \\
+$(a\langle n\rangle)^k=a^k\langle n\rangle=\langle n\rangle$ (neutrales Element) liefert $ p = \dfrac{ord(a\langle n\rangle)}{k}$. \\
+Daraus folgt, dass $a^{\frac{k}{p}}$ ein Element von $\langle a\rangle$ der Ordnung p ist.
 \end{itemize}
 \end{proof}
 
