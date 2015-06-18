@@ -1030,14 +1030,14 @@ Es seien $\sigma,\tau\in S_n$ beliebig. Dann gilt
 	welche folgende Bedingungen erfüllt:
 	\begin{enumerate}
 		\item $e \bullet x = x$ ($e\in G$ neutral)
-		\item $(a\cdot b)\bullet x = a\bullet (b\bullet x) \forall a,b\in G, x\in X$
+		\item $(a\cdot b)\bullet x = a\bullet (b\bullet x)\;\forall a,b\in G, x\in X$
 	\end{enumerate}
 	\end{defn}
 	
 	\begin{ex}
 	$V$, $K$-Vektorraum, die allgemeine lineare Gruppe $GL_k(V)$ operiert auf $V$:
 	$$GL_k(V) \times X \rightarrow V$$
-	$$(A,v)\rightarrow Av$$
+	$$(A,v)\mapsto Av$$
 	\end{ex}
 
 	\begin{notation}
@@ -1047,12 +1047,12 @@ Es seien $\sigma,\tau\in S_n$ beliebig. Dann gilt
 	\begin{nb}
 	Für jedes Element $g\in G$ existiert
 	$$\tau_g: X \rightarrow X$$
-	$$x \rightarrow gx$$
+	$$x \mapsto gx$$
 	\end{nb}
 	
 	$\tau_g$ ist eine Bijektion mit Inverse $\tau_{g^{-1}}$ Aus 1. und 2. folgt:
 	$$\tau G \rightarrow S_X$$
-	$$g \rightarrow \tau_g$$
+	$$g \mapsto \tau_g$$
 	
 	ist ein Gruppenhomomorphismus. Umgekehrt definiert jeder Gruppenhomomorphismus $\tau: G \rightarrow S_X$ durch 
 	$g: x=(\tau(g))(x)$ eine Gruppenoperation.
@@ -1060,7 +1060,7 @@ Es seien $\sigma,\tau\in S_n$ beliebig. Dann gilt
 	\begin{defn} Es sei $\tau: G \times X \rightarrow X$ eine Gruppenoperation.
 	\begin{enumerate}
 		\item Für $x\in X$ heißt $Gx=\{ gx : g \in G\}$ die Bahn (oder Orbit) von X. 
-		\item Die Untergruppe $G_x=\{ g\in G : gx=x\}$ heißt Isotropiegruppe (oder Stabilisator) von $X$.
+		\item Die Untergruppe $G_x:=\{ g\in G : gx=x\}$ heißt Isotropiegruppe (oder Stabilisator) von $x$.
 		\item Menge der Fixpunkte unter $G$: $X^G=\{ x \in X : gx=x \forall g \in G\}$
 		\item Die Gruppenoperation ist treu, falls $G \rightarrow S_X$ injektiv ist.
 		\item Die Gruppenoperation ist transitiv, wenn $X$ eine Bahn ist.
@@ -1070,31 +1070,31 @@ Es seien $\sigma,\tau\in S_n$ beliebig. Dann gilt
 	\begin{ex}
 	\begin{enumerate}
 		\item Der Satz von Cayley ergibt einen Invektiven Homomorphismus.
-		$$G \rightarrow S_G$$
-		$$a \rightarrow \lambda_a$$
+		$$G \to S_G$$
+		$$a \mapsto \lambda_a$$
 		wobei
-		$$\lambda_a: G \rightarrow G$$
-		$$b \rightarrow ab$$
+		$$\lambda_a: G \to G$$
+		$$b \mapsto ab$$
 		Das heißt: 
-		$$(G\times G) \rightarrow G$$
-		$$(a,b) \rightarrow ab$$
+		$$(G\times G) \to G$$
+		$$(a,b) \mapsto ab$$
 		ist eine treue Operation von G auf G.
 		Diese Operation ist transitiv: es gilt $eG=G$, d.h. $G$ ist eine Bahn.
 		
 		\item Die Rechtstranslation
-		$$\varphi : G \rightarrow G$$
-		$$b \rightarrow ba^{1}$$
+		$$\varphi : G \to G$$
+		$$b \mapsto ba^{1}$$
 		für beliebiges $a\in G$ definiert eine treue und transitive Gruppenoperation von $G$ auf $G$:
 		$$(G,G) \rightarrow G$$
 		$$a \bullet b := ba^{-1}$$	
 		
 		\item $G$ operiert auf sich selbst durch Konjugation:
-		$$a /in G i_a : G \rightarrow G$$
-		$$x \rightarrow axa^{-1}$$	
+		$$a /in G i_a : G \to G$$
+		$$x \mapsto axa^{-1}$$	
 		Die Konjugation mit $a$ ist immer ein Automorphismus von G.
-		$$G \xrightarrow{i} Aut(G) \subset S_G$$
-		$$a \rightarrow i_a$$
-		ein gruppenhomomorphismus, d.h. eine Operation von $G$ auf sich selbst.
+		$$G \xrightarrow{i} Aut(G) \subseteq S_G$$
+		$$a \mapsto i_a$$
+		ein Gruppenhomomorphismus, d.h. eine Operation von $G$ auf sich selbst.
 		\begin{proof}
 		$a,b \in G$ $i_{ab}(x)=abx(ab)^{-1}=abxb^{-1}a^{-1}$\\
 		$=a(i_b(x))a^{-1}=i_a\circ i_b(x) \forall x\in G$
@@ -1172,7 +1172,7 @@ Das Zentrum einer p-Gruppe G enthält nicht triviale Elemente $a \neq e$.
 \item \underline{$n\geq 2$:} Aus dem Satz von Lagrange folgt, dass die Ordnung jeder Untergruppe H von G ein Teiler von $p^n$ ist, d.h. eine Primpotenz $p^k$ mit $0\leq k\leq n$. Es seien $x_{1},...,x_{m}$ Repräsentanten der Konjugationsklassen von G. \\
 $C_{G}(x_{i})$ Untergruppe $\Rightarrow |C_{G}(x_{i})|=p^k_{i}$ mit $0\leq k_{i} \leq n$ und $k_{i}=n \Leftrightarrow x_{i} \in Z(G)$  \\
 Klassengleichung: $p^n=|X|=|Z(G)|+\sum_{x_{i}\notin Z(G)}p^{n-k_{i}}$ mit $n-k_{i}>0$ \\
-$|Z(G)|= p^n-\sum_{x_{i}\notin Z(G)}p^{n-k_{i}}$ ist durch p teilbar. Wegen $|Z(G)|\geq 1$ gilt $|Z(G)|\geq p$. Es gibt also mindestens p-1 Elemente in Z(G), die vom neutralen Element verschieden sind.
+$|Z(G)|= p^n-\sum_{x_{i}\notin Z(G)}p^{n-k_{i}}$ ist durch p teilbar. Wegen $|Z(G)|\geq 1$ gilt $|Z(G)|\geq p$. Es gibt also mindestens $p-1$ Elemente in $Z(G)$, die vom neutralen Element verschieden sind.
 \end{enumerate}
 \end{proof}
 
@@ -1197,13 +1197,13 @@ Satz von Lagrange $\Rightarrow ord(H)|ord(G)$ für jede Untergruppe H von G
 Aber: wenn h ein Teiler von ord(G), existiert dann auch H mit ord(H)=h?
 
 \begin{thm}
-Es sei G eine abelsche Gruppe der Ordnung $pn$. Dann existiert immer ein $a \in G$ der Ordnung p. 
+Es seien $p$ eine Primzahl und $G$ eine abelsche Gruppe der Ordnung $pn$ für ein $n\in\mathbb{N}$. Dann existiert immer ein $a \in G$ der Ordnung p. 
 \end{thm}
 
 \begin{proof}
-Induktion auf $n=\dfrac{|G|}{p}$
+Induktion nach $n=\dfrac{|G|}{p}$
 \begin{itemize}
-\item \underline{Induktionsstart:} n=1, d.h. $|G|=p$. Daraus folgt: $G=<a>$ ist zyklisch und der Erzeuger a hat Ordnung p.
+\item \underline{Induktionsstart:} n=1, d.h. $|G|=p$. Daraus folgt: $G=\langle a\rangle$ ist zyklisch und der Erzeuger a hat Ordnung p.
 \item \underline{Induktionsschritt:} Wir nehmen an, dass die Aussage für eine Gruppe der Ordnung $pm^,$ mit $m^,<n$ gilt.\\
 Es sei $n\neq e$ ein beliebiges Element von G, und $m:=ord(h)$. Wenn m durch p teilbar ist, enthält die zyklische Untergruppe $<h>$ ein Element der Ordnung p. \\
 Wenn p kein Teiler von m ist, so ist p ein Teiler von $|G/<n>|=\dfrac{|G|}{|<n>|}=\dfrac{pn}{m}<pn$. Nach Induktionsvoraussetzung enthält die Gruppe $|G/<n>|$ ein Element $a<n>$ der Ordnung p. Es sei $k:=ord(a)$ die Ordnung der gewählten Repr. ($a \in G$). \\
@@ -1270,7 +1270,7 @@ $p^n \nmid |C_{G}(a_{i})|$ ergibt sich aus der Annahme $p^n \mid |G|$. \\
 Daraus folgt: $\dfrac{|G|}{|C_{G}(a_{i})|}$ ist durch p teilbar. Daraus folgt, dass $|Z(G)|$ durch p teilbar ist. Aus dem Satz von Cauchy folgt dann, dass $b \in Z(G)$ mit $ord(b)=p$ existiert.
 
 % VL 09.06.
-Da $b$ im Zentrum von $G$ liegt, ist $\langle b \rangle$ eine normalte Untergruppe von $G$. Wir betrachten die Faktorgruppe $G/ \langle b \rangle$. Es gilt
+Da $b$ im Zentrum von $G$ liegt, ist $\langle b \rangle$ eine normale Untergruppe von $G$. Wir betrachten die Faktorgruppe $G/ \langle b \rangle$. Es gilt
 	$$ |G/ \langle b \rangle | = \frac{|G|}{| \langle b \rangle |} = p^{n-1}q < p^nq. $$
 	Nach Induktionsvoraussetzung enthält $G / \langle b \rangle$ eine Untergruppe $\bar{S}$ der Ordnung $p^{\alpha - 1}$. Es sei $S = \{ x \in G : x \langle b \rangle \in \bar{S} \}$. $S$ ist eine Untergruppe von G und es gilt $ \bar{S} \cong S/ \langle b \rangle$, denn für die natürliche Projektion $p: S \rightarrow \bar{S} \text{ gilt } ker(p) = \langle b \rangle$ und somit ist der Homomorphiesatz anwendbar. Das liefert
 	$$ p^{\alpha - 1} = |\bar{S}| = \frac{|S|}{| \langle b \rangle |} = \frac{|S|}{p}. $$
@@ -1285,7 +1285,7 @@ Da $b$ im Zentrum von $G$ liegt, ist $\langle b \rangle$ eine normalte Untergrup
 \end{proof}
 
 \begin{kor}
-	Dei $p$-Sylowuntergruppen bilden eine Klasse von konjugierten Untergruppen von $G$.
+	Die $p$-Sylowuntergruppen bilden eine Klasse von konjugierten Untergruppen von $G$.
 \end{kor}
 
 \begin{proof}
