@@ -31,12 +31,17 @@
 \newtheorem*{nb}{Bemerkung}
 
 % commands
-\newcommand{\powerset}{\mathcal{P}}
-\newcommand{\sym}{\text{Sym}}
-\newcommand{\gl}{\text{GL}}
-\newcommand{\abb}{\text{Abb}}
+\DeclareMathOperator{\powerset}{\mathcal{P}}
+\DeclareMathOperator{\sym}{Sym}
+\DeclareMathOperator{\gl}{GL}
+\DeclareMathOperator{\abb}{Abb}
+\DeclareMathOperator\id{id}
+\DeclareMathOperator\ord{ord}
+\DeclareMathOperator\im{im}
+%\DeclareMathOperator\ker{ker}
 \newcommand{\inv}[1]{\left(#1\right)^{-1}}
 \newcommand{\Inv}[1]{#1^{-1}}
+
 
 \usepackage[ngerman]{babel}
 \usepackage[autostyle=true,german=quotes]{csquotes}
@@ -46,11 +51,16 @@
 %\usepackage[applemac]{inputenc}
 \usepackage[utf8]{inputenc}  % für Unix-Systeme
 
-% TODO Bspw. ord wird zZ als drei vAriablen (o, r, d) gesetzt. Zu einem vernünftigen Operator ändern?
+% TODO Bspw. ord wird zZ als drei Variablen (o, r, d) gesetzt. Zu einem vernünftigen Operator ändern?
+	% Ich fang einfach mal damit an. -- Peter
 % TODO Anführungszeichen sind bei mir alle falsch. Funktioniert das bei euch?
 % TODO Einige Beweise sind schrecklich strukturiert und zum Teil rettbar fehlerhaft. Darf ich?
 % TODO einheitliche subset-Notation?
+	% Ich wäre für \subseteq und \subsetneq um Missverständnisse auszuschließen. -- Peter
 % TODO emph statt underline?
+	% Wär ich für. -- Peter
+% TODO KatTheo-Notation für Funktionen oder nicht? (\xrightarrow{f})
+% TODO Wir sollten mal über den massiven \\-Spam reden. Ich habe bisher eine sinnvolle Verwendung und ca. 10^4 unsinnige gesehen.
 
 \begin{document}
 
@@ -74,7 +84,7 @@
     \begin{enumerate}
         \item $\mathbb{Z}, \mathbb{Q}, \mathbb{R}, \mathbb{C}$ sind abelsche Gruppen mit $+$ als Verknüpfung.
         \item $\mathbb{Q}^*=\mathbb{Q}\setminus \{0\}, \mathbb{R}^*, \mathbb{C}^*$ mit Multiplikation sind abelsche Gruppen.
-        \item Für eine Menge $M$ ist $\sym(M)$ ist eine Gruppe, aber nicht abelsch.
+        \item Für eine Menge $M$ ist $\sym(M)$ ist eine Gruppe, aber für $|M| > 2$ nicht abelsch.
     \end{enumerate}
 \end{ex}
 
@@ -175,7 +185,7 @@
 
 \begin{ex}
     \begin{enumerate}[label=(\alph*)]
-        \item Für alle Gruppen $(G,\cdot)$ sind $\{e\}, G$ jeweils Untergruppen, die sogenannten \emph{trivialen Untergruppen}.
+        \item Für alle Gruppen $(G,\cdot)$ sind $\{e\}$ und $G$ jeweils Untergruppen, die sogenannten \emph{trivialen Untergruppen}.
         \item $K$ Körper. $\text{SL}_n(K)=\{A\in M_n(K): \det(A)=1\}$ induziert Untergruppe von $\gl_n(K)$, die spezielle lineare Gruppe.
     \end{enumerate}
 \end{ex}
@@ -204,7 +214,7 @@
 	\begin{enumerate}[label=(\alph*)]
 		\item $\langle \emptyset \rangle = \lbrace e \rbrace$
 		\item Für $M \neq \emptyset$ gilt: $\langle M \rangle = \lbrace m_{1}^{\varepsilon_{1}} \cdot ... \cdot m_{n}^{\varepsilon_{n}} : m_{1},...,m_{n} \in M, \varepsilon_{1},...,\varepsilon_{n} \in \lbrace -1,+1\rbrace, n \geq 0 \rbrace$
-		\item Für $M = \lbrace g \rbrace$ gilt: $\langle g \rangle = \lbrace g^{n} : n \in \mathbb{Z} \rbrace$. Diese Untergruppe wird die von $g$ erzeugte zyklische Untergruppe von G genannt.
+		\item Für $M = \lbrace g \rbrace$ gilt: $\langle g \rangle = \lbrace g^{n} : n \in \mathbb{Z} \rbrace$. Diese Untergruppe wird die von $g$ erzeugte zyklische Untergruppe von $G$ genannt.
 	\end{enumerate}
 \end{nb}
 
@@ -215,9 +225,9 @@
 
 \begin{defn}
 	\begin{enumerate}[label=(\roman*)]
-		\item Die \underline{Ordnung einer Gruppe} $G$ ist $ord(G):=\vert G \vert$.
-		\item Die \underline{Ordnung eines Elements} $g \in G$ ist $ord(g):=ord(\langle g \rangle)$.
-		\item Ist $ord(g)$ endlich, dann hat g \underline{endliche Ordnung}.
+		\item Die \underline{Ordnung einer Gruppe} $G$ ist $\ord(G):=\vert G \vert$.
+		\item Die \underline{Ordnung eines Elements} $g \in G$ ist $\ord(g):=\ord(\langle g \rangle)$.
+		\item Ist $\ord(g)$ endlich, dann hat g \underline{endliche Ordnung}.
 	\end{enumerate}
 \end{defn}
 
@@ -231,11 +241,11 @@
 		\item g hat nicht endliche Ordnung $\Longleftrightarrow$ alle Potenzen von g sind verschieden
 		\item g hat endliche Ordnung $\Longleftrightarrow$ $\exists m>0: g^{m}=e$ \newline Dann gilt:
 			\begin{enumerate}[label=(\alph*)]
-				\item $n := ord(g) = \min \lbrace m>0 : g^{m}=e \rbrace$
+				\item $n := \ord(g) = \min \lbrace m>0 : g^{m}=e \rbrace$
 				\item $g^{m}=e \Longleftrightarrow m=nk$ für ein $k \in \mathbb{Z}$
 				\item $\langle g \rangle = \lbrace e, g^{1},...,g^{n-1}\rbrace$
 			\end{enumerate}
-		\item $ord(g^{s}) = \frac{n}{(n,s)}$ für $n = ord(g)$ endlich
+		\item $\ord(g^{s}) = \frac{n}{(n,s)}$ für $n = \ord(g)$ endlich
 	\end{enumerate}
 \end{thm}
 
@@ -250,14 +260,14 @@
 		Dann gilt:
 		$g^{m}=g^{kn+r}=g^{kn}g^{r}=(g^{n})^{k}g^{r}=eg^{r}=g^{r}$.
 		Daraus folgt $\langle g \rangle = \lbrace g^{m} : m \in \mathbb{Z}\rbrace = \lbrace g^{r} : r=0,...,n-1\rbrace$.
-		Besonders gilt $ord(g)=n$ ist endlich.
+		Besonders gilt $\ord(g)=n$ ist endlich.
 		$\lceil$ Dies zeigt $\Rightarrow$, $\Leftarrow$ klar, dann ist $\langle g \rangle = \lbrace g^{m} : m \in \mathbb{Z}\rbrace$ unendlich $\rfloor$
 		\item Alle $g^{r}$ mit $0 \leq r \leq n-1$ sind verschieden, da:
 		$g^{i}=g^{j} \Rightarrow g^{j-i}=e \Rightarrow j-i = kn$ mit $k\in\mathbb{Z} \Rightarrow i \equiv j \pmod{n} \Rightarrow i=j$ falls $0\leq i,j\leq n-1$.
-		Dies liefert $g^{r}$ mit $0 \leq r \leq n-1$ sind paarweise verschieden und es gilt: $ord(g)=n$. $\lceil a$ und $c\rfloor$
+		Dies liefert $g^{r}$ mit $0 \leq r \leq n-1$ sind paarweise verschieden und es gilt: $\ord(g)=n$. $\lceil a$ und $c\rfloor$
 		Aus dem Divisionsalgorithmus folgt (b): $g^{m}=e \Leftrightarrow e=g^{kn+r}=g^{r}$ mit $m = kn+r, 0 \leq r < n \Leftrightarrow r=0$.
 		Also $m=kn$ mit $k \in \mathbb{Z}$. % FIXME Scoping-Katastrophe.
-		\item Es sei $m=ord(g^{s}), n =ord(g)$.
+		\item Es sei $m=\ord(g^{s}), n =\ord(g)$.
 		Aus $(g^{s})^{m}=e$ folgt (siehe 2), dass $n$ ein Teiler von $sm$ ist.
 		Dies liefert: $\frac{n}{(s,n)} \vert \frac{s}{(s,n)}m$. Somit $\frac{n}{(s,n)} \vert m$.
 		Nun möchten wir noch zeigen: $m \vert \frac{n}{(s,n)}$. $(g^{s})^{\frac{n}{(s,n)}} = (g^{n})^{\frac{s}{(s,n)}}=e^{\frac{s}{(s,n)}}=e$.
@@ -281,7 +291,7 @@
 Ähnlich kann man zeigen:
 
 \begin{thm}
-	Alle Untergruppen einer zyklischen Gruppe sind zyklisch. Ist $ord(G)=n$ endlich und $m$ ein Teiler von $n$, so ist $H = \langle g^{\frac{n}{m}}\rangle$ die einzige Untergruppe der Ordnung $m$. % FIXME Beweis?
+	Alle Untergruppen einer zyklischen Gruppe sind zyklisch. Ist $\ord(G)=n$ endlich und $m$ ein Teiler von $n$, so ist $H = \langle g^{\frac{n}{m}}\rangle$ die einzige Untergruppe der Ordnung $m$. % FIXME Beweis?
 \end{thm}
 
 \begin{defn}
@@ -335,12 +345,12 @@ das heißt $b_{1} {_{\ H}}\sim b_{2}$ \\
 existiert ein $h \in H$ mit $b_1 = hb_2$ \\
 $b^{-1}*H = (hb_2)^{-1}*H = b_{2}^{-1}*h*H =  b_{2}^{-1}*H$ 
 
-2) f ist Bijektion, da sie wohldefiniert ist:\\
+2) f ist Bijektion, da sie wohldefiniert ist:
 $$  	G/H   \xrightarrow{g} H\backslash G $$
-$$	Ha \mapsto Ha^{-1}$$
-ist wohldefiniert, ähnlich zu (1).\\
-$g \circ f = Id_{H \backslash G}$ weil $G \circ f(Hb) = gb^{-1}H=H(b^{-1})^{-1}=Hb$ \\
-$f \circ g = Id_{G \slash H}$ analog.
+$$	aH \mapsto Ha^{-1}$$
+ist wohldefiniert, ähnlich zu (1).
+$g \circ f = \id_{H \backslash G}$, weil $(g \circ f)(Hb) = g(b^{-1}H)=H(b^{-1})^{-1}=Hb$ ist.
+$f \circ g = \id_{G \slash H}$ folgt analog.
 \end{proof}
 
 \begin{thm}
@@ -351,22 +361,16 @@ Es seien $H$,$K$ Untergruppen von $G$ mit $K \subset H \subset G$. Dann gilt: $$
 Wir nehmen an, dass $[G:H]=m$ und $[H:K]=n$ endlich sind. 
 Dann gibt es $a_1,.....,a_n \in H$, so dass
 $H/K=\{ a_1K,...,a_nK\}$ und $b_1,...,b_m \in G$ mit
-$G/H=\{ b_1H,...,b_mH\}$
+$G/H=\{ b_1H,...,b_mH\}$. Nun ist $$G=\bigcup\limits_{\begin{subarray}{1}i=1...m \\ j=1...n\end{subarray}} b_ia_jK$$ mit paarweise disunkten $b_ia_jK$.
 
-Dann gilt:
-$$G=\bigcup\limits_{\begin{subarray}{1}i=1...m \\ j=1...n\end{subarray}} b_ia_jK$$
-mit $b_ia_jK$ paarweise disunkt.
-
-$b_{i_{1}}a_{j_{1}}K=b_{i_{2}}a_{j_{2}}K$ mit $i_1,i_2 \in \{1,...,n \}$ und $j_1,j_2 \in \{1,...,m \}$
-
-$\Rightarrow b_{i_{1}}H$ und $b_{i_{2}}H$ sind nicht disjunkt.
+Falls $b_{i_{1}}a_{j_{1}}K=b_{i_{2}}a_{j_{2}}K$ mit $i_1,i_2 \in \{1,...,n \}$ und $j_1,j_2 \in \{1,...,m \}$ ist, so sind $b_{i_{1}}H$ und $b_{i_{2}}H$ sind nicht disjunkt.
 
 $\Rightarrow b_{i_{1}}H=b_{i_{2}}H$
 
 Dann gilt: $b_{i_{1}}a_{j_{1}}K=b_{i_{1}}a_{j_{2}}K$
 
-$\overset{*b^{-1}}{\Rightarrow} a_{j_{1}}K=a_{j_{2}}K \Rightarrow a_{j_{1}}=a_{j_{2}}$ \\
-Also: Es gibt genau $m*n$ Linksnebenklassen von $K$ in $G$.
+$\overset{*b^{-1}}{\Rightarrow} a_{j_{1}}K=a_{j_{2}}K \Rightarrow a_{j_{1}}=a_{j_{2}}$
+Also: Es gibt genau $m\cdot n$ Linksnebenklassen von $K$ in $G$.
 
 $\bigcup\limits_{\begin{subarray}{1}i=1...m \\ j=1...n\end{subarray}} b_ia_jK =  \bigcup\limits_i b_i( \bigcup\limits_j a_jK)= \bigcup\limits_i b_iH=G$
 
@@ -377,7 +381,7 @@ Der Beweis lässt sich zum Fall von unendlichem Index erweitern. Dies liefert ei
 \end{nb}
 
 \begin{kor}{Satz von Lagrange}\\
-Es gilt $\vert G\vert = [G:H]\cdot\vert H\vert$ für jede Untergruppe  $H$ von $G$. Besonders gilt: $\vert H\vert$ teilt $\vert G\vert$ und $ord(g)$ ist ein Teiler von  $\vert G\vert$ für jedes $g\in G$.
+Es gilt $\vert G\vert = [G:H]\cdot\vert H\vert$ für jede Untergruppe  $H$ von $G$. Besonders gilt: $\vert H\vert$ teilt $\vert G\vert$ und $\ord(g)$ ist ein Teiler von  $\vert G\vert$ für jedes $g\in G$.
 \end{kor}
 
 \begin{proof}
@@ -387,7 +391,7 @@ $K= \{ e\}$ im vorigen Satz.
 \begin{ex}
 $G$ endlich mit $\vert G\vert=p$ Primzahl. Dann existiert ein $g \in G$ mit $g \neq e$
 
-$ord(g)=p \Rightarrow\langle g\rangle$ besteht aus genau p Elementen.\\
+$\ord(g)=p \Rightarrow\langle g\rangle$ besteht aus genau p Elementen.\\
 Also $\langle g\rangle=G$ und $G$ ist die von $g$ erzeugte zyklische Gruppe.
 \end{ex}
 
@@ -466,41 +470,40 @@ dann ist $a_2\circ a_1: G_1\rightarrow G_3$ ein Gruppenhomomorphismus.
 
 \begin{ex}
 \begin{enumerate}
-\item Für jedes $g \in G$ ist\\
-$\mathbb{Z} \rightarrow G$\\
-$n \mapsto g^n$\\
-ein Gruppenhomomorphismus.\\
-\item (Exponentialabbildung) \\
-$(\mathbb{R},+)\rightarrow(\mathbb{R}^*,\cdot)$\\
-$x\mapsto e^x$\\
-ist ein Gruppenhomomorphismus.\\
-\item Für $(G,+)$ abelsch ist\\
-$G\rightarrow G$\\
-$a\mapsto na = a+...+a$(n-mal)\\
+\item Für jedes $g \in G$ ist
+$$\mathbb{Z} \rightarrow G, \qquad n \mapsto g^n$$
+ein Gruppenhomomorphismus.
+\item Die Exponentialfunktion
+$$(\mathbb{R},+)\rightarrow(\mathbb{R}^*,\cdot), \qquad x\mapsto e^x$$
+ist ein Gruppenhomomorphismus.
+\item Für $(G,+)$ abelsch ist % TODO zu multiplikativer Notation wechseln, weil wegen definiert?
+$$G\rightarrow G, \qquad a\mapsto na = a+...+a \text{(n-mal)}$$
 ein Gruppenhomomorphismus.
 \end{enumerate}
 \end{ex}
 
 \begin{defn}
 Ist $N$ eine normale Untergruppe von $G$, so ist $G/N$ eine Gruppe, die man als Faktorgruppe von $G$ bezüglich $N$ bezeichnet (oder von $N$ in $G$).
-Die natürliche Projektion\\
-$G\rightarrow G/N$\\
-$a\mapsto aN$\\
+Die natürliche Projektion
+$$G\rightarrow G/N, \qquad a\mapsto aN$$
 ist dann ein surjektiver Gruppenhomomorphismus.
 \end{defn}
 
 \begin{defn}
-	G,H Gruppen, $ f: G \rightarrow H$ Gruppenhomomorphismus. \\
-	Das \underline{Bild von $f$} ist: $im(f) := \{f(g) | g \in G\} \subseteq H$. \\
-	Der \underline{Kern von $f$} ist: $ker(f) := \{g \in G | f(g) = e_H\} \subseteq G$.
+	G,H Gruppen, $ f: G \rightarrow H$ Gruppenhomomorphismus.
+	\begin{itemize}
+	\item Das \underline{Bild von $f$} ist $\im(f) := \{f(g) | g \in G\} \subseteq H$.
+	\item Der \underline{Kern von $f$} ist $\ker(f) := \{g \in G | f(g) = e_H\} \subseteq G$.
+	\end{itemize}
 \end{defn}
 
 \begin{lemma}
 	Für jeden Gruppenhomomorphismus $ f: G \rightarrow H$ gilt:
 	\begin{enumerate}[label=(\roman*)]
-		\item $im(f)$ ist eine Untergruppe von H.
-		\item $ker(f)$ ist eine normale Untergruppe von G.
-		\item $f$ injektiv (bzw. surjektiv) $ \Leftrightarrow ker(f) = \{e_G\}$ (bzw. $im(f) = H$).
+		\item $\im(f)$ ist eine Untergruppe von $H$.
+		\item $\ker(f)$ ist eine normale Untergruppe von $G$.
+		\item $f$ ist surjektiv genau dann, wenn $\im(f) = H$ ist.
+		\item $f$ ist injektiv genau dann, wenn $\ker(f) = \{e_G\}$ ist.\footnote{vgl. Übung 2, Aufgabe 1.}
 	\end{enumerate}
 \end{lemma}
 
@@ -513,7 +516,10 @@ ist dann ein surjektiver Gruppenhomomorphismus.
 			Für jedes $ g \in ker(f)$ und $x \in G$ gilt:
 			$$ f(x^{-1}gx) = f(x^{-1})f(g)f(x) = f(x^{-1}) e f(x) = f(x^{-1})f(x) = f(x^{-1}x) = f(e) = e.$$
 			Also ist $x^{-1}gx \in ker(f) $ und somit ist $ker(f)$ ein Normalteiler.
-		\item Surjektivität: offensichtlich. Injektivität: vgl. Übung 2, Aufgabe 1.
+		\item Surjektivität: Dies ist exakt die Definition der Surjektivität.
+		\item Injektivität: Dass aus Injektivität die Trivialität des Kernes folgt, ist klar.
+			Umgekehrt gilt für alle \(a, b \in G\) mit \(f(a) = f(b)\), dass \[e_H = f(a)f(b^{-1}) =f(a)f(b^{-1}) = f(ab^{-1})\] ist.
+			Somit haben wir \(ab^{-1} \in \ker(f) = \{e_G\}\), also \(a = b\) und folglich die Injektivität von \(f\). \qedhere
 	\end{enumerate}	
 \end{proof}
 
@@ -641,7 +647,7 @@ ist dann ein surjektiver Gruppenhomomorphismus.
 \begin{nb}
 	\begin{itemize}
 		\item $1 \longrightarrow G_{i_0} \stackrel{j_{i_0}}{\longrightarrow} \prod_{i \in I}G_i \stackrel{p_{i_0}}{\longrightarrow} \prod_{i \in I-\{i_0\}}G_i \longrightarrow 1$ ist kurze exakte Folge.
-		\item Der Beweis liefert $\overline{G_{i_0}} \cap \langle \bigcup_{i \in I-\{i_0\}}G_i \rangle = \{e\}$.
+		\item Der Beweis liefert $\overline{G_{i_0}} \cap \langle \bigcup_{i \in I-\{i_0\}}G_i \rangle = \{e\}$. % FIXME Über die G_i zu Vereinigen ergibt keinen Sinn, da keine Gemeinsame Verküpfung besteht. Fehlt hier ein \overline?
 	\end{itemize}
 \end{nb}
 
@@ -684,30 +690,28 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
 \end{proof}
 
 \begin{thm}
-    Das innere Produkt $G$ von normalen Untergruppen $N_1,\dots,N_r$ ist zum äußeren Produkt $N_1\times\dots \times N_r$ kanonisch isomorph. Folgerung: Wir brauchen nicht zwischen den $\overline{G_i}=N_i$ und den $G_i$ zu unterscheiden.
+    Das innere Produkt $G$ von normalen Untergruppen $N_1,\dots,N_r$ ist zum äußeren Produkt $N_1\times\dots \times N_r$ kanonisch isomorph.
+    Folgerung: Wir brauchen nicht zwischen den $\overline{G_i}=N_i$ und den $G_i$ zu unterscheiden.
 \end{thm}
 
 \begin{proof}
-    Wir definieren $$N_1\times\dots\times N_r \overset{\pi}{\longrightarrow} G,\quad (n_1,\dots,n_r)\mapsto n_1\dots n_r$$ Da das Bild von $\pi$ die Untergruppe $N_1\dots N_r \overset{(i)'}{=} G$ ist, ist $\pi$ surjektiv. Aus (ii)' folgt, dass $\pi$ auch injektiv ist. $\pi$ ist auch Gruppenhomomorphismus: 
-    
+    Wir definieren $$N_1\times\dots\times N_r \overset{\pi}{\longrightarrow} G,\quad (n_1,\dots,n_r)\mapsto n_1\dots n_r$$
+    Da das Bild von $\pi$ die Untergruppe $N_1\dots N_r \overset{(i)'}{=} G$ ist, ist $\pi$ surjektiv.
+    Aus (ii)' folgt, dass $\pi$ auch injektiv ist.
+    $\pi$ ist auch Gruppenhomomorphismus:
     \begin{align*}
-        \pi((m_1,\dots,m_r)\cdot (n_1,\dots,n_r)) \\
-        =\pi((m_1n_1,\dots,m_rn_r))=m_1n_1\dots m_rn_r=m_1\dots m_rn_1\dots n_r \\
-        \pi(\bar m)\pi(\bar n)
+		\pi((m_1,\dots,m_r)\cdot (n_1,\dots,n_r)) &= \pi((m_1n_1,\dots,m_rn_r)) = m_1n_1\dots m_rn_r\\
+		&= m_1\dots m_rn_1\dots n_r = \pi(\bar m)\pi(\bar n)
     \end{align*}
-    
     Dabei gilt die vorletzte Gleichheit, weil wir Elemente aus verschiedenen Untergruppen vertauschen dürfen.
 \end{proof}
 
 \begin{defn}
     Für $N,H$ Gruppen ist eine Gruppenerweiteruung von $N$ durch eine kurze, exakte Folge von Gruppen
-    
     \[ \begin{tikzcd}
         1 \arrow[r] & N \arrow[r, "i"] & G \arrow[r, "p"] & H \arrow[r] & 1
     \end{tikzcd} \]
-    
-    gegeben, wobei $i$ injektiv, $p$ surjektiv, $\text{im } i = \ker p$ ($\nicefrac{G}{H} \cong H$).
-
+    gegeben, wobei $i$ injektiv, $p$ surjektiv, $\text{im } i = \ker p$ ($\nicefrac{G}{H} \cong H$). % FIXME Ich bezweifle das akut. G/H \cong N?
 \end{defn}
 
 \begin{ex}
@@ -723,53 +727,45 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
 \end{nb}
 
 \begin{thm}
-    Für jedes $h\in H$ ist die Konjugationsabbildung $$\gamma_h: N\to N, \quad n\mapsto hn\Inv{h}$$ ein Automorphismus von $N$. Dies ergibt den Homomorphismus $$H\overset{\gamma}{\longrightarrow} \text{Aut}(N), h\mapsto \gamma_h$$
+    Für jedes $h\in H$ ist die Konjugationsabbildung $$\gamma_h: N\to N, \quad n\mapsto hn\Inv{h}$$ ein Automorphismus von $N$.
+    Dies ergibt den Homomorphismus $$H\overset{\gamma}{\longrightarrow} \text{Aut}(N), \quad h\mapsto \gamma_h$$
 \end{thm}
 
 \begin{proof}
     $\gamma$ ist Homomorphismus:
-
-    \begin{gather*}
-        \gamma_{h_1h_2}(n)=(h_1h_2)n\inv{h_1h_2}=h_1h_2n\Inv{h_2}\Inv{h_1} \\
-        = h_1\gamma_{h_2}(n)\Inv{h_1}=(\gamma_{h_1}\circ\gamma_{h_2})(n)
-    \end{gather*}
-
+    \begin{align*}
+        \gamma_{h_1h_2}(n)&=(h_1h_2)n\inv{h_1h_2}=h_1h_2n\Inv{h_2}\Inv{h_1} \\
+        &= h_1\gamma_{h_2}(n)\Inv{h_1}=(\gamma_{h_1}\circ\gamma_{h_2})(n)
+    \end{align*}
     für $n\in N$.
 \end{proof}
 
 \begin{nb}
     \begin{enumerate}[label=(\arabic*)]
-        \item Das semidirekte Produkt von $N$ und $H$ wird von $\gamma: H\to \text{Aut}(N)$ eindeutig festgelegt. Es gilt nämlich: $$(n_1h_1)(n_2h_2)=n_1(h_1n_2\Inv{h_1})h_1h_2=n_1\gamma_{h_1}(n_2)h_1h_2$$ wobei $$n_1\gamma_{h_1}(n_2)\in N, h_1h_2\in H$$.
-        \item Umgekehrt definiert $\gamma: H\to \text{Aut}(N)$ immer ein semidirektes Produkt $N\rtimes H$:
-
+        \item Das semidirekte Produkt von $N$ und $H$ wird von $\gamma: H\to \text{Aut}(N)$ eindeutig festgelegt.
+        Es gilt nämlich: $$(n_1h_1)(n_2h_2)=n_1(h_1n_2\Inv{h_1})h_1h_2=n_1\gamma_{h_1}(n_2)h_1h_2$$ wobei $$n_1\gamma_{h_1}(n_2)\in N, h_1h_2\in H.$$
+        \item Umgekehrt definiert $\gamma: H\to \text{Aut}(N)$ immer ein semidirektes Produkt $N\rtimes H$: % Für beliebige Gruppen N, H? Oder gibt es weitere Anforderungen?
             \begin{gather*}
                 G=(N\times H, \cdot_\gamma) \\
                 (n_1,h_1)\cdot_\gamma (n_2,h_2)=(n_1\gamma_{h_1}(n_2), h_1h_2)
             \end{gather*}
-
             ist Gruppe mit neutralem Element $(e_N, e_H)$ und inversen Elementen $$\Inv{(n,h)}=(\gamma_{\Inv{h}}(\Inv{n}),\Inv{h})$$
-
             Definiere:
-
-            \begin{gather*}
-                N^*\coloneqq \{(n, e_H): n\in N\} \cong N, \\
-                H^*\coloneqq \{(e_N, h): h\in H\} \cong H
-            \end{gather*}
-
+            \begin{align*}
+                N^*&\coloneqq \{(n, e_H): n\in N\} \cong N, \\
+                H^*&\coloneqq \{(e_N, h): h\in H\} \cong H
+            \end{align*}
             $N^*,H^*$ sind Untergruppen von $G$, isomorph zu $N$ bzw. $H$. $$\pi: G\longrightarrow H, \quad (n,h)\mapsto h$$ ist ein Homomorphismus mit $\ker \pi = N^*$, also ist $N^*$ normale Untergruppe.
-
-            Das $N^*\cap H^* = \{e\}$ ist klar. $$(n,h)=(n,e_H)\cdot_\gamma (e_N, h)$$ liefert $G=N^*H^*$.
+            Das $N^*\cap H^* = \{e\}$ ist klar und $(n,h)=(n,e_H)\cdot_\gamma (e_N, h)$ liefert $G=N^*H^*$.
     \end{enumerate}
 \end{nb}
 
 \begin{defn}
-    Eine kurze exakte Folge 
-
+    Eine kurze exakte Folge
     \[ \begin{tikzcd}
         1 \arrow[r] & N \arrow[r, "i"] & G \arrow[r, "p"] & H \arrow[l, bend left, dashed, "s"] \arrow[r] & 1
     \end{tikzcd} \]
-
-    spaltet, falls ein Homomorphismus $s: H\to G$ existiert, mit $p\circ s = \text{id}_H$. $p$ heißt ein \underline{Schnitt} von $p$.
+    spaltet, falls ein Homomorphismus $s: H\to G$ existiert, mit $p\circ s = \text{id}_H$. $p$ heißt ein \underline{Schnitt} von $p$. % FIXME **p** heißt Schnitt von **p**? Eher nicht.
 \end{defn}
 
 Für $G=N\rtimes H$ Gruppenerweiterung:
@@ -842,7 +838,7 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
     
     \item Spezialfall: $N = \mathbb{Z}/k\mathbb{Z}$, $D_{2k} := D_{\mathbb{Z}/k\mathbb{Z}}$ heißt Diedergruppe der Ordnung $2k$. Dann ist $D_{2k}$ die Symmetriegruppe des regelmäßigen k-Gons. Die Untergruppe $N\subset D_{2k}$ ist gerade die Menge der Drehungen.
     
-    Ist $G$ eine von zwei Elementen $n,h\in G$ erzeugt, also $G = \left< n,h\right>$, mit $ord(n) = k$ ($\cong$ Drehung) und $ord(h) = 2$ ($\cong$ Spiegelung) und außerdem $h^{-1}nh=n^{-1}$, so gilt $G\cong D_{2k}$.
+    Ist $G$ eine von zwei Elementen $n,h\in G$ erzeugt, also $G = \left< n,h\right>$, mit $\ord(n) = k$ ($\cong$ Drehung) und $\ord(h) = 2$ ($\cong$ Spiegelung) und außerdem $h^{-1}nh=n^{-1}$, so gilt $G\cong D_{2k}$.
 \end{enumerate}
 
 \end{ex}
@@ -986,8 +982,8 @@ Es seien $\sigma,\tau\in S_n$ beliebig. Dann gilt
 	\end{defn}
 	
 	\begin{nb}
-	Index von $A_n$ in $S_n$ ist 2 $\Rightarrow ord(A_n)=\frac{1}{2}ord(S_n)$\\
-	$ord(S_n)=n(n-1)...1=n!$
+	Index von $A_n$ in $S_n$ ist 2 $\Rightarrow \ord(A_n)=\frac{1}{2}\ord(S_n)$\\
+	$\ord(S_n)=n(n-1)...1=n!$
 	\end{nb}
 	
 	\begin{lemma}
@@ -1162,8 +1158,8 @@ Das Zentrum einer p-Gruppe G enthält nicht triviale Elemente $a \neq e$.
 
 \begin{proof}
 \begin{enumerate}
-\item \underline{n=1:} ord(G)=p ist eine Primzahl. Dann ist G eine zyklische Gruppe. Da G abelsch ist, gilt dann: G=Z(G).
-\item \underline{$n\geq 2$:} Aus dem Satz von Lagrange folgt, dass die Ordnung jeder Untergruppe H von G ein Teiler von $p^n$ ist, d.h. eine Primpotenz $p^k$ mit $0\leq k\leq n$. Es seien $x_{1},...,x_{m}$ Repräsentanten der Konjugationsklassen von G. \\
+\item \underline{n=1:} \(\ord(G)=p\) ist eine Primzahl. Dann ist \(G\) eine zyklische Gruppe. Da \(G\) abelsch ist, gilt dann: \(G=Z(G)\).
+\item \underline{$n\geq 2$:} Aus dem Satz von Lagrange folgt, dass die Ordnung jeder Untergruppe $H$ von $G$ ein Teiler von $p^n$ ist, d.h. eine Primpotenz $p^k$ mit $0\leq k\leq n$. Es seien $x_{1},...,x_{m}$ Repräsentanten der Konjugationsklassen von $G$.
 $C_{G}(x_{i})$ Untergruppe $\Rightarrow |C_{G}(x_{i})|=p^k_{i}$ mit $0\leq k_{i} \leq n$ und $k_{i}=n \Leftrightarrow x_{i} \in Z(G)$  \\
 Klassengleichung: $p^n=|X|=|Z(G)|+\sum_{x_{i}\notin Z(G)}p^{n-k_{i}}$ mit $n-k_{i}>0$ \\
 $|Z(G)|= p^n-\sum_{x_{i}\notin Z(G)}p^{n-k_{i}}$ ist durch p teilbar. Wegen $|Z(G)|\geq 1$ gilt $|Z(G)|\geq p$. Es gibt also mindestens $p-1$ Elemente in $Z(G)$, die vom neutralen Element verschieden sind.
@@ -1187,11 +1183,11 @@ Die Bahnengleichung liefert $|X|-|X^G|=\sum_{x_{i}\notin Z(G)}p^{n-k_{i}}$ ist e
 
 \subsection{Die sylowschen Sätze}
 
-Satz von Lagrange $\Rightarrow ord(H)|ord(G)$ für jede Untergruppe H von G
-Aber: wenn h ein Teiler von ord(G), existiert dann auch H mit ord(H)=h?
+Satz von Lagrange $\Rightarrow \ord(H)|\ord(G)$ für jede Untergruppe $H$ von $G$
+Aber: wenn h ein Teiler von $\ord(G)$, existiert dann auch H mit $\ord(H)=h$?
 
 \begin{thm}
-Es seien $p$ eine Primzahl und $G$ eine abelsche Gruppe der Ordnung $pn$ für ein $n\in\mathbb{N}$. Dann existiert immer ein $a \in G$ der Ordnung p. 
+Es seien $p$ eine Primzahl und $G$ eine abelsche Gruppe der Ordnung $pn$ für ein $n\in\mathbb{N}$. Dann existiert immer ein $a \in G$ der Ordnung $p$.
 \end{thm}
 
 \begin{proof}
@@ -1199,9 +1195,9 @@ Induktion nach $n=\dfrac{|G|}{p}$
 \begin{itemize}
 \item \underline{Induktionsstart:} n=1, d.h. $|G|=p$. Daraus folgt: $G=\langle a\rangle$ ist zyklisch und der Erzeuger a hat Ordnung p.
 \item \underline{Induktionsschritt:} Wir nehmen an, dass die Aussage für eine Gruppe der Ordnung $pm^,$ mit $m^,<n$ gilt.\\
-Es sei $n\neq e$ ein beliebiges Element von G, und $m:=ord(h)$. Wenn m durch p teilbar ist, enthält die zyklische Untergruppe $\langle h\rangle$ ein Element der Ordnung p. \\
-Wenn p kein Teiler von m ist, so ist p ein Teiler von $|G/\langle n\rangle|=\dfrac{|G|}{|\langle n\rangle|}=\dfrac{pn}{m}<pn$. Nach Induktionsvoraussetzung enthält die Gruppe $|G/\langle n\rangle|$ ein Element $a\langle n\rangle$ der Ordnung p. Es sei $k:=ord(a)$ die Ordnung des gewählten Repr. ($a \in G$). \\
-$(a\langle n\rangle)^k=a^k\langle n\rangle=\langle n\rangle$ (neutrales Element) liefert $ p = \dfrac{ord(a\langle n\rangle)}{k}$. \\
+Es sei $n\neq e$ ein beliebiges Element von G, und $m:=\ord(h)$. Wenn m durch p teilbar ist, enthält die zyklische Untergruppe $\langle h\rangle$ ein Element der Ordnung p. \\
+Wenn p kein Teiler von m ist, so ist p ein Teiler von $|G/\langle n\rangle|=\dfrac{|G|}{|\langle n\rangle|}=\dfrac{pn}{m}<pn$. Nach Induktionsvoraussetzung enthält die Gruppe $|G/\langle n\rangle|$ ein Element $a\langle n\rangle$ der Ordnung p. Es sei $k:=\ord(a)$ die Ordnung des gewählten Repr. ($a \in G$). \\
+$(a\langle n\rangle)^k=a^k\langle n\rangle=\langle n\rangle$ (neutrales Element) liefert $ p = \dfrac{\ord(a\langle n\rangle)}{k}$. \\
 Daraus folgt, dass $a^{\frac{k}{p}}$ ein Element von $\langle a\rangle$ der Ordnung p ist.
 \end{itemize}
 \end{proof}
@@ -1211,13 +1207,13 @@ Ist p eine Primzahl, die die Ordnung der endl. Gruppe G teilt, so enthält G ein
 \end{thm}
 
 \begin{proof}
-Induktion auf $ord(G)$
+Induktion auf $\ord(G)$
 \begin{itemize}
-\item \underline{Induktionsstart:} ord(G)=1 ist klar
-\item \underline{Induktionsschritt:} Wir nehmen an, dass die Aussage für alle Gruppen T gilt mit $ord(T)<ord(G)$. \\
+\item \underline{Induktionsstart:} $\ord(G)=1$ ist klar
+\item \underline{Induktionsschritt:} Wir nehmen an, dass die Aussage für alle Gruppen T gilt mit $\ord(T)<\ord(G)$. \\
 Wenn G eine Untergruppe H enthält, deren Ordnung durch p teilbar ist, so enthält H ein Element der Ordnung p. \\
 Wir können annehmen, dass die Ordnung jeder Untergruppe $H\neq G$ nicht durch p teilbar ist. \\
-Im Spezialfall der Zentralisation gilt: $p \nmid ord(C_{G}(a))$ für $a \notin Z(G)$ \\
+Im Spezialfall der Zentralisation gilt: $p \nmid \ord(C_{G}(a))$ für $a \notin Z(G)$ \\
 Klassengleichung: $|G|=|Z(G)|+\sum_{x_{i}\notin Z(G)}\dfrac{|G|}{|C_{G}(a)|}$ impliziert $p|\mid |Z(G)|$. Aus der Annahme folgt dann Z(G)=G. \\
 G ist also abelsch und die Aussage folgt aus dem vorherigen Satz.
 \end{itemize}
@@ -1229,13 +1225,13 @@ Die Ordnung einer endlichen Gruppe G ist genau dann eine Primpotenz für eine Pr
 
 \begin{proof}
 \begin{itemize}
-\item[$"\Rightarrow"$]ord(g) teilt $ord(G)=p^n$ (Lagrange) impliziert, dass $ord(g)=p^k$ gilt
-\item[$"\Leftarrow"$]Ist die Ordnung von G von der Form $ord(G)=p^\alpha q$ mit $q\neq 1$ prim zu p. Dann enthält G ein Element der Ordnung p für jeden Primfaktor von q, somit ist die Ordnung nicht von der Form $p^k$. Widerspruch!
+\item[$"\Rightarrow"$]$\ord(g)$ teilt $\ord(G)=p^n$ (Lagrange) impliziert, dass $\ord(g)=p^k$ gilt
+\item[$"\Leftarrow"$]Ist die Ordnung von G von der Form $\ord(G)=p^\alpha q$ mit $q\neq 1$ prim zu p. Dann enthält G ein Element der Ordnung p für jeden Primfaktor von q, somit ist die Ordnung nicht von der Form $p^k$. Widerspruch!
 \end{itemize}
 \end{proof}
 
 \begin{nb}
-(unendliche) Gruppen G, für die gilt: $ord(a)=p^{n(a)}\ \ \forall a \in G$, p feste Primzahl, werden \underline{p-Gruppen} genannt.
+(unendliche) Gruppen G, für die gilt: $\ord(a)=p^{n(a)}\ \ \forall a \in G$, p feste Primzahl, werden \underline{p-Gruppen} genannt.
 \end{nb}
 
 \begin{defn}
@@ -1254,14 +1250,14 @@ Es sei G eine endliche Gruppe der Ordnung $|G|=p^n q$ mit p Primzahl, q teilerfr
 
 \begin{proof}
 \begin{enumerate}
-\item Induktion auf $ord(G)$ \\
-Wir nehmen an, dass die Aussage für alle Gruppen der Ordnung $< ord(G)$ gilt. \\
+\item Wir zeigen die durch Induktion auf $\ord(G)$.
+Wir nehmen an, dass die Aussage für alle Gruppen gilt, deren Ordnung kleiner als \(\ord(G)\) ist.
 Wenn G eine echte Untergruppe H enthält, wobei $|H|$ durch p teilbar ist, existiert nach der Induktionsvor. eine Untergruppe von H von der Ordnung $p^\alpha$.(fertig) \\
-Wir können uns auf den Fall beschränken, dass $p^n \nmid ord(H)$ für alle Untergruppen $H\neq G$gilt. \\
+Wir können uns auf den Fall beschränken, dass $p^n \nmid \ord(H)$ für alle Untergruppen $H\neq G$gilt. \\
 $(a_{i}){i \in I}$ Repräsentantensystem der Konjugationsklassen. \\
 $p^n q=|G|=|Z(G)|+\sum_{x_{i}\notin Z(G)}\dfrac{|G|}{|C_{G}(a_{i})|}$ \\
 $p^n \nmid |C_{G}(a_{i})|$ ergibt sich aus der Annahme $p^n \mid |G|$. \\
-Daraus folgt: $\dfrac{|G|}{|C_{G}(a_{i})|}$ ist durch p teilbar. Daraus folgt, dass $|Z(G)|$ durch p teilbar ist. Aus dem Satz von Cauchy folgt dann, dass $b \in Z(G)$ mit $ord(b)=p$ existiert.
+Daraus folgt: $\dfrac{|G|}{|C_{G}(a_{i})|}$ ist durch p teilbar. Daraus folgt, dass $|Z(G)|$ durch p teilbar ist. Aus dem Satz von Cauchy folgt dann, dass $b \in Z(G)$ mit $\ord(b)=p$ existiert.
 
 % VL 09.06.
 Da $b$ im Zentrum von $G$ liegt, ist $\langle b \rangle$ eine normale Untergruppe von $G$. Wir betrachten die Faktorgruppe $G/ \langle b \rangle$. Es gilt
@@ -1350,7 +1346,7 @@ Für den Beweis des dritten Teils benötigen wir folgendes Lemma:
         \[ t|10,\; t\equiv 1(3) \Rightarrow t=10.\]
     Damit enthalten die 3-Sylowuntergruppen $10\cdot 2=20$ Elemente und das neutrale Element.
     
-    Aber: $20+24+1=45>30=\text{ord}(G)$. Also kann $G$ nicht einfach sein.
+    Aber: $20+24+1=45>30=\ord(G)$. Also kann $G$ nicht einfach sein.
 \end{proof}
 
 \subsection{Normal- und Kompositionsreihen}
