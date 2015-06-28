@@ -1,5 +1,6 @@
-\documentclass[12pt]{scrartcl}%{article} % Beginn der LaTeX-Datei
-\usepackage{mathtools,amsmath,amssymb,amsthm} % erleichtert Mathe 
+\documentclass[12pt]{scrartcl} % Beginn der LaTeX-Datei
+
+% Größerer Zeilenabstand in mehrzeiligen amsmath-Umgebungen
 \addtolength{\jot}{0.2em}
 
 % Schicke Nummerierung
@@ -8,7 +9,41 @@
 \newcommand{\sbt}{\,\begin{picture}(-1,1)(-1,-3)\circle*{3}\end{picture}\ }
 \renewcommand{\labelitemi}{\sbt}
 
-\usepackage{graphicx} % für Grafik-Einbindung
+% Erleichtert Mathe bzw. Formelsatz
+\usepackage{mathtools, amsmath, amssymb, amsthm}
+\usepackage{nicefrac}
+
+% Commands and operators
+\DeclareMathOperator{\powerset}{\mathcal{P}}
+\DeclareMathOperator{\sym}{Sym}
+\DeclareMathOperator{\gl}{GL}
+\DeclareMathOperator{\abb}{Abb}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\supp}{supp}
+
+\newcommand{\inv}[1]{\left(#1\right)^{-1}}
+\newcommand{\Inv}[1]{#1^{-1}}
+
+% Environments
+% Stuff with proof
+\newtheorem{thm}{Satz}
+\newtheorem{lemma}{Lemma}
+\newtheorem{kor}{Korollar}
+% Definition-like stuff
+\theoremstyle{definition}
+\newtheorem*{defn}{Definition}
+\newtheorem{ex}{Beispiel}
+% Remark-like stuff
+\theoremstyle{remark}
+\newtheorem*{notation}{Notation}
+\newtheorem*{nb}{Bemerkung}
+
+% Graphiken
+% Für Graphik-Einbindung
+\usepackage{graphicx}
 \usepackage{float} 
 %\usepackage[dvips]{hyperref}
 \usepackage{tikz-cd}
@@ -18,45 +53,19 @@
 		execute at end picture={\shorthandon{"}}
 	}
 }
-\usepackage{nicefrac}
 
-% environments
-\newtheorem{thm}{Satz}
-\newtheorem{lemma}{Lemma}
-\newtheorem{kor}{Korollar}
-% definition-like stuff
-\theoremstyle{definition}
-\newtheorem*{defn}{Definition}
-\newtheorem{ex}{Beispiel}
-% remark-like stuff
-\theoremstyle{remark}
-\newtheorem*{notation}{Notation}
-\newtheorem*{nb}{Bemerkung}
-
-% commands
-\DeclareMathOperator{\powerset}{\mathcal{P}}
-\DeclareMathOperator{\sym}{Sym}
-\DeclareMathOperator{\gl}{GL}
-\DeclareMathOperator{\abb}{Abb}
-\DeclareMathOperator\id{id}
-\DeclareMathOperator\ord{ord}
-\DeclareMathOperator\im{im}
-\DeclareMathOperator\sgn{sgn}
-\DeclareMathOperator\supp{supp}
-\newcommand{\inv}[1]{\left(#1\right)^{-1}}
-\newcommand{\Inv}[1]{#1^{-1}}
-
+% Einstellungen, wenn man deutsch schreiben will
+% Trennregeln etc.
 \usepackage[ngerman]{babel}
-\usepackage[autostyle=true,german=quotes]{csquotes}
+% Automatisch korrekte Anführungszeichen
+\usepackage[autostyle=true, german=quotes]{csquotes}
+\MakeOuterQuote{"}
+% Damit UTF-8 funktoniert
+\usepackage[utf8]{inputenc}
 %\usepackage[T1]{fontenc}
-%\usepackage{lmodern}
-% Einstellungen, wenn man deutsch schreiben will, z.B. Trennregeln
-%\usepackage[applemac]{inputenc}
-\usepackage[utf8]{inputenc} % für Unix-Systeme
 
 % TODO Bspw. ord wird zZ als drei Variablen (o, r, d) gesetzt. Zu einem vernünftigen Operator ändern?
 	% Ich fang einfach mal damit an. -- Peter
-% TODO Anführungszeichen sind bei mir alle falsch. Funktioniert das bei euch?
 % TODO Einige Beweise sind schrecklich strukturiert und zum Teil rettbar fehlerhaft. Darf ich?
 % TODO einheitliche subset-Notation?
 	% Ich wäre für \subseteq und \subsetneq um Missverständnisse auszuschließen. -- Peter
@@ -395,7 +404,7 @@ Also $\langle g\rangle=G$ und $G$ ist die von $g$ erzeugte zyklische Gruppe.
 \section{Normale Untergruppen und Gruppenhomomorphismen}
 
 \begin{thm}
-Es sei $G$ eine Gruppe und $H\in G$ eine Untergruppe.
+Es sei $G$ eine Gruppe und $H\subseteq G$ eine Untergruppe.
 
 Die folgenden Bedingungen sind äquivalent:
 \begin{enumerate}[label=(\roman*)]
