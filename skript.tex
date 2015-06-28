@@ -64,6 +64,10 @@
 \usepackage[utf8]{inputenc}
 %\usepackage[T1]{fontenc}
 
+% Um neu definierte Bezeichnungen hervorzuheben
+% ZZ haben wir noch einen Mix aus \underline und \emph
+\newcommand{\new}{\emph}
+
 % TODO Bspw. ord wird zZ als drei Variablen (o, r, d) gesetzt. Zu einem vernünftigen Operator ändern?
 	% Ich fang einfach mal damit an. -- Peter
 % TODO Einige Beweise sind schrecklich strukturiert und zum Teil rettbar fehlerhaft. Darf ich?
@@ -135,56 +139,66 @@
 
 \begin{lemma}
 	\begin{enumerate}
-		\item $\inv{\Inv{a}}=a$, $\inv{ab}=\Inv b\Inv a$
-		\item $ab=ac$ impliziert $b=c$ für alle $a,b,c\in G$.
-		\item für $a,b\in G$ gibt es genau ein $x\in G$, sodass $ax=b$.
+	\item $\inv{\Inv{a}}=a$, $\inv{ab}=\Inv b\Inv a$ % TODO Eigentlich braucht man für beides hier die Eindeutigkeit, welche unten gezeigt wird. Umsortieren?
+	\item $ab=ac$ impliziert $b=c$ für alle $a,b,c\in G$.
+	\item Für $a,b\in G$ gibt es genau ein $x\in G$, sodass $ax=b$.
 	\end{enumerate}
 \end{lemma}
 
 \begin{proof}
 	\begin{enumerate}
-		\item $\inv{\Inv a}=a$ klar. Für $a,b\in G$: $(\Inv b\Inv a)ab=\Inv b(\Inv aa)b=\Inv beb=\Inv bb=e$ (andere Richtung analog) % FIXME Welche andere Richtung?
-		\item $ab=ac$ impliziert $\Inv a(ab)=\Inv a(ac)$ impliziert $b=c$
-		\item Setze $x=\Inv ab$, dann erhält man $ax=a(\Inv ab)=(a\Inv a)b=eb=b$.
+	\item $\inv{\Inv a}=a$ klar. Für $a,b\in G$: $(\Inv b\Inv a)ab=\Inv b(\Inv aa)b=\Inv beb=\Inv bb=e$ (andere Richtung analog) % FIXME Welche andere Richtung?
+	\item $ab=ac$ impliziert $\Inv a(ab)=\Inv a(ac)$ impliziert $b=c$
+	\item Setze $x=\Inv ab$, dann erhält man $ax=a(\Inv ab)=(a\Inv a)b=eb=b$.
 		Die Eindeutigkeit folgt aus Punkt 2. \qedhere
 	\end{enumerate}
 \end{proof}
 
 \begin{defn}
-	Sei $a\in G$, $(G,\cdot)$ Gruppe. Für $n\in \mathbb{Z}$ definiere:
-	$$a^0:=e, \quad a^n:=a^{n-1}a \quad \text{ für } n\geq 1$$
-	$$a^n:=\left(\Inv a\right)^{-n} \quad \text{ für } n < 0$$
+	Sei $a\in G$, $(G,\cdot)$ Gruppe.
+	Für $n\in \mathbb{Z}$ definiere:
+	\begin{align*}
+		a^0 &:= e\\
+		a^n &:= a^{n-1}a \quad \text{ für \(n\geq 1\)}\\
+		a^n &:= \left(\Inv a\right)^{-n} \quad \text{ für \(n < 0\)}
+	\end{align*}
 \end{defn}
 
 \begin{lemma}
-	Für $a\in G$ gelten $a^n a^m=a^{n+m}=a^m a^n$ und $\left(a^m \right)^n = a^{n\cdot m}$.
-	$ab=ba$ impliziert $\left(ab \right)^n = a^n b^n$.
+	Für $a\in G$ und \(n, m \in\mathbb Z\) gelten $a^n a^m=a^{n+m}=a^m a^n$ und $\left(a^m \right)^n = a^{n\cdot m}$.
+	Falls \(b \in G\) mit \(a\) kommutiert, also $ab=ba$ ist, gilt $\left(ab \right)^n = a^n b^n$.
 \end{lemma}
 
 \begin{ex}
 	\begin{enumerate}
-		\item $K$ Körper, dann ist $\gl_n(K)$ ein Gruppe bzgl. Matrixmultiplikation.
-		\item $M\neq \emptyset$ Menge, $(G, \cdot)$ Gruppe, definiere $\abb(M,G):=G^M$. Für $f,g\in \abb(M,G)$ ist $f\cdot g$ gegeben durch $(f\cdot g)(m)=f(m)\cdot g(m)$ für $m\in M$. Dann ist $(\abb(M,G), \cdot)$ eine Gruppe.
+	\item $K$ Körper, dann ist $\gl_n(K)$ ein Gruppe bzgl. Matrixmultiplikation.
+	\item $M\neq \emptyset$ Menge, $(G, \cdot)$ Gruppe, definiere $\abb(M,G):=G^M$.
+		Für $f,g\in \abb(M,G)$ ist $f\cdot g$ gegeben durch $(f\cdot g)(m)=f(m)\cdot g(m)$ für $m\in M$.
+		Dann ist $(\abb(M,G), \cdot)$ eine Gruppe.
 	\end{enumerate}
 \end{ex}
-
-
 
 \section{Untergruppen}
 
 \begin{defn}
-	Sei $(G, \cdot)$ Gruppe. Eine Teilmenge $H\subset G$ heißt Untergruppe von $G$, falls $(H, \cdot)$ eine Gruppe ist.
+	Sei $(G, \cdot)$ Gruppe.
+	Eine Teilmenge $H\subset G$ heißt Untergruppe von $G$, falls $(H, \cdot)$ eine Gruppe ist.
 
 	Äquivalent dazu:
 	\begin{enumerate}[label=(\roman*)]
-		\item Für $a,b\in H$ gilt $ab\in H$ (Abgeschlossenheit)
-		\item $e\in H$
-		\item Für $a\in H$ ist $\Inv a \in H$
+	\item Für $a,b\in H$ gilt $ab\in H$ (Abgeschlossenheit)
+	\item $e\in H$
+	\item Für $a\in H$ ist $\Inv a \in H$
 	\end{enumerate}
 \end{defn}
 
+\begin{nb}
+	Wenn (i) und (iii) gelten, folgt (ii) bereits aus \(H \neq \emptyset\).
+\end{nb}
+
 \begin{thm}
-	Sei $(G, \cdot)$ Gruppe und $H\subset G$ nicht-leer. Dann gilt: $H$ ist eine Untergruppe von $(G, \cdot)$ gdw. $a\Inv b\in H$ für $a,b\in H$.
+	Sei $(G, \cdot)$ Gruppe und $H\subset G$ nicht-leer.
+	Dann ist $H$ eine Untergruppe von $(G, \cdot)$, gdw. $a\Inv b\in H$ für alle $a,b\in H$.
 \end{thm}
 
 \begin{proof}
@@ -192,16 +206,17 @@
 
 	"$\Leftarrow$"
 	\begin{itemize}
-		\item $a=b$ impliziert $e\in H$
-		\item $e,a\in H$ impliziert $e\Inv a\in H$ impliziert $\Inv a \in H$
-		\item $a,\Inv b\in H$ impliziert $a\inv{\Inv b} \in H$ impliziert $ab\in H$ \qedhere
+	\item Da \(H\) nicht leer ist, gibt es ein \(a \in H\).
+		Somit ist auch $e = aa^{-1}\in H$.
+	\item Für beliebige \(a \in H\) muss also auch \(a^{-1} = ea^{-1} \in H\) sein.
+	\item Schließlich erhalten wir, dass für beliebige \(a, b \in H\) auch \(b^{-1} \in H\) und somit \(ab = a(b^{-1})^{-1} \in H\) ist. \qedhere
 	\end{itemize}
 \end{proof}
 
 \begin{ex}
 	\begin{enumerate}[label=(\alph*)]
-		\item Für alle Gruppen $(G,\cdot)$ sind $\{e\}$ und $G$ jeweils Untergruppen, die sogenannten \emph{trivialen Untergruppen}.
-		\item $K$ Körper. $\text{SL}_n(K)=\{A\in M_n(K): \det(A)=1\}$ induziert Untergruppe von $\gl_n(K)$, die spezielle lineare Gruppe.
+	\item Für alle Gruppen $(G,\cdot)$ sind $\{e\}$ und $G$ jeweils Untergruppen, die sogenannten \emph{trivialen Untergruppen}.
+	\item Für beliebige Körper $K$ induziert $\operatorname{SL}_n(K)=\{A\in \gl_n(K): \det(A)=1\}$ eine Untergruppe von $\gl_n(K)$, die spezielle lineare Gruppe.
 	\end{enumerate}
 \end{ex}
 
@@ -210,15 +225,17 @@
 \end{defn}
 
 \begin{lemma}
-	Es sei $(H_{j})_{j \in J}$ eine Familie von Untergruppen $H_{j} \subset G$. Dann ist $\bigcap_{j \in J}H_{j}$ eine Untergruppe von G.
+	Es sei $(H_{j})_{j \in J}$ eine Familie von Untergruppen $H_{j} \subset G$.
+	Dann ist $\bigcap_{j \in J}H_{j}$ eine Untergruppe von G.
 \end{lemma}
 
 \begin{proof}
-	Übung
+	Die Charakterisierung aus dem letzten Satz bleibt trivial unter Schnitten erhalten.
 \end{proof}
 
 \begin{defn}
-	Es sei $M$ eine Teilmenge von $G$. Die \underline{von $M$ erzeugte Untergruppe} ist der Durchschnitt aller Untergruppen, die $M$ enthalten.
+	Es sei $M$ eine Teilmenge von $G$.
+	Die \underline{von $M$ erzeugte Untergruppe} ist der Durchschnitt aller Untergruppen, die $M$ enthalten.
 \end{defn}
 
 \begin{notation}
@@ -227,9 +244,9 @@
 
 \begin{nb}
 	\begin{enumerate}[label=(\alph*)]
-		\item $\langle \emptyset \rangle = \lbrace e \rbrace$
-		\item Für $M \neq \emptyset$ gilt: $\langle M \rangle = \lbrace m_{1}^{\varepsilon_{1}} \cdot ... \cdot m_{n}^{\varepsilon_{n}} : m_{1},...,m_{n} \in M, \varepsilon_{1},...,\varepsilon_{n} \in \lbrace -1,+1\rbrace, n \geq 0 \rbrace$
-		\item Für $M = \lbrace g \rbrace$ gilt: $\langle g \rangle = \lbrace g^{n} : n \in \mathbb{Z} \rbrace$. Diese Untergruppe wird die von $g$ erzeugte zyklische Untergruppe von $G$ genannt.
+	\item $\langle \emptyset \rangle = \lbrace e \rbrace$
+	\item Für $M \neq \emptyset$ gilt: $\langle M \rangle = \lbrace m_{1}^{\varepsilon_{1}} \cdot ... \cdot m_{n}^{\varepsilon_{n}} : m_{1},...,m_{n} \in M, \varepsilon_{1},...,\varepsilon_{n} \in \lbrace -1,+1\rbrace, n \geq 0 \rbrace$
+	\item Für $M = \lbrace g \rbrace$ gilt: $\langle g \rangle = \lbrace g^{n} : n \in \mathbb{Z} \rbrace$. Diese Untergruppe wird die von $g$ erzeugte zyklische Untergruppe von $G$ genannt.
 	\end{enumerate}
 \end{nb}
 
@@ -240,9 +257,9 @@
 
 \begin{defn}
 	\begin{enumerate}[label=(\roman*)]
-		\item Die \underline{Ordnung einer Gruppe} $G$ ist $\ord(G):=\vert G \vert$.
-		\item Die \underline{Ordnung eines Elements} $g \in G$ ist $\ord(g):=\ord(\langle g \rangle)$.
-		\item Ist $\ord(g)$ endlich, dann hat g \underline{endliche Ordnung}.
+	\item Die \underline{Ordnung einer Gruppe} $G$ ist $\ord(G):=\vert G \vert$.
+	\item Die \underline{Ordnung eines Elements} $g \in G$ ist $\ord(g):=\ord(\langle g \rangle)$.
+	\item Ist $\ord(g)$ endlich, dann hat g \underline{endliche Ordnung}.
 	\end{enumerate}
 \end{defn}
 
@@ -253,18 +270,19 @@
 \begin{thm}
 	Sei $G$ Gruppe, $g \in G$
 	\begin{enumerate}
-		\item g hat nicht endliche Ordnung $\Longleftrightarrow$ alle Potenzen von g sind verschieden
-		\item g hat endliche Ordnung $\Longleftrightarrow$ $\exists m>0: g^{m}=e$ \newline Dann gilt:
-			\begin{enumerate}[label=(\alph*)]
-				\item $n := \ord(g) = \min \lbrace m>0 : g^{m}=e \rbrace$
-				\item $g^{m}=e \Longleftrightarrow m=nk$ für ein $k \in \mathbb{Z}$
-				\item $\langle g \rangle = \lbrace e, g^{1},...,g^{n-1}\rbrace$
-			\end{enumerate}
-		\item $\ord(g^{s}) = \frac{n}{(n,s)}$ für $n = \ord(g)$ endlich
+	\item Falls \(g\) nicht endliche Ordnung hat, sind alle Potenzen von \(g\) verschieden
+	\item Falls \(g\) endliche Ordnung hat, gibt es ein \(m > 0\) mit \(g^m = e\).
+		Mit \(n := \ord(g)\) gelten
+		\begin{enumerate}[label=(\alph*)]
+		\item $n = \ord(g) = \min \lbrace m>0 : g^{m}=e \rbrace$
+		\item $g^{m}=e \Longleftrightarrow m=nk$ für ein $k \in \mathbb{Z}$
+		\item $\langle g \rangle = \lbrace e, g^{1},...,g^{n-1}\rbrace$
+		\end{enumerate}
+	\item Falls \(g\) endliche Ordnung $n := \ord(g)$ hat, gilt $\ord(g^{s}) = \frac{n}{(n,s)}$ für alle \(s \in \mathbb N\).
 	\end{enumerate}
 \end{thm}
 
-\begin{proof}
+\begin{proof} % TODO Diesen Beweis überspringe ich gerade. -- Peter 
 	\begin{enumerate}
 		\item Wir nehmen an: Für $i,j \in \mathbb{Z}$, oBdA $j>i$ gilt $g^{i}=g^{j}$.
 		Dann gilt $g^{j-i}=g^{j}(g^{i})^{-1}=e$.
@@ -292,61 +310,74 @@
 \end{proof}
 
 \begin{lemma}
-	Es sei $G = \langle g \rangle$ eine zyklische Gruppe und $H \subset G,\; H\neq\{e\}$ eine Untergruppe von $G$. Dann gibt es ein $m\in\mathbb{N}$ mit $H=\langle g^m\rangle$.
+	Es sei $G = \langle g \rangle$ eine zyklische Gruppe und $H \subset G,\; H\neq\{e\}$ eine Untergruppe von $G$. % TODO Wieso nicht {e}? Da gilt die Aussage trivial mit m = 0.
+	Dann gibt es ein $m\in\mathbb{N}$ mit $H=\langle g^m\rangle$.
 \end{lemma}
 
 \begin{proof}
-	Wir setzen: $m := min \lbrace k>0 : g^{k} \in H \rbrace$. Die betrachtete Menge ist dabei nicht-leer, denn ist $h \in H, h \neq e$, dann gilt $h = g^{k}$ für ein $k\in\mathbb{Z}$, da $g$ Erzeuger von $G$ ist. Ist $k>0$, so ist $k$ in der Menge. Ist $k<0$, so gilt $g^{-k}=\inv{{g^k}}=\Inv{h}\in H$ und damit ist $-k$ in der Menge enthalten. Wir wollen nun zeigen: $\langle g^{m} \rangle = H$.
+	Wir setzen: $m := \min\lbrace k>0 : g^{k} \in H \rbrace$.
+	Die betrachtete Menge ist dabei nicht-leer, denn ist $h \in H, h \neq e$, dann gilt $h = g^{k}$ für ein $k\in\mathbb{Z}$, da $g$ Erzeuger von $G$ ist.
+	Ist $k>0$, so ist $k$ in der Menge.
+	Ist $k<0$, so gilt $g^{-k}=\inv{{g^k}}=\Inv{h}\in H$ und damit ist $-k$ in der Menge enthalten.
+	Wir wollen nun zeigen: $\langle g^{m} \rangle = H$.
 	\begin{enumerate}
-		\item $\langle g^{m} \rangle \subset H$ gilt wegen $g^{m} \in H$
-		\item Es sei $j \in \mathbb{Z}$ mit $g^{j} \in H$. Divisionsalgorithmus liefert $j=lm+r$ mit $0 \leq r < m$: $g^{j} \in H \Rightarrow g^{r}=g^{-lm}g^{lm+r}=(g^{m})^{-l}g^{j}$. Also $g^{r} \in H$. Aus der Minimalität von M folgt $r=0$. Dies liefert $g^{j}=(g^{m})^{l} \in \langle g^{m} \rangle$ und somit gilt: $H \subset \langle g^{m} \rangle$ und die zwei Untergruppen stimmen überein. \qedhere
+	\item $\langle g^{m} \rangle \subset H$ gilt wegen $g^{m} \in H$
+	\item Es sei $j \in \mathbb{Z}$ mit $g^{j} \in H$. Divisionsalgorithmus liefert $j=lm+r$ mit $0 \leq r < m$: $g^{j} \in H \Rightarrow g^{r}=g^{-lm}g^{lm+r}=(g^{m})^{-l}g^{j}$. Also $g^{r} \in H$. Aus der Minimalität von M folgt $r=0$. Dies liefert $g^{j}=(g^{m})^{l} \in \langle g^{m} \rangle$ und somit gilt: $H \subset \langle g^{m} \rangle$ und die zwei Untergruppen stimmen überein. \qedhere
 	\end{enumerate}
 \end{proof}
 
 Ähnlich kann man zeigen:
 
-\begin{thm}
-	Alle Untergruppen einer zyklischen Gruppe sind zyklisch. Ist $\ord(G)=n$ endlich und $m$ ein Teiler von $n$, so ist $H = \langle g^{\frac{n}{m}}\rangle$ die einzige Untergruppe der Ordnung $m$. % FIXME Beweis?
+\begin{thm} % FIXME Beweis?
+	Alle Untergruppen einer zyklischen Gruppe sind zyklisch.
+	Ist $\ord(G)=n$ endlich und $m$ ein Teiler von $n$, so ist $H = \langle g^{\frac{n}{m}}\rangle$ die einzige Untergruppe der Ordnung $m$.
 \end{thm}
 
 \begin{defn}
-	Sei $H$ eine Untergruppe der Gruppe $G$. Dann kann man die folgende Äquivalenzrelation definieren: \newline $(x,y) \in G^{2}: x \sim_{H} y \Leftrightarrow x = yh$ für ein $h \in H$ \newline $\lceil$Äquivalenzrelation wegen Gruppenaxiomen für $H\rfloor$
+	Sei $H$ eine Untergruppe der Gruppe $G$.
+	Dann sei für \(x, y \in G\) \[x \sim_{H} y :\Leftrightarrow \text{\(x = yh\) für ein \(h \in H\)}\]
+	Dies ist infolge der Gruppenaxiome für \(H\) eine Äquivalenzrelation auf \(G\).
 \end{defn}
 
 \begin{defn}
-	Die Äquivalenzklassen bzgl. $\sim_{H}$ heißen \underline{Linksnebenklassen}.
+	Die Äquivalenzklassen bezüglich $\sim_{H}$ heißen \underline{Linksnebenklassen}.
 \end{defn}
 
 \begin{notation}
-	Für $a \in G, aH = \{ah : h \in H\}$
+	Für $a \in G$ sei $aH := \{ah : h \in H\}$.
 \end{notation}
 
 \begin{nb}
 	Es gelten folgende Eigenschaften: 
 	\begin{itemize}
-		\item Die Abbildung $H \rightarrow aH, h \mapsto ah$ ist eine Bijektion. Besonders gilt: $\vert aH \vert = \vert H \vert$ für alle $a \in G$. \newline $\lceil$Die Abbildung ist bijektiv, da sie umkehrbar ist: $aH \rightarrow H, b \mapsto a^{-1}b$ ist die Umkehrfunktion$\rfloor$
-		\item $aH \neq bH \Rightarrow aH \cap bH = \emptyset$, d.h. sie sind disjunkt. \newline $\lceil x \in aH \neq bH \Rightarrow x = ah_{1} = bh_{2}$ für $h_{1},h_{2} \in H \Rightarrow a=bh_{2}h_{1}^{-1} \in bH \Rightarrow ah= b(h_{2}h_{1}^{-1}h) \in bH$ für alle $h \in H \Rightarrow aH \subset bH$. Ähnlich gilt $bH \subset aH$. Daraus folgt $aH=bH.\rfloor$ % TODO Äquivalenzklassen sind immer disjunkt. Wieso der Aufwand?
+	\item Die Abbildung $H \to aH, h \mapsto ah$ ist eine Bijektion mit der Umkehrung $aH \to H, b \mapsto a^{-1}b$.
+		Besonders gilt: $\vert aH \vert = \vert H \vert$ für alle $a \in G$.
+	\item $aH \neq bH \Rightarrow aH \cap bH = \emptyset$, d.h. sie sind disjunkt. \newline $\lceil x \in aH \neq bH \Rightarrow x = ah_{1} = bh_{2}$ für $h_{1},h_{2} \in H \Rightarrow a=bh_{2}h_{1}^{-1} \in bH \Rightarrow ah= b(h_{2}h_{1}^{-1}h) \in bH$ für alle $h \in H \Rightarrow aH \subset bH$. Ähnlich gilt $bH \subset aH$.
+		Daraus folgt $aH=bH.\rfloor$ % TODO Äquivalenzklassen sind immer disjunkt. Wieso der Aufwand?
 	\end{itemize}
 \end{nb}
 
 \begin{defn}
-	$G/H = \lbrace aH : a \in G \rbrace$ ist die \underline{Menge der Linksnebenklassen}. \newline Der Index von $H$ ist die Mächtigkeit von $G/H$, d.h. \underline{Index} [$G:H$]$:=\vert G/H \vert$
+	$G/H = \lbrace aH : a \in G \rbrace$ ist die \new{Menge der Linksnebenklassen}.
+	Der \new{Index} von $H$ ist die Mächtigkeit von $G/H$.
+	Wir notieren ihn als \([G:H] := |G/H|\).
 \end{defn}
 
 \begin{nb}
 	\begin{itemize}
-	 	\item $\vert G \vert = [G:H]\vert H\vert$
-	 	\item Analog ist $a \sim_{H} b$ mit $a,b \in G \Leftrightarrow a=hb$ für ein $h \in H$ ("rechtsäquivalent bzgl. H") eine Äquivalenzrelation.
+ 	\item $\vert G \vert = [G:H]\vert H\vert$
+ 	\item Analog ist $a \sim_{H} b$ mit $a,b \in G \Leftrightarrow a=hb$ für ein $h \in H$ ("rechtsäquivalent bzgl. H") eine Äquivalenzrelation. % FIXME Gleiche Notation wie Linksäquivalenz? % FIXME Es gilt sicherlich nicht "$a,b \in G \Leftrightarrow a=hb$ für ein $h \in H$"
 		\underline{Rechtsnebenklassen}: $Ha=\lbrace ha : h \in H\rbrace$ mit $a \in G$ \newline Bijektion: Für $a \in G$ $aH \rightarrow Ha, x \mapsto a^{-1}xa$
 	\end{itemize}
 \end{nb}
 
 \begin{defn}
-	$H \backslash G$ ist die \underline{Menge der Rechtsnebenklassen}. Dann gilt: $\vert H \backslash G \vert = \vert G/H \vert$ \newline $\lceil$Bijektion: $H \backslash G \rightarrow G/H, Hb \mapsto b^{-1}H \rfloor$
+	$H \backslash G$ ist die \underline{Menge der Rechtsnebenklassen}. Dann gilt: $\vert H \backslash G \vert = \vert G/H \vert$ \newline $\lceil$
+	Bijektion: $H \backslash G \rightarrow G/H, Hb \mapsto b^{-1}H \rfloor$ % TODO Warum wohldef?
 \end{defn}
 
 \begin{lemma} 
-Die Funktion $$H\backslash G \xrightarrow{f} G/H, \quad Hb \mapsto b^{-1}H$$ ist eine Bijektion.
+	Die Funktion $$f: H\backslash G \to G/H, \quad Hb \mapsto b^{-1}H$$ ist eine Bijektion.
 \end{lemma}
 
 \begin{proof}
