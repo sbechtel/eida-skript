@@ -139,7 +139,6 @@
 
 \begin{defn}
 	Sei $a\in G$, $(G,\cdot)$ Gruppe. Für $n\in \mathbb{Z}$ definiere:
-
 	$$a^0:=e, \quad a^n:=a^{n-1}a \quad \text{ für } n\geq 1$$
 	$$a^n:=\left(\Inv a\right)^{-n} \quad \text{ für } n < 0$$
 \end{defn}
@@ -287,7 +286,7 @@
 	Wir setzen: $m := min \lbrace k>0 : g^{k} \in H \rbrace$. Die betrachtete Menge ist dabei nicht-leer, denn ist $h \in H, h \neq e$, dann gilt $h = g^{k}$ für ein $k\in\mathbb{Z}$, da $g$ Erzeuger von $G$ ist. Ist $k>0$, so ist $k$ in der Menge. Ist $k<0$, so gilt $g^{-k}=\inv{{g^k}}=\Inv{h}\in H$ und damit ist $-k$ in der Menge enthalten. Wir wollen nun zeigen: $\langle g^{m} \rangle = H$.
 	\begin{enumerate}
 		\item $\langle g^{m} \rangle \subset H$ gilt wegen $g^{m} \in H$
-		\item Es sei $j \in \mathbb{Z}$ mit $g^{j} \in H$. Divisionsalgorithmus liefert $j=lm+r$ mit $0 \leq r < m$: $g^{j} \in H \Rightarrow g^{r}=g^{-lm}g^{lm+r}=(g^{m})^{-l}g^{j}$. Also $g^{r} \in H$. Aus der Minimalität von M folgt $r=0$. Dies liefert $g^{j}=(g^{m})^{l} \in \langle g^{m} \rangle$ und somit gilt: $H \subset \langle g^{m} \rangle$ und die zwei Untergruppen stimmen überein.
+		\item Es sei $j \in \mathbb{Z}$ mit $g^{j} \in H$. Divisionsalgorithmus liefert $j=lm+r$ mit $0 \leq r < m$: $g^{j} \in H \Rightarrow g^{r}=g^{-lm}g^{lm+r}=(g^{m})^{-l}g^{j}$. Also $g^{r} \in H$. Aus der Minimalität von M folgt $r=0$. Dies liefert $g^{j}=(g^{m})^{l} \in \langle g^{m} \rangle$ und somit gilt: $H \subset \langle g^{m} \rangle$ und die zwei Untergruppen stimmen überein. \qedhere
 	\end{enumerate}
 \end{proof}
 
@@ -393,15 +392,17 @@ $\ord(g)=p \Rightarrow\langle g\rangle$ besteht aus genau p Elementen.\\
 Also $\langle g\rangle=G$ und $G$ ist die von $g$ erzeugte zyklische Gruppe.
 \end{ex}
 
-\section{Normalen Untergruppen und Gruppenhomomorphismen}
+\section{Normale Untergruppen und Gruppenhomomorphismen}
 
 \begin{thm}
 Es sei $G$ eine Gruppe und $H\in G$ eine Untergruppe.
 
-Die folgenden Bedingungen sind äquivalent:\\
-(i) es gilt: $bH=Hb$ für alle $b\in G$\\
-(ii) es gilt: $b^{-1}Hb=H$ für alle $b\in G$\\
-(iii) es gilt: $b^{-1}hb=H$ für alle $b\in G$ und $h\in H$
+Die folgenden Bedingungen sind äquivalent:
+\begin{enumerate}[label=(\roman*)]
+\item Es gilt $bH=Hb$ für alle $b\in G$.
+\item Es gilt $b^{-1}Hb=H$ für alle $b\in G$.
+\item Es gilt $b^{-1}hb \in H$ für alle $b\in G$ und $h\in H$.
+\end{enumerate}
 \end{thm}
 
 \begin{defn}
@@ -409,21 +410,25 @@ Eine Untergruppe $H$, die eine der Bedingungen (i)-(iii) erfüllt, nennt man ein
 \end{defn}
 
 \begin{proof}
-(i)$\Rightarrow$(ii)\\
-Es sei $b \in G$ mit$bH=Hb$
-Dann gilt für alle $x \in b^{-1}Hb$:\\
-$x=b^{-1}hb \Rightarrow bx=hb \in Hb=bH$ mit $h \in H$\\
-$\Rightarrow$ es gibt ein $h' \in H$ mit $bx=bh'$\\
-$\Rightarrow b^{-1}xb=b$ also $x=b^{-1}bh'=h'\in H$\\
-$\Rightarrow b^{-1}Hb \subset H$\\
-Für $h' \in H$ gilt: $bh' \in bH = Hb$ Daraus folgt: $bh'=hb$ für ein $h \in h$ und
-$h'=b^{-1}hh'=b^{-1}hb \in b^{-1}Hb$ also $H \subset b^{-1}Hb$\\
-(ii) $\Rightarrow$ (iii) ist klar.\\
-(iii) $\Rightarrow$ (i)\\
-Für $b \in G$, $h\in $ gilt:\\
-$bh=bh(b^{-1}b)=((b^{-1})^{-1}hb^{-1})b \in Hb$\\
-für $b^{-1} \in G$ $hb=bb^{-1}hb \in bH$\\
-Daraus folgt: $bH=Hb$
+(i)$\Rightarrow$(ii):
+Es sei $b \in G$ mit $bH=Hb$.
+Dann gibt es für alle $x \in b^{-1}Hb$ ein \(h \in H\) mit
+\begin{align*}
+	x=b^{-1}hb &\Rightarrow bx=hb \in Hb=bH\\
+	&\Rightarrow \text{Es gibt ein \(h' \in H$ mit $bx=bh'\).}\\
+	&\Rightarrow x=b^{-1}bh'=h'\in H\\
+	&\Rightarrow b^{-1}Hb \subseteq H
+\end{align*}
+Für $h' \in H$ ist $bh' \in bH = Hb$, woraus $bh'=hb$ für ein $h \in h$ folgt.
+Deshalb ist $h'=b^{-1}hb \in b^{-1}Hb$, wodurch $H \subseteq b^{-1}Hb$ gilt.
+
+(ii) $\Rightarrow$ (iii) ist klar.
+
+(iii) $\Rightarrow$ (i):
+Für beliebige $b \in G$, $h\in H$ gilt einerseits
+\[bh=bh(b^{-1}b)=((b^{-1})^{-1}hb^{-1})b \in Hb\]
+und somit \(bH \subseteq Hb\) und andererseits \(hb=bb^{-1}hb \in bH,\) also \(Hb \subseteq bH\).
+Daraus folgt $bH=Hb$.
 \end{proof}
 
 \begin{nb}
