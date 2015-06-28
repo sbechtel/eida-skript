@@ -381,22 +381,30 @@
 \end{lemma}
 
 \begin{proof}
-1) f ist wohldefiniert:\\
-Gilt $Hb_{1}=Hb_{2}$ für $b_{1},b_{2} \in G$
-das heißt $b_{1} {_{\ H}}\sim b_{2}$ \\
-existiert ein $h \in H$ mit $b_1 = hb_2$ \\
-$b^{-1}*H = (hb_2)^{-1}*H = b_{2}^{-1}*h*H = b_{2}^{-1}*H$
+	Zunächst ist \(f\) wohldefiniert, da für $b_{1},b_{2} \in G$ mit $Hb_{1}=Hb_{2}$ (das heißt $b_{1} {_{\ H}}\sim b_{2}$) ein $h \in H$ mit $b_1 = hb_2$ exitiert.
+	Somit ist $b^{-1}H = (hb_2)^{-1}H = b_{2}^{-1}hH = b_{2}^{-1}H$.
 
-2) f ist Bijektion, da sie wohldefiniert ist:
-$$G/H \xrightarrow{g} H\backslash G, \quad aH \mapsto Ha^{-1}$$
-ist wohldefiniert, ähnlich zu (1).
-$g \circ f = \id_{H \backslash G}$, weil $(g \circ f)(Hb) = g(b^{-1}H)=H(b^{-1})^{-1}=Hb$ ist.
-$f \circ g = \id_{G \slash H}$ folgt analog.
+	Die Wohldefiniertheit von $$g: G/H \to H\backslash G, \quad aH \mapsto Ha^{-1}$$ folgt analog.
+	Nun ist $(g \circ f)(Hb) = g(b^{-1}H)=H(b^{-1})^{-1}=Hb$ und somit $g \circ f = \id_{H \backslash G}$.
+	Wiederum analog folgt $f \circ g = \id_{G \slash H}$ und somit die Bijektivität von \(f = g^{-1}\).
 \end{proof}
 
 \begin{thm}
-Es seien $H$,$K$ Untergruppen von $G$ mit $K \subset H \subset G$. Dann gilt: $$[G:K]=[H:K]\cdot[G:H]$$
+	Es seien $H$,$K$ Untergruppen von $G$ mit $K \subset H \subset G$.
+	Dann gilt: $$[G:K]=[H:K]\cdot[G:H]$$
 \end{thm}
+
+% TODO Falls sich niemand rechtizeitig beschwert, tausche ich den Beweis aus: -- Peter
+%\begin{proof}
+%	Seien \(a_i \in i\) für \(i \in G/H\) und \(b_j \in j\) für \(j \in H/K\) Repräsentantensysteme.
+%	Dann ist \[G = \bigcup_{i \in G/H} a_iH = \bigcup_{i \in G/H} a_i\left(\bigcup_{j\in H/K} b_jK\right) = \bigcup_{(i, j) \in G/H\times H/K} a_ib_jK.\]
+%	Falls nun \(a_ib_jK = a_{i'}b_{j'}K\) gilt, so ist \(a_iH \cap a_{i'}H \supseteq a_ib_jK = a_{i'}b_{j'}K \neq \emptyset\) und somit \(a_iH = a_{i'}H\).
+%	Daraus folgt \(a_i = a_{i'}\) bzw. \(i = i'\).\footnote{Man könnte auch einfach \(i = a_iH = a_{i'}H = i'\) folgern, aber das würde einige eher verwirren, fürchte ich.}
+%
+%	Damit wiederum erhalten wir \(b_jK = a_i^{-1}(a_ib_jK) = b_{j'}K\), also \(j = j'\).
+%	Folglich bilden die \(a_ib_j\) für \((i, j) \in G/H\times H/K\) ein Repräsentantensystem für \(G/K\) und \[G/H\times H/K \to G/K, \quad (i, j) = (a_iH, b_jK) \mapsto a_ib_jK\] ist eine Bijektion.\footnote{Für alle fixen Repräsentantensysteme \(a_i\) und \(b_j\). Wohldefiniertheit ohne selbige gilt nicht, wie man sich anhand von \(S_2 = G = H \supsetneq K\) leicht überlegen kann.}
+%	Somit haben wir \[[G:K] = |G/K| = |G/H \times H/K| = |G/H|\cdot|H/K| = [G:H]\cdot[H:K].\qedhere\]
+%\end{proof}
 
 \begin{proof}
 Wir nehmen an, dass $[G:H]=m$ und $[H:K]=n$ endlich sind. 
@@ -418,22 +426,23 @@ $\bigcup\limits_{\begin{subarray}{1}i=1...m \\ j=1...n\end{subarray}} b_ia_jK = 
 \end{proof}
 
 \begin{nb}
-Der Beweis lässt sich zum Fall von unendlichem Index erweitern. Dies liefert eine Bijektion $G/H \times H/K \to G/K$
+	Der Beweis lässt sich zum Fall von unendlichem Index erweitern. Dies liefert eine Bijektion $G/H \times H/K \to G/K$
 \end{nb}
 
-\begin{kor}{Satz von Lagrange}\\
-Es gilt $\vert G\vert = [G:H]\cdot\vert H\vert$ für jede Untergruppe $H$ von $G$. Besonders gilt: $\vert H\vert$ teilt $\vert G\vert$ und $\ord(g)$ ist ein Teiler von $\vert G\vert$ für jedes $g\in G$.
+\begin{kor}[Satz von Lagrange]
+	Es gilt $\vert G\vert = [G:H]\cdot\vert H\vert$ für jede Untergruppe $H$ von $G$.
+	Besonders gilt: $\vert H\vert$ teilt $\vert G\vert$ und $\ord(g)$ ist ein Teiler von $\vert G\vert$ für jedes $g\in G$.
 \end{kor}
 
 \begin{proof}
-$K= \{ e\}$ im vorigen Satz.
+	Setze $K = \{e\}$ im vorigen Satz.
 \end{proof}
 
 \begin{ex}
-$G$ endlich mit $\vert G\vert=p$ Primzahl. Dann existiert ein $g \in G$ mit $g \neq e$
-
-$\ord(g)=p \Rightarrow\langle g\rangle$ besteht aus genau p Elementen.\\
-Also $\langle g\rangle=G$ und $G$ ist die von $g$ erzeugte zyklische Gruppe.
+	Sei $G$ endlich mit $\vert G\vert=p$ Primzahl.
+	Dann existiert ein $g \in G$ mit $g \neq e$, also $\ord(g)=p$.
+	Somit besteht $\langle g\rangle$ aus genau $p$ Elementen.
+	Also $\langle g\rangle=G$ und $G$ ist die von $g$ erzeugte zyklische Gruppe.
 \end{ex}
 
 \section{Normale Untergruppen und Gruppenhomomorphismen}
