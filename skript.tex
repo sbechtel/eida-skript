@@ -16,7 +16,8 @@
 % Commands and operators
 \DeclareMathOperator{\powerset}{\mathcal{P}}
 \DeclareMathOperator{\sym}{Sym}
-\DeclareMathOperator{\gl}{GL}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
 \DeclareMathOperator{\abb}{Abb}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\ord}{ord}
@@ -66,7 +67,7 @@
 
 % Um neu definierte Bezeichnungen hervorzuheben
 % ZZ haben wir noch einen Mix aus \underline und \emph
-\newcommand{\new}{\emph}
+\newcommand{\new}{\underline}
 
 % TODO Bspw. ord wird zZ als drei Variablen (o, r, d) gesetzt. Zu einem vernünftigen Operator ändern?
 	% Ich fang einfach mal damit an. -- Peter
@@ -171,7 +172,7 @@
 
 \begin{ex}
 	\begin{enumerate}
-	\item $K$ Körper, dann ist $\gl_n(K)$ ein Gruppe bzgl. Matrixmultiplikation.
+	\item $K$ Körper, dann ist $\GL_n(K)$ ein Gruppe bzgl. Matrixmultiplikation.
 	\item $M\neq \emptyset$ Menge, $(G, \cdot)$ Gruppe, definiere $\abb(M,G):=G^M$.
 		Für $f,g\in \abb(M,G)$ ist $f\cdot g$ gegeben durch $(f\cdot g)(m)=f(m)\cdot g(m)$ für $m\in M$.
 		Dann ist $(\abb(M,G), \cdot)$ eine Gruppe.
@@ -216,7 +217,7 @@
 \begin{ex}
 	\begin{enumerate}[label=(\alph*)]
 	\item Für alle Gruppen $(G,\cdot)$ sind $\{e\}$ und $G$ jeweils Untergruppen, die sogenannten \emph{trivialen Untergruppen}.
-	\item Für beliebige Körper $K$ induziert $\operatorname{SL}_n(K)=\{A\in \gl_n(K): \det(A)=1\}$ eine Untergruppe von $\gl_n(K)$, die spezielle lineare Gruppe.
+	\item Für beliebige Körper $K$ induziert $\SL_n(K)=\{A\in \GL_n(K): \det(A)=1\}$ eine Untergruppe von $\GL_n(K)$, die spezielle lineare Gruppe.
 	\end{enumerate}
 \end{ex}
 
@@ -448,154 +449,161 @@ $\bigcup\limits_{\begin{subarray}{1}i=1...m \\ j=1...n\end{subarray}} b_ia_jK = 
 \section{Normale Untergruppen und Gruppenhomomorphismen}
 
 \begin{thm}
-Es sei $G$ eine Gruppe und $H\subseteq G$ eine Untergruppe.
+	Es sei $G$ eine Gruppe und $H\subseteq G$ eine Untergruppe.
 
-Die folgenden Bedingungen sind äquivalent:
-\begin{enumerate}[label=(\roman*)]
-\item Es gilt $bH=Hb$ für alle $b\in G$.
-\item Es gilt $b^{-1}Hb=H$ für alle $b\in G$.
-\item Es gilt $b^{-1}hb \in H$ für alle $b\in G$ und $h\in H$.
-\end{enumerate}
+	Die folgenden Bedingungen sind äquivalent:
+	\begin{enumerate}[label=(\roman*)]
+	\item Es gilt $bH=Hb$ für alle $b\in G$.
+	\item Es gilt $b^{-1}Hb=H$ für alle $b\in G$.
+	\item Es gilt $b^{-1}hb \in H$ für alle $b\in G$ und $h\in H$.
+	\end{enumerate}
 \end{thm}
 
 \begin{defn}
-Eine Untergruppe $H$, die eine der Bedingungen (i)-(iii) erfüllt, nennt man eine normale Untergruppe (oder Normalteiler) von $G$.
+	Eine Untergruppe $H$, die eine der Bedingungen (i)-(iii) erfüllt, nennt man eine normale Untergruppe (oder Normalteiler) von $G$.
 \end{defn}
 
 \begin{proof}
-(i)$\Rightarrow$(ii):
-Es sei $b \in G$ mit $bH=Hb$.
-Dann gibt es für alle $x \in b^{-1}Hb$ ein \(h \in H\) mit
-\begin{align*}
-	x=b^{-1}hb &\Rightarrow bx=hb \in Hb=bH\\
-	&\Rightarrow \text{Es gibt ein \(h' \in H$ mit $bx=bh'\).}\\
-	&\Rightarrow x=b^{-1}bh'=h'\in H\\
-	&\Rightarrow b^{-1}Hb \subseteq H
-\end{align*}
-Für $h' \in H$ ist $bh' \in bH = Hb$, woraus $bh'=hb$ für ein $h \in h$ folgt.
-Deshalb ist $h'=b^{-1}hb \in b^{-1}Hb$, wodurch $H \subseteq b^{-1}Hb$ gilt.
+	(i)$\Rightarrow$(ii):
+	Es sei $b \in G$ mit $bH=Hb$.
+	Dann gibt es für alle $x \in b^{-1}Hb$ ein \(h \in H\) mit
+	\begin{align*}
+		x=b^{-1}hb &\Rightarrow bx=hb \in Hb=bH\\
+		&\Rightarrow \text{Es gibt ein \(h' \in H$ mit $bx=bh'\).}\\
+		&\Rightarrow x=b^{-1}bh'=h'\in H\\
+		&\Rightarrow b^{-1}Hb \subseteq H
+	\end{align*}
+	Für $h' \in H$ ist $bh' \in bH = Hb$, woraus $bh'=hb$ für ein $h \in h$ folgt.
+	Deshalb ist $h'=b^{-1}hb \in b^{-1}Hb$, wodurch $H \subseteq b^{-1}Hb$ gilt.
 
-(ii) $\Rightarrow$ (iii) ist klar.
+	(ii) $\Rightarrow$ (iii) ist klar.
 
-(iii) $\Rightarrow$ (i):
-Für beliebige $b \in G$, $h\in H$ gilt einerseits
-\[bh=bh(b^{-1}b)=((b^{-1})^{-1}hb^{-1})b \in Hb\]
-und somit \(bH \subseteq Hb\) und andererseits \(hb=bb^{-1}hb \in bH,\) also \(Hb \subseteq bH\).
-Daraus folgt $bH=Hb$.
+	(iii) $\Rightarrow$ (i):
+	Für beliebige $b \in G$, $h\in H$ gilt einerseits
+	\[bh=bh(b^{-1}b)=((b^{-1})^{-1}hb^{-1})b \in Hb\]
+	und somit \(bH \subseteq Hb\) und andererseits \(hb=bb^{-1}hb \in bH,\) also \(Hb \subseteq bH\).
+	Daraus folgt $bH=Hb$.
 \end{proof}
 
 \begin{nb}
-Ist $N$ normal, so gilt:\\
-$(aN)(bN)=abN$
+	Ist $N$ normal, so gilt $(aN)(bN)=abN$.
 \end{nb}
 
 \begin{proof}
-$(aN)(bN)=(Na)(bN)=N(ab)N=(abN)N=abN$
+	$(aN)(bN)=(Na)(bN)=N(ab)N=(abN)N=abN$
 \end{proof}
 
-
 \begin{ex}
-\begin{enumerate}
-\item Die trivialen Untergruppen $\{e\}$, $G$ sind normal.
-	\begin{defn}
-	Eine Gruppe $G$ sodass $\{e\}$ und $G$ die einzigen normalen Untergruppen sind, nennt man einfache Gruppe.
-	\end{defn}
-\item Jede Untergruppe einer abelschen Gruppe ist normal.
-\item $SL_n(K)$ ist normale Untergruppe von $GL_n(K)$ ($K$ Körper)
-\end{enumerate}
-\end{ex}
-
-
-\begin{defn}
-Es seien $(G,\cdot_G)$ und $(H,\cdot_H)$ Gruppen. Ein Gruppenhomomorphismus von $G$ in $H$ ist eine Abbildung 
-$f:G\rightarrow H$, so dass gilt:\\
-$f(a\cdot_{G}b)=f(a)\cdot_{H}f(b)$ für alle $a,b\in G$ 
-\end{defn}
-
-\textbf{Eigenschaften}
-\begin{enumerate}
-\item $f(e_G)=e_H.$\\
-Für $g\in G$ beliebig gilt:\\
-$f(g)=f(e_{G}\cdot_{G}g)=f(e_G)\cdot_{H}f(g)$\\
-$\Rightarrow f(e_G)=f(e_G)\cdot_{H}(f(g)\cdot_{H}f(g)^{-1})=f(g)\cdot_{H}f(g)^{-1}=e_H$\\
-\item $f(g^{-1})=f(g)^{-1}$ für alle $g\in G$\\
-$e_H=f(e_G)=f(g\cdot_G g^{-1})=f(g)\cdot_{H}f(g^{-1}) \Rightarrow f(g^{-1})=f(g)^{-1}$\\
-\item Seien $a_1: G_1\rightarrow G_2$ und $a_2: G_2\rightarrow G_3$ Gruppenhomomorphismen, 
-dann ist $a_2\circ a_1: G_1\rightarrow G_3$ ein Gruppenhomomorphismus.
-\end{enumerate}
-
-\begin{ex}
-\begin{enumerate}
-\item Für jedes $g \in G$ ist
-$$\mathbb{Z} \rightarrow G, \qquad n \mapsto g^n$$
-ein Gruppenhomomorphismus.
-\item Die Exponentialfunktion
-$$(\mathbb{R},+)\rightarrow(\mathbb{R}^*,\cdot), \qquad x\mapsto e^x$$
-ist ein Gruppenhomomorphismus.
-\item Für $(G,+)$ abelsch ist % TODO zu multiplikativer Notation wechseln, weil wegen definiert?
-$$G\rightarrow G, \qquad a\mapsto na = a+...+a \text{(n-mal)}$$
-ein Gruppenhomomorphismus.
-\end{enumerate}
+	\begin{enumerate}
+	\item Die trivialen Untergruppen $\{e\}$ und $G$ sind normal.
+	\item Jede Untergruppe einer abelschen Gruppe ist normal.
+	\item $\SL_n(K)$ ist eine normale Untergruppe von $\GL_n(K)$ für jeden Körper $K$.
+	\end{enumerate}
 \end{ex}
 
 \begin{defn}
-Ist $N$ eine normale Untergruppe von $G$, so ist $G/N$ eine Gruppe, die man als Faktorgruppe von $G$ bezüglich $N$ bezeichnet (oder von $N$ in $G$).
-Die natürliche Projektion
-$$G\rightarrow G/N, \qquad a\mapsto aN$$
-ist dann ein surjektiver Gruppenhomomorphismus.
+	Eine Gruppe $G$ sodass $\{e\}$ und $G$ die einzigen normalen Untergruppen sind, nennt man \new{einfache Gruppe}.
 \end{defn}
 
 \begin{defn}
-	G,H Gruppen, $ f: G \rightarrow H$ Gruppenhomomorphismus.
+	Es seien $(G,\cdot_G)$ und $(H,\cdot_H)$ Gruppen.
+	Ein Gruppenhomomorphismus von $G$ in $H$ ist eine Abbildung $f:G\rightarrow H$, so dass	$$f(a\cdot_{G}b)=f(a)\cdot_{H}f(b)$$ für alle $a,b\in G$ gilt.
+\end{defn}
+
+\begin{lemma}[Eigenschaften von Homomorphismen]
+	\begin{enumerate}
+	\item Das neutrale Element bleibt erhalten: $f(e_G)=e_H$
+	\item Homomorphismen kommutieren mit Inversen: $f(g^{-1})=f(g)^{-1}$ für alle $g\in G$
+	\item Seien $a_1: G_1\rightarrow G_2$ und $a_2: G_2\rightarrow G_3$ Gruppenhomomorphismen, dann ist $a_2\circ a_1: G_1\rightarrow G_3$ ein Gruppenhomomorphismus.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}
+	\item Für beliebiges \(g \in G\) gilt
+		\begin{align*}
+			f(e_G) &= f(e_G)\cdot_H(f(g)\cdot_Hf(g)^{-1}) = (f(e_G)\cdot_Hf(g))\cdot_Hf(g)^{-1}\\
+			&= f(e_G\cdot_Gg)\cdot_Hf(g)^{-1} = f(g)\cdot_Hf(g)^{-1} = e_H.
+		\end{align*}
+	\item Für beliebiges \(g \in G\) gilt \[e_H=f(e_G)=f(g\cdot_G g^{-1})=f(g)\cdot_{H}f(g^{-1})\] und somit \(f(g^{-1})=f(g)^{-1}\).
+	\item Für beliebige \(g, h \in G\) gilt
+		\begin{align*}
+			(a_1\circ a_2)(gh) &= a_1(a_2(gh)) = a_1(a_2(g)a_2(h)) = a_1(a_2(g))a_1(a_2(h))\\
+			&= (a_1\circ a_2)(g)(a_1\circ a_2)(h).\qedhere
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+
+\begin{ex}
+	\begin{enumerate}
+	\item Für jedes $g \in G$ ist
+		$$\mathbb{Z} \rightarrow G, \quad n \mapsto g^n$$
+		ein Gruppenhomomorphismus.
+	\item Die Exponentialfunktion
+		$$(\mathbb{R},+)\rightarrow(\mathbb{R}^*,\cdot), \quad x\mapsto e^x$$
+		ist ein Gruppenhomomorphismus.
+	\item Für $(G,+)$ abelsch ist % TODO zu multiplikativer Notation wechseln, weil wegen definiert?
+		$$G\rightarrow G, \quad a\mapsto na = a+...+a \text{(n-mal)}$$
+		ein Gruppenhomomorphismus.
+	\end{enumerate}
+\end{ex}
+
+\begin{defn}
+	Ist $N$ eine normale Untergruppe von $G$, so ist $G/N$ eine Gruppe, die man als Faktorgruppe von $G$ bezüglich $N$ bezeichnet (oder von $N$ in $G$).
+	Die natürliche Projektion $$G\rightarrow G/N, \quad a\mapsto aN$$ ist dann ein surjektiver Gruppenhomomorphismus.
+\end{defn}
+
+\begin{defn}
+	$G$, $H$ Gruppen, $f: G \rightarrow H$ Gruppenhomomorphismus.
 	\begin{itemize}
-	\item Das \underline{Bild von $f$} ist $\im(f) := \{f(g) | g \in G\} \subseteq H$.
-	\item Der \underline{Kern von $f$} ist $\ker(f) := \{g \in G | f(g) = e_H\} \subseteq G$.
+	\item Das \new{Bild von $f$} ist $\im(f) := \{f(g) | g \in G\} \subseteq H$.
+	\item Der \new{Kern von $f$} ist $\ker(f) := \{g \in G | f(g) = e_H\} \subseteq G$.
 	\end{itemize}
 \end{defn}
 
 \begin{lemma}
 	Für jeden Gruppenhomomorphismus $ f: G \rightarrow H$ gilt:
 	\begin{enumerate}[label=(\roman*)]
-		\item $\im(f)$ ist eine Untergruppe von $H$.
-		\item $\ker(f)$ ist eine normale Untergruppe von $G$.
-		\item $f$ ist surjektiv genau dann, wenn $\im(f) = H$ ist.
-		\item $f$ ist injektiv genau dann, wenn $\ker(f) = \{e_G\}$ ist.\footnote{vgl. Übung 2, Aufgabe 1.}
+	\item $\im(f)$ ist eine Untergruppe von $H$.
+	\item $\ker(f)$ ist eine normale Untergruppe von $G$.
+	\item $f$ ist surjektiv genau dann, wenn $\im(f) = H$ ist.
+	\item $f$ ist injektiv genau dann, wenn $\ker(f) = \{e_G\}$ ist.\footnote{vgl. Übung 2, Aufgabe 1.}
 	\end{enumerate}
 \end{lemma}
 
 \begin{proof}
 	\begin{enumerate}[label=(\roman*)]
-		\item $\im(f)$ ist wegen der Definition von Gruppenhomomorphismen unter $\cdot_H$ abgeschlossen, enthält $e_H = f(e_G)$ (Eigenschaft (i)) und die Inversen aller seiner Elemente (Eigenschaft (ii)).
-		\item Für alle $a, b \in \ker(f)$ gilt:
-			$$ f(ab^{-1}) = f(a)f(b^{-1}) = f(a)(f(b))^{-1} = ee^{-1} = e.$$
-			Somit ist $\ker(f)$ eine Untergruppe. \\
-			Für jedes $ g \in \ker(f)$ und $x \in G$ gilt:
-			$$ f(x^{-1}gx) = f(x^{-1})f(g)f(x) = f(x^{-1}) e f(x) = f(x^{-1})f(x) = f(x^{-1}x) = f(e) = e.$$
-			Also ist $x^{-1}gx \in \ker(f) $ und somit ist $\ker(f)$ ein Normalteiler.
-		\item Surjektivität: Dies ist exakt die Definition der Surjektivität.
-		\item Injektivität: Dass aus Injektivität die Trivialität des Kernes folgt, ist klar.
-			Umgekehrt gilt für alle \(a, b \in G\) mit \(f(a) = f(b)\), dass \[e_H = f(a)f(b^{-1}) =f(a)f(b^{-1}) = f(ab^{-1})\] ist.
-			Somit haben wir \(ab^{-1} \in \ker(f) = \{e_G\}\), also \(a = b\) und folglich die Injektivität von \(f\). \qedhere
+	\item $\im(f)$ ist wegen der Definition von Gruppenhomomorphismen unter $\cdot_H$ abgeschlossen, enthält $e_H = f(e_G)$ (Eigenschaft (i)) und die Inversen aller seiner Elemente (Eigenschaft (ii)).
+	\item Für alle $a, b \in \ker(f)$ gilt
+		$$ f(ab^{-1}) = f(a)f(b^{-1}) = f(a)(f(b))^{-1} = ee^{-1} = e.$$
+		Somit ist $\ker(f)$ eine Untergruppe.
+		Für jedes $ g \in \ker(f)$ und $x \in G$ gilt
+		$$ f(x^{-1}gx) = f(x^{-1})f(g)f(x) = f(x^{-1}) e f(x) = f(x^{-1})f(x) = f(x^{-1}x) = f(e) = e.$$
+		Also ist $x^{-1}gx \in \ker(f) $ und somit ist $\ker(f)$ ein Normalteiler.
+	\item Dies ist exakt die Definition der Surjektivität.
+	\item Dass aus Injektivität die Trivialität des Kernes folgt, ist klar.
+		Umgekehrt gilt für alle \(a, b \in G\) mit \(f(a) = f(b)\), dass \[e_H = f(a)f(b)^{-1} =f(a)f(b^{-1}) = f(ab^{-1})\] ist.
+		Somit haben wir \(ab^{-1} \in \ker(f) = \{e_G\}\), also \(a = b\) und folglich die Injektivität von \(f\). \qedhere
 	\end{enumerate}	
 \end{proof}
 
 \begin{nb}
 	\begin{itemize}
-		\item Ein bijektiver Homomorphismus wird \underline{Isomorphismus} genannt. Die Umkehrfunktion ist dann wieder ein Isomorphismus.
-		\item Ein Gruppenhomomorphismus $G \rightarrow G$ heißt \underline{Endomorphismus von G}.
-		\item Ein Gruppenisomorphismus $G \rightarrow G$ heißt \underline{Automorphismus von G}.
+	\item Ein bijektiver Homomorphismus wird \underline{Isomorphismus} genannt. Die Umkehrfunktion ist dann wieder ein Isomorphismus.
+	\item Ein Gruppenhomomorphismus $G \rightarrow G$ heißt \underline{Endomorphismus von G}.
+	\item Ein Gruppenisomorphismus $G \rightarrow G$ heißt \underline{Automorphismus von G}.
 	\end{itemize}
 \end{nb}
 
 \begin{defn}
-	$G/N$ heißt \underline{Faktorgruppe von $N$ in $G$}, wenn $N$ normale Untergruppe von $G$ ist.\\
-	Gruppenstruktur: $aN \cdot bN = abN$, $eN = N$ neutrales Element \\
+	$G/N$ heißt \underline{Faktorgruppe von $N$ in $G$}, wenn $N$ normale Untergruppe von $G$ ist.
+	Die Verknüpfung ist durch $aN \cdot bN = abN$ mit neutralem Element $eN = N$ gegeben.
 	Die \underline{natürliche Projektion} $\pi : G \rightarrow G/N, a \mapsto aN$ ist ein surjektiver Gruppenhomomorphismus mit $\ker(\pi) = N, \im(\pi) = G/N$.
 \end{defn}
 
 \begin{thm}[Homomorphiesatz]
-	Es sei $f: G \rightarrow G'$ ein Gruppenhomomorphismus und N ein Normalteiler von G.
-	Ist N im $\ker(f)$ enthalten, so gibt es genau einen Gruppenhomomorphismus $\bar{f}: G/N \rightarrow G'$, so dass das folgende Diagramm kommutiert:
+	Es sei $f: G \rightarrow G'$ ein Gruppenhomomorphismus und \(N\) ein Normalteiler von \(G\).
+	Ist \(N\) im Kern von \(f\) enthalten, so gibt es genau einen Gruppenhomomorphismus $\bar{f}: G/N \rightarrow G'$, so dass das folgende Diagramm kommutiert:
 	\[\begin{tikzcd}
 		G \arrow[rd,"\pi"] \arrow[rr,"f=\bar f\circ \pi"] & & G'\\
 		& G/N \arrow[ru,"\bar f"] &
