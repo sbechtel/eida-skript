@@ -1547,4 +1547,142 @@ Es sei $G$ eine Gruppe, $\underline{G}$ und $\underline{H}$ Normalreihen in $G$.
 	Die Gruppe $A_n$ ist nicht auflösbar, da sie eine nicht abelsche einfache Gruppe ist. Da $A_n$ eine Untergruppe von $S_n$ ist, ist $S_n$ auch nicht auflösbar.
 \end{proof}
 
+%VL 23.06.15 Fabian Gabel
+
+Motivation: Beschreibung von Nullstellen von Polynomen durch Radikale
+\begin{itemize}
+  \item Grad $2$: $x^2 + 2px + q = 0 \leadsto p\text{-}q\text{Formel} \quad x_{1,2} = -p \pm \sqrt{p^{2} - q} $
+  \item Grad $3,4$: Ähnliche Formeln, die $\sqrt[2]{}, \sqrt[3]{}, \sqrt[4]{}$ enthalten
+\end{itemize}
+
+Aus der Tatsache, dass $S_n$ nicht auflösbar ist für $n \geq 5$ folgt, dass solche Formeln für allgemeine Polynome vom Grad $n \geq 5$ nicht mehr möglich sind
+
+\subsection{Abelsche Gruppen}
+
+Im Folgenden, wird die Notation $(G,+)$ - additive Verknüpfung -  für abelsche Gruppen verwendet.
+
+\underline{Wiederholung}: $(H_i)_{i \in I}$ Familie von abelschen Gruppen.
+
+Direktes Produkt: $\prod_{i \in I} \to (h_i)_{i \in I}$ mit $h_i \in H_i \forall i \in I$.
+
+\begin{defn}
+  Die (äußere) direkte Summe der Familie $(H_i)_{i \in I}$ von abelschen Gruppen ist
+  \[ \bigoplus_{i \in I} H_i := \left\{ (h_i)_{i \in I} \in \Pi_{i \in I H_i} |  \right\}, \]
+  d.h. $h_i \in H_i$ und $h_i = 0$ gilt für fast alle $i \in I$.
+\end{defn}
+
+\begin{nb}
+  $\bigoplus_{i \in I}$ ist eine Untergruppe von $\prod_{i \in I} H_i$.
+\end{nb}
+
+Wie im Fall der direkten Produkte zeigt man das Folgende:
+
+\begin{thm}
+  Es sei $(H_i)_{i \in I}$
+ne Familie von Untergruppen einer abelschen Gruppe $G$. Dann sind die folgenden Aussagen äquivalent
+\begin{itemize}
+  \item[(i)]  $G$ wird durch $\cup_{i \in I} H_i$ erzeugt und für jedes $i_0 \in I$ gilt 
+    \[ H_{i_0} \cap \langle \bigcup_{i \neq i_0} H_i \rangle = \left\{ 0 \right\}. \]
+  \item Jedes $g \in G$ besitzt eine eindeutige Darstellung $g = h_{i_1} + \dots + h_{i_l}$ mit $h_{i_j} \in H_{i_j}$ für $j = 1,\dots,l$, ($i_1,i_2,\dots,i_l$ paarweise verschieden).
+\end{itemize}
+\end{thm}
+
+\begin{nb}
+  $ \bigoplus_{i \in I} H_i = \prod_{i \in I} $ für I endlich.
+\end{nb}
+
+\begin{nb}
+  Wenn diese Aussagen erfüllt sind, ist $G$ die innere direkte Summe von $(H_i)_{i \in I}$. Aus (ii) folgt, dass $G$ zu $\bigoplus_{i \in I} H_i$ isomorph ist. 
+\end{nb}
+
+\begin{defn}
+  Eine abelsche Gruppe heißt frei, wenn eine Teilmenge $X \subset G$ existiert, so dass
+  \begin{itemize}
+    \item[(i)] $\operatorname{ord}(x) = \infty$ gilt für alle $x \in X$.
+    \item[(ii)] $G = \bigoplus_{x \in X} \langle x \rangle$
+  \end{itemize}
+
+  Die Menge $X$ heißt dann eine Basis von $G$ (nicht eindeutig bestimmt). Ist $G$ frei mit Basis $X$, so besitzt jedes $g \in G$ eine eindeutige Darstellung $g = \sum_{x \in X} m_x x$ mit $m_x \in \mathbb{Z}$ und $m_x = 0$ für fast alle $x \in X$ (d.h. bis auf eine endliche Menge).
+\end{defn}
+
+\begin{ex}
+  \begin{itemize}
+    \item $G = \bigoplus_{i \in I} H_i \quad H_i \cong \mathbb{Z}$
+    \item $M$ feste Menge, $G = \left\{ f : M \to \mathbb{Z} | f(m) = 0 \text{ für fast alle } m \in M \right\}$ ist freie abelsche Gruppe.  Für $m \in M$ definiert man $f_m \in G$ durch $f_m(m) = 1, f_m(m') = 0$ für $m' \in M, m' \neq m$. $X = \left\{ f_m | m \in M \right\}$ ist dann eine Basis von $G$.
+  \end{itemize}
+\end{ex}
+
+\begin{nb}
+  Es sei $G$ eine abelsche Gruppe, die ein $b \neq 0 $ mit $\operatorname{ord}(b) < \infty$ enthält. Dann ist $G$ \underline{nicht} frei abelsch.
+\end{nb}
+
+\begin{proof}
+  Es sei $G$ frei abelsch, $g \in G$ mit $\operatorname{ord}(g) = n < \infty$. Dann gilt:
+  \begin{itemize}
+    \item $g = \sum_{x \in X} m_x x $ für $X$ Basis von $G$ 
+    \item $0 = ng = \sum_{x \in X} (n m_x) x $
+    \item[Aber:] $0 = \sum_{x \in X} 0 \cdot x$
+  \end{itemize}
+  Dies liefert $n m_x = 0$ für alle $x \in X$. Daraus folgt (wegen $n \neq 0$) $m_x = 0$ für alle $x$. Daraus folgt: $g = 0$.
+\end{proof}
+
+Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:  
+
+\begin{thm}
+  Sei $G$ eine freie abelsche Gruppe mit Basis $X$, und $H$ eine beliebige abelsche Gruppe. Sei $f : X \to H$ eine Abbildung, Dann existiert ein eindeutig bestimmter Homomorphismus $\tilde{f}: G \to H$, der $f$ fortsetzt, d.h. mit $\tilde{f}(x) = f(x)$ für alle $x \in X$.
+\end{thm}
+\begin{proof}
+  Es sei $g \in G$ beliebig. Es gilt: $g = \sum_{x \in X}m_x x$ ($ m_x = 0)$ für fast alle $x$).
+
+  Wir setzen $\tilde{f}(g) := \sum_{x \in X} m_x f(x)$ (Summe ist wieder endlich, insbesondere unabhängig von Summationsreihenfolge). Dies ist wohldefiniert, weil die Summe endlich ist. $\tilde{f}$ ist dann ein Gruppenhomomorphismus, der $f$ fortsetzt. 
+
+  Es sei $\varphi : G \to H$ ein Homom., der $f$ fortsetzt. Dann gilt für alle $x_1,\dots,x_l \in X, m_1,\dots,m_l \in \mathbb{Z}$: 
+  \begin{align*}
+  \varphi(m_1 x_1 + \dots + m_l x_l) 
+  &= \varphi( m_1 x_1) + \dots \varphi( m_l x_l ) \\
+  &= m_1 \varphi(x_1) + m_2 \varphi(x_2) + \dots + m_l \varphi(x_l) \\
+  &= m_1 f(x_1) + m_2 f(x_2) + \dots m_l f(x_l) \\
+  &= m_1 \tilde{f}(x_1) + \dots + m_l \tilde{f}(x_l)\\
+  &= \tilde{f}( m_1 x_1 + \dots m_l x_l)
+  \end{align*}
+  Dies zeigt, dass $\varphi(g) = \tilde{f}(g) $ für beliebige $g \in G$ gilt. Damit ist die Fortsetzung eindeutig.
+\end{proof} 
+
+\begin{kor}
+  Jede ab. Gruppe $G$ ist Faktorguppe einer freien abelschen Gruppe. D.h. zu jeder abelschen Gruppe $G$ gibt es eine freie abelsche Gruppe $F$ mit einem surjektiven Homomorphismus $f: F \to G$.
+\end{kor}
+
+\begin{proof}
+  Für jedes $g \in G$ wählen wir eine Gruppe $H_g \cong \mathbb{Z}$ mit Erzeuger $x_g \in H_g$ und setzen:
+  \[ F := \bigoplus_{g \in G} H_g \cong \bigoplus_{g \in G} \mathbb{Z} \]
+  $F$ ist dann eine freie abelsche Gruppe mit Basis $X = \left\{  x_g \vert g \in G \right\}$.
+
+  Wir betrachten $f : X \to G, x_g \mapsto g$. Diese Abbildung $f$ wird nach dem obigen Satz durch einen Homomorphismus $\tilde{f}: F\to G$ fortgesetzt, der offensichtlich surjektiv ist.
+\end{proof}
+
+\begin{thm}
+  Seien $G_1, G_2$ freie abelsche Gruppen mit Basen $X_1 \subset G_1, X_2 \subset G_2$. Dann gilt:
+  \[ G_1 \cong G_2 \iff \lvert X_1 \rvert = \lvert X_2 \rvert \]
+\end{thm}
+\begin{proof}
+  "$\impliedby$:" $ \lvert X_1 \rvert = \lvert X_2 \rvert$ bedeutet, dass es eine Bijektion $f: X_1 \to X_2$ gibt. Es sei $\tilde{f}: G_1 \to G_2 $ der Gruppenhom. der $f : X_1 \to X_2 \subset G_2$ fortsetzt.
+
+  Ähnlich existiert ein Homomorphismus $\tilde{g}: G_2 \to G_1$, der $f^{-1}$ fortsetzt. Da $\tilde{g} \circ \tilde{f}(x) = f^{-1} \circ f(x) = x $ für alle $x \in X_1$ gilt, ist $\tilde{g} \circ \tilde{f} $ eine Fortsetzung von $\operatorname{id}_{X_1} : X_1 \to X_1$. Aus der Eindeutigkeit folgt dann, dass $\tilde{g} \circ \tilde{f} = \operatorname{id}_{G_1}$.
+
+  Genauso zeigt man: $\tilde{f} \circ \tilde{g} = \operatorname{id}_{G_2}$.
+
+  Da $\tilde{f}$ das Inverse $\tilde{g}$ besitzt, ist $\tilde{f}: G_1 \to G_2$ dann ein Isomorphismus.
+
+  "$\implies$:"{} Es sei $p $ eine Primzahl, $G$ eine abelsche Gruppe. $pG = \left\{ pg \vert g \in G \right\}$ ist dann eine Untergruppe von $G$. Dann ist$V = G / pG$ ein Vektorraum über $\mathbb{F}_p = \mathbb{Z}/p\mathbb{Z}$.
+
+  Sei $G \to G/pG = V, g\mapsto \overline{g} = g + pG$  die natürliche Projektion. Wenn $G$ eine freie abelsche Gruppe mit Basis $X$ ist, dann ist $ \overline{X} = \left\{ \overline{x} \vert x \in X \right\} $ eine Basis vom Vektorraum $V$.
+
+  $X \to \overline{X}, x \mapsto \overline{x} = x + pG$ ist eine Bijektion. 
+
+  Zur Bijektion: Ist $x, x' \in X$ so gilt $\overline{x} = \overline{x}' \iff x - x' \in pG$
+
+  $ \implies x - x' = p \left( \sum_{y \in X} m_y y \right)  = \sum_{y \in X} \left( p m_y \right) y $. Aus der Eindeutigkeit der Darstellung in $G$ folgt $p m_x = 1$, $m_x \in \mathbb{Z}$ $\leadsto$  Widerspruch.
+
+\end{proof}
+
 \end{document}
