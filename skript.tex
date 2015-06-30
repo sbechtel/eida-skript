@@ -1566,7 +1566,7 @@ Im Folgenden, wird die Notation $(G,+)$ - additive Verknüpfung -  für abelsche
 Direktes Produkt: $\prod_{i \in I} \to (h_i)_{i \in I}$ mit $h_i \in H_i \forall i \in I$.
 
 \begin{defn}
-  Die (äußere) direkte Summe der Familie $(H_i)_{i \in I}$ von abelschen Gruppen ist
+  Die (äußere) direkte Summe der Familie $(H_i)_{i \in I}$ von abelschen Gruppen ist 
   \[ \bigoplus_{i \in I} H_i := \left\{ (h_i)_{i \in I} \in \Pi_{i \in I H_i} |  \right\}, \]
   d.h. $h_i \in H_i$ und $h_i = 0$ gilt für fast alle $i \in I$.
 \end{defn}
@@ -1632,11 +1632,9 @@ Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:
   Sei $G$ eine freie abelsche Gruppe mit Basis $X$, und $H$ eine beliebige abelsche Gruppe. Sei $f : X \to H$ eine Abbildung, Dann existiert ein eindeutig bestimmter Homomorphismus $\tilde{f}: G \to H$, der $f$ fortsetzt, d.h. mit $\tilde{f}(x) = f(x)$ für alle $x \in X$.
 \end{thm}
 \begin{proof}
-  Es sei $g \in G$ beliebig. Es gilt: $g = \sum_{x \in X}m_x x$ ($ m_x = 0)$ für fast alle $x$).
-
-  Wir setzen $\tilde{f}(g) := \sum_{x \in X} m_x f(x)$ (Summe ist wieder endlich, insbesondere unabhängig von Summationsreihenfolge). Dies ist wohldefiniert, weil die Summe endlich ist. $\tilde{f}$ ist dann ein Gruppenhomomorphismus, der $f$ fortsetzt. 
-
-  Es sei $\varphi : G \to H$ ein Homom., der $f$ fortsetzt. Dann gilt für alle $x_1,\dots,x_l \in X, m_1,\dots,m_l \in \mathbb{Z}$: 
+  Es sei $g \in G$ beliebig. Es gilt: $g = \sum_{x \in X}m_x x$ ($ m_x = 0$ für fast alle $x$). \\
+  Wir setzen $\tilde{f}(g) := \sum_{x \in X} m_x f(x)$ (Summe ist wieder endlich, insbesondere unabhängig von Summationsreihenfolge). Dies ist wohldefiniert, weil die Summe endlich ist. $\tilde{f}$ ist dann ein Gruppenhomomorphismus, der $f$ fortsetzt.  \\
+  Es sei $\varphi : G \to H$ ein Homomorphismus, der $f$ fortsetzt. Dann gilt für alle $x_1,\dots,x_l \in X, m_1,\dots,m_l \in \mathbb{Z}$: 
   \begin{align*}
   \varphi(m_1 x_1 + \dots + m_l x_l) 
   &= \varphi( m_1 x_1) + \dots \varphi( m_l x_l ) \\
@@ -1649,7 +1647,7 @@ Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:
 \end{proof} 
 
 \begin{kor}
-  Jede ab. Gruppe $G$ ist Faktorguppe einer freien abelschen Gruppe. D.h. zu jeder abelschen Gruppe $G$ gibt es eine freie abelsche Gruppe $F$ mit einem surjektiven Homomorphismus $f: F \to G$.
+  Jede abelsche Gruppe $G$ ist Faktorguppe einer freien abelschen Gruppe. D.h. zu jeder abelschen Gruppe $G$ gibt es eine freie abelsche Gruppe $F$ mit einem surjektiven Homomorphismus $f: F \to G$.
 \end{kor}
 
 \begin{proof}
@@ -1665,24 +1663,10 @@ Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:
   \[ G_1 \cong G_2 \iff \lvert X_1 \rvert = \lvert X_2 \rvert \]
 \end{thm}
 \begin{proof}
-  "$\impliedby$:" $ \lvert X_1 \rvert = \lvert X_2 \rvert$ bedeutet, dass es eine Bijektion $f: X_1 \to X_2$ gibt. Es sei $\tilde{f}: G_1 \to G_2 $ der Gruppenhom. der $f : X_1 \to X_2 \subset G_2$ fortsetzt.
+  "$\Leftarrow$":$ \lvert X_1 \rvert = \lvert X_2 \rvert$ bedeutet, dass es eine Bijektion $f: X_1 \to X_2$ gibt. Es sei $\tilde{f}: G_1 \to G_2 $ der Gruppenhomomorphismus der $f : X_1 \to X_2 \subset G_2$ fortsetzt.
+  Ähnlich existiert ein Homomorphismus $\tilde{g}: G_2 \to G_1$, der $f^{-1}$ fortsetzt. Da $(\tilde{g} \circ \tilde{f})(x) = (f^{-1} \circ f)(x) = x $ für alle $x \in X_1$ gilt, ist $\tilde{g} \circ \tilde{f} $ eine Fortsetzung von $\operatorname{id}_{X_1} : X_1 \to X_1$. Aus der Eindeutigkeit folgt dann, dass $\tilde{g} \circ \tilde{f} = \operatorname{id}_{G_1}$. Genauso zeigt man: $\tilde{f} \circ \tilde{g} = \operatorname{id}_{G_2}$. Da $\tilde{f}$ das Inverse $\tilde{g}$ besitzt, ist $\tilde{f}: G_1 \to G_2$ dann ein Isomorphismus.
 
-  Ähnlich existiert ein Homomorphismus $\tilde{g}: G_2 \to G_1$, der $f^{-1}$ fortsetzt. Da $\tilde{g} \circ \tilde{f}(x) = f^{-1} \circ f(x) = x $ für alle $x \in X_1$ gilt, ist $\tilde{g} \circ \tilde{f} $ eine Fortsetzung von $\operatorname{id}_{X_1} : X_1 \to X_1$. Aus der Eindeutigkeit folgt dann, dass $\tilde{g} \circ \tilde{f} = \operatorname{id}_{G_1}$.
-
-  Genauso zeigt man: $\tilde{f} \circ \tilde{g} = \operatorname{id}_{G_2}$.
-
-  Da $\tilde{f}$ das Inverse $\tilde{g}$ besitzt, ist $\tilde{f}: G_1 \to G_2$ dann ein Isomorphismus.
-
-  "$\implies$:"{} Es sei $p $ eine Primzahl, $G$ eine abelsche Gruppe. $pG = \left\{ pg \vert g \in G \right\}$ ist dann eine Untergruppe von $G$. Dann ist$V = G / pG$ ein Vektorraum über $\mathbb{F}_p = \mathbb{Z}/p\mathbb{Z}$.
-
-  Sei $G \to G/pG = V, g\mapsto \overline{g} = g + pG$  die natürliche Projektion. Wenn $G$ eine freie abelsche Gruppe mit Basis $X$ ist, dann ist $ \overline{X} = \left\{ \overline{x} \vert x \in X \right\} $ eine Basis vom Vektorraum $V$.
-
-  $X \to \overline{X}, x \mapsto \overline{x} = x + pG$ ist eine Bijektion. 
-
-  Zur Bijektion: Ist $x, x' \in X$ so gilt $\overline{x} = \overline{x}' \iff x - x' \in pG$
-
-  $ \implies x - x' = p \left( \sum_{y \in X} m_y y \right)  = \sum_{y \in X} \left( p m_y \right) y $. Aus der Eindeutigkeit der Darstellung in $G$ folgt $p m_x = 1$, $m_x \in \mathbb{Z}$ $\leadsto$  Widerspruch.
-
+  "$\Rightarrow$": Es sei $p $ eine Primzahl, $G$ eine abelsche Gruppe. $pG = \left\{ pg \vert g \in G \right\}$ ist dann eine Untergruppe von $G$. Dann ist $V = G / pG$ ein Vektorraum über $\mathbb{F}_p = \mathbb{Z}/p\mathbb{Z}$. Sei $G \to G/pG = V, g\mapsto \overline{g} = g + pG$  die natürliche Projektion. Wenn $G$ eine freie abelsche Gruppe mit Basis $X$ ist, dann ist $ \overline{X} = \left\{ \overline{x} \vert x \in X \right\} $ eine Basis vom Vektorraum $V$. Nun ist die Abbildung $X \to \overline{X}, x \mapsto \overline{x} = x + pG$ ist eine Bijektion, denn ist $x, x' \in X$ so gilt $\overline{x} = \overline{x}' \iff x - x' \in pG$. Daraus folgt $x - x' = p \left( \sum_{y \in X} m_y y \right)  = \sum_{y \in X} \left( p m_y \right) y $. Aus der Eindeutigkeit der Darstellung in $G$ folgt $p m_x = 1$, $m_x \in \mathbb{Z}$ $\leadsto$  Widerspruch.
 \end{proof}
 
 \end{document}
