@@ -1566,7 +1566,7 @@ Im Folgenden wird die Notation $(G,+)$ -- additive Verknüpfung -- für abelsche
 Direktes Produkt: $\prod_{i \in I} \to (h_i)_{i \in I}$ mit $h_i \in H_i \; \forall i \in I$.
 
 \begin{defn}
-  Die (äußere) direkte Summe der Familie $(H_i)_{i \in I}$ von abelschen Gruppen ist 
+  Die \emph{(äußere) direkte Summe} der Familie $(H_i)_{i \in I}$ von abelschen Gruppen ist 
   \[ \bigoplus_{i \in I} H_i := \left\{ (h_i)_{i \in I} \in \Pi_{i \in I H_i} |  \right\}, \]
   d.h. $h_i \in H_i$ und $h_i = 0$ gilt für fast alle $i \in I$.
 \end{defn}
@@ -1587,27 +1587,27 @@ Wie im Fall der direkten Produkte zeigt man das Folgende:
 \end{thm}
 
 \begin{nb}
-  $ \bigoplus_{i \in I} H_i = \prod_{i \in I} $ für I endlich.
+  $ \bigoplus_{i \in I} H_i = \prod_{i \in I} H_i $ für I endlich.
 \end{nb}
 
 \begin{nb}
-  Wenn diese Aussagen erfüllt sind, ist $G$ die innere direkte Summe von $(H_i)_{i \in I}$. Aus (ii) folgt, dass $G$ zu $\bigoplus_{i \in I} H_i$ isomorph ist. 
+  Wenn diese Aussagen erfüllt sind, ist $G$ die \emph{(innere) direkte Summe} von $(H_i)_{i \in I}$. Aus (ii) folgt, dass $G$ zu $\bigoplus_{i \in I} H_i$ isomorph ist. 
 \end{nb}
 
 \begin{defn}
-  Eine abelsche Gruppe heißt frei, wenn eine Teilmenge $X \subset G$ existiert, so dass
+  Eine abelsche Gruppe heißt \emph{frei}, wenn eine Teilmenge $X \subset G$ existiert, so dass
   \begin{itemize}
-    \item[(i)] $\operatorname{ord}(x) = \infty$ gilt für alle $x \in X$.
-    \item[(ii)] $G = \bigoplus_{x \in X} \langle x \rangle$
+    \item[(i)] $\operatorname{ord}(x) = \infty$ gilt für alle $x \in X$
+    \item[(ii)] $G = \bigoplus_{x \in X} \langle x \rangle$.
   \end{itemize}
 
-  Die Menge $X$ heißt dann eine Basis von $G$ (nicht eindeutig bestimmt). Ist $G$ frei mit Basis $X$, so besitzt jedes $g \in G$ eine eindeutige Darstellung $g = \sum_{x \in X} m_x x$ mit $m_x \in \mathbb{Z}$ und $m_x = 0$ für fast alle $x \in X$ (d.h. bis auf eine endliche Menge).
+  Die Menge $X$ heißt dann eine \emph{Basis} von $G$ (nicht eindeutig bestimmt). Ist $G$ frei mit Basis $X$, so besitzt jedes $g \in G$ eine eindeutige Darstellung $g = \sum_{x \in X} m_x x$ mit $m_x \in \mathbb{Z}$ und $m_x = 0$ für fast alle $x \in X$ (d.h. bis auf eine endliche Menge).
 \end{defn}
 
 \begin{ex}
   \begin{itemize}
     \item $G = \bigoplus_{i \in I} H_i \quad H_i \cong \mathbb{Z}$
-    \item $M$ feste Menge, $G = \left\{ f : M \to \mathbb{Z} | f(m) = 0 \text{ für fast alle } m \in M \right\}$ ist freie abelsche Gruppe.  Für $m \in M$ definiert man $f_m \in G$ durch $f_m(m) = 1, f_m(m') = 0$ für $m' \in M, m' \neq m$. $X = \left\{ f_m | m \in M \right\}$ ist dann eine Basis von $G$.
+    \item $M$ feste Menge, $G = \left\{ f : M \to \mathbb{Z} \,|\, f(m) = 0 \text{ für fast alle } m \in M \right\}$ ist freie abelsche Gruppe.  Für $m \in M$ definiert man $f_m \in G$ durch $f_m(m) = 1, f_m(m') = 0$ für $m' \in M, m' \neq m$. $X = \left\{ f_m \,|\, m \in M \right\}$ ist dann eine Basis von $G$.
   \end{itemize}
 \end{ex}
 
@@ -1616,7 +1616,7 @@ Wie im Fall der direkten Produkte zeigt man das Folgende:
 \end{nb}
 
 \begin{proof}
-  Es sei $G$ frei abelsch, $g \in G$ mit $\operatorname{ord}(g) = n < \infty$. Dann gilt:
+  Es sei $G$ frei abelsch, $g \in G$ mit $ 1 < \operatorname{ord}(g) = n < \infty$. Dann gilt:
   \begin{itemize}
     \item $g = \sum_{x \in X} m_x x $ für $X$ Basis von $G$ 
     \item $0 = ng = \sum_{x \in X} (n m_x) x $
@@ -1628,7 +1628,7 @@ Wie im Fall der direkten Produkte zeigt man das Folgende:
 Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:  
 
 \begin{thm}
-  Sei $G$ eine freie abelsche Gruppe mit Basis $X$, und $H$ eine beliebige abelsche Gruppe. Sei $f : X \to H$ eine Abbildung, Dann existiert ein eindeutig bestimmter Homomorphismus $\tilde{f}: G \to H$, der $f$ fortsetzt, d.h. mit $\tilde{f}(x) = f(x)$ für alle $x \in X$.
+  Sei $G$ eine freie abelsche Gruppe mit Basis $X$ und $H$ eine beliebige abelsche Gruppe. Sei $f : X \to H$ eine Abbildung, Dann existiert ein eindeutig bestimmter Homomorphismus $\tilde{f}: G \to H$, der $f$ fortsetzt, d.h. mit $\tilde{f}(x) = f(x)$ für alle $x \in X$.
 \end{thm}
 \begin{proof}
   Es sei $g \in G$ beliebig. Es gilt: $g = \sum_{x \in X}m_x x$ ($ m_x = 0$ für fast alle $x$). \\
@@ -1638,7 +1638,7 @@ Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:
   \varphi(m_1 x_1 + \dots + m_l x_l) 
   &= \varphi( m_1 x_1) + \dots \varphi( m_l x_l ) \\
   &= m_1 \varphi(x_1) + m_2 \varphi(x_2) + \dots + m_l \varphi(x_l) \\
-  &= m_1 f(x_1) + m_2 f(x_2) + \dots m_l f(x_l) \\
+  &= m_1 f(x_1) + m_2 f(x_2) + \dots + m_l f(x_l) \\
   &= m_1 \tilde{f}(x_1) + \dots + m_l \tilde{f}(x_l)\\
   &= \tilde{f}( m_1 x_1 + \dots m_l x_l)
   \end{align*}
@@ -1652,7 +1652,7 @@ Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:
 \begin{proof}
   Für jedes $g \in G$ wählen wir eine Gruppe $H_g \cong \mathbb{Z}$ mit Erzeuger $x_g \in H_g$ und setzen:
   \[ F := \bigoplus_{g \in G} H_g \cong \bigoplus_{g \in G} \mathbb{Z} \]
-  $F$ ist dann eine freie abelsche Gruppe mit Basis $X = \left\{  x_g \vert g \in G \right\}$.
+  $F$ ist dann eine freie abelsche Gruppe mit Basis $X = \left\{  x_g \,\vert\, g \in G \right\}$.
 
   Wir betrachten $f : X \to G, x_g \mapsto g$. Diese Abbildung $f$ wird nach dem obigen Satz durch einen Homomorphismus $\tilde{f}: F\to G$ fortgesetzt, der offensichtlich surjektiv ist.
 \end{proof}
@@ -1662,10 +1662,10 @@ Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:
   \[ G_1 \cong G_2 \iff \lvert X_1 \rvert = \lvert X_2 \rvert \]
 \end{thm}
 \begin{proof}
-  "$\Leftarrow$":$ \lvert X_1 \rvert = \lvert X_2 \rvert$ bedeutet, dass es eine Bijektion $f: X_1 \to X_2$ gibt. Es sei $\tilde{f}: G_1 \to G_2 $ der Gruppenhomomorphismus der $f : X_1 \to X_2 \subset G_2$ fortsetzt.
+  "$\Leftarrow$": $\lvert X_1 \rvert = \lvert X_2 \rvert$ bedeutet, dass es eine Bijektion $f: X_1 \to X_2$ gibt. Es sei $\tilde{f}: G_1 \to G_2 $ der Gruppenhomomorphismus der $f : X_1 \to X_2 \subset G_2$ fortsetzt.
   Ähnlich existiert ein Homomorphismus $\tilde{g}: G_2 \to G_1$, der $f^{-1}$ fortsetzt. Da $(\tilde{g} \circ \tilde{f})(x) = (f^{-1} \circ f)(x) = x $ für alle $x \in X_1$ gilt, ist $\tilde{g} \circ \tilde{f} $ eine Fortsetzung von $\operatorname{id}_{X_1} : X_1 \to X_1$. Aus der Eindeutigkeit folgt dann, dass $\tilde{g} \circ \tilde{f} = \operatorname{id}_{G_1}$. Genauso zeigt man: $\tilde{f} \circ \tilde{g} = \operatorname{id}_{G_2}$. Da $\tilde{f}$ das Inverse $\tilde{g}$ besitzt, ist $\tilde{f}: G_1 \to G_2$ dann ein Isomorphismus.
 
-  "$\Rightarrow$": Es sei $p $ eine Primzahl, $G$ eine abelsche Gruppe. $pG = \left\{ pg \vert g \in G \right\}$ ist dann eine Untergruppe von $G$. Dann ist $V = G / pG$ ein Vektorraum über $\mathbb{F}_p = \mathbb{Z}/p\mathbb{Z}$. Sei $G \to G/pG = V, g\mapsto \overline{g} = g + pG$  die natürliche Projektion. Wenn $G$ eine freie abelsche Gruppe mit Basis $X$ ist, dann ist $ \overline{X} = \left\{ \overline{x} \vert x \in X \right\} $ eine Basis vom Vektorraum $V$. Nun ist die Abbildung $X \to \overline{X}, x \mapsto \overline{x} = x + pG$ ist eine Bijektion: Sie ist offensichtlich surjektiv; für Injektivität nehme man an, es existieren $x, x' \in X$ mit $x \neq x'$ und $\overline{x} = \overline{x'}$. Daraus folgt $ x - x' \in pG$, was wiederum $x - x' = p \left( \sum_{y \in X} m_y y \right)  = \sum_{y \in X} \left( p m_y \right) y $ impliziert. Aus der Eindeutigkeit der Darstellung in $G$ folgt $p m_x = 1$, bzw. $p m_{x'} = -1$ wobei $m_x, m_{x'} \in \mathbb{Z}$ $\leadsto$  Widerspruch. Somit ist die Abbildung auch injektiv.
+  "$\Rightarrow$": Es sei $p $ eine Primzahl, $G$ eine abelsche Gruppe. $pG = \left\{ pg \,\vert\, g \in G \right\}$ ist dann eine Untergruppe von $G$. Dann ist $V = G / pG$ ein Vektorraum über $\mathbb{F}_p = \mathbb{Z}/p\mathbb{Z}$. Sei $G \to G/pG = V, g\mapsto \overline{g} = g + pG$  die natürliche Projektion. Wenn $G$ eine freie abelsche Gruppe mit Basis $X$ ist, dann ist $ \overline{X} = \left\{ \overline{x} \,\vert\, x \in X \right\} $ eine Basis vom Vektorraum $V$. Nun ist die Abbildung $X \to \overline{X}, x \mapsto \overline{x} = x + pG$ ist eine Bijektion: Sie ist offensichtlich surjektiv; für Injektivität nehme man an, es existieren $x, x' \in X$ mit $x \neq x'$ und $\overline{x} = \overline{x'}$. Daraus folgt $ x - x' \in pG$, was wiederum $x - x' = p \, ( \sum_{y \in X} m_y y )  = \sum_{y \in X} \left( p m_y \right) y $ impliziert. Aus der Eindeutigkeit der Darstellung in $G$ folgt $p m_x = 1$, bzw. $p m_{x'} = -1$ wobei $m_x, m_{x'} \in \mathbb{Z}$ $\leadsto$  Widerspruch. Somit ist die Abbildung auch injektiv.
 \end{proof}
 
 \end{document}
