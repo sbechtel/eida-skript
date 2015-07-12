@@ -24,9 +24,13 @@
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Aut}{Aut}
 
 \newcommand{\inv}[1]{\left(#1\right)^{-1}}
 \newcommand{\Inv}[1]{#1^{-1}}
+
+% Sets
+\newcommand\Z{\mathbb{Z}}
 
 % Environments
 % Stuff with proof
@@ -67,7 +71,7 @@
 
 % Um neu definierte Bezeichnungen hervorzuheben
 % ZZ haben wir noch einen Mix aus \underline und \emph
-\newcommand{\new}{\underline}
+\newcommand{\defi}{\underline}
 
 % TODO Bspw. ord wird zZ als drei Variablen (o, r, d) gesetzt. Zu einem vernünftigen Operator ändern?
 	% Ich fang einfach mal damit an. -- Peter
@@ -82,7 +86,7 @@
 
 \begin{document}
 
-\author{Sebastian Bechtel, Isburg Knof, Theresa Tran} % FIXME Flo und Philipp?
+\author{Sebastian Bechtel, Isburg Knof, Theresa Tran} % FIXME Flo, Philipp und Fabian?
 \title{Einführung in die Algebra}
 %\date weglassen -> Automatisch aktuelles Datum
 
@@ -359,22 +363,22 @@
 \end{nb}
 
 \begin{defn}
-	$G/H = \lbrace aH : a \in G \rbrace$ ist die \new{Menge der Linksnebenklassen}.
-	Der \new{Index} von $H$ ist die Mächtigkeit von $G/H$.
+	$G/H = \lbrace aH : a \in G \rbrace$ ist die \defi{Menge der Linksnebenklassen}.
+	Der \defi{Index} von $H$ ist die Mächtigkeit von $G/H$.
 	Wir notieren ihn als \([G:H] := |G/H|\).
 \end{defn}
 
 \begin{nb}
 	\begin{itemize}
  	\item $\vert G \vert = [G:H]\vert H\vert$
- 	\item Analog ist $a \sim_{H} b$ mit $a,b \in G \Leftrightarrow a=hb$ für ein $h \in H$ ("rechtsäquivalent bzgl. H") eine Äquivalenzrelation. % FIXME Gleiche Notation wie Linksäquivalenz? % FIXME Es gilt sicherlich nicht "$a,b \in G \Leftrightarrow a=hb$ für ein $h \in H$"
-		\underline{Rechtsnebenklassen}: $Ha=\lbrace ha : h \in H\rbrace$ mit $a \in G$ \newline Bijektion: Für $a \in G$ $aH \rightarrow Ha, x \mapsto a^{-1}xa$
+ 	\item Analog ist $a \mathrel{\prescript{}{H}{\sim}} b$ mit \[a \mathrel{\prescript{}{H}{\sim}} b \Leftrightarrow \text{\(a=hb\) für ein \(h \in H\)}\] ("rechtsäquivalent bzgl. \(H\)") eine Äquivalenzrelation auf \(G\).
+		Die \underline{Rechtsnebenklassen} sind $Ha=\lbrace ha : h \in H\rbrace$ mit $a \in G$ und für ist $a \in G$ \[aH \rightarrow Ha, x \mapsto a^{-1}xa\] eine Bijektion.
 	\end{itemize}
 \end{nb}
 
 \begin{defn}
-	$H \backslash G$ ist die \underline{Menge der Rechtsnebenklassen}. Dann gilt: $\vert H \backslash G \vert = \vert G/H \vert$ \newline $\lceil$
-	Bijektion: $H \backslash G \rightarrow G/H, Hb \mapsto b^{-1}H \rfloor$ % TODO Warum wohldef?
+	$H \backslash G$ ist die \underline{Menge der Rechtsnebenklassen}. Dann gilt: $\vert H \backslash G \vert = \vert G/H \vert$
+	(Bijektion: $H \backslash G \rightarrow G/H, Hb \mapsto b^{-1}H$)
 \end{defn}
 
 \begin{lemma} 
@@ -382,7 +386,7 @@
 \end{lemma}
 
 \begin{proof}
-	Zunächst ist \(f\) wohldefiniert, da für $b_{1},b_{2} \in G$ mit $Hb_{1}=Hb_{2}$ (das heißt $b_{1} {_{\ H}}\sim b_{2}$) ein $h \in H$ mit $b_1 = hb_2$ exitiert.
+	Zunächst ist \(f\) wohldefiniert, da für $b_{1},b_{2} \in G$ mit $Hb_{1}=Hb_{2}$ (das heißt \(b_1 \mathrel{\prescript{}{H}{\sim}} b_2\)) ein $h \in H$ mit $b_1 = hb_2$ exitiert.
 	Somit ist $b^{-1}H = (hb_2)^{-1}H = b_{2}^{-1}hH = b_{2}^{-1}H$.
 
 	Die Wohldefiniertheit von $$g: G/H \to H\backslash G, \quad aH \mapsto Ha^{-1}$$ folgt analog.
@@ -391,44 +395,20 @@
 \end{proof}
 
 \begin{thm}
-	Es seien $H$,$K$ Untergruppen von $G$ mit $K \subset H \subset G$.
+	Es seien $H$, $K$ Untergruppen von $G$ mit $K \subset H \subset G$.
 	Dann gilt: $$[G:K]=[H:K]\cdot[G:H]$$
 \end{thm}
 
-% TODO Falls sich niemand rechtizeitig beschwert, tausche ich den Beweis aus: -- Peter
-%\begin{proof}
-%	Seien \(a_i \in i\) für \(i \in G/H\) und \(b_j \in j\) für \(j \in H/K\) Repräsentantensysteme.
-%	Dann ist \[G = \bigcup_{i \in G/H} a_iH = \bigcup_{i \in G/H} a_i\left(\bigcup_{j\in H/K} b_jK\right) = \bigcup_{(i, j) \in G/H\times H/K} a_ib_jK.\]
-%	Falls nun \(a_ib_jK = a_{i'}b_{j'}K\) gilt, so ist \(a_iH \cap a_{i'}H \supseteq a_ib_jK = a_{i'}b_{j'}K \neq \emptyset\) und somit \(a_iH = a_{i'}H\).
-%	Daraus folgt \(a_i = a_{i'}\) bzw. \(i = i'\).\footnote{Man könnte auch einfach \(i = a_iH = a_{i'}H = i'\) folgern, aber das würde einige eher verwirren, fürchte ich.}
-%
-%	Damit wiederum erhalten wir \(b_jK = a_i^{-1}(a_ib_jK) = b_{j'}K\), also \(j = j'\).
-%	Folglich bilden die \(a_ib_j\) für \((i, j) \in G/H\times H/K\) ein Repräsentantensystem für \(G/K\) und \[G/H\times H/K \to G/K, \quad (i, j) = (a_iH, b_jK) \mapsto a_ib_jK\] ist eine Bijektion.\footnote{Für alle fixen Repräsentantensysteme \(a_i\) und \(b_j\). Wohldefiniertheit ohne selbige gilt nicht, wie man sich anhand von \(S_2 = G = H \supsetneq K\) leicht überlegen kann.}
-%	Somit haben wir \[[G:K] = |G/K| = |G/H \times H/K| = |G/H|\cdot|H/K| = [G:H]\cdot[H:K].\qedhere\]
-%\end{proof}
-
 \begin{proof}
-Wir nehmen an, dass $[G:H]=m$ und $[H:K]=n$ endlich sind. 
-Dann gibt es $a_1,.....,a_n \in H$, so dass
-$H/K=\{ a_1K,...,a_nK\}$ und $b_1,...,b_m \in G$ mit
-$G/H=\{ b_1H,...,b_mH\}$. Nun ist $$G=\bigcup\limits_{\begin{subarray}{1}i=1...m \\ j=1...n\end{subarray}} b_ia_jK$$ mit paarweise disunkten $b_ia_jK$.
+	Seien \(a_i \in i\) für \(i \in G/H\) und \(b_j \in j\) für \(j \in H/K\) Repräsentantensysteme.
+	Dann ist \[G = \bigcup_{i \in G/H} a_iH = \bigcup_{i \in G/H} a_i\left(\bigcup_{j\in H/K} b_jK\right) = \bigcup_{(i, j) \in G/H\times H/K} a_ib_jK.\]
+	Falls nun \(a_ib_jK = a_{i'}b_{j'}K\) gilt, so ist \(a_iH \cap a_{i'}H \supseteq a_ib_jK = a_{i'}b_{j'}K \neq \emptyset\) und somit \(a_iH = a_{i'}H\).
+	Daraus folgt \(a_i = a_{i'}\) bzw. \(i = i'\).\footnote{Man könnte auch einfach \(i = a_iH = a_{i'}H = i'\) folgern, aber das würde einige eher verwirren, fürchte ich.}
 
-Falls $b_{i_{1}}a_{j_{1}}K=b_{i_{2}}a_{j_{2}}K$ mit $i_1,i_2 \in \{1,...,n \}$ und $j_1,j_2 \in \{1,...,m \}$ ist, so sind $b_{i_{1}}H$ und $b_{i_{2}}H$ sind nicht disjunkt.
-
-$\Rightarrow b_{i_{1}}H=b_{i_{2}}H$
-
-Dann gilt: $b_{i_{1}}a_{j_{1}}K=b_{i_{1}}a_{j_{2}}K$
-
-$\overset{*b^{-1}}{\Rightarrow} a_{j_{1}}K=a_{j_{2}}K \Rightarrow a_{j_{1}}=a_{j_{2}}$
-Also: Es gibt genau $m\cdot n$ Linksnebenklassen von $K$ in $G$.
-
-$\bigcup\limits_{\begin{subarray}{1}i=1...m \\ j=1...n\end{subarray}} b_ia_jK = \bigcup\limits_i b_i( \bigcup\limits_j a_jK)= \bigcup\limits_i b_iH=G$
-
+	Damit wiederum erhalten wir \(b_jK = a_i^{-1}(a_ib_jK) = b_{j'}K\), also \(j = j'\).
+	Folglich bilden die \(a_ib_j\) für \((i, j) \in G/H\times H/K\) ein Repräsentantensystem für \(G/K\) und \[G/H\times H/K \to G/K, \quad (i, j) = (a_iH, b_jK) \mapsto a_ib_jK\] ist eine Bijektion.\footnote{Für alle fixen Repräsentantensysteme \(a_i\) und \(b_j\). Wohldefiniertheit ohne selbige gilt nicht, wie man sich anhand von \(S_2 = G = H \supsetneq K\) leicht überlegen kann.}
+	Somit haben wir \[[G:K] = |G/K| = |G/H \times H/K| = |G/H|\cdot|H/K| = [G:H]\cdot[H:K].\qedhere\]
 \end{proof}
-
-\begin{nb}
-	Der Beweis lässt sich zum Fall von unendlichem Index erweitern. Dies liefert eine Bijektion $G/H \times H/K \to G/K$
-\end{nb}
 
 \begin{kor}[Satz von Lagrange]
 	Es gilt $\vert G\vert = [G:H]\cdot\vert H\vert$ für jede Untergruppe $H$ von $G$.
@@ -502,7 +482,7 @@ $\bigcup\limits_{\begin{subarray}{1}i=1...m \\ j=1...n\end{subarray}} b_ia_jK = 
 \end{ex}
 
 \begin{defn}
-	Eine Gruppe $G$ sodass $\{e\}$ und $G$ die einzigen normalen Untergruppen sind, nennt man \new{einfache Gruppe}.
+	Eine Gruppe $G$ sodass $\{e\}$ und $G$ die einzigen normalen Untergruppen sind, nennt man \defi{einfache Gruppe}.
 \end{defn}
 
 \begin{defn}
@@ -542,7 +522,7 @@ $\bigcup\limits_{\begin{subarray}{1}i=1...m \\ j=1...n\end{subarray}} b_ia_jK = 
 	\item Die Exponentialfunktion
 		$$(\mathbb{R},+)\rightarrow(\mathbb{R}^*,\cdot), \quad x\mapsto e^x$$
 		ist ein Gruppenhomomorphismus.
-	\item Für $(G,+)$ abelsch ist % TODO zu multiplikativer Notation wechseln, weil wegen definiert?
+	\item Für $(G,+)$ abelsch ist
 		$$G\rightarrow G, \quad a\mapsto na = a+...+a \text{(n-mal)}$$
 		ein Gruppenhomomorphismus.
 	\end{enumerate}
@@ -556,8 +536,8 @@ $\bigcup\limits_{\begin{subarray}{1}i=1...m \\ j=1...n\end{subarray}} b_ia_jK = 
 \begin{defn}
 	$G$, $H$ Gruppen, $f: G \rightarrow H$ Gruppenhomomorphismus.
 	\begin{itemize}
-	\item Das \new{Bild von $f$} ist $\im(f) := \{f(g) | g \in G\} \subseteq H$.
-	\item Der \new{Kern von $f$} ist $\ker(f) := \{g \in G | f(g) = e_H\} \subseteq G$.
+	\item Das \defi{Bild von $f$} ist $\im(f) := \{f(g) | g \in G\} \subseteq H$.
+	\item Der \defi{Kern von $f$} ist $\ker(f) := \{g \in G | f(g) = e_H\} \subseteq G$.
 	\end{itemize}
 \end{defn}
 
@@ -619,55 +599,66 @@ $\bigcup\limits_{\begin{subarray}{1}i=1...m \\ j=1...n\end{subarray}} b_ia_jK = 
 \end{kor}
 
 \begin{proof}[Beweis des Satzes]
-	Aus dem kommutativen Diagramm folgt, dass $\bar{f}(aN) = f(a)$ sein sollte für jedes $aN \in G/N$. \\
-	Wir zeigen zuerst, dass $\bar{f}$ wohldefiniert ist. Es seien $a, b \in G$ mit $aN = bN$. Dann gilt $a \sim_{N} b$ und also $b^{-1}a \in N$. Daraus folgt
-	$$f(a) = f(ea) = f(b(b^{-1}a)) = f(b) f(b^{-1}a) \stackrel{b^{-1}a \in N \subseteq \ker(f)}{=} f(b)e = f(b).$$
-	Die Abbildung $\bar{f}: G/N \rightarrow G'$ existiert somit und ist offensichtlich ein Gruppenhomomorphismus, denn
-	$$\bar{f}(abN) = f(ab) = f(a)f(b) = \bar{f}(aN)\bar{f}(bN)$$ for all $a, b \in G$.
+	Aus dem kommutativen Diagramm folgt, dass $\bar{f}(aN) = f(a)$ sein sollte für jedes $aN \in G/N$.
+	Wir zeigen zuerst, dass $\bar{f}$ wohldefiniert ist.
+	Es seien $a, b \in G$ mit $aN = bN$.
+	Dann gilt $a \sim_{N} b$ und also $b^{-1}a \in N$.
+	Daraus folgt $$f(a) = f(ea) = f(b(b^{-1}a)) = f(b) f(b^{-1}a) \stackrel{b^{-1}a \in N \subseteq \ker(f)}{=} f(b)e = f(b).$$
+	Die Abbildung $\bar{f}: G/N \rightarrow G'$ existiert somit und ist offensichtlich ein Gruppenhomomorphismus, denn es ist
+	$$\bar{f}(abN) = f(ab) = f(a)f(b) = \bar{f}(aN)\bar{f}(bN)$$ für alle $a, b \in G$.
 \end{proof}
 
-\begin{proof}[Beweis des Korollar]
-	\begin{itemize}
-		\item $aN \in \ker(\bar{f}) \stackrel{Def. ~ von ~ \bar{f}}{\Leftrightarrow} a \in \ker(f)\stackrel{Def. ~ von ~ \pi}{\Leftrightarrow} aN \in \pi(\ker(f))$
-		\item $\im(f) = \im(\bar{f} \circ \pi) = \bar{f}(\im(\pi)) \stackrel{\pi ~ surj.}{=} \bar{f}(G/N) = \im(\bar{f})$
-	\end{itemize}
+\begin{proof}[Beweis der Bemerkung]
+	Zum Einen haben wir
+	\begin{align*}
+		aN \in \ker(\bar{f}) &\Leftrightarrow \bar f(aN) = e_{G'} \xLeftrightarrow{\text{Def. von \(\bar{f}\)}} f(a) = e_{G'}\\
+		&\Leftrightarrow a \in \ker(f) \xLeftrightarrow{\text{Def. von \(\pi\)}} aN = \pi(a) \in \pi(\ker(f))
+	\end{align*}
+	und zum Anderen ist
+	\[\im(f) = \im(\bar{f} \circ \pi) = \bar{f}(\im(\pi)) \stackrel{\text{\(\pi\) surj.}}{=} \bar{f}(G/N) = \im(\bar{f}).\qedhere\]
 \end{proof}
 
 \begin{thm}[1. Isomorphiesatz]
-	Es seien $G$ eine Gruppe, $H \subseteq G$ eine Untergruppe und $N$ ein Normalteiler von $G$. Dann ist $NH = \{nh | n \in N, h \in H\}$ Untergruppe von $G$ und $N \cap H$ ein Normalteiler von $H$.
+	Es seien $G$ eine Gruppe, $H \subseteq G$ eine Untergruppe und $N$ ein Normalteiler von $G$.
+	Dann ist $NH = \{nh | n \in N, h \in H\}$ Untergruppe von $G$ und $N \cap H$ ein Normalteiler von $H$.
 	Ferner ist $H/(N \cap H) \rightarrow (NH)/N, a(N \cap H) \mapsto aN$ ein Isomorphismus.
 \end{thm}
 
 \begin{proof}
 	Es seien $n_1, n_2 \in N, h_1, h_2 \in H$. Dann gilt:
 	$$ (n_1h_1)(n_2h_2)^{-1} = n_1h_1h_2^{-1}n_2^{-1} = n_1(h_1h_2^{-1}n_2^{-1}) = \dotsb $$
-	[Da $N$ normal, gilt $h_1h_2^{-1}N = Nh_1h_2^{-1}$. Es gibt also ein $n_3 \in N$ mit $h_1h_2^{-1}n_2^{-1} = n_3h_1h_2^{-1}$.]
+	[Da $N$ normal, gilt $h_1h_2^{-1}N = Nh_1h_2^{-1}$.
+	Es gibt also ein $n_3 \in N$ mit $h_1h_2^{-1}n_2^{-1} = n_3h_1h_2^{-1}$.]
 	$$ \dotsb = (n_1n_3)(h_1h_2^{-1}) \in NH.$$
-	Daraus folgt, dass $NH$ Untergruppe von $G$ ist. \\
-	Nun betrachten wir $f: H \rightarrow (NH)/N, a \mapsto aN = Na$. $f$ ist ein surjektiver Gruppenhomomorphismus mit $\ker(f) = N \cap H$. Aus dem Homomorphiesatz (+ Korollar) folgt dann, dass $\bar{f}: H/(N \cap H) \rightarrow (NH)/N$ ein Isomorphismus ist.
+	Daraus folgt, dass $NH$ Untergruppe von $G$ ist.
+	Nun betrachten wir $f: H \rightarrow (NH)/N, a \mapsto aN = Na$.
+	$f$ ist ein surjektiver Gruppenhomomorphismus mit $\ker(f) = N \cap H$.
+	Aus dem Homomorphiesatz (+ Korollar) folgt dann, dass $\bar{f}: H/(N \cap H) \rightarrow (NH)/N$ ein Isomorphismus ist.
 \end{proof}
 
 \begin{thm}[2. Isomorphiesatz]
-	Es seien $M, N$ normale Untergruppen einer Gruppe $G$. Gilt $N \subseteq M$, so ist $M/N$ eine normale Untergruppe von $G/N$ und die Abbildung $(G/N)/(M/N) \rightarrow G/M, (aN)M/N \mapsto aM$ ist ein Isomorphismus.
+	Es seien \(M\), \(N\) normale Untergruppen einer Gruppe $G$.
+	Gilt $N \subseteq M$, so ist $M/N$ eine normale Untergruppe von $G/N$ und die Abbildung $(G/N)/(M/N) \rightarrow G/M, (aN)M/N \mapsto aM$ ist ein Isomorphismus.
 \end{thm}
 
 \begin{proof}
-	$f: G/N \rightarrow G/M, aN \mapsto aM$ (wohldefiniert wegen $N \subseteq M$) ist surjektiver Gruppenhomomorphismus mit $\ker(f) = M/N$. Die Aussage folgt dann aus dem Korollar zum Homomorphiesatz.
+	$f: G/N \rightarrow G/M, aN \mapsto aM$ (wohldefiniert wegen $N \subseteq M$) ist surjektiver Gruppenhomomorphismus mit $\ker(f) = M/N$.
+	Die Aussage folgt dann aus dem Korollar zum Homomorphiesatz.
 \end{proof}
 
 \begin{notation}
 	Seien $A, B, C$ Gruppen, $\alpha: A \rightarrow B$, $\beta: B \rightarrow C$ Gruppenhomomorphismen.
 	\begin{itemize}
-		\item Falls $\im(\alpha) = \ker(\beta)$, so sagt man, dass die Folge $A \stackrel{\alpha}{\longrightarrow} B \stackrel{\beta}{\longrightarrow} C$ bei $B$ \underline{exakt} ist.
-		\item $\alpha$ ist surjektiv, falls $A \stackrel{\alpha}{\longrightarrow} B \longrightarrow \{e\}$ bei $B$ exakt ist. \\
+	\item Falls $\im(\alpha) = \ker(\beta)$, so sagt man, dass die Folge $A \stackrel{\alpha}{\longrightarrow} B \stackrel{\beta}{\longrightarrow} C$ bei $B$ \underline{exakt} ist.
+	\item $\alpha$ ist surjektiv, falls $A \stackrel{\alpha}{\longrightarrow} B \longrightarrow \{e\}$ bei $B$ exakt ist. \\
 		\begin{tabular}{p{4.3cm}p{.1cm}p{.3cm}l}
 			& $b$ & $\mapsto$ & $e$
 		\end{tabular}
-		\item $\alpha$ ist injektiv, falls $\{e\} \longrightarrow A \stackrel{\alpha}{\longrightarrow} B$ bei $A$ exakt ist. \\
+	\item $\alpha$ ist injektiv, falls $\{e\} \longrightarrow A \stackrel{\alpha}{\longrightarrow} B$ bei $A$ exakt ist. \\
 		\begin{tabular}{p{3.1cm}p{.1cm}p{.3cm}l}
 			& $e$ & $\mapsto$ & $e_A$
 		\end{tabular}
-		\item Notation: $\{e\} =: 1$. Eine exakte Folge der Form
+	\item Notation: $\{e\} =: 1$. Eine exakte Folge der Form
 		$$ 1 \longrightarrow A \stackrel{\alpha}{\longrightarrow} B \stackrel{\beta}{\longrightarrow} C \longrightarrow 1$$
 		(d.h. $\alpha$ injekiv, $\beta$ surjekiv und $\im(\alpha) = \ker(\beta)$), heißt \underline{kurze exakte Folge}.
 	\end{itemize}
@@ -675,23 +666,24 @@ $\bigcup\limits_{\begin{subarray}{1}i=1...m \\ j=1...n\end{subarray}} b_ia_jK = 
 
 \begin{ex}[für kurze exakte Folgen]
 	\begin{itemize}
-		\item $1 \longrightarrow N \stackrel{\alpha}{\longrightarrow} G \stackrel{\beta}{\longrightarrow} G/N \longrightarrow 1$ ist exakt für jeden Normalteiler $N$ von $G$.
-		\item Für G abelsch ($\{e\} =: 0$): \\
-		$0 \longrightarrow H \stackrel{\alpha}{\longrightarrow} G \stackrel{\beta}{\longrightarrow} G/H \longrightarrow 0$ ist exakt für jede Untergruppe $H$ von $G$.
+	\item $1 \longrightarrow N \stackrel{\alpha}{\longrightarrow} G \stackrel{\beta}{\longrightarrow} G/N \longrightarrow 1$ ist exakt für jeden Normalteiler $N$ von $G$.
+	\item Für abelsche \(G\) ($\{e\} =: 0$) ist \(0 \longrightarrow H \stackrel{\alpha}{\longrightarrow} G \stackrel{\beta}{\longrightarrow} G/H \longrightarrow 0\) exakt für jede Untergruppe $H$ von $G$.
 	\end{itemize}
 \end{ex}
-
-
 
 \section{Produkte von Gruppen}
 
 \begin{defn}
-	Es sei $(G_i)_{i \in I}$ eine Familie von Gruppen. Das \underline{äußere direkte Produkt} der Familie ist das kartesische Produkt $\prod_{i \in I}G_i$ mit der Verknüpfung $(a_i)_{i \in I} (b_i)_{i \in I} = (a_ib_i)_{i \in I}$. Neutrales Element: $(e_i)_{i \in I}$ mit $e_i \in G_i$ neutral.
+	Es sei $(G_i)_{i \in I}$ eine Familie von Gruppen.
+	Das \defi{äußere direkte Produkt} der Familie ist das kartesische Produkt $\prod_{i \in I}G_i$ mit der Verknüpfung $(a_i)_{i \in I} (b_i)_{i \in I} = (a_ib_i)_{i \in I}$.
+	Das neutrale Element ist $(e_i)_{i \in I}$ wobei die $e_i \in G_i$ jeweils neutral sind.
 \end{defn}
 
 \begin{notation}
-	$G_1 \times G_2 \times \dotsb \times G_n$ für endliche Produkte. \\
-	$G_1 \oplus G_2 \oplus \dotsb \oplus G_n$ für endliche Produkte, $G_i$ abelsch [additiv].
+	\begin{itemize}
+	\item $G_1 \times G_2 \times \dotsb \times G_n$ für endliche Produkte.
+	\item $G_1 \oplus G_2 \oplus \dotsb \oplus G_n$ für endliche Produkte, $G_i$ abelsch [additiv].
+	\end{itemize}
 \end{notation}
 
 \begin{lemma}
@@ -702,7 +694,7 @@ $\bigcup\limits_{\begin{subarray}{1}i=1...m \\ j=1...n\end{subarray}} b_ia_jK = 
 
 \begin{proof}
 	$\overline{G_{i_0}}$ ist der Kern des Gruppenhomomorphismus
-	$$p_{i_0}: \prod_{i \in I}G_i \rightarrow \prod_{i \in I-\{i_0\}}G_i, (b_i)_{i \in I} \mapsto (b_i)_{i \in I-\{i_0\}}.$$
+	$$p_{i_0}: \prod_{i \in I}G_i \rightarrow \prod_{i \in I-\{i_0\}}G_i, \quad (b_i)_{i \in I} \mapsto (b_i)_{i \in I-\{i_0\}}.$$ % TODO Minus für Mengendifferenzen? Ernsthaft?
 	Ferner ist
 	$$j_{i_0}: G_{i_0} \rightarrow \prod_{i \in I}G_i, \quad a \mapsto (b_i)_{i \in I} \text{ mit \(b_{i_0}=a\) und \(b_i = e_i \text{ für } i \neq i_0\)}$$
 	ein Homomorphismus.
@@ -714,34 +706,34 @@ $\bigcup\limits_{\begin{subarray}{1}i=1...m \\ j=1...n\end{subarray}} b_ia_jK = 
 \begin{nb}
 	\begin{itemize}
 		\item $1 \longrightarrow G_{i_0} \stackrel{j_{i_0}}{\longrightarrow} \prod_{i \in I}G_i \stackrel{p_{i_0}}{\longrightarrow} \prod_{i \in I-\{i_0\}}G_i \longrightarrow 1$ ist kurze exakte Folge.
-		\item Der Beweis liefert $\overline{G_{i_0}} \cap \langle \bigcup_{i \in I-\{i_0\}}G_i \rangle = \{e\}$. % FIXME Über die G_i zu Vereinigen ergibt keinen Sinn, da keine Gemeinsame Verküpfung besteht. Fehlt hier ein \overline?
+		\item Der Beweis liefert $\overline{G_{i_0}} \cap \langle \bigcup_{i \in I-\{i_0\}}\overline{G_i} \rangle = \{e\}$.
 	\end{itemize}
 \end{nb}
 
 \begin{defn}
 	Sei $G$ eine Gruppe und $(N_i)_{i\in I}$ eine Familie von normalen Untergruppen, so dass gilt:
-
 	\begin{enumerate}[label=(\roman*)]
-		\item $G=\langle\cup_{i\in I} N_i\rangle$
-		\item $N_{i_0} \cap \langle\cup_{i\in I \setminus \{i_0\}} N_i\rangle = \{e\}$ für jedes $i_0\in I$.
+		\item $G=\langle\bigcup_{i\in I} N_i\rangle$
+		\item $N_{i_0} \cap \langle\bigcup_{i\in I \setminus \{i_0\}} N_i\rangle = \{e\}$ für jedes $i_0\in I$.
 	\end{enumerate}
-
 	Dann ist $G$ das \underline{innere Produkt} von $(N_i)_{i\in I}$.
 \end{defn}
 
 \begin{lemma}
-	Es sei $G$ das innere Produkt von $(N_i)_{i\in I}$. Dann gilt $ab=ba$ für $a\in N_i, b\in N_j$ mit $i\neq j$.
+	Es sei $G$ das innere Produkt von $(N_i)_{i\in I}$.
+	Dann gilt $ab=ba$ für $a\in N_i, b\in N_j$ mit $i\neq j$.
 \end{lemma}
 
 \begin{proof}
-	Man rechnet: $$ab\inv{ba}=ab\Inv{a}\Inv{b}=(ab\Inv{a})\Inv{b}=a(b\Inv{a}\Inv{b}) \in N_i\cap N_j$$ Somit folgt $ab\inv{ba}=e$, also $ab=ba$.
+	Man rechnet: $$ab\inv{ba}=ab\Inv{a}\Inv{b}=(ab\Inv{a})\Inv{b}=a(b\Inv{a}\Inv{b}) \in N_i\cap N_j$$
+	Somit folgt $ab\inv{ba}=e$, also $ab=ba$.
 \end{proof}
 
 Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
 
 \begin{lemma}
-	Sei $G$ Gruppe, $N_1,\dots,N_r$ normale Untergruppen von $G$. Dann ist $G$ genau dann das innere Produkt von $N_1,\dots,N_r$, wenn gilt:
-
+	Sei $G$ Gruppe, $N_1,\dots,N_r$ normale Untergruppen von $G$.
+	Dann ist $G$ genau dann das innere Produkt von $N_1,\dots,N_r$, wenn gilt:
 	\begin{enumerate}[label=(\roman*)']
 		\item $G=N_1\dots N_r$
 		\item Die Darstellung $a=n_1\dots n_r$ mit $n_j\in N_j$ ist für jedes $a\in G$ eindeutig bestimmt.
@@ -749,11 +741,19 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
 \end{lemma}
 
 \begin{proof}
-	(i) äquivalent (i)': folgt aus $$\langle\bigcup_{i=1}^r N_i\rangle = \{a_1^{\xi_1}\dots a_k^{\xi_k}: a_j\in N_1\cup\dots \cup N_r, \xi_j = \pm 1\}$$ und der Tatsache, dass die $N_j$ normale Untergruppen sind die für paarweise verschiedene $j\neq j'$ kommutieren.
+	(i) äquivalent (i)': Dies folgt aus $$\langle\bigcup_{i=1}^r N_i\rangle = \{a_1^{\xi_1}\dots a_k^{\xi_k}: a_j\in N_1\cup\dots \cup N_r, \xi_j = \pm 1\}$$ und der Tatsache, dass die $N_j$ normale Untergruppen sind, die für paarweise verschiedene $j\neq j'$ kommutieren.
 
-	(ii)' impliziert (ii): oBdA gelte $i_0=1$. Wir möchten zeigen, dass $$N_1\cap \langle N_2\cup\dots \cup N_r\rangle = N_1 \cap (N_2\dots N_r)= \{e\}$$ Sei $x\in N_1\cap \langle N_2\dots N_r\rangle$. Dann gilt $x=n_1\in N_1$ und $x=n_2\dots n_r$ mit $n_i\in N_i$ für $i\geq 2$. Also $x=n_1e\dots e=en_2\dots n_r$, somit $n_i=e$ für alle $i$, also $x=e$.
+	(ii)' impliziert (ii): OBdA gelte $i_0=1$.
+	Wir möchten zeigen, dass $$N_1\cap \langle N_2\cup\dots \cup N_r\rangle = N_1 \cap (N_2\dots N_r)= \{e\}$$ ist.
+	Sei $x\in N_1\cap \langle N_2\dots N_r\rangle$.
+	Dann gilt $x=n_1\in N_1$ und $x=n_2\dots n_r$ mit $n_i\in N_i$ für $i\geq 2$.
+	Also $x=n_1e\dots e=en_2\dots n_r$ und somit $n_i=e$ für alle $i$.
+	Folglich ist $x=e$.
 
-	(ii) impliziert (ii)': Aus $n_1\dots n_r=n_1'\dots n_r'$ mit $n_i,n_i'\in N_i$ folgt $$\inv{n_1'}n_1=(n_2'\dots n_r')\inv{n_2\dots n_r} = \{e\}$$ Die letzte Gleichheit gilt nach (ii). Also folgt $n_i=n_i'$. Vertauschen der Reihenfolge liefert dies für $i\neq 1$.
+	(ii) impliziert (ii)': Aus $n_1\dots n_r=n_1'\dots n_r'$ mit $n_i,n_i'\in N_i$ folgt $$\inv{n_1'}n_1=(n_2'\dots n_r')\inv{n_2\dots n_r} = \{e\}.$$
+	Die letzte Gleichheit gilt nach (ii).
+	Also folgt $n_i=n_i'$.
+	Vertauschen der Reihenfolge liefert dies für $i\neq 1$.
 \end{proof}
 
 \begin{thm}
@@ -762,10 +762,10 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
 \end{thm}
 
 \begin{proof}
-	Wir definieren $$N_1\times\dots\times N_r \overset{\pi}{\longrightarrow} G,\quad (n_1,\dots,n_r)\mapsto n_1\dots n_r$$
+	Wir definieren $$\pi: N_1\times\dots\times N_r \longrightarrow G,\quad (n_1,\dots,n_r)\mapsto n_1\dots n_r$$
 	Da das Bild von $\pi$ die Untergruppe $N_1\dots N_r \overset{(i)'}{=} G$ ist, ist $\pi$ surjektiv.
-	Aus (ii)' folgt, dass $\pi$ auch injektiv ist.
-	$\pi$ ist auch Gruppenhomomorphismus:
+	Aus (ii)' folgt, dass $\pi$ injektiv ist.
+	$\pi$ ist auch ein Gruppenhomomorphismus:
 	\begin{align*}
 		\pi((m_1,\dots,m_r)\cdot (n_1,\dots,n_r)) &= \pi((m_1n_1,\dots,m_rn_r)) = m_1n_1\dots m_rn_r\\
 		&= m_1\dots m_rn_1\dots n_r = \pi(\bar m)\pi(\bar n)
@@ -774,28 +774,31 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
 \end{proof}
 
 \begin{defn}
-	Für $N,H$ Gruppen ist eine Gruppenerweiteruung von $N$ durch eine kurze, exakte Folge von Gruppen
+	Für \(N\), \(H\) Gruppen ist eine Gruppenerweiterung von $N$ durch eine kurze, exakte Folge von Gruppen
 	\[ \begin{tikzcd}
 		1 \arrow[r] & N \arrow[r, "i"] & G \arrow[r, "p"] & H \arrow[r] & 1
 	\end{tikzcd} \]
-	gegeben, wobei $i$ injektiv, $p$ surjektiv, $\im i = \ker p$ ($\nicefrac{G}{H} \cong H$). % FIXME Ich bezweifle das akut. G/H \cong N?
+	gegeben, wobei $i$ injektiv, $p$ surjektiv, $\im i = \ker p$ ($\nicefrac{G}{N} \cong H$).
 \end{defn}
 
 \begin{ex}
-	$G=N\times H$ Diese ist i.A. nicht die einzige Gruppenerweiterung.
+	Das direkte Produkt $G=N\times H$ ist immer eine, jedoch i.A. nicht die einzige, Gruppenerweiterung.
 \end{ex}
 
 \begin{defn}
-	Es seien $G$ eine Gruppe, $N\subseteq G$ Normalteiler von $G$ und $H\subseteq G$ beliebige Untergruppe, so dass gilt: $$G=NH \quad \text{und} \quad N\cap H = \{e\}$$ Dann ist $G$ das \underline{semidirekte Produkt} von $N$ und $H$, Notation: $G=N\rtimes H$.
+	Es seien $G$ eine Gruppe, $N\subseteq G$ Normalteiler von $G$ und $H\subseteq G$ beliebige Untergruppe, so dass gilt:
+	$$G=NH \quad \text{und} \quad N\cap H = \{e\}$$
+	Dann ist $G$ das \underline{semidirekte Produkt} von $N$ und $H$, Notation: $G=N\rtimes H$.
 \end{defn}
 
 \begin{nb}
-	Jedes $a\in G$ hat eine eindeutige Darstellung $a=nh$ mit $n\in N, h\in H$. Dies liefert eine Bijektion $$N\times H \to G=N\rtimes H, (n,h)\mapsto nh$$
+	Jedes $a\in G$ hat eine eindeutige Darstellung $a=nh$ mit $n\in N, h\in H$.
+	Dies liefert eine Bijektion $$N\times H \to G=N\rtimes H, (n,h)\mapsto nh.$$
 \end{nb}
 
 \begin{thm}
 	Für jedes $h\in H$ ist die Konjugationsabbildung $$\gamma_h: N\to N, \quad n\mapsto hn\Inv{h}$$ ein Automorphismus von $N$.
-	Dies ergibt den Homomorphismus $$H\overset{\gamma}{\longrightarrow} \text{Aut}(N), \quad h\mapsto \gamma_h$$
+	Dies ergibt den Homomorphismus $$H\overset{\gamma}{\longrightarrow} \Aut(N), \quad h\mapsto \gamma_h$$
 \end{thm}
 
 \begin{proof}
@@ -809,21 +812,22 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
 
 \begin{nb}
 	\begin{enumerate}[label=(\arabic*)]
-		\item Das semidirekte Produkt von $N$ und $H$ wird von $\gamma: H\to \text{Aut}(N)$ eindeutig festgelegt.
+	\item Das semidirekte Produkt von $N$ und $H$ wird von $\gamma: H\to \Aut(N)$ eindeutig festgelegt.
 		Es gilt nämlich: $$(n_1h_1)(n_2h_2)=n_1(h_1n_2\Inv{h_1})h_1h_2=n_1\gamma_{h_1}(n_2)h_1h_2$$ wobei $$n_1\gamma_{h_1}(n_2)\in N, h_1h_2\in H.$$
-		\item Umgekehrt definiert $\gamma: H\to \text{Aut}(N)$ immer ein semidirektes Produkt $N\rtimes H$: % Für beliebige Gruppen N, H? Oder gibt es weitere Anforderungen?
-			\begin{gather*}
-				G=(N\times H, \cdot_\gamma) \\
-				(n_1,h_1)\cdot_\gamma (n_2,h_2)=(n_1\gamma_{h_1}(n_2), h_1h_2)
-			\end{gather*}
-			ist Gruppe mit neutralem Element $(e_N, e_H)$ und inversen Elementen $$\Inv{(n,h)}=(\gamma_{\Inv{h}}(\Inv{n}),\Inv{h})$$
-			Definiere:
-			\begin{align*}
-				N^*&\coloneqq \{(n, e_H): n\in N\} \cong N, \\
-				H^*&\coloneqq \{(e_N, h): h\in H\} \cong H
-			\end{align*}
-			$N^*,H^*$ sind Untergruppen von $G$, isomorph zu $N$ bzw. $H$. $$\pi: G\longrightarrow H, \quad (n,h)\mapsto h$$ ist ein Homomorphismus mit $\ker \pi = N^*$, also ist $N^*$ normale Untergruppe.
-			Das $N^*\cap H^* = \{e\}$ ist klar und $(n,h)=(n,e_H)\cdot_\gamma (e_N, h)$ liefert $G=N^*H^*$.
+	\item Umgekehrt definiert ein Homomorphismus $\gamma: H\to\Aut(N)$ immer ein semidirektes Produkt $N\rtimes H$:
+		\begin{gather*}
+			G=(N\times H, \cdot_\gamma) \\
+			(n_1,h_1)\cdot_\gamma (n_2,h_2)=(n_1\gamma_{h_1}(n_2), h_1h_2)
+		\end{gather*}
+		ist eine Gruppe mit neutralem Element $(e_N, e_H)$ und inversen Elementen $$\Inv{(n,h)}=(\gamma_{\Inv{h}}(\Inv{n}),\Inv{h})$$
+		Definiere:
+		\begin{align*}
+			N^*&\coloneqq \{(n, e_H): n\in N\} \cong N, \\
+			H^*&\coloneqq \{(e_N, h): h\in H\} \cong H
+		\end{align*}
+		$N^*,H^*$ sind Untergruppen von $G$, isomorph zu $N$ bzw. $H$.
+		$$\pi: G\longrightarrow H, \quad (n,h)\mapsto h$$ ist ein Homomorphismus mit $\ker \pi = N^*$, also ist $N^*$ normale Untergruppe.
+		Das $N^*\cap H^* = \{e\}$ ist klar und $(n,h)=(n,e_H)\cdot_\gamma (e_N, h)$ liefert $G=N^*H^*$.
 	\end{enumerate}
 \end{nb}
 
@@ -832,54 +836,44 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
 	\[ \begin{tikzcd}
 		1 \arrow[r] & N \arrow[r, "i"] & G \arrow[r, "p"] & H \arrow[l, bend left, dashed, "s"] \arrow[r] & 1
 	\end{tikzcd} \]
-	spaltet, falls ein Homomorphismus $s: H\to G$ existiert, mit $p\circ s = \text{id}_H$. $p$ heißt ein \underline{Schnitt} von $p$. % FIXME **p** heißt Schnitt von **p**? Eher nicht.
+	spaltet, falls ein Homomorphismus $s: H\to G$ existiert, mit $p\circ s = \text{id}_H$.
+	$p$ heißt ein \defi{Schnitt} von $p$. % FIXME **p** heißt Schnitt von **p**? Eher nicht.
 \end{defn}
 
 Für $G=N\rtimes H$ Gruppenerweiterung:
-
 \[ \begin{tikzcd}
 		1 \arrow[r] & N \arrow[r,"i"] & G \arrow[r,"p"] & H \arrow[r] & 1
 \end{tikzcd} \]
-
 wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\mapsto (e_N,h)$ Schnitt. $H$ ist Untergruppe. Man rechnet $(p\circ j)(h)=p(e_N,h)=h$
 
 \begin{thm}
 	Es sei
-
 	\[ \begin{tikzcd}
 		1 \arrow[r] & N \arrow[r,"i"] & G \arrow[r,"p"] & H \arrow[r] & 1
 	\end{tikzcd} \]
-
-	eine Gruppenerweiterung, die mit einem Schnitt $s:H\to G$ spaltet. Dann ist $G$ das semidirekte Produkt von $N$ und $H$, definiert durch $$\gamma: H\to \text{Aut}(N), \quad h\mapsto \gamma_h$$
+	eine Gruppenerweiterung, die mit einem Schnitt $s:H\to G$ spaltet. Dann ist $G$ das semidirekte Produkt von $N$ und $H$, definiert durch $$\gamma: H\to \Aut(N), \quad h\mapsto \gamma_h.$$ % FIXME Was ist \gamma_h? Das geht nur, falls N und H eine gemeinsame Obergruppe haben. Ist hier \(i^{-1}\circ\gamma_{s(h)}\circ i\) gemeint?
 \end{thm}
 
 \begin{proof}
-	Wir setzen $\rho: N\rtimes H \to G, (n,h)\mapsto i(n)s(h)$. Zeige, dass $\rho$ Homomorphismus ist:
-
-	\begin{gather*}
-		\rho((n_1,h_1)\cdot (n_2,h_2)) = \rho(n_1\gamma_{h_1}(n_2), h_1h_2) \\
-		= i(n_1)i(\gamma_{h_1}(n_2))s(h_1)s(h_2) = i(n_1)s(h_1)i(n_2)\Inv{s(h_1)}s(h_1)s(h_2) \\
-		= \rho(n_1,h_1)\rho(n_2,h_2).
-	\end{gather*}
+	Wir setzen $\rho: N\rtimes H \to G, (n,h)\mapsto i(n)s(h)$ und zeigen, dass $\rho$ ein Homomorphismus ist:
+	\begin{align*}
+		\rho((n_1,h_1)\cdot (n_2,h_2)) &= \rho(n_1\gamma_{h_1}(n_2), h_1h_2) = i(n_1)i(\gamma_{h_1}(n_2))s(h_1)s(h_2)\\
+		&= i(n_1)s(h_1)i(n_2)\Inv{s(h_1)}s(h_1)s(h_2) = \rho(n_1,h_1)\rho(n_2,h_2).
+	\end{align*}
 	Es bleibt zu zeigen, dass $\rho$ bijektiv ist.
-	% VL 19.05.
 	\begin{enumerate}
-	\item{Injektivität}
-	Sei $(n,h)\in \ker(\rho)$. Dann gilt
-	$i(n)\cdot s(h) = e_G \Rightarrow e_H = p(e_G) = p(i(n)\cdot s(h)) = p(i(n))\cdot p(s(h))$.
-
-	Aber $p(i(n)) = e_H$ wegen der kurzen exakten Folge und $p(s(h)) = h$. Also $e_H = h$.
-
-	Damit ist $i(n)\cdot s(h) = i(n)\cdot s(e_H) = i(n)\cdot e_G = i(n)$. Da $(n,h)\in\ker(\rho)$ folgt $i(n) = e_G$ und somit $n=e_N$, da $i$ injektiv ist.
-
-	Daraus folgt $\ker(\rho) = \{(e_N,e_H)\}$. Somit ist $\rho$ injektiv.
-	\item{Surjektivität}
-
-	Sei $a\in G$ beliebig. Wir setzen: $b := a\cdot\inv{s(p(a)}$. Wegen der Schnitteigenschaft von $s$ ist $p\circ s = \text{id}_H$ und somit
-
-	$p(b) = p(a)\cdot (p\circ s)(\Inv{p(a)})=p(a)\cdot\Inv{p(a)}=e_G$. Daraus folgt $b\in\ker(p)= \im(i)$. Und somit $\exists n\in N$ mit $i(n) = b$. Dies liefert:
-
-	$\rho(n,p(a)) = b\cdot s(p(a))=a\cdot s(p(a))^{-1}s(p(a))=a$. \qedhere
+	\item Injektivität: Sei $(n,h)\in \ker(\rho)$, also \(i(n)\cdot s(h) = \rho(n, h) = e_G\).
+		Daraus folgt \[e_H = p(e_G) = p(i(n)\cdot s(h)) = p(i(n))\cdot p(s(h)).\]
+		Wegen der kurzen exakten Folge ist jedoch $p(i(n)) = e_H$.
+		Also $e_H = p(s(h)) = h$.
+		Damit ist \[e_G = i(n)\cdot s(h) = i(n)\cdot s(e_H) = i(n)\cdot e_G = i(n)\] und somit $n=e_N$, da $i$ injektiv ist.
+		Daraus folgt $\ker(\rho) = \{(e_N,e_H)\}$.
+		Somit ist $\rho$ injektiv.
+	\item Surjektivität: Sei $a\in G$ beliebig.
+		Wir setzen $b := a\cdot\inv{s(p(a)}$.
+		Wegen der Schnitteigenschaft von $s$ ist $p\circ s = \id_H$ und somit $p(b) = p(a)\cdot (p\circ s)(\Inv{p(a)})=p(a)\cdot\Inv{p(a)}=e_G$.
+		Daraus folgt $b\in\ker(p)= \im(i)$ und somit gibt es ein $n\in N$ mit $i(n) = b$.
+		Dies liefert $\rho(n,p(a)) = b\cdot s(p(a))=a\cdot s(p(a))^{-1}s(p(a))=a$. \qedhere
 	\end{enumerate}
 \end{proof}
 
@@ -887,19 +881,21 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 
 \begin{enumerate}[label=(\alph*)]
 	\item Für einen beliebigen Körper $K$ zerfällt (bzw. spaltet)
-	\[ \begin{tikzcd}
-		 1 \arrow[r] & SL_n(K) \arrow[r] & GL_n(K) \arrow[r,"\det"] & K^* \arrow[r] & 1.
-	\end{tikzcd} \]
-	Das heißt $GL_n(K) = SL_n(K)\rtimes K^*$.
-
+		\[ \begin{tikzcd}
+			 1 \arrow[r] & \SL_n(K) \arrow[r] & \GL_n(K) \arrow[r,"\det"] & K^* \arrow[r] & 1.
+		\end{tikzcd} \]
+		Das heißt $GL_n(K) = SL_n(K)\rtimes K^*$.
 	\item Es sei $N$ eine beliebige abelsche Gruppe und $H := (\{\pm 1\},\cdot)\left[\cong(\mathbb{Z}/2\mathbb{Z},+)\right]$. Für $h\in H$ sei $\gamma_h$ definiert als $\gamma_h:N\to N, \gamma_h(n) := n^h$.
 
-	Dann heißt $D_n := N \rtimes H$ verallgemeinerte Diedergruppe. Diese hat die Verknüpfung
-	$(n_1,\epsilon_1)\cdot(n_2,\epsilon_2) = (n_1 n_2^{\epsilon_1},\epsilon_1\epsilon_2)$. Es ist $N \cong N\times\{1\}$ eine normale Untergruppe von $D_N$ mit Index $[D_N:N] = 2$.
+		Dann heißt $D_N := N \rtimes H$ verallgemeinerte Diedergruppe. Diese hat die Verknüpfung
+		$(n_1,\epsilon_1)\cdot(n_2,\epsilon_2) = (n_1 n_2^{\epsilon_1},\epsilon_1\epsilon_2)$.
+		Es ist $N \cong N\times\{1\}$ eine normale Untergruppe von $D_N$ mit Index $[D_N:N] = 2$.
 
-	\item Spezialfall: $N = \mathbb{Z}/k\mathbb{Z}$, $D_{2k} := D_{\mathbb{Z}/k\mathbb{Z}}$ heißt Diedergruppe der Ordnung $2k$. Dann ist $D_{2k}$ die Symmetriegruppe des regelmäßigen k-Gons. Die Untergruppe $N\subset D_{2k}$ ist gerade die Menge der Drehungen.
+	\item Spezialfall: $N = \mathbb{Z}/k\mathbb{Z}$, $D_{2k} := D_{\mathbb{Z}/k\mathbb{Z}}$ heißt Diedergruppe der Ordnung $2k$.
+		Dann ist $D_{2k}$ die Symmetriegruppe des regelmäßigen \(k\)-Gons.
+		Die Untergruppe $N\subset D_{2k}$ ist gerade die Menge der Drehungen.
 
-	Ist $G$ eine von zwei Elementen $n,h\in G$ erzeugt, also $G = \left< n,h\right>$, mit $\ord(n) = k$ ($\cong$ Drehung) und $\ord(h) = 2$ ($\cong$ Spiegelung) und außerdem $h^{-1}nh=n^{-1}$, so gilt $G\cong D_{2k}$.
+		Ist $G$ eine von zwei Elementen $n,h\in G$ erzeugte Gruppe, also $G = \langle n, h\rangle$, mit $\ord(n) = k$ ($\cong$ Drehung) und $\ord(h) = 2$ ($\cong$ Spiegelung) und außerdem $h^{-1}nh=n^{-1}$, so gilt $G\cong D_{2k}$.
 \end{enumerate}
 
 \end{ex}
@@ -914,29 +910,27 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 \begin{thm}[Satz von Cayley]
 	Jede Gruppe $G$ ist isomorph zu einer Untergruppe von $S_G$.
 \end{thm}
-\begin{proof}
 
+\begin{proof}
 	Für jedes Element $a\in G$ ist die Linkstranslation um $a$, also $\lambda_a:G\to G, b\mapsto a\cdot b$ eine Permutation.
 
 	Die Abbildung $\lambda:G\to S_G, a\mapsto \lambda_a$ ist ein Homomorphismus, denn für $a,b,h\in G$ gilt
-\[\lambda_{ab}(h) = abh = a(bh) = a\lambda_b(h) = \lambda_a(\lambda_b(h)) = (\lambda_a\circ\lambda_b)(h).\]
+	\[\lambda_{ab}(h) = abh = a(bh) = a\lambda_b(h) = \lambda_a(\lambda_b(h)) = (\lambda_a\circ\lambda_b)(h).\]
 
-	Es sei $a\in \ker(\lambda)$. Dann gilt $\lambda_a = \text{id}_G \Rightarrow ah = h$ für alle $h\in G $ und damit
-	\[a = a\cdot e = \lambda_a(e) = e \Rightarrow \ker(\lambda) = \{e\}.\]
-	
+	Es sei $a\in \ker(\lambda)$.
+	Dann gilt $\lambda_a = \text{id}_G$, also $ah = h$ für alle $h\in G $ und damit \[a = a\cdot e = \lambda_a(e) = e.\]
+	Folglich ist der Kern trivial (\(\ker(\lambda) = \{e\}\)).
 	Also ist $\lambda$ injektiv und somit $G\cong\im(\lambda)$.
 \end{proof}
 
 \begin{defn}
 	Es sei $M\neq\emptyset$ eine Menge und $\sigma$ eine Permutation von $M$.
 	\begin{enumerate}
-		\item Der Träger von $\sigma$ ist $\supp(\sigma) := \{m\in M: \sigma(m)\neq m\}$.
-	
-		\item Ein Zyklus der Länge $l$ ist eine Permutation $\sigma\in S_M$ mit $l = |\supp(\sigma)|$, so dass
-	\[\supp(\sigma) = \{m_1,m_2,\dots,m_l\}\text{ mit }\sigma(m_j) = m_{j+1},\; 1\leq j<l,\; \sigma(m_l) = m_1.\]
-	Für einen solchen Zyklus schreiben wir $\sigma = (m_1m_2\dots m_l)$.
-	
-		\item 2-Zyklen werden Transpositionen genannt.
+	\item Der \defi{Träger} von $\sigma$ ist $\supp(\sigma) := \{m\in M: \sigma(m)\neq m\}$.
+	\item Ein \defi{Zyklus} der Länge $l$ ist eine Permutation $\sigma\in S_M$ mit $l = |\supp(\sigma)|$, so dass
+		\[\supp(\sigma) = \{m_1,m_2,\dots,m_l\}\text{ mit }\sigma(m_j) = m_{j+1},\; 1\leq j<l,\; \sigma(m_l) = m_1.\]
+		Für einen solchen Zyklus schreiben wir $\sigma = (m_1m_2\dots m_l)$.
+	\item 2-Zyklen werden \defi{Transpositionen} genannt.
 	\end{enumerate}
 \end{defn}
 
@@ -947,204 +941,189 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 
 
 \begin{defn}
-	Im Spezialfall $M=\{1,2,\dots,n\}$ schreibt man $S_n := S_M$. Ein Element $\sigma\in S_n$ schreibt man als \[\sigma = \begin{pmatrix}
+	Im Spezialfall $M=\{1,2,\dots,n\}$ schreibt man $S_n := S_M$.
+	Ein Element $\sigma\in S_n$ schreibt man als
+	\[\sigma = \begin{pmatrix}
 	 1 & 2 & \dots & n \\
 	 \sigma(1) & \sigma(2) & \dots & \sigma(n) \end{pmatrix}.\]
 \end{defn}
 
 \begin{ex}
-	 $\sigma = \begin{pmatrix}
-	 1 & 2 & 3 & 4 \\
-	 4 & 2 & 1 & 3 \end{pmatrix} \in S_4$.
+	$\sigma = \begin{pmatrix}
+	1 & 2 & 3 & 4 \\
+	4 & 2 & 1 & 3 \end{pmatrix} \in S_4$.
 	$\sigma$ ist der 3-Zyklus $(143) = (431) = (314)$.
 \end{ex}
 
-
 \begin{thm}
 \begin{enumerate}[label=(\alph*)]
-	\item Jede Permutation $\sigma\in S_n, \sigma\neq Id$, kann als Produkt von Zyklen mit disjunkten Trägern geschrieben werden. Diese Darstellung ist bis auf die Reihenfolge der Faktoren eindeutig bestimmt.
-	\item Für einen beliebigen l-Zyklus $(m_1m_2\dots m_l)\in S_n$ und $\sigma\in S_n$ gilt 
-	\[\sigma\circ(m_1m_2\dots m_l)\circ\sigma^{-1} = (\sigma(m_1)\sigma(m_2)\dots\sigma(m_l)).\]
+	\item Jede Permutation $\sigma\in S_n, \sigma\neq \id$, kann als Produkt von Zyklen mit disjunkten Trägern geschrieben werden.
+		Diese Darstellung ist bis auf die Reihenfolge der Faktoren eindeutig bestimmt.
+	\item Für einen beliebigen l-Zyklus $(m_1m_2\dots m_l)\in S_n$ und $\sigma\in S_n$ gilt
+		\[\sigma\circ(m_1m_2\dots m_l)\circ\sigma^{-1} = (\sigma(m_1)\sigma(m_2)\dots\sigma(m_l)).\]
 	\item Die symmetrische Gruppe $S_n$ wird von den Transpositionen erzeugt.
 \end{enumerate}
 \end{thm}
 
 \begin{proof}
-\begin{enumerate}[label=(\alph*)]
+	\begin{enumerate}[label=(\alph*)]
 	\item Es sei $\sigma\in S_n, \sigma\neq\text{id}$. Für $m_1,m_2\in\{1,\dots,n\}=:M$ definieren wir 
-	\[m_1\sim m_2 :\Leftrightarrow m_1 = \sigma^l(m_2)\qquad\text{für ein }l\in\mathbb{Z}.\]
-	Dann ist $\sim$ eine Äquivalenzrelation auf $M$. Es sei $M = K_1\cup K_2\cup\dots\cup K_r$ die Zerlegung von $M$ in disjunkte Äquivalenzklassen. Wir betrachten $a_j\in K_j$ beliebig. Es sei $l_j$ die kleinste positive Zahl mit $\sigma^{l_j}(a_j) = a_j$. Das liefert uns
-	\[a_j,\sigma(a_j),\sigma^2(a_j),\dots,\sigma^{l_j-1}(a_j)\in K_j\]
-	und diese Elemente sind paarweise verschieden. Aus der Definition folgt, dass $\sigma\upharpoonright_{K_j}=(a_j\sigma(a_j)\dots\sigma^{l_j-1}(a_j))\in S_{K_j}$ ein Zyklus der Länge $l_j$ ist. Wenn wir dies für alle $j=1,\dots,r$ tun, erhalten wir:
-	\[\sigma = (a_1\dots\sigma^{l_1-1}(a_1))(a_2\dots\sigma^{l_2-1}(a_2))\dots(a_r\dots\sigma^{l_1-r}(a_r)).\]
-	Dies ist genau die gesuchte Darstellung, wenn man zudem $(a_j):=\text{id}$ für $l_j = 1$ definiert.
+		\[m_1\sim m_2 :\Leftrightarrow \text{\(m_1 = \sigma^l(m_2)\) für ein \(l\in\mathbb{Z}\)}.\]
+		Dann ist $\sim$ eine Äquivalenzrelation auf $M$. Es sei $M = K_1\cup K_2\cup\dots\cup K_r$ die Zerlegung von $M$ in disjunkte Äquivalenzklassen.
+		Wir betrachten $a_j\in K_j$ beliebig. Es sei $l_j$ die kleinste positive Zahl mit $\sigma^{l_j}(a_j) = a_j$. % FIXME Existenz?
+		Das liefert uns \[a_j,\sigma(a_j),\sigma^2(a_j),\dots,\sigma^{l_j-1}(a_j)\in K_j\] und diese Elemente sind paarweise verschieden.
+		Aus der Definition folgt, dass $\sigma\upharpoonright_{K_j}=(a_j\sigma(a_j)\dots\sigma^{l_j-1}(a_j))\in S_{K_j}$ ein Zyklus der Länge $l_j$ ist.
+		Wenn wir dies für alle $j=1,\dots,r$ tun, erhalten wir:
+		\[\sigma = (a_1\dots\sigma^{l_1-1}(a_1))(a_2\dots\sigma^{l_2-1}(a_2))\dots(a_r\dots\sigma^{l_1-r}(a_r)).\]
+		Dies ist genau die gesuchte Darstellung, wenn man zudem $(a_j):=\text{id}$ für $l_j = 1$ definiert.
 
-	Eindeutigkeit: Es sei für $s\in\mathbb{N}$ $\sigma = \tau_1\tau_2\dots\tau_s$ eine andere Darstellung. Dann ist $\sigma\upharpoonright_{\supp(\tau_k)} = \tau_k$ für alle $k$ ein Zyklus. Damit ist $\supp(\tau_k) = K_j$ für ein $j=1,\dots,r$ und somit ist $\tau_k$ gerade ein solcher Zyklus wie in unserer Konstruktion. Diese ist also eindeutig.
-
+		Eindeutigkeit: Es sei für $s\in\mathbb{N}$ $\sigma = \tau_1\tau_2\dots\tau_s$ eine andere Darstellung.
+		Dann ist $\sigma\upharpoonright_{\supp(\tau_k)} = \tau_k$ für alle $k$ ein Zyklus.
+		Damit ist $\supp(\tau_k) = K_j$ für ein $j=1,\dots,r$ und somit ist $\tau_k$ gerade ein solcher Zyklus wie in unserer Konstruktion.
+		Diese ist also eindeutig.
 	\item Es sei $\sigma\in S_n$ und $(m_1\dots m_k)$ ein Zyklus. Dann gilt
-	\[(\sigma(m_1\dots m_k)\Inv\sigma)(\sigma(m_{\alpha}))=(\sigma(m_1\dots m_k))(m_{\alpha}) = \sigma(m_{\alpha+1})\text{ mit }m_{k+1}:=m_1.\] 
-	Für $m\notin \{m_1,\dots,m_k\}$ gilt $(\sigma(m_1\dots m_k)\sigma^{-1})(\sigma(m))=(\sigma(m_1\dots m_k))(m) = \sigma(m)$. Daraus folgt $\sigma\circ(m_1m_2\dots m_l)\circ\sigma^{-1} = (\sigma(m_1)\sigma(m_2)\dots\sigma(m_l))$.
-
-	\item Wegen (a) genügt es zu zeigen, dass für alle $k\in\mathbb{N}$ alle k-Zyklen Produkte von Transpositionen sind. Für einen beliebigen Zyklus gilt
-	\[(m_1\dots m_k) = (m_1m_2)(m_2m_3)\dots (m_{k-1}m_k).\]
-	Beispiel: $(1234) = (12)(23)(34)$. Graphisch veranschaulicht:
-	\[\begin{pmatrix}
+		\[(\sigma(m_1\dots m_k)\Inv\sigma)(\sigma(m_{\alpha}))=(\sigma(m_1\dots m_k))(m_{\alpha}) = \sigma(m_{\alpha+1})\text{ mit }m_{k+1}:=m_1.\] 
+		Für $m\notin \{m_1,\dots,m_k\}$ gilt $(\sigma(m_1\dots m_k)\sigma^{-1})(\sigma(m))=(\sigma(m_1\dots m_k))(m) = \sigma(m)$.
+		Daraus folgt $\sigma\circ(m_1m_2\dots m_l)\circ\sigma^{-1} = (\sigma(m_1)\sigma(m_2)\dots\sigma(m_l))$.
+	\item Wegen (a) genügt es zu zeigen, dass für alle $k\in\mathbb{N}$ alle k-Zyklen Produkte von Transpositionen sind.
+		Für einen beliebigen Zyklus gilt
+		\[(m_1\dots m_k) = (m_1m_2)(m_2m_3)\dots (m_{k-1}m_k).\]
+		Beispiel: $(1234) = (12)(23)(34)$. Graphisch veranschaulicht:
+		\[\begin{pmatrix}
 		1 & 2 & 3 & 4 \\ % (34)
 		1 & 2 & 4 & 3 \\ % (23)
 		1 & 3 & 4 & 2 \\ % (12)
 		2 & 3 & 4 & 1
-	\end{pmatrix}.\]
-	
-	Anmerkung: Es reichen deutlich weniger Transpositionen aus, um $S_n$ zu erzeugen.
-\end{enumerate}
-
+		\end{pmatrix}.\]
+		Anmerkung: Es reichen deutlich weniger Transpositionen aus, um $S_n$ zu erzeugen.\qedhere
+	\end{enumerate}
 \end{proof}
 
 \begin{defn}
-Für $\sigma\in S_n$ ist das Signum von $\sigma$ definiert als
+	Für $\sigma\in S_n$ ist das Signum von $\sigma$ definiert als
 	\[\sgn(\sigma) := \prod_{i<j}\frac{\sigma(i)-\sigma(j)}{i-j}\qquad(\in\{\pm 1\}).\]
-Permutationen $\sigma\in S_n$ mit $\sgn(\sigma) = 1$ (bzw. $-1$) heißen gerade (bzw. ungerade) Permutationen.
+	Permutationen $\sigma\in S_n$ mit $\sgn(\sigma) = 1$ (bzw. $-1$) heißen gerade (bzw. ungerade) Permutationen.
 \end{defn}
 
 \begin{lemma}
-Die Abbildung $\sgn:S_n\to\{\pm 1\}$ ist ein Gruppenhomomorphismus.
+	Die Abbildung $\sgn:S_n\to\{\pm 1\}$ ist ein Gruppenhomomorphismus.
 \end{lemma}
 
 \begin{proof}
-Es seien $\sigma,\tau\in S_n$ beliebig. Dann gilt 
-
-\begin{equation*}
-	\begin{split}
+	Es seien $\sigma,\tau\in S_n$ beliebig. Dann gilt 
+	\begin{align*}
 		\sgn(\sigma\tau) &= \prod_{i<j}\frac{\sigma\tau(i)-\sigma\tau(j)}{i-j} = \prod_{i<j}\frac{\sigma\tau(i)-\sigma\tau(j)}{\tau(i)-\tau(j)}\cdot\prod_{i<j}\frac{\tau(i)-\tau(j)}{i-j} \\
 		&= \left(\prod_{\substack{i<j,\\\tau(i)<\tau(j),\\ i':=\tau(i),j':=\tau(j)}}\frac{\sigma\tau(i)-\sigma\tau(j)}{\tau(i)-\tau(j)}\cdot \prod_{\substack{i<j,\\\tau(j)<\tau(i),\\ i':=\tau(j),j':=\tau(i)}}\frac{\sigma\tau(i)-\sigma\tau(j)}{\tau(i)-\tau(j)}\right)\cdot \sgn(\tau) \\
 		&=\prod_{i'<j'}\frac{\sigma(i')-\sigma(j')}{i'-j'}\cdot \sgn(\tau) \\
-		&= \sgn(\sigma)\cdot \sgn(\tau).
-	\end{split}
-\end{equation*}
+		&= \sgn(\sigma)\cdot \sgn(\tau).\qedhere
+	\end{align*}
 \end{proof}
 
 % VL 26.5.
-	\begin{kor}
+\begin{kor}
 	Jede gerade Permutation ist das Produkt einer geraden Anzahl von Transpositionen. Jede ungerade Permutation ist Produkt einer ungeraden Anzahl von Transpositionen.
-	\end{kor}
+\end{kor}
 
-	\begin{ex}
-	m-Zyklus $(n_1n_2...n_m)$ ist das Produkt von $m-1$ Transpositionen.
-	
-	$\Rightarrow \sgn((n_1n_2....n_m))=(-1)^{m-1}$
-	\end{ex}
+\begin{ex}
+	\(m\)-Zyklus $(n_1n_2...n_m)$ ist das Produkt von $m-1$ Transpositionen:
+	\[\sgn((n_1n_2....n_m))=(-1)^{m-1}\]
+\end{ex}
 
-	\begin{kor}
-	$\sigma = (m_1....m_{k_1})(m_{k_1+1}...m_{k_2})...(m_{k_{r-1}}....m_{k_r})$	$\Rightarrow \sgn(\sigma)=(-1)^{k_r-r}$
-	\end{kor}
+\begin{kor}
+	Für $\sigma = (m_1....m_{k_1})(m_{k_1+1}...m_{k_2})...(m_{k_{r-1}+1}....m_{k_r})$ ist $\sgn(\sigma)=(-1)^{k_r-r}$.
+\end{kor}
 
-	\begin{defn}
+\begin{defn}
 	Die normale Untergruppe $A_n=\ker(\sgn)$ der geraden Permutationen wird die alternierende Gruppe genannt.
-	\end{defn}
+\end{defn}
 	
-	\begin{nb}
-	Index von $A_n$ in $S_n$ ist 2 $\Rightarrow \ord(A_n)=\frac{1}{2}\ord(S_n)$\\
-	$\ord(S_n)=n(n-1)...1=n!$
-	\end{nb}
+\begin{nb}
+	Index von $A_n$ in $S_n$ ist \(2\), also \(\ord(A_n)=\frac{1}{2}\ord(S_n)\), wobei $\ord(S_n)=n\cdot(n-1)\cdot\ldots\cdot1=n!$ ist.
+\end{nb}
 	
-	\begin{lemma}
+\begin{lemma}
 	$A_n$ wird durch die 3-Zyklen von $S_n$ erzeugt.
-	\end{lemma}
+\end{lemma}
 	
-	\begin{proof}
-	Es sei $\sigma \in A_n$ eine gerade Permutation. Wir schreiben $\sigma$ als Produkt von Transpositionen:
-	$\sigma =(a_1b_1)(a_2b_2)....(a_nb_n)$\\
-	Für disjunkte Träger gilt:\\
-	$(a_{2_{j-1}b_{2_{j-1}}})(a_{2_j}b_{2_j})=(a_{2_{j-1}}a_{2_j})(a_{2_j}b_{2_{j-1}})(a_{2_{j-1}}a_{2_j})(a_{2_j}b_{2_j})=(a_{2_{j-1}}a_{2_j}b_{2_{j-1}})(a_{2_{j-1}}a_{2j}b_{2j})$\\
-	Produkt von 3-Zyklen.
+\begin{proof}
+	Es sei $\sigma \in A_n$ eine gerade Permutation.
+	Wir schreiben $\sigma$ als Produkt von Transpositionen $\sigma =(a_1b_1)(a_2b_2)\dots(a_{2m}b_{2m})$ und betrachten \((a_{2j-1}b_{2j-1})(a_{2j}b_{2j})\) für \(1 \leq j \leq m\).
+	Im Falle disjunkter Träger ist dies mit
+	\begin{align*}
+		(a_{2j-1}b_{2j-1})(a_{2j}b_{2j}) &= (a_{2j-1}a_{2j})(a_{2j}b_{2j-1})(a_{2j-1}a_{2j})(a_{2j}b_{2j})\\
+		&= (a_{2j-1}a_{2j}b_{2j-1})(a_{2j-1}a_{2j}b_{2j})
+	\end{align*}
+	ein Produkt von 3-Zyklen.
+	Wenn es ein gemeinsames Element gibt, also \(|\{a_{2j-1}b_{2j-1}\}\cap\{a_{2j}b_{2j}\}| = 1\) ist, kann mit \((ab) = (ba)\) oBdA $b_{2j-1}=a_{2j}$ angenommen werden und wir haben über $(a_{2_{j-1}}a_{2_j})(a_{2_j}b_{2_j})=(a_{2_{j-1}}a_{2j}b_{2j})$ einen 3-Zyklus.
+	Für \(\{a_{2j-1}b_{2j-1}\} = \{a_{2j}b_{2j}\}\) ist schließlich \((a_{2j-1}b_{2j-1})(a_{2j}b_{2j}) = \id\).
+
+	Somit kann \((a_{2j-1}b_{2j-1})(a_{2j}b_{2j})\) als Produkt von 3-Zyklen geschrieben werden und auch \(\sigma = \prod_{j = 1}^m (a_{2j-1}b_{2j-1})(a_{2j}b_{2j})\) ist ein Produkt von 3-Zykeln.
+\end{proof}
 	
-	Wenn es ein gemeinsames Element gibt: ob $b_{2_{j-1}}=a_{2_j}$\\
-	$(a_{2_{j-1}}a_{2_j})(a_{2_j}b_{2_j})=(a_{2_{j-1}}a_{2j}b_{2j})$ e-Zyklus\\
-	Für $\{ a_{2_{j-1}}b_{2_{j-1}}\} =\{ a_{2_j}b_{2_j} \} : (a_{2_{j-1}}b_{2_{j-1}})(a_{2_j}b_{2_j})=id$\\
-	Daraus folgt: $\sigma$ ist das Produkt von 3-Zykeln.
-	\end{proof}
-	
-	\begin{ex}
+\begin{ex}
 	\begin{enumerate}
-		\item $S_1=\{ (1)\}$
-		\item $S_2=\{ id, (12)\}$ zyklisch der Ordnung 2
-		\item $S_3=\{ id,(12),(13);(23),(123),(132)\} \supsetneq A_3=\{ id,(123),(132)\}$
-		\item $S_3=A_3\rtimes \mathbb{Z}/2\mathbb{Z} \cong \mathbb{Z}/3\mathbb{Z} \rtimes \mathbb{Z}/2\mathbb{Z} = D_6$ Diedergruppe mit 6 Elementen.
+	\item $S_1 = \{(1)\}$
+	\item $S_2 = \{\id, (12)\} \cong \Z/2\Z$ ist zyklisch mit Ordnung \(2\).
+	\item $S_3 = \{\id, (12), (13), (23), (123), (132)\} \supsetneq A_3=\{\id, (123), (132)\} \cong \Z/3\Z$
+	\item $S_3 \cong A_3\rtimes \mathbb{Z}/2\mathbb{Z} \cong \mathbb{Z}/3\mathbb{Z} \rtimes \mathbb{Z}/2\mathbb{Z} \cong D_6$ ist die Diedergruppe mit 6 Elementen.
 	\end{enumerate}
-	\end{ex}
+\end{ex}
 	 
 \section{Gruppenoperationen}
-	\begin{defn}
-	Es sei $(G, \cdot)$ eine Gruppe und $X$ eine Menge. Eine Operation von G auf X ist eine Abbildung:
-	$$G \times X \rightarrow X$$
-	$$(g,x) \mapsto g\bullet x$$
+
+\begin{defn}
+	Es sei $(G, \cdot)$ eine Gruppe und $X$ eine Menge.
+	Eine Operation von \(G\) auf \(X\) ist eine Abbildung
+	$$G \times X \rightarrow X, \quad (g,x) \mapsto g\bullet x,$$
 	welche folgende Bedingungen erfüllt:
 	\begin{enumerate}
-		\item $e \bullet x = x$ ($e\in G$ neutral)
-		\item $(a\cdot b)\bullet x = a\bullet (b\bullet x)\;\forall a,b\in G, x\in X$
+	\item $e \bullet x = x$ ($e\in G$ neutral)
+	\item \((a\cdot b)\bullet x = a\bullet (b\bullet x)\) für alle \(a,b\in G\) und \(x\in X\)
 	\end{enumerate}
-	\end{defn}
-	
-	\begin{ex}
-	$V$, $K$-Vektorraum, die allgemeine lineare Gruppe $GL_k(V)$ operiert auf $V$:
-	$$GL_k(V) \times X \rightarrow V$$
-	$$(A,v)\mapsto Av$$
-	\end{ex}
+\end{defn}
 
-	\begin{notation}
-	Wenn $G$ auf $X$ operiert, sagt man, dass $X$ eine $G$-Menge ist. Bezeichnung: $G\circlearrowright X$
-	\end{notation}
+\begin{ex}
+	Für einen $K$-Vektorraum \(V\) operiert die allgemeine lineare Gruppe $\GL(V)$ auf $V$:
+	$$\GL(V) \times V \to V, \quad (A,v) \mapsto Av$$
+\end{ex}
 
-	\begin{nb}
-	Für jedes Element $g\in G$ existiert
-	$$\tau_g: X \rightarrow X$$
-	$$x \mapsto gx$$
-	\end{nb}
+\begin{notation}
+	Wenn $G$ auf $X$ operiert, sagt man, dass $X$ eine $G$-Menge ist.
+	Bezeichnung: $G\circlearrowright X$
+\end{notation}
+
+\begin{nb}
+	Für jedes Element $g\in G$ ist $$\tau_g: X \rightarrow X, \quad x \mapsto gx$$ eine Bijektion mit Inverser $\tau_{g^{-1}}$.
+	Aus 1. und 2. folgt:
+	$$\tau: G \rightarrow S_X, \quad g \mapsto \tau_g$$ ist ein Gruppenhomomorphismus.
+	Umgekehrt definiert jeder Gruppenhomomorphismus $\tau: G \rightarrow S_X$ durch $g \bullet x := (\tau(g))(x)$ eine Gruppenoperation.
+\end{nb}
 	
-	$\tau_g$ ist eine Bijektion mit Inverse $\tau_{g^{-1}}$ Aus 1. und 2. folgt:
-	$$\tau G \rightarrow S_X$$
-	$$g \mapsto \tau_g$$
-	
-	ist ein Gruppenhomomorphismus. Umgekehrt definiert jeder Gruppenhomomorphismus $\tau: G \rightarrow S_X$ durch 
-	$g: x=(\tau(g))(x)$ eine Gruppenoperation.
-	
-	\begin{defn} Es sei $\bullet: G \times X \rightarrow X$ eine Gruppenoperation.
+\begin{defn} Es sei $\bullet: G \times X \to X$ eine Gruppenoperation.
 	\begin{enumerate}
-		\item Für $x\in X$ heißt $Gx=\{ gx : g \in G\}$ die Bahn (oder Orbit) von X. 
-		\item Die Untergruppe $G_x:=\{ g\in G : gx=x\}$ heißt Isotropiegruppe (oder Stabilisator) von $x$.
-		\item Menge der Fixpunkte unter $G$: $X^G:=\{ x \in X : gx=x \forall g \in G\}$
-		\item Die Gruppenoperation ist treu, falls $\tau:G \rightarrow S_X$ injektiv ist.
-		\item Die Gruppenoperation ist transitiv, wenn $X$ eine Bahn ist.
+	\item Für $x\in X$ heißt $Gx=\{gx : g \in G\}$ die Bahn (oder Orbit) von X. 
+	\item Die Untergruppe $G_x:=\{g\in G : gx=x\}$ heißt Isotropiegruppe (oder Stabilisator) von $x$.
+	\item Menge der Fixpunkte unter $G$: $X^G:=\{x \in X : \forall g \in G: gx=x\}$
+	\item Die Gruppenoperation ist treu, falls $\tau:G \rightarrow S_X$ injektiv ist.
+	\item Die Gruppenoperation ist transitiv, wenn $X$ eine Bahn ist.
 	\end{enumerate}
-	\end{defn}
+\end{defn}
 	
-	\begin{ex}
+\begin{ex}
 	\begin{enumerate}
-		\item Der Satz von Cayley ergibt einen Injektiven Homomorphismus.
-		$$G \to S_G$$
-		$$a \mapsto \lambda_a$$
-		wobei
-		$$\lambda_a: G \to G$$
-		$$b \mapsto ab$$
-		Das heißt: 
-		$$(G\times G) \to G$$
-		$$(a,b) \mapsto ab$$
-		ist eine treue Operation von G auf G.
-		Diese Operation ist transitiv: es gilt $eG=G$, d.h. $G$ ist eine Bahn.
-		
-		\item Die Rechtstranslation
-		$$\varphi : G \to G$$
-		$$b \mapsto ba^{1}$$
-		für beliebiges $a\in G$ definiert eine treue und transitive Gruppenoperation von $G$ auf $G$:
-		$$(G,G) \rightarrow G$$
-		$$a \bullet b := ba^{-1}$$	
-		
-		\item $G$ operiert auf sich selbst durch Konjugation:
-		$$a \in G i_a : G \to G$$
-		$$x \mapsto axa^{-1}$$	
-		Die Konjugation mit $a$ ist immer ein Automorphismus von G.
-		$$G \xrightarrow{i} Aut(G) \subseteq S_G$$
-		$$a \mapsto i_a$$
+	\item Der Satz von Cayley ergibt einen injektiven Homomorphismus:
+		$$G \to S_G, \quad a \mapsto \lambda_a,$$ wobei $$\lambda_a: G \to G \quad b \mapsto ab$$ ist.
+		Das heißt $$G\times G \to G, \quad (a,b) \mapsto ab$$ ist eine treue Operation von \(G\) auf \(G\).
+		Diese Operation ist transitiv, da wir $Ge=G$ haben, also $G$ eine Bahn ist.
+	\item Die Rechtstranslation
+		$$\varphi : G \to G, \quad b \mapsto ba^{-1}$$
+		definiert für beliebiges $a\in G$ eine treue und transitive Gruppenoperation von $G$ auf $G$:
+		$$G \times G \to G, \quad a \bullet b := ba^{-1}$$
+	\item $G$ operiert auf sich selbst durch Konjugation.
+		Für \(a \in G\) ist die Konjugation mit $a$
+		$$i_a : G \to G, \quad x \mapsto axa^{-1}$$
+		immer ein Automorphismus von G.
+		$$i: G \to \Aut(G) \subseteq S_G, \quad a \mapsto i_a$$
 		ein Gruppenhomomorphismus, d.h. eine Operation von $G$ auf sich selbst.
 		\begin{proof}
 		$a,b \in G$ $i_{ab}(x)=abx(ab)^{-1}=abxb^{-1}a^{-1}$\\
