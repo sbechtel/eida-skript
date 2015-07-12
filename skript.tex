@@ -9,6 +9,9 @@
 \newcommand{\sbt}{\,\begin{picture}(-1,1)(-1,-3)\circle*{3}\end{picture}\ }
 \renewcommand{\labelitemi}{\sbt}
 
+% Fußnoten von Exponenten unterscheiden
+\renewcommand{\thefootnote}{[\arabic{footnote}]}
+
 % Erleichtert Mathe bzw. Formelsatz
 \usepackage{mathtools, amsmath, amssymb, amsthm}
 \usepackage{nicefrac}
@@ -29,8 +32,12 @@
 \newcommand{\inv}[1]{\left(#1\right)^{-1}}
 \newcommand{\Inv}[1]{#1^{-1}}
 
-% Sets
+% Common groups and fields
+\newcommand\N{\mathbb{N}}
 \newcommand\Z{\mathbb{Z}}
+\newcommand\Q{\mathbb{Q}}
+\newcommand\R{\mathbb{R}}
+\newcommand\C{\mathbb{C}}
 
 % Environments
 % Stuff with proof
@@ -1112,7 +1119,7 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 \begin{ex}
 	\begin{enumerate}
 	\item Der Satz von Cayley ergibt einen injektiven Homomorphismus:
-		$$G \to S_G, \quad a \mapsto \lambda_a,$$ wobei $$\lambda_a: G \to G \quad b \mapsto ab$$ ist.
+		$$G \to S_G, \quad a \mapsto \lambda_a,$$ wobei $$\lambda_a: G \to G, \quad b \mapsto ab$$ ist.
 		Das heißt $$G\times G \to G, \quad (a,b) \mapsto ab$$ ist eine treue Operation von \(G\) auf \(G\).
 		Diese Operation ist transitiv, da wir $Ge=G$ haben, also $G$ eine Bahn ist.
 	\item Die Rechtstranslation
@@ -1126,166 +1133,177 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 		$$i: G \to \Aut(G) \subseteq S_G, \quad a \mapsto i_a$$
 		ein Gruppenhomomorphismus, d.h. eine Operation von $G$ auf sich selbst.
 		\begin{proof}
-		$a,b \in G$ $i_{ab}(x)=abx(ab)^{-1}=abxb^{-1}a^{-1}$\\
-		$=a(i_b(x))a^{-1}=i_a\circ i_b(x) \forall x\in G$
+			Für alle \(a, b, x \in G\) ist \[i_{ab}(x)=abx(ab)^{-1}=abxb^{-1}a^{-1}=a(i_b(x))a^{-1}=i_a(i_b(x))=(i_a\circ i_b)(x).\qedhere\]
 		\end{proof}
-		\begin{nb}
-		Die Bahnen von $i$ heißen Konjugationsklassen. Der Kern von $i$ heißt Zentrum von $G$.\\
-		$Z(G)=\ker(i)\{ a \in G : axa^{-1}=x$ $\forall x \in G\} = \{a \in G : ax =xa$ $\forall x \in G\}$\\
-		Es gilt $G^G=\{ y \in G : byb^{-1}=y$ $\forall b \in G\}=\{ y \in G : by =yb$ $\forall b \in G\}=Z(G)$\\
-		
-		D.h. $Z(G)$ ist auch die Menge der Fixpunkte. Der Stabilisator von $x \in G$:\\
-		$G_x=\{a \in G : axa^{-1}=x\}=\{ a \in G : ax = xa\}=:C_G(x)$
-		\end{nb}		
+		\begin{defn}
+			Die Bahnen von $i$ heißen \defi{Konjugationsklassen}.
+			Der Kern von $i$ heißt \defi{Zentrum} von $G$.
+			\[Z(G) := \ker(i) = \{a \in G : \forall x \in G: axa^{-1}=x\} = \{a \in G : \forall x \in G: ax =xa\}\]
+			Außerdem ist \[G^G = \{y \in G : \forall b \in G: byb^{-1}=y\} = \{y \in G: \forall b \in G: by = yb\} = Z(G),\]	
+			d.h. $Z(G)$ ist auch die Menge der Fixpunkte.
+			Der Stabilisator von $x \in G$ ist der \defi{Zentralisator} von \(x\) \[C_G(x) := G_x = \{a \in G : axa^{-1}=x\} = \{ a \in G : ax = xa\}.\]
+		\end{defn}		
 	\end{enumerate}
-	\end{ex}
-	
-	\begin{thm}
-	$G \times X \rightarrow X$ Gruppenoperation. Dann ist die Abbildung
-	$$p: G/G_x \to Gx$$
-	$$gG_x \mapsto gx$$
-	ein bijektiver $G$-Homomorphismus für alle $X \in X$.
-	\end{thm}
-	
-	\begin{defn}
-	$X$,$Y$ $G$-Mengen $f: X \rightarrow Y$ ist ein $G$-Homomorphismus, falls $f(gx)=g(f(x))$
-	\end{defn}
-	
-	\begin{kor}
-	$|Gx|=|G/G_x|=[G:G_x]$ Index
-	\end{kor}
-	
-	\begin{proof}
-	$p$ ist wohldefiniert: $\forall a,b,x \in G$ gilt:
-	$$aG_x=bG_x \Leftrightarrow b^{-1}a \in G_x \Leftrightarrow b^{-1}ax=x \Leftrightarrow ax=bx \Leftrightarrow p(a)=p(b)$$
-	D.h. $p$ ist wohldefiniert als auch bijektiv.
-	$p$ ist ein $G$-Homomorphismus: $\forall a,b \in G$:
-	$$p(a(b(G_x)))=p(ab(G_x))=abx=ap(bG_x)$$
-	Die Bahnen einer $G$-Operation sind die Äquivalenzklassen bezüglich der Äquivalenzrelation:
-	
-	$x,y \in X : x \sim y \xLeftrightarrow{Def} x=gy$ für ein $g\in G$\\
-	D.h. die Bahnen bilden eine Partition von $X$.
-	
-	Für ein Repräsentantensystem $\{ x_i\}_{i\in I}$ der Bahnen von G gilt die Bahnengleichung:
+\end{ex}
 
-	$$|X|=\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}|Gx_i|=\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}[G:G_{x_i}]=|X^G|+\sum\limits_{\begin{subarray}{1}i \in I\\ x_i \notin X^G\end{subarray}}[G:G_{x_i}]$$
-	
-	\end{proof}
-
-%VL 2.6.15
-Für die Operation von G auf sich selbst durch Konjugation gilt:
-\begin{thm} [Klassengleichung]
-Ist $\{x_{i}\}_{i \in I}$ ein Repräsentantensystem für die Konjugationsklassen der Gruppe G, so gilt: 
-\begin{gather*}
-|G|= |Z(G)|+\sum_{x_{i}\notin Z(G)}[G:C_{G}(x_{i})] \\ 
-Z(G)=\{a \in G :ag=ga\ \ \forall g \in G\}\ \ Zentrum \\
-C_{G}(x_{i})= \{a \in G :ax_{i}=x_{i}a\}\ \ Zentralisator \\
-\end{gather*}
-Für endliche Gruppen: $[G:G_{x_{i}}]=\dfrac{|G|}{|G_{x_{i}}|}$
-\end{thm}
-
-\begin{nb}
-Anwendung: Existenz von Fixpunkten
-\end{nb}
-
-\begin{defn} 
-Eine endliche Gruppe G wird \underline{p-Gruppe} genannt, wobei p eine Primzahl ist, wenn die Ordnung von G eine Potenz $p^n$ von p ist $(n\geq 1)$.
+\begin{defn}
+	Seien $X$ und $Y$ $G$-Mengen. Dann ist $f: X \rightarrow Y$ ein $G$-Homomorphismus, falls $f(gx)=g(f(x))$ ist. % FIXME Für alle g \in G?
 \end{defn}
 
 \begin{thm}
-Das Zentrum einer p-Gruppe G enthält nicht triviale Elemente $a \neq e$.
+	$G \times X \rightarrow X$ Gruppenoperation. Dann ist die Abbildung
+	$$p: G/G_x \to Gx, \quad gG_x \mapsto gx$$
+	ein bijektiver $G$-Homomorphismus für alle $x \in X$.
+\end{thm}
+
+\begin{kor}
+	Die Kardinalität der Bahn ist der Index des Stabilistors: $|Gx|=|G/G_x|=[G:G_x]$.
+\end{kor}
+	
+\begin{proof}
+	Da für beliebige \(a,b,x \in G\)
+	$$aG_x=bG_x \Leftrightarrow b^{-1}a \in G_x \Leftrightarrow b^{-1}ax=x \Leftrightarrow ax=bx \Leftrightarrow p(a)=p(b)$$
+	gilt, ist $p$ sowohl wohldefiniert als auch bijektiv.
+	Da außerdem für beliebige \(a,b,x \in G\)
+	$$p(a(bG_x))=p(ab(G_x))=abx=ap(bG_x)$$
+	gilt, ist $p$ ein $G$-Homomorphismus.
+\end{proof}
+
+\begin{nb}
+	Die Bahnen einer $G$-Operation sind die Äquivalenzklassen bezüglich der Äquivalenzrelation
+	\[x \sim y :\Leftrightarrow \text{\(x=gy\) für ein \(g\in G\).}\]
+	D.h. die Bahnen bilden eine Partition von $X$.
+	Für ein Repräsentantensystem $\{x_i\}_{i\in I}$ der Bahnen von \(X\) gilt somit die Bahnengleichung
+	$$|X|=\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}|Gx_i|=\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}[G:G_{x_i}]=|X^G|+\sum\limits_{\begin{subarray}{c}i \in I\\ x_i \notin X^G\end{subarray}}[G:G_{x_i}]$$
+\end{nb}
+
+%VL 2.6.15
+Für die Operation von \(G\) auf sich selbst durch Konjugation gilt:
+\begin{thm} [Klassengleichung]
+	Ist $\{x_{i}\}_{i \in I}$ ein Repräsentantensystem für die Konjugationsklassen der Gruppe \(G\), so gilt\footnote{Erinnerung: \(Z(G)=\{a \in G : \forall g \in G: ag=ga\}\) ist das Zentrum von \(G\) und \(C_G(x) = \{a \in G :ax = xa\}\) der Zentralisator von \(x\).}
+	\[|G|= |Z(G)|+\sum_{x_{i}\notin Z(G)}[G:C_{G}(x_{i})].\]
+	Für endliche Gruppen ist also $[G:G_{x_{i}}]=\dfrac{|G|}{|G_{x_{i}}|}$. % TODO WTF hat das mit dem Rest hier zu tun? Für alle Untergruppen gilt [G:H] = |G|/|H|.
+\end{thm}
+
+\begin{nb}
+	Anwendung: Existenz von Fixpunkten
+\end{nb}
+
+\begin{defn}
+	Eine endliche Gruppe \(G\) wird \defi{\(p\)-Gruppe} genannt, wobei \(p\) eine Primzahl ist, wenn die Ordnung von \(G\) eine Potenz $p^n$ von \(p\) ist $(n\geq 1)$.
+\end{defn}
+
+\begin{thm}
+	Das Zentrum einer \(p\)-Gruppe \(G\) enthält nicht triviale Elemente $a \neq e$.
 \end{thm}
 
 \begin{proof}
-\begin{enumerate}
-\item \underline{n=1:} \(\ord(G)=p\) ist eine Primzahl. Dann ist \(G\) eine zyklische Gruppe. Da \(G\) abelsch ist, gilt dann: \(G=Z(G)\).
-\item \underline{$n\geq 2$:} Aus dem Satz von Lagrange folgt, dass die Ordnung jeder Untergruppe $H$ von $G$ ein Teiler von $p^n$ ist, d.h. eine Primpotenz $p^k$ mit $0\leq k\leq n$. Es seien $x_{1},...,x_{m}$ Repräsentanten der Konjugationsklassen von $G$.
-$C_{G}(x_{i})$ Untergruppe $\Rightarrow |C_{G}(x_{i})|=p^k_{i}$ mit $0\leq k_{i} \leq n$ und $k_{i}=n \Leftrightarrow x_{i} \in Z(G)$\\
-Klassengleichung: $p^n=|X|=|Z(G)|+\sum_{x_{i}\notin Z(G)}p^{n-k_{i}}$ mit $n-k_{i}>0$ \\
-$|Z(G)|= p^n-\sum_{x_{i}\notin Z(G)}p^{n-k_{i}}$ ist durch p teilbar. Wegen $|Z(G)|\geq 1$ gilt $|Z(G)|\geq p$. Es gibt also mindestens $p-1$ Elemente in $Z(G)$, die vom neutralen Element verschieden sind.
+	\begin{enumerate}
+	\item \(n=1\): \(\ord(G)=p\) ist eine Primzahl.
+		Also ist \(G\) eine zyklische Gruppe.
+		Da \(G\) abelsch ist, gilt \(Z(G) = G \neq \{e\}\).
+	\item \(n\geq 2\): Aus dem Satz von Lagrange folgt, dass die Ordnung jeder Untergruppe $H$ von $G$ ein Teiler von $p^n$ ist, d.h. eine Primpotenz $p^k$ mit $0\leq k\leq n$.
+		Es seien $x_{1},...,x_{m}$ Repräsentanten der Konjugationsklassen von $G$.
+		Da $C_{G}(x_{i})$ eine Untergruppe ist, gilt \(|C_{G}(x_{i})|=p^{k_i}\) mit $0\leq k_{i} \leq n$ und $k_{i}=n$ nur für $x_i \in Z(G)$.
+
+		Über die Klassengleichung ist \[p^n=|X|=|Z(G)|+\sum_{x_{i}\notin Z(G)}p^{n-k_{i}}\] mit $n-k_{i}>0$.
+		Also ist $|Z(G)|= p^n-\sum_{x_{i}\notin Z(G)}p^{n-k_{i}}$ durch \(p\) teilbar und wegen $|Z(G)|\geq 1$ gilt $|Z(G)|\geq p$.
+		Es gibt also mindestens $p-1 > 0$ Elemente in $Z(G)$, die vom neutralen Element verschieden sind.\qedhere
 \end{enumerate}
 \end{proof}
 
 \begin{thm}
-Es sei G eine p-Gruppe, die auf einer endlichen Menge X operiert. Dann gilt:
-\begin{equation*}
-|X^G|\equiv |X|(mod\ \ p)
-\end{equation*}
+	Es sei G eine p-Gruppe, die auf einer endlichen Menge X operiert. Dann ist
+	\begin{equation*}
+		|X^G|\equiv |X| \pmod{p}.
+	\end{equation*}
 \end{thm}
 
 \begin{proof}
-Es sei $\{x_{1},...,x_{m}\}$ ein Repräsentantensystem der Bahnen. \\
-$|C_{G}(x_{i})|=p^k_{i}$ mit $0\leq k_{i} \leq n$ (aus dem Satz von Lagrange); $k_{i}=n\Leftrightarrow x_{i} \in X^G$ \\
-Die Bahnengleichung liefert $|X|-|X^G|=\sum_{x_{i}\notin Z(G)}p^{n-k_{i}}$ ist ein Vielfaches von p.
+	Es sei $\{x_{1},...,x_{m}\}$ ein Repräsentantensystem der Bahnen.
+	Wieder ist $|C_{G}(x_{i})|=p^{k_i}$ mit $0\leq k_{i} \leq n$ und $k_{i}=n$ nur für $x_{i} \in X^G$.
+	Die Bahnengleichung liefert, dass $|X|-|X^G|=\sum_{x_{i}\notin Z(G)}p^{n-k_{i}}$ ein Vielfaches von \(p\) ist.
 \end{proof}
 
 \section{Strukturtheorie der Gruppen}
 
 \subsection{Die sylowschen Sätze}
 
-Satz von Lagrange $\Rightarrow \ord(H)|\ord(G)$ für jede Untergruppe $H$ von $G$
-Aber: wenn h ein Teiler von $\ord(G)$, existiert dann auch H mit $\ord(H)=h$?
+Der Satz von Lagrange gibt uns die Teilbarkeit $\ord(H)|\ord(G)$ für jede Untergruppe $H$ von $G$.
+Aber: Wenn \(h\) ein Teiler von $\ord(G)$ ist, existiert dann auch eine Untergruppe \(H \subseteq G\) mit $\ord(H)=h$?
 
 \begin{thm}
-Es seien $p$ eine Primzahl und $G$ eine abelsche Gruppe der Ordnung $pn$ für ein $n\in\mathbb{N}$. Dann existiert immer ein $a \in G$ der Ordnung $p$.
+	Es seien $p$ eine Primzahl und $G$ eine abelsche Gruppe der Ordnung $pn$ für ein $n\in\mathbb{N}$.
+	Dann existiert immer ein $a \in G$ der Ordnung $p$.
 \end{thm}
 
 \begin{proof}
-Induktion nach $n=\dfrac{|G|}{p}$
-\begin{itemize}
-\item \underline{Induktionsstart:} n=1, d.h. $|G|=p$. Daraus folgt: $G=\langle a\rangle$ ist zyklisch und der Erzeuger a hat Ordnung p.
-\item \underline{Induktionsschritt:} Wir nehmen an, dass die Aussage für eine Gruppe der Ordnung $pm^,$ mit $m^,<n$ gilt.\\
-Es sei $n\neq e$ ein beliebiges Element von G, und $m:=\ord(h)$. Wenn m durch p teilbar ist, enthält die zyklische Untergruppe $\langle h\rangle$ ein Element der Ordnung p. \\
-Wenn p kein Teiler von m ist, so ist p ein Teiler von $|G/\langle n\rangle|=\dfrac{|G|}{|\langle n\rangle|}=\dfrac{pn}{m}<pn$. Nach Induktionsvoraussetzung enthält die Gruppe $|G/\langle n\rangle|$ ein Element $a\langle n\rangle$ der Ordnung p. Es sei $k:=\ord(a)$ die Ordnung des gewählten Repr. ($a \in G$). \\
-$(a\langle n\rangle)^k=a^k\langle n\rangle=\langle n\rangle$ (neutrales Element) liefert $ p = \dfrac{\ord(a\langle n\rangle)}{k}$. \\
-Daraus folgt, dass $a^{\frac{k}{p}}$ ein Element von $\langle a\rangle$ der Ordnung p ist.
-\end{itemize}
+	Induktion nach $n=\dfrac{|G|}{p}$
+	\begin{itemize}
+	\item Induktionsstart: Sei \(n=1\), d.h. $|G|=p$.
+		Daraus folgt: $G=\langle a\rangle$ ist zyklisch und der Erzeuger \(a\) hat Ordnung \(p\).
+	\item Induktionsschritt: Wir nehmen an, dass die Aussage für jede Gruppe der Ordnung $pm'$ mit $m'<n$ gilt.
+		Es sei $h\neq e$ ein beliebiges Element von \(G\), und $m:=\ord(h)$.
+		Wenn \(m\) durch \(p\) teilbar ist, enthält die zyklische Untergruppe $\langle h\rangle$ ein Element der Ordnung \(p\).
+
+		Wenn \(p\) kein Teiler von \(m\) ist, so ist, mit \(pn = |G| = |G/\langle h\rangle||\langle h\rangle| = |G/\langle h\rangle|m\), \(p\) ein Teiler von $|G/\langle h\rangle|<pn$.
+		Nach Induktionsvoraussetzung enthält die Gruppe $|G/\langle h\rangle|$\footnote{\(\langle h\rangle\) ist eine normale Untergruppe, da \(G\) abelsch ist.} ein Element $a\langle h\rangle$ der Ordnung \(p\).
+		Es sei $k:=\ord(a)$ die Ordnung des gewählten Repräsentanten $a \in G$.
+		Nun liefert \[(a\langle h\rangle)^k=a^k\langle h\rangle=\langle h\rangle\] die Teilbarkeit \(p = \ord(a\langle h\rangle) \mid k\).
+		Daraus folgt, dass $a^{\frac{k}{p}}$ ein Element von $\langle a\rangle \subseteq G$ der Ordnung \(p\) ist.\qedhere
+	\end{itemize}
 \end{proof}
 
-\begin{thm} [Cauchy]
-Ist p eine Primzahl, die die Ordnung der endl. Gruppe G teilt, so enthält G ein Element der Ordnung p.
+\begin{thm}[Cauchy]
+	Ist \(p\) eine Primzahl, die die Ordnung der endl. Gruppe \(G\) teilt, so enthält \(G\) ein Element der Ordnung \(p\).
 \end{thm}
 
 \begin{proof}
-Induktion auf $\ord(G)$
-\begin{itemize}
-\item \underline{Induktionsstart:} $\ord(G)=1$ ist klar
-\item \underline{Induktionsschritt:} Wir nehmen an, dass die Aussage für alle Gruppen T gilt mit $\ord(T)<\ord(G)$. \\
-Wenn G eine Untergruppe H enthält, deren Ordnung durch p teilbar ist, so enthält H ein Element der Ordnung p. \\
-Wir können annehmen, dass die Ordnung jeder Untergruppe $H\neq G$ nicht durch p teilbar ist. \\
-Im Spezialfall der Zentralisation gilt: $p \nmid \ord(C_{G}(a))$ für $a \notin Z(G)$ \\
-Klassengleichung: $|G|=|Z(G)|+\sum_{x_{i}\notin Z(G)}\dfrac{|G|}{|C_{G}(a)|}$ impliziert $p|\mid |Z(G)|$. Aus der Annahme folgt dann Z(G)=G. \\
-G ist also abelsch und die Aussage folgt aus dem vorherigen Satz.
+	Induktion auf $\ord(G)$
+	\begin{itemize}
+	\item Induktionsstart: $\ord(G)=1$ ist klar
+	\item Induktionsschritt: Wir nehmen an, dass die Aussage für alle Gruppen \(T\) gilt mit $\ord(T)<\ord(G)$.
+		Wenn \(G\) eine Untergruppe \(H\) enthält, deren Ordnung durch \(p\) teilbar ist, so enthält \(H\) ein Element der Ordnung \(p\).
+		Wir können annehmen, dass die Ordnung jeder Untergruppe $H \subsetneq G$ nicht durch \(p\) teilbar ist.
+		Insbesondere gilt, im Spezialfall der Zentralisation, $p \nmid \ord(C_{G}(a))$ für alle $a \notin Z(G)$.
+		Nun seien \(x_i\) für \(i \in I\) ein beliebiges Repräsentantensystem der Konjugationsklassen von \(G\).
+		Die Klassengleichung gibt uns dann \[|Z(G)| = |G| - \sum_{x_i \notin Z(G)}\dfrac{|G|}{|C_{G}(x_i)|}\] und somit $p \mid \ord(Z(G))$.
+		Aus der Annahme folgt dann \(Z(G)=G\).
+		\(G\) ist also abelsch und die Aussage folgt aus dem vorherigen Satz.\qedhere
 \end{itemize}
 \end{proof}
 
 \begin{kor}
-Die Ordnung einer endlichen Gruppe G ist genau dann eine Primpotenz für eine Primzahl p, wenn die Ordnung jedes Elements von G eine Primpotenz bezüglich p ist.
+	Die Ordnung einer endlichen Gruppe \(G\) ist genau dann eine Primpotenz für eine Primzahl \(p\), wenn die Ordnung jedes Elements von \(G\) eine Primpotenz bezüglich \(p\) ist.
 \end{kor}
 
 \begin{proof}
-\begin{itemize}
-\item[$"\Rightarrow"$]$\ord(g)$ teilt $\ord(G)=p^n$ (Lagrange) impliziert, dass $\ord(g)=p^k$ gilt
-\item[$"\Leftarrow"$]Ist die Ordnung von G von der Form $\ord(G)=p^\alpha q$ mit $q\neq 1$ prim zu p. Dann enthält G ein Element der Ordnung p für jeden Primfaktor von q, somit ist die Ordnung nicht von der Form $p^k$. Widerspruch!
-\end{itemize}
+	\begin{itemize}
+	\item["$\Rightarrow$":] Nach Lagrange gilt für jedes \(g\in G\) die Teilbarkeit \(\ord(g) | \ord(G)=p^n\), woraus folgt, dass $\ord(g)=p^k$ für ein \(k \leq n\) ist.
+	\item["$\Leftarrow$":] Zwecks Kontraposition sei die Ordnung von \(G\) von der Form $\ord(G)=p^\alpha q$ mit $q\neq 1$ teilerfremd zu \(p\).
+		Dann enthält \(G\) ein Element der Ordnung \(p\) für jeden Primfaktor von \(q\), somit ist die Ordnung mancher Elemente nicht von der Form $p^k$.
+	\end{itemize}
 \end{proof}
 
 \begin{nb}
-(unendliche) Gruppen G, für die gilt: $\ord(a)=p^{n(a)}\ \ \forall a \in G$, p feste Primzahl, werden \underline{p-Gruppen} genannt.
+	(Unendliche) Gruppen \(G\) werden \defi{\(p\)-Gruppen}, für eine feste Primzahl \(p\), genannt, wenn für alle \(a \in G\) \[\ord(a)=p^{n(a)}\] mit einer geeigneten Funktion \(n: G \to \N\) ist.
 \end{nb}
 
 \begin{defn}
-Es sei p eine Primzahl, G eine endliche Gruppe. Man schreibt $|G|=p^n q$ mit $n \in \mathbb{N}$ und q teilerfremd zu p. Eine Untergruppe S von G ist eine \underline{p-Sylowuntergruppe}, wenn $|S|=p^n$ gilt.
+	Es sei \(p\) eine Primzahl und \(G\) eine endliche Gruppe.
+	Man schreibt $|G|=p^n q$ mit $n \in \mathbb{N}$ und \(q\) teilerfremd zu \(p\).
+	Eine Untergruppe \(S\) von \(G\) ist eine \defi{\(p\)-Sylowuntergruppe}, wenn $|S|=p^n$ ist.
 \end{defn}
 
-\begin{thm} [Sylow]
-Es sei G eine endliche Gruppe der Ordnung $|G|=p^n q$ mit p Primzahl, q teilerfremd zu p. Dann gilt:
-
-\begin{enumerate}
-\item G enthält eine Untergruppe der Ordnung $p^\alpha$ für jedes $1\leq \alpha \leq n$.
-\item Es sei H eine p-Untergruppe von G und S eine p-Sylowuntergruppe. Dann existiert ein $g \in G$ mit $H \subset gSg^{-1}$.
-\item Die Anzahl der p-Sylowuntergruppen ist ein Teiler von q von der Form $s=1+kp$ mit $k \in \mathbb{N}$.
-\end{enumerate}
+\begin{thm}[Sylow]
+	Es sei \(G\) eine endliche Gruppe der Ordnung $|G|=p^n q$ mit \(p\) Primzahl, \(q\) teilerfremd zu \(p\).
+	Dann gelten:
+	\begin{enumerate}
+	\item \(G\) enthält eine Untergruppe der Ordnung $p^\alpha$ für jedes $1\leq \alpha \leq n$. % TODO Wieso nicht 0 \leq ...? Mit {e} ist das eine triviale Verstärkung des Satzes.
+	\item Es sei \(H\) eine \(p\)-Untergruppe von \(G\) und \(S\) eine \(p\)-Sylowuntergruppe.
+		Dann existiert ein $g \in G$ mit $H \subset gSg^{-1}$.
+	\item Die Anzahl der \(p\)-Sylowuntergruppen ist ein Teiler von \(q\) von der Form $s=1+kp$ mit $k \in \mathbb{N}$.
+	\end{enumerate}
 \end{thm}
 
 \begin{proof}
