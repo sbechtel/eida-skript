@@ -90,6 +90,7 @@
 % TODO KatTheo-Notation für Funktionen oder nicht? (\xrightarrow{f})
 % TODO Wir sollten mal über den massiven \\-Spam reden. Ich habe bisher eine sinnvolle Verwendung und ca. 10^4 unsinnige gesehen.
 % TODO Die Nummerierungen sind inkonsitent. Spricht was dagegen, sich in der Präambel auf was zu einigen und die [label=(\roman*)] etc. rauszukanten?
+        % Ich wäre dafür Lemmata, Sätze und Korollare gemeinsam und zudem kapitelweise zu nummerieren. -- Fabian
 
 \begin{document}
 
@@ -1671,7 +1672,7 @@ Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:
 Ziel ist die Klassifizierung der endlichen erzeugten abelschen Gruppen:
 \begin{enumerate}
 \item Schritt: Zeige $G \cong F \oplus T(G)$ mit endlich erzeugten freie abelsche Gruppe (also $F \cong \mathbb{Z}^{r}, r \geq 1$) und der endlichen Torsionsuntergruppe $T(G)$ von G
-\item Schritt: Zeige (mit Sylow) die Zerlegung $T(G) \bigoplus_{p\text{ prim}} G_{p}$ mit geeigneten p-Gruppen $G_{p}$
+\item Schritt: Zeige (mit Sylow) die Zerlegung $T(G) = \bigoplus_{p\text{ prim}} G_{p}$ mit geeigneten p-Gruppen $G_{p}$
 \item Schritt: Klassifizierung der p-Gruppen $G_{p}$, diese sind aus endlichen Produkten (endlicher) zyklischer Gruppen aufgebaut.
 \end{enumerate}
 \end{nb}
@@ -1682,12 +1683,12 @@ Sei $G$ eine torsionsfreie endlich erzeugte abelsche Gruppe. Dann ist $G$ frei a
 
 \begin{proof}
 Sei $M$ ein endliches Erzeugendensystem von $G$. 
-Sei $\{m_{1},...,m_{k}\} \subset M$ eine maximale Teilmenge von $\mathbb{Z}$-linear unabhängiger Elementen, d.h. aus $n_{1}m_{1}+...+n_{k}m_{k}=0$, mit $n_{1},...,n_{k} \in \mathbb{Z}$ folgt immer $n_{1}=...=n_{k}=0$. 
+Sei $\{m_{1},...,m_{k}\} \subset M$ eine maximale Teilmenge $\mathbb{Z}$-linear unabhängiger Elemente, d.h. aus $n_{1}m_{1}+...+n_{k}m_{k}=0$, mit $n_{1},...,n_{k} \in \mathbb{Z}$ folgt immer $n_{1}=...=n_{k}=0$. 
 Folglich gibt es zu jedem $m \in M, m \notin \{m_{1},...,m_{k}\}$ ein $n(m) \in \mathbb{Z}, n(m)\neq 0$ und geeignete Koeffizienten $n_{1},...,n_{k} \in \mathbb{Z}$ mit $n(m)=n_{1}m_{1}+...+n_{k}m_{k}$. 
 Sei $N$ ein gemeinsames Vielfaches von den (endlich vielen) Zahlen $n(m),m \in M-\{m_{1},...,m_{k}\}$. 
 Dann gilt: $Nm \in <m_{1},...,m_{k}>$ für alle $m \in M$.
 
-Sei $\mu :G\rightarrow \langle m_{1},...,m_{k} \rangle $ durch $\mu (g)=Ng$ definiert. Da $G$ abelsch ist, ist $\mu$ ein Homomorphismus. Wegen $kern(\mu ) \subset T(G) = \{= 0\}$ ist $\mu$ injektiv. Aus dem Homomorphiesatz folgt $G \cong \mu (G) \subset \langle m_{1},...,m_{k}\rangle$. D.h. $G$ ist eine Untergruppe einer freien abelschen Gruppe. Somit ist $G$ frei abelsch.
+Sei $\mu :G\rightarrow \langle m_{1},...,m_{k} \rangle $ durch $\mu (g)=Ng$ definiert. Da $G$ abelsch ist, ist $\mu$ ein Homomorphismus. Wegen $\ker(\mu ) \subset T(G) = \{ 0\}$ ist $\mu$ injektiv. Aus dem Homomorphiesatz folgt $G \cong \mu (G) \subset \langle m_{1},...,m_{k}\rangle$. D.h. $G$ ist eine Untergruppe einer freien abelschen Gruppe. Somit ist $G$ frei abelsch.
 \end{proof}
 
 \begin{kor}
@@ -1769,7 +1770,7 @@ Da $p^{\alpha}$ die maximale Ordnung eines Elements von $G$ ist, ist $\ord(h)$ e
 \[ 0=p^{\alpha}h=p^{\alpha -\beta}(p^{\beta}h)=p^{\alpha -\beta}lg\]
 Daraus folgt: $ \ord(g)=p^{\alpha}|p^{\alpha -\beta}l$ $(\beta \geq 1)$. 
 Was nur möglich ist, wenn $p|l$. 
-Wir schreiben $l=\lambda p, \lambda \in \mathbb{Z}$ und definieren: $h:=p^{\beta -1}h-p\lambda g =lg-lg=0$.
+Wir schreiben $l=\lambda p, \lambda \in \mathbb{Z}$ und definieren: $h':=p^{\beta -1}h-\lambda g \in G - \langle g \rangle.$ Man rechnet $ ph' = p^{\beta}h - p \lambda g =lg-lg=0$.
 
 $\ord(h')$ ist ein Teiler von $p$ und wegen $h'\neq 0$ muss $\ord(h')=p$ gelten. 
 Die Untergruppe $H=\langle h'\rangle$ erfüllt $\langle g\rangle \cap H=\{ 0\}$.
@@ -1778,7 +1779,7 @@ Die Untergruppe $H=\langle h'\rangle$ erfüllt $\langle g\rangle \cap H=\{ 0\}$.
 Es sei $g\in G$ ein Element maximaler Ordnung und $H\subseteq G$ wie im 1. Schritt. 
 Wir betrachten die natürliche Projektion $\pi :G\rightarrow G/H$. 
 $G/H$ ist eine abelsche p-Gruppe mit $|G/H|<|G|$ und $\pi (g)\in G/H$ ist eine Element maximaler Ordnung.
-($\pi$ ist surjektiv; $\ord(\pi (g))$ ist die kleinste Zahlt $m\geq 1$ mit $mg\in H$)
+($\pi$ ist surjektiv; $\ord(\pi (g))$ ist die kleinste Zahl $m\geq 1$ mit $mg\in H$)
 
 Da die maximale Ordnung in $G/H$ höchstens $\ord(g)=p^{\alpha}$ ist, reicht es zu zeigen, dass $\ord(\pi (g))=p^{\alpha}$ gilt.
 $m=\ord(\pi (g))$ ist die kleinste positive Zahl, so dass $mg\in H$. Aus $\langle g\rangle \cap H=\{ 0\}$ folgt:
@@ -1786,12 +1787,12 @@ $m=\ord(\pi (g))$ ist die kleinste positive Zahl, so dass $mg\in H$. Aus $\langl
 Ferner gilt:
 \[ p^{\alpha}\pi (g)=\pi (p^{\alpha}g)=\pi(0) =0\Rightarrow m|p^{\alpha}\]
 Also gilt $m=p^{\alpha}$. Es folgt $G/H=\langle \pi (g)\rangle \oplus V'$. 
-Wir setzen $V := \pi ^{-1}(v') \subseteq G$. Wir möchten zeigen $G=\langle g\rangle \oplus V$. Es sei $a\in \mathbb{Z}$, so dass $ag\in V$. Dann gilt:
+Wir setzen $V := \pi ^{-1}(V') \subseteq G$. Wir möchten zeigen $G=\langle g\rangle \oplus V$. Es sei $a\in \mathbb{Z}$, so dass $ag\in V$. Dann gilt:
 \[ \pi (ag)\in \langle \pi (g)\rangle\ \cap V'=\{ 0\}\Rightarrow ag\in H\Rightarrow a=0\Rightarrow \langle g\rangle \cap V=\{ 0\}.\]
 Sei $a\in G$. Dann gilt:
-\[ \pi (a)=c\pi (g)+\pi (v),c\in \mathbb{Z} v\in V.\]
+\[ \pi (a)=c\pi (g)+\pi (v),c\in \mathbb{Z}, v\in V.\]
 Somit folgt:
-\[ \pi (a-cg-v )=0\in G/H\Rightarrow a=cg+v+h\Rightarrow \langle g\rangle +V.\]
+\[ \pi (a-cg-v )=0\in G/H\Rightarrow a=cg+v+h\Rightarrow G = \langle g\rangle \oplus V.\]
 \qedhere
 \end{enumerate} 
 \end{proof}
