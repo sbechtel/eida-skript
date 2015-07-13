@@ -1665,4 +1665,136 @@ Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:
   "$\Rightarrow$": Es sei $p $ eine Primzahl, $G$ eine abelsche Gruppe. $pG = \left\{ pg \,\vert\, g \in G \right\}$ ist dann eine Untergruppe von $G$. Dann ist $V = G / pG$ ein Vektorraum über $\mathbb{F}_p = \mathbb{Z}/p\mathbb{Z}$. Sei $G \to G/pG = V, g\mapsto \overline{g} = g + pG$  die natürliche Projektion. Wenn $G$ eine freie abelsche Gruppe mit Basis $X$ ist, dann ist $ \overline{X} = \left\{ \overline{x} \,\vert\, x \in X \right\} $ eine Basis vom Vektorraum $V$. Nun ist die Abbildung $X \to \overline{X}, x \mapsto \overline{x} = x + pG$ ist eine Bijektion: Sie ist offensichtlich surjektiv; für Injektivität nehme man an, es existieren $x, x' \in X$ mit $x \neq x'$ und $\overline{x} = \overline{x'}$. Daraus folgt $ x - x' \in pG$, was wiederum $x - x' = p \, ( \sum_{y \in X} m_y y )  = \sum_{y \in X} \left( p m_y \right) y $ impliziert. Aus der Eindeutigkeit der Darstellung in $G$ folgt $p m_x = 1$, bzw. $p m_{x'} = -1$ wobei $m_x, m_{x'} \in \mathbb{Z}$ $\leadsto$  Widerspruch. Somit ist die Abbildung auch injektiv.
 \end{proof}
 
+%Vorlesung 7.7.15
+
+\begin{nb}
+Ziel ist die Klassifizierung der endlichen erzeugten abelschen Gruppen:
+\begin{enumerate}
+\item Schritt: Zeige $G \cong F \oplus T(G)$ mit endlich erzeugten freie abelsche Gruppe (also $F \cong \mathbb{Z}^{r}, r \geq 1$) und der endlichen Torsionsuntergruppe $T(G)$ von G
+\item Schritt: Zeige (mit Sylow) die Zerlegung $T(G) \bigoplus_{p\text{ prim}} G_{p}$ mit geeigneten p-Gruppen $G_{p}$
+\item Schritt: Klassifizierung der p-Gruppen $G_{p}$, diese sind aus endlichen Produkten (endlicher) zyklischer Gruppen aufgebaut.
+\end{enumerate}
+\end{nb}
+
+\begin{thm}
+Sei $G$ eine torsionsfreie endlich erzeugte abelsche Gruppe. Dann ist $G$ frei abelsch.
+\end{thm}
+
+\begin{proof}
+Sei $M$ ein endliches Erzeugendensystem von $G$. 
+Sei $\{m_{1},...,m_{k}\} \subset M$ eine maximale Teilmenge von $\mathbb{Z}$-linear unabhängiger Elementen, d.h. aus $n_{1}m_{1}+...+n_{k}m_{k}=0$, mit $n_{1},...,n_{k} \in \mathbb{Z}$ folgt immer $n_{1}=...=n_{k}=0$. 
+Folglich gibt es zu jedem $m \in M, m \notin \{m_{1},...,m_{k}\}$ ein $n(m) \in \mathbb{Z}, n(m)\neq 0$ und geeignete Koeffizienten $n_{1},...,n_{k} \in \mathbb{Z}$ mit $n(m)=n_{1}m_{1}+...+n_{k}m_{k}$. 
+Sei $N$ ein gemeinsames Vielfaches von den (endlich vielen) Zahlen $n(m),m \in M-\{m_{1},...,m_{k}\}$. 
+Dann gilt: $Nm \in <m_{1},...,m_{k}>$ für alle $m \in M$.
+
+Sei $\mu :G\rightarrow \langle m_{1},...,m_{k} \rangle $ durch $\mu (g)=Ng$ definiert. Da $G$ abelsch ist, ist $\mu$ ein Homomorphismus. Wegen $kern(\mu ) \subset T(G) = \{= 0\}$ ist $\mu$ injektiv. Aus dem Homomorphiesatz folgt $G \cong \mu (G) \subset \langle m_{1},...,m_{k}\rangle$. D.h. $G$ ist eine Untergruppe einer freien abelschen Gruppe. Somit ist $G$ frei abelsch.
+\end{proof}
+
+\begin{kor}
+Jede endlich erzeugte abelsche Gruppe ist eine direkte Summe einer freien abelschen Gruppe und einer endlichen Gruppe ($G=F\oplus T(G)$).
+\end{kor}
+
+\begin{proof}
+$G/T(G)$ ist torsionsfrei und endlich erzeugt, also frei abelsch. Dann ist $T(G)$ ein direkter Summand: $G = T(G) \oplus F,F\cong G/T(G)$.
+
+$T(G)$ ist eine Torsionsuntergruppe, die endlich erzeugt ist. Daraus folgt: 
+
+$T(G)=\langle g_{1},...,g_{m}\rangle=\{ n_{1}g_{1}+...+n_{m}g_{m}:n_{j}\in \mathbb{Z}\}=\{ n_{1}g_{1}+...+n_{m}g_{m}:\|n_{j}\| \leq ord(g_{j})\} \Rightarrow \|T(G)\| < \infty$
+\end{proof}
+
+Endlich erzeugte freie abelsche Gruppen sind bekannt: Sie sind von der Form $F\cong \mathbb{Z}^{r}=\mathbb{Z} \oplus ...\oplus \mathbb{Z}$, mit $r\geq 0$.
+
+Man sollte daher auch die endlichen abelschen Gruppen klassifizieren.
+
+\begin{defn}
+Sei $G$ eine abelsche Gruppe und $p$ eine Primzahl. 
+Dann heißt $Gp=\{ g\in G:p^{n}g=O\text{ für} n\in  \mathbb{N} \} $ 
+die \underline{p-primäre Komponente} von $G$.
+\end{defn}
+
+\begin{nb}
+\begin{itemize}
+\item $Gp\subset G$ ist eine Untergruppe (da $G$ abelsch).
+\item Die Elemente von $Gp$ sind genau die $g\in G$, deren Ordnung eine Potenz von $p$ ist.
+\item Alle p-Untergruppen von $G$ sind in $Gp$ enthalten, d.h. $Gp$ ist die einzige p-Sylowuntergruppe von $G$.
+\end{itemize}
+\end{nb}
+
+\begin{thm}
+Für $G$ endliche abelsche Gruppe gilt:
+\[ G=\bigoplus_{p \text{ prim}} G_{p} \]
+Die Zerlegung ist bis auf die Reihenfolge der Summanden eindeutig.
+\end{thm}
+
+\begin{proof}
+Sei $| G| =p_{1}^{m_{1}}...p_{r}^{m_{r}}$ die Primfaktorzerlegung von $| G|$. 
+Da die Ordnung eines Elements von $G$ immer $| G|$ teilt, gilt $Gp=\{ 0\}$ für alle $p$ prim $p\notin \{ p_{1},...,p_{r}\}$. Wir möchten zeigen:
+\begin{equation} \label{eq}
+Gp_{i}\bigcap \langle\bigcup_{j\neq i} Gp_{j}> ={0}
+\end{equation}
+Die Elemente von $\langle\bigcup_{j\neq i} Gp_{j}\rangle$ sind von der Form $g=\sum_{j\neq i} g_{j}, g_{j} \in Gp_{j}$. Damit folgt unter Beachtung von $ord(g_{j})=p_{j}^{\alpha_{j}}, \alpha_{j}\geq 0$ 
+\[(\prod_{j\neq i} p_{j}^{\alpha_{j}})g=0 \rightarrow ord(g)| (\prod_{j\neq i} p_{j}^{\alpha_{j}})\]
+Gilt zusätzlich $g \in Gp_{i}$ so erhalten wir:
+\[ \ord(g)=p_{i}^{\alpha_{i}}| (\prod_{j\neq i} p_{j}^{\alpha_{j}})\Rightarrow p_{i}^{\alpha_{i}}=1 \Rightarrow \ord(g)=1\]
+Aus \eqref{eq} folgt $\langle\bigcup_{1\leq i\leq r} Gp_{i}\rangle = \bigoplus_{p\text{ prim}} Gp$.
+\end{proof}
+
+Da $T(G)$ immer eine direkte Summe von endlichen abelschen p-Gruppen ist, möchten wir diese klassifizieren. Das Hauptresultat ist:
+
+\begin{thm}
+Es sei $p$ eine Primzahl und $n\in \mathbb{N}$. 
+Jede abelsche Gruppe der Ordnung $p_{n}$ ist eine direkte Summe $G=H_{1}\oplus ...\oplus H_{k}$, wobei $H_{i}$ eine zyklische Untergruppe von $G$ ist mit $|H_{i}|=p^{m_{i}}$ für jedes $i=1,...,k$.
+Die Zahlen $m_{1}\geq m_{2}\geq ...\geq m_{k}\geq 0$ sind eindeutig durch $G$ bestimmt.
+\end{thm}
+
+\begin{nb}
+Es gilt: $m_{1}+...+m_{k}=n$
+\end{nb}
+
+\begin{lemma}
+Es sei $G$ eine abelsche p-Gruppe und $g\in G$ ein Element maximaler Ordnung. 
+Dann ist $\langle p\rangle$ ein direkter Summand von $G$ ($G=\langle p\rangle\oplus H, H\subset G$ geeignet).
+\end{lemma}
+
+\begin{proof}
+Es sei $p^{\alpha}$ die maximale Ordnung eines Elements in $G$ und $g\in G$ mit $ord(g)=p^{\alpha}$. OBdA $\langle g\rangle \neq G$ 
+\begin{enumerate}
+\item Schritt: Wir möchten zeigen, dass es eine Untergruppe $H\subseteq G$ gibt mit $|H|=p, H\cap \langle g\rangle =\{ 0\}$.
+
+Es sei $h \in G,h\notin \langle g \rangle$ beliebig.
+Es sei $\ord(h+\langle g\rangle)=p^{\beta}$ die Ordnung von $h+\langle p\rangle$ in der p-Gruppe $G/\langle g\rangle$.
+Wegen $h\notin \langle g\rangle$ ist $\beta\geq1$. 
+Da $p^{\beta}(h+\langle g\rangle)=\langle g\rangle$ ist, gilt $p^{\beta}h=lg$ mit geeigneten $l\in \mathbb{Z}$. 
+Da $p^{\alpha}$ die maximale Ordnung eines Elements von $G$ ist, ist $\ord(h)$ ein Teiler von $p^{\alpha}$ und somit gilt:
+\[ 0=p^{\alpha}h=p^{\alpha -\beta}(p^{\beta}h)=p^{\alpha -\beta}lg\]
+Daraus folgt: $ \ord(g)=p^{\alpha}|p^{\alpha -\beta}l$ $(\beta \geq 1)$. 
+Was nur möglich ist, wenn $p|l$. 
+Wir schreiben $l=\lambda p, \lambda \in \mathbb{Z}$ und definieren: $h:=p^{\beta -1}h-p\lambda g =lg-lg=0$.
+
+$\ord(h')$ ist ein Teiler von $p$ und wegen $h'\neq 0$ muss $\ord(h')=p$ gelten. 
+Die Untergruppe $H=\langle h'\rangle$ erfüllt $\langle g\rangle \cap H=\{ 0\}$.
+\item Schritt: Wir beweisen die Aussage durch Induktion nach $|G|$.
+
+Es sei $g\in G$ ein Element maximaler Ordnung und $H\subseteq G$ wie im 1. Schritt. 
+Wir betrachten die natürliche Projektion $\pi :G\rightarrow G/H$. 
+$G/H$ ist eine abelsche p-Gruppe mit $|G/H|<|G|$ und $\pi (g)\in G/H$ ist eine Element maximaler Ordnung.
+($\pi$ ist surjektiv; $\ord(\pi (g))$ ist die kleinste Zahlt $m\geq 1$ mit $mg\in H$)
+
+Da die maximale Ordnung in $G/H$ höchstens $\ord(g)=p^{\alpha}$ ist, reicht es zu zeigen, dass $\ord(\pi (g))=p^{\alpha}$ gilt.
+$m=\ord(\pi (g))$ ist die kleinste positive Zahl, so dass $mg\in H$. Aus $\langle g\rangle \cap H=\{ 0\}$ folgt:
+\[ mg\in \langle g\rangle \cap H=\{ 0\} \Rightarrow mg=0 \Rightarrow p^{\alpha}=\ord(g)|m\]
+Ferner gilt:
+\[ p^{\alpha}\pi (g)=\pi (p^{\alpha}g)=\pi(0) =0\Rightarrow m|p^{\alpha}\]
+Also gilt $m=p^{\alpha}$. Es folgt $G/H=\langle \pi (g)\rangle \oplus V'$. 
+Wir setzen $V := \pi ^{-1}(v') \subseteq G$. Wir möchten zeigen $G=\langle g\rangle \oplus V$. Es sei $a\in \mathbb{Z}$, so dass $ag\in V$. Dann gilt:
+\[ \pi (ag)\in \langle \pi (g)\rangle\ \cap V'=\{ 0\}\Rightarrow ag\in H\Rightarrow a=0\Rightarrow \langle g\rangle \cap V=\{ 0\}.\]
+Sei $a\in G$. Dann gilt:
+\[ \pi (a)=c\pi (g)+\pi (v),c\in \mathbb{Z} v\in V.\]
+Somit folgt:
+\[ \pi (a-cg-v )=0\in G/H\Rightarrow a=cg+v+h\Rightarrow \langle g\rangle +V.\]
+\qedhere
+\end{enumerate} 
+\end{proof}
+
+
 \end{document}
