@@ -28,6 +28,8 @@
 \DeclareMathOperator{\sgn}{sgn}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\rank}{Rang}
+
 
 \newcommand{\inv}[1]{\left(#1\right)^{-1}}
 \newcommand{\Inv}[1]{#1^{-1}}
@@ -91,6 +93,7 @@
 % TODO Wir sollten mal über den massiven \\-Spam reden. Ich habe bisher eine sinnvolle Verwendung und ca. 10^4 unsinnige gesehen.
 % TODO Die Nummerierungen sind inkonsitent. Spricht was dagegen, sich in der Präambel auf was zu einigen und die [label=(\roman*)] etc. rauszukanten?
         % Ich wäre dafür Lemmata, Sätze und Korollare gemeinsam und zudem kapitelweise zu nummerieren. -- Fabian
+        % TODO ... => \dots
 
 \begin{document}
 
@@ -258,7 +261,7 @@
 \begin{nb}
 	\begin{enumerate}[label=(\alph*)]
 	\item $\langle \emptyset \rangle = \lbrace e \rbrace$
-	\item Für $M \neq \emptyset$ gilt: $\langle M \rangle = \lbrace m_{1}^{\varepsilon_{1}} \cdot ... \cdot m_{n}^{\varepsilon_{n}} : m_{1},...,m_{n} \in M, \varepsilon_{1},...,\varepsilon_{n} \in \lbrace -1,+1\rbrace, n \geq 0 \rbrace$
+	\item Für $M \neq \emptyset$ gilt: $\langle M \rangle = \lbrace m_{1}^{\varepsilon_{1}} \cdot \dots \cdot m_{n}^{\varepsilon_{n}} : m_{1},\dots,m_{n} \in M, \varepsilon_{1},\dots,\varepsilon_{n} \in \lbrace -1,+1\rbrace, n \geq 0 \rbrace$
 	\item Für $M = \lbrace g \rbrace$ gilt: $\langle g \rangle = \lbrace g^{n} : n \in \mathbb{Z} \rbrace$. Diese Untergruppe wird die von $g$ erzeugte zyklische Untergruppe von $G$ genannt.
 	\end{enumerate}
 \end{nb}
@@ -289,7 +292,7 @@
 		\begin{enumerate}[label=(\alph*)]
 		\item $n = \ord(g) = \min \lbrace m>0 : g^{m}=e \rbrace$
 		\item $g^{m}=e \Longleftrightarrow m=nk$ für ein $k \in \mathbb{Z}$
-		\item $\langle g \rangle = \lbrace e, g^{1},...,g^{n-1}\rbrace$
+		\item $\langle g \rangle = \lbrace e, g^{1},\dots,g^{n-1}\rbrace$
 		\end{enumerate}
 	\item Falls \(g\) endliche Ordnung $n := \ord(g)$ hat, gilt $\ord(g^{s}) = \frac{n}{(n,s)}$ für alle \(s \in \mathbb N\).
 	\end{enumerate}
@@ -1703,7 +1706,7 @@ $T(G)$ ist eine Torsionsuntergruppe, die endlich erzeugt ist. Daraus folgt:
 $T(G)=\langle g_{1},...,g_{m}\rangle=\{ n_{1}g_{1}+...+n_{m}g_{m}:n_{j}\in \mathbb{Z}\}=\{ n_{1}g_{1}+...+n_{m}g_{m}:\|n_{j}\| \leq ord(g_{j})\} \Rightarrow \|T(G)\| < \infty$
 \end{proof}
 
-Endlich erzeugte freie abelsche Gruppen sind bekannt: Sie sind von der Form $F\cong \mathbb{Z}^{r}=\mathbb{Z} \oplus ...\oplus \mathbb{Z}$, mit $r\geq 0$.
+Endlich erzeugte freie abelsche Gruppen sind bekannt: Sie sind von der Form $F\cong \mathbb{Z}^{r}=\mathbb{Z} \oplus \dots\oplus \mathbb{Z}$, mit $r\geq 0$.
 
 Man sollte daher auch die endlichen abelschen Gruppen klassifizieren.
 
@@ -1728,8 +1731,8 @@ Die Zerlegung ist bis auf die Reihenfolge der Summanden eindeutig.
 \end{thm}
 
 \begin{proof}
-Sei $| G| =p_{1}^{m_{1}}...p_{r}^{m_{r}}$ die Primfaktorzerlegung von $| G|$. 
-Da die Ordnung eines Elements von $G$ immer $| G|$ teilt, gilt $Gp=\{ 0\}$ für alle $p$ prim $p\notin \{ p_{1},...,p_{r}\}$. Wir möchten zeigen:
+Sei $| G| =p_{1}^{m_{1}}\dots p_{r}^{m_{r}}$ die Primfaktorzerlegung von $| G|$. 
+Da die Ordnung eines Elements von $G$ immer $| G|$ teilt, gilt $Gp=\{ 0\}$ für alle $p$ prim $p\notin \{ p_{1},\dots,p_{r}\}$. Wir möchten zeigen:
 \begin{equation} \label{eq}
 Gp_{i}\bigcap \langle\bigcup_{j\neq i} Gp_{j}> ={0}
 \end{equation}
@@ -1744,12 +1747,12 @@ Da $T(G)$ immer eine direkte Summe von endlichen abelschen p-Gruppen ist, möcht
 
 \begin{thm}
 Es sei $p$ eine Primzahl und $n\in \mathbb{N}$. 
-Jede abelsche Gruppe der Ordnung $p_{n}$ ist eine direkte Summe $G=H_{1}\oplus ...\oplus H_{k}$, wobei $H_{i}$ eine zyklische Untergruppe von $G$ ist mit $|H_{i}|=p^{m_{i}}$ für jedes $i=1,...,k$.
-Die Zahlen $m_{1}\geq m_{2}\geq ...\geq m_{k}\geq 0$ sind eindeutig durch $G$ bestimmt.
+Jede abelsche Gruppe der Ordnung $p^n$ ist eine direkte Summe $G=H_{1}\oplus \dots\oplus H_{k}$, wobei $H_{i}$ eine zyklische Untergruppe von $G$ ist mit $|H_{i}|=p^{m_{i}}$ für jedes $i=1,\dots,k$.
+Die Zahlen $m_1,m_2,\dots,m_k$ sind eindeutig durch $G$ bestimmt. O.B.d.A. ordnen wir $m_{1}\geq m_{2}\geq \dots\geq m_{k}\geq 0$.
 \end{thm}
 
 \begin{nb}
-Es gilt: $m_{1}+...+m_{k}=n$
+Es gilt: $m_{1}+\dots+m_{k}=n$
 \end{nb}
 
 \begin{lemma}
@@ -1796,6 +1799,75 @@ Somit folgt:
 \qedhere
 \end{enumerate} 
 \end{proof}
+
+% VL 14.07.
+\begin{proof}[Beweis des Satzes]
+	Es sei $G$ abelsch, $p$ prim, $n\in\mathbb{N}$ mit $|G|=p^n$. Da $G$ endlich ist, gibt es ein $g_1\in G$ maximaler Ordnung, mit $\ord(g_1)=p^{m_1}$. Aus dem Lemma folgt
+	\[ G=\langle g_1\rangle\oplus V_1 \]
+	mit $|V_1|=\frac{|G|}{p^{m_1}}=p^{n-m_1}$. Induktiv definiert man für jedes $n\in\mathbb{N},j\geq 1$:
+	\begin{itemize}
+		\item $g_{j+1}\in V_j$ ein Element maximaler Ordnung in $V_j$,
+		\item $m_{j+1}\in\mathbb{N}$, so dass $\ord(g_{j+1})=m_{j+1}$,
+		\item $V_{j+1}\subset V_j$, die $V_j=\langle g_{j+1}\rangle\oplus V_{j+1}$ erfüllt.
+	\end{itemize}
+	Da $|G|$ endlich ist, existiert ein (minimaler) Index $k$, so dass $V_{k+1}=\{0\}$ gilt. Das heißt für $k$ gilt $V_k\neq \{0\},\; V_{k+1}=\{0\}$. Dann gilt weiterhin
+	\[ G = \langle g_1\rangle\oplus V_1 = \langle g_1\rangle\oplus\langle g_2\rangle\oplus V_2 = \dots = \langle g_1\rangle\oplus\langle g_2\rangle\oplus\dots\oplus\langle g_k\rangle\oplus V_{k+1}=\{0\}.\]
+	Wenn man $H_j:=\langle g_j\rangle$ definiert, gilt also
+	\[ G = H_1\oplus\dots\oplus H_j\oplus\dots\oplus H_k,\]
+	wobei $H_j$ zyklisch der Ordnung $p^{m_j}$ ist und $m_1\geq m_2\geq\dots\geq m_k$. Wir müssen noch zeigen, dass die $m_j$ eindeutig bestimmt sind ($g_j$ und $V_j$ sind \emph{nicht} eindeutig). Für eine abelsche Gruppe $A$ und $s\in\mathbb{Z},\; s\geq 1$, setzen wir $A(s) := \{x\in A:sx=0\}$. $A(s)$ ist eine Untergruppe, denn $A(s) = \ker(A\to^{\mu_s}A),\;\mu_s(a):=sa$ und $\mu_s$ ist für abelsche Gruppen immer ein Gruppenhomomorphismus. Ferner induziert jeder Homomorphismus $A\to B$ von abelschen Gruppen einen Homomorphismus $A(s)\to B(s)$. Für nicht abelsche Gruppen ist die Abbildung schon für $s=2$ kein Homomorphismus. Im Fall von $G$ erhalten wir für $s=p$:
+	\[ G(p) = H_1(p)\oplus H_2(p)\oplus\dots\oplus H_k(p).\]
+	Da $H_j$ immer zyklisch von Ordnung $p^{m_j}$, $m_j\geq 1$, ist, ist $H_j(p)$ eine zyklische Gruppe der Ordnung $p$. Daraus folgt $|G(p)|=p^k$. Dies zeigt, dass $k$ durch $G$ eindeutig bestimmt wird. Für $s=p^{\alpha}$, $\alpha\geq 1$ beliebig, erhalten wir
+	\begin{itemize}
+		\item für eine zyklische Gruppe $C$ der Ordnung $p^{\beta}$ gilt
+			\[ C(p^{\alpha})\cong \begin{dcases}
+ 				\nicefrac{\mathbb{Z}}{p^{\alpha}\mathbb{Z}}\text{ falls $\beta\geq\alpha$,} \\
+ 				C\text{ falls $\beta\leq\alpha$.}
+ \end{dcases}\]
+		\item für $G$ ergibt dies
+			\[G(p^{\alpha})=H_1(p^{\alpha})\oplus\dots\oplus H_k(p^{\alpha}).\]
+	\end{itemize}
+	Es sei $k'$ der größte Index, so dass $m_{k'}\geq\alpha$ gilt. Daraus folgt
+	\[|G(p^{\alpha})|=p^{\alpha k'}\cdot p^{m_{k'+1}}\cdot\dots\cdot p^{m_k} = p^{\alpha k'+m_{k'+1}+\dots+m_k}.\]
+	Mithilfe der obigen Formel werden $m_1,\dots,m_k$ von endlich vielen Werten von $|G(p^{\alpha})|$ eindeutig bestimmt.
+	
+	Zum Verständnis dieser Formel und der Eindeutigkeit: zum Beispiel gilt $|G(p^{\alpha})|=|G|=p^n$ für $\alpha\geq m_1$ und somit ist der Wert von $m_1$ bestimmt. Sind $m_1=m_2=\dots m_{j_1}>m_{j_1+1}\geq\dots\geq m_k$, so gilt $|G(p^{m_1-1})|=p^{(m_1-1)j_1+m_{j_1+1}+\dots+m_k}=p^{(m_1-1)j_1+n-j_1m_1} = p^{n-j_1}$. Damit hat man den größten Exponent $j_1$ mit $m_{j_1}=1$ bestimmt.
+\end{proof}
+
+\begin{kor}
+	Eine endlich erzeugte abelsche Gruppe $G$ ist immer eine direkte Summe endlich vieler zyklischer Gruppen, deren Ordnung unendlich oder Potenz einer Primzahl ist.
+	
+	Es existieren eine endlich bestimmte Zahl $r\geq 0$ und eindeutig bestimmte Primpotenzen $q_1,\dots q_l$, so dass gilt:
+	\[ G\cong F\oplus T(G), \]
+wobei $F\cong \nicefrac{G}{T(G)}$ frei abelsch vom Rang $r$ ist und 
+	\[ T(G) \cong \nicefrac{\Z}{q_1\Z}\oplus\nicefrac{\Z}{q_2\Z}\oplus\dots\oplus\nicefrac{\Z}{q_l\Z}.\]
+\end{kor}
+
+\begin{proof}
+	Die Gruppe $F:=\nicefrac{G}{T(G)}$ ist frei abelsch. Also ist $G\cong F\oplus T(G)$. Da $G$ endlich erzeugt ist, gilt $\rank(F)=r<\infty$. $T(G)$ ist eine endlich erzeugbare abelsche Torsionsgruppe. Also ist $T(G)$ endlich. Wir betrachten die Zerlegung von $T(G)$ in p-primäre Komponenten
+	\[ T(G) = G_{p_1}\oplus\dots\oplus G_{p_t}, \]
+	wobei $p_1,\dots,p_t$ die Primfaktoren von $|T(G)|=p_1^{e_1}\dots p_t^{e_t}$ sind.
+	
+	Wdh.: $p$ Primzahl, $G_p := \{x\in G: p^nx=0\text{ für ein $n\geq 0$}\}\subset T(G)$. Insbesondere gilt: $\left(T(G)\right)_p=G_p$. $G_p$ ist \emph{die} p-Sylowuntergruppe von $T(G)$.
+	
+	Für $p<p_1,\dots,p_t$ folgt aus dem letzten Satz
+		\[ G_p \cong \nicefrac{\Z}{p^{m_1}\Z}\oplus\dots\oplus\nicefrac{\Z}{p^{m_k}\Z}.\]
+\end{proof}
+
+\begin{ex}
+	Wir bestimmen bis auf Isomorphie alle abelschen Gruppen der Ordnung $1350$. Die Gruppen sind endlich, also ist der Rang für die Zerlegung $r=0$. Die Primfaktorzerlegung ist $1350=2\cdot 3^3\cdot 5^2$, also ist eine Gruppe $G$ der Ordnung $1350$ gerade $G = G_2\oplus G_3\oplus G_5$. Wir erhalten $|G_2|=2$, also $G_2\cong\nicefrac{\Z}{2\Z}$ zyklisch. Außerdem $|G_3|=3^3=27$, somit suchen wir $k\geq 1$ und $m_1\geq m_2\geq\dots\geq m_k>0$ mit $m_1+\dots +m_k=3$. Mögliche Zerteilungen sind $k=1,m_1=3$: $G_3\cong\nicefrac{\Z}{27\Z}$ zyklisch,
+	 $k=2,m_1=2,m_2=1$: $G_3\cong\nicefrac{\Z}{9\Z}\oplus\nicefrac{\Z}{3\Z}$,
+	 $k=3,m_1=m_2=m_3=1$: $G_3\cong\nicefrac{\Z}{3\Z}\oplus\nicefrac{\Z}{3\Z}\oplus\nicefrac{\Z}{3\Z}$. Für $|G_5|=25$ erhalten wir die beiden Möglichkeiten $k=1, G_5\cong\nicefrac{\Z}{25\Z}$, $k=2,G_5\cong\nicefrac{\Z}{5\Z}\oplus\nicefrac{\Z}{5\Z}$. Bis auf Isomorphie gibt es also sechs abelsche Gruppen der Ordnung $1350$.
+\end{ex}
+
+\begin{ex}
+	Abelsche Gruppen der Ordnung $3^6$. Für die Zerlegung ist $1\leq k\leq 6$ und wir erhalten
+	$k=1,m_1=6$, $G\cong\nicefrac{\Z}{3^6\Z}$,
+	$k=2,m_1\geq m_2=6-m_1$ für $m_1\in\{3,4,5\}$, $G\cong\nicefrac{\Z}{3^5\Z}\oplus\nicefrac{\Z}{3\Z}$, $G\cong\nicefrac{\Z}{3^4\Z}\oplus\nicefrac{\Z}{3^2\Z}$, $G\cong\nicefrac{\Z}{3^3\Z}\oplus\nicefrac{\Z}{3^3\Z}$,
+	$k=3,(m_1,m_2,m_3)\in\{(4,1,1),(3,2,1),(2,2,2)\}$, $G\cong\nicefrac{\Z}{3^4\Z}\oplus\nicefrac{\Z}{3\Z}\oplus\nicefrac{\Z}{3\Z}$, $G\cong\nicefrac{\Z}{3^3\Z}\oplus\nicefrac{\Z}{3^2\Z}\oplus\nicefrac{\Z}{3\Z}$, $G\cong\nicefrac{\Z}{3^2\Z}\oplus\nicefrac{\Z}{3^2\Z}\oplus\nicefrac{\Z}{3^2\Z}$, und so weiter %oder in Potenzschreibweise
+	%$k=4,m_1=6$, $G\cong\nicefrac{\Z}{3^6\Z}$,
+	%$k=5,m_1=6$, $G\cong\nicefrac{\Z}{3^6\Z}$,
+	%$k=6,m_1=6$, $G\cong\nicefrac{\Z}{3^6\Z}$.
+\end{ex}
 
 
 \end{document}
