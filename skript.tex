@@ -106,12 +106,12 @@
 \section{Gruppen}
 
 \begin{defn}
-	Eine (innere) \underline{Verknüpfung} auf einer Menge $M\neq \emptyset$ ist eine Abbildung $M\times M\to M, (a,b)\mapsto a\cdot b$.
+	Eine (innere) \emph{Verknüpfung} auf einer Menge $M\neq \emptyset$ ist eine Abbildung $M\times M\to M, (a,b)\mapsto a\cdot b$.
 \end{defn}
 
 \begin{defn}
-	Eine \underline{Gruppe} ist eine Menge $G\neq \emptyset$ zusammen mit einer Verknüpfung $\cdot$, sodass Assoziativität (A), Existenz eines neutralen Elements (N) und Existenz inverser Elemente (I) erfüllt sind.
-	$G$ ist \underline{abelsch}, falls Kommutativität (K) gilt.
+	Eine \emph{Gruppe} ist eine Menge $G\neq \emptyset$ zusammen mit einer Verknüpfung $\cdot$, sodass Assoziativität (A), Existenz eines neutralen Elements (N) und Existenz inverser Elemente (I) erfüllt sind.
+	$G$ ist \emph{abelsch}, falls Kommutativität (K) gilt.
 \end{defn}
 
 \begin{ex}
@@ -237,7 +237,7 @@
 \end{ex}
 
 \begin{defn}
-	Eine Untergruppe heißt \underline{echt}, falls sie nicht trivial ist.
+	Eine Untergruppe heißt \emph{echt}, falls sie nicht trivial ist.
 \end{defn}
 
 \begin{lemma}
@@ -251,7 +251,7 @@
 
 \begin{defn}
 	Es sei $M$ eine Teilmenge von $G$.
-	Die \underline{von $M$ erzeugte Untergruppe} ist der Durchschnitt aller Untergruppen, die $M$ enthalten.
+	Die \emph{von $M$ erzeugte Untergruppe} ist der Durchschnitt aller Untergruppen, die $M$ enthalten.
 \end{defn}
 
 \begin{notation}
@@ -267,15 +267,15 @@
 \end{nb}
 
 \begin{defn}
-	Eine Gruppe $G$ heißt \underline{zyklisch}, falls $G = \langle g \rangle$ für ein $g \in G$ gilt. \newline
-	Ist $G = \langle M \rangle$ mit $M$ endlich, so heißt $G$ \underline{endlich erzeugt}.
+	Eine Gruppe $G$ heißt \emph{zyklisch}, falls $G = \langle g \rangle$ für ein $g \in G$ gilt. \newline
+	Ist $G = \langle M \rangle$ mit $M$ endlich, so heißt $G$ \emph{endlich erzeugt}.
 \end{defn}
 
 \begin{defn}
 	\begin{enumerate}[label=(\roman*)]
-	\item Die \underline{Ordnung einer Gruppe} $G$ ist $\ord(G):=\vert G \vert$.
-	\item Die \underline{Ordnung eines Elements} $g \in G$ ist $\ord(g):=\ord(\langle g \rangle)$.
-	\item Ist $\ord(g)$ endlich, dann hat g \underline{endliche Ordnung}.
+	\item Die \emph{Ordnung einer Gruppe} $G$ ist $\ord(G):=\vert G \vert$.
+	\item Die \emph{Ordnung eines Elements} $g \in G$ ist $\ord(g):=\ord(\langle g \rangle)$.
+	\item Ist $\ord(g)$ endlich, dann hat g \emph{endliche Ordnung}.
 	\end{enumerate}
 \end{defn}
 
@@ -356,7 +356,7 @@
 \end{defn}
 
 \begin{defn}
-	Die Äquivalenzklassen bezüglich $\sim_{H}$ heißen \underline{Linksnebenklassen}.
+	Die Äquivalenzklassen bezüglich $\sim_{H}$ heißen \emph{Linksnebenklassen}.
 \end{defn}
 
 \begin{notation}
@@ -383,12 +383,12 @@
 	\begin{itemize}
  	\item $\vert G \vert = [G:H]\vert H\vert$
  	\item Analog ist $a \mathrel{\prescript{}{H}{\sim}} b$ mit \[a \mathrel{\prescript{}{H}{\sim}} b \Leftrightarrow \text{\(a=hb\) für ein \(h \in H\)}\] ("rechtsäquivalent bzgl. \(H\)") eine Äquivalenzrelation auf \(G\).
-		Die \underline{Rechtsnebenklassen} sind $Ha=\lbrace ha : h \in H\rbrace$ mit $a \in G$ und für ist $a \in G$ \[aH \rightarrow Ha, x \mapsto a^{-1}xa\] eine Bijektion.
+		Die \emph{Rechtsnebenklassen} sind $Ha=\lbrace ha : h \in H\rbrace$ mit $a \in G$ und für ist $a \in G$ \[aH \rightarrow Ha, x \mapsto a^{-1}xa\] eine Bijektion.
 	\end{itemize}
 \end{nb}
 
 \begin{defn}
-	$H \backslash G$ ist die \underline{Menge der Rechtsnebenklassen}. Dann gilt: $\vert H \backslash G \vert = \vert G/H \vert$
+	$H \backslash G$ ist die \emph{Menge der Rechtsnebenklassen}. Dann gilt: $\vert H \backslash G \vert = \vert G/H \vert$
 	(Bijektion: $H \backslash G \rightarrow G/H, Hb \mapsto b^{-1}H$)
 \end{defn}
 
@@ -580,16 +580,16 @@
 
 \begin{nb}
 	\begin{itemize}
-	\item Ein bijektiver Homomorphismus wird \underline{Isomorphismus} genannt. Die Umkehrfunktion ist dann wieder ein Isomorphismus.
-	\item Ein Gruppenhomomorphismus $G \rightarrow G$ heißt \underline{Endomorphismus von G}.
-	\item Ein Gruppenisomorphismus $G \rightarrow G$ heißt \underline{Automorphismus von G}.
+	\item Ein bijektiver Homomorphismus wird \emph{Isomorphismus} genannt. Die Umkehrfunktion ist dann wieder ein Isomorphismus.
+	\item Ein Gruppenhomomorphismus $G \rightarrow G$ heißt \emph{Endomorphismus von G}.
+	\item Ein Gruppenisomorphismus $G \rightarrow G$ heißt \emph{Automorphismus von G}.
 	\end{itemize}
 \end{nb}
 
 \begin{defn}
-	$G/N$ heißt \underline{Faktorgruppe von $N$ in $G$}, wenn $N$ normale Untergruppe von $G$ ist.
+	$G/N$ heißt \emph{Faktorgruppe von $N$ in $G$}, wenn $N$ normale Untergruppe von $G$ ist.
 	Die Verknüpfung ist durch $aN \cdot bN = abN$ mit neutralem Element $eN = N$ gegeben.
-	Die \underline{natürliche Projektion} $\pi : G \rightarrow G/N, a \mapsto aN$ ist ein surjektiver Gruppenhomomorphismus mit $\ker(\pi) = N, \im(\pi) = G/N$.
+	Die \emph{natürliche Projektion} $\pi : G \rightarrow G/N, a \mapsto aN$ ist ein surjektiver Gruppenhomomorphismus mit $\ker(\pi) = N, \im(\pi) = G/N$.
 \end{defn}
 
 \begin{thm}[Homomorphiesatz]
@@ -660,7 +660,7 @@
 \begin{notation}
 	Seien $A, B, C$ Gruppen, $\alpha: A \rightarrow B$, $\beta: B \rightarrow C$ Gruppenhomomorphismen.
 	\begin{itemize}
-	\item Falls $\im(\alpha) = \ker(\beta)$, so sagt man, dass die Folge $A \stackrel{\alpha}{\longrightarrow} B \stackrel{\beta}{\longrightarrow} C$ bei $B$ \underline{exakt} ist.
+	\item Falls $\im(\alpha) = \ker(\beta)$, so sagt man, dass die Folge $A \stackrel{\alpha}{\longrightarrow} B \stackrel{\beta}{\longrightarrow} C$ bei $B$ \emph{exakt} ist.
 	\item $\alpha$ ist surjektiv, falls $A \stackrel{\alpha}{\longrightarrow} B \longrightarrow \{e\}$ bei $B$ exakt ist. \\
 		\begin{tabular}{p{4.3cm}p{.1cm}p{.3cm}l}
 			& $b$ & $\mapsto$ & $e$
@@ -671,7 +671,7 @@
 		\end{tabular}
 	\item Notation: $\{e\} =: 1$. Eine exakte Folge der Form
 		$$ 1 \longrightarrow A \stackrel{\alpha}{\longrightarrow} B \stackrel{\beta}{\longrightarrow} C \longrightarrow 1$$
-		(d.h. $\alpha$ injekiv, $\beta$ surjekiv und $\im(\alpha) = \ker(\beta)$), heißt \underline{kurze exakte Folge}.
+		(d.h. $\alpha$ injekiv, $\beta$ surjekiv und $\im(\alpha) = \ker(\beta)$), heißt \emph{kurze exakte Folge}.
 	\end{itemize}
 \end{notation}
 
@@ -727,7 +727,7 @@
 		\item $G=\langle\bigcup_{i\in I} N_i\rangle$
 		\item $N_{i_0} \cap \langle\bigcup_{i\in I \setminus \{i_0\}} N_i\rangle = \{e\}$ für jedes $i_0\in I$.
 	\end{enumerate}
-	Dann ist $G$ das \underline{innere Produkt} von $(N_i)_{i\in I}$.
+	Dann ist $G$ das \emph{innere Produkt} von $(N_i)_{i\in I}$.
 \end{defn}
 
 \begin{lemma}
@@ -799,7 +799,7 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
 \begin{defn}
 	Es seien $G$ eine Gruppe, $N\subseteq G$ Normalteiler von $G$ und $H\subseteq G$ beliebige Untergruppe, so dass gilt:
 	$$G=NH \quad \text{und} \quad N\cap H = \{e\}$$
-	Dann ist $G$ das \underline{semidirekte Produkt} von $N$ und $H$, Notation: $G=N\rtimes H$.
+	Dann ist $G$ das \emph{semidirekte Produkt} von $N$ und $H$, Notation: $G=N\rtimes H$.
 \end{defn}
 
 \begin{nb}
@@ -1348,7 +1348,7 @@ Da $b$ im Zentrum von $G$ liegt, ist $\langle b \rangle$ eine normale Untergrupp
 Bevor wir den dritten Teil des Sylow-Satzes beweisen, wenden wir uns folgender allgemeiner Frage zu: Wie bestimmt man die Anzahl der zu einer gegebenen Untergruppe konjugierten Untergruppen? Es sei $\mathcal{U}$ die Menge aller Untergruppen von G und $ G \times \mathcal{U} \rightarrow \mathcal{U}, g \cdot H \mapsto gHg^{-1} $ eine Gruppenoperation.
 
 \begin{defn}
-	Der Stabilisator einer Untergruppe $H$ von $G$ unter dieser Operation heißt \underline{Normalisator} von $H$: $N_G(H) = \{ g \in G: gHg^{-1} = H \}$. \\
+	Der Stabilisator einer Untergruppe $H$ von $G$ unter dieser Operation heißt \emph{Normalisator} von $H$: $N_G(H) = \{ g \in G: gHg^{-1} = H \}$. \\
 	Die zu $H$ konjugierten Untergruppen bilden die Bahn $G \cdot H$ von $H$. Es gilt also
 	$$ |G \cdot H| = | \{ A \in \mathcal{U} : A = gHg^{-1} \text{ mit } g \in G \} | = [G:N_G(H)] .$$
 	Für eine endliche Gruppe $G$ ist diese Anzahl immer ein Teiler von $|G|$.
@@ -1564,16 +1564,15 @@ Im Folgenden wird die Notation $(G,+)$ -- additive Verknüpfung -- für abelsche
 
 \underline{Wiederholung}: $(H_i)_{i \in I}$ Familie von abelschen Gruppen.
 
-Direktes Produkt: $\prod_{i \in I} \to (h_i)_{i \in I}$ mit $h_i \in H_i \; \forall i \in I$.
+Direktes Produkt: $\prod_{i \in I} H_i \to (h_i)_{i \in I}$ mit $h_i \in H_i \; \forall i \in I$.
 
 \begin{defn}
   Die \emph{(äußere) direkte Summe} der Familie $(H_i)_{i \in I}$ von abelschen Gruppen ist 
-  \[ \bigoplus_{i \in I} H_i := \left\{ (h_i)_{i \in I} \in \Pi_{i \in I H_i} |  \right\}, \]
-  d.h. $h_i \in H_i$ und $h_i = 0$ gilt für fast alle $i \in I$.
+  \[ \bigoplus_{i \in I} H_i := \left\{ (h_i)_{i \in I} \in \Pi_{i \in I} H_i : h_i \neq 0 \text{ für nur endlich viele $i \in I$}\right\}. \]
 \end{defn}
 
 \begin{nb}
-  $\bigoplus_{i \in I}$ ist eine Untergruppe von $\prod_{i \in I} H_i$.
+  $\bigoplus_{i \in I} H_i$ ist eine Untergruppe von $\prod_{i \in I} H_i$.
 \end{nb}
 
 Wie im Fall der direkten Produkte zeigt man das Folgende:
@@ -1613,7 +1612,7 @@ Wie im Fall der direkten Produkte zeigt man das Folgende:
 \end{ex}
 
 \begin{nb}
-  Es sei $G$ eine abelsche Gruppe, die ein $b \neq 0 $ mit $\operatorname{ord}(b) < \infty$ enthält. Dann ist $G$ \underline{nicht} frei abelsch.
+  Es sei $G$ eine abelsche Gruppe, die ein $b \neq 0 $ mit $\operatorname{ord}(b) < \infty$ enthält. Dann ist $G$ \emph{nicht} frei abelsch.
 \end{nb}
 
 \begin{proof}
@@ -1713,7 +1712,7 @@ Man sollte daher auch die endlichen abelschen Gruppen klassifizieren.
 \begin{defn}
 Sei $G$ eine abelsche Gruppe und $p$ eine Primzahl. 
 Dann heißt $Gp=\{ g\in G:p^{n}g=O\text{ für} n\in  \mathbb{N} \} $ 
-die \underline{p-primäre Komponente} von $G$.
+die \emph{p-primäre Komponente} von $G$.
 \end{defn}
 
 \begin{nb}
