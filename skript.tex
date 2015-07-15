@@ -93,7 +93,7 @@
 % TODO Wir sollten mal über den massiven \\-Spam reden. Ich habe bisher eine sinnvolle Verwendung und ca. 10^4 unsinnige gesehen.
 % TODO Die Nummerierungen sind inkonsitent. Spricht was dagegen, sich in der Präambel auf was zu einigen und die [label=(\roman*)] etc. rauszukanten?
         % Ich wäre dafür Lemmata, Sätze und Korollare gemeinsam und zudem kapitelweise zu nummerieren. -- Fabian
-        % TODO ... => \dots
+% TODO p-Primäre Komponenten Notation: p als Subindex?
 
 \begin{document}
 
@@ -308,7 +308,7 @@
 
 		Dann gilt:
 		$g^{m}=g^{kn+r}=g^{kn}g^{r}=(g^{n})^{k}g^{r}=eg^{r}=g^{r}$.
-		Daraus folgt $\langle g \rangle = \lbrace g^{m} : m \in \mathbb{Z}\rbrace = \lbrace g^{r} : r=0,...,n-1\rbrace$.
+		Daraus folgt $\langle g \rangle = \lbrace g^{m} : m \in \mathbb{Z}\rbrace = \lbrace g^{r} : r=0,\dots,n-1\rbrace$.
 		Besonders gilt $\ord(g)=n$ ist endlich.
 		$\lceil$ Dies zeigt $\Rightarrow$, $\Leftarrow$ klar, dann ist $\langle g \rangle = \lbrace g^{m} : m \in \mathbb{Z}\rbrace$ unendlich $\rfloor$
 		\item Alle $g^{r}$ mit $0 \leq r \leq n-1$ sind verschieden, da:
@@ -534,7 +534,7 @@
 		$$(\mathbb{R},+)\rightarrow(\mathbb{R}^*,\cdot), \quad x\mapsto e^x$$
 		ist ein Gruppenhomomorphismus.
 	\item Für $(G,+)$ abelsch ist
-		$$G\rightarrow G, \quad a\mapsto na = a+...+a \text{(n-mal)}$$
+		$$G\rightarrow G, \quad a\mapsto na = a+\dots+a \text{(n-mal)}$$
 		ein Gruppenhomomorphismus.
 	\end{enumerate}
 \end{ex}
@@ -1036,12 +1036,12 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 \end{kor}
 
 \begin{ex}
-	\(m\)-Zyklus $(n_1n_2...n_m)$ ist das Produkt von $m-1$ Transpositionen:
-	\[\sgn((n_1n_2....n_m))=(-1)^{m-1}\]
+	\(m\)-Zyklus $(n_1n_2 \dots n_m)$ ist das Produkt von $m-1$ Transpositionen:
+	\[\sgn((n_1n_2 \dots n_m))=(-1)^{m-1}\]
 \end{ex}
 
 \begin{kor}
-	Für $\sigma = (m_1....m_{k_1})(m_{k_1+1}...m_{k_2})...(m_{k_{r-1}+1}....m_{k_r})$ ist $\sgn(\sigma)=(-1)^{k_r-r}$.
+	Für $\sigma = (m_1 \dots m_{k_1})(m_{k_1+1} \dots m_{k_2}) \dots (m_{k_{r-1}+1} \dots m_{k_r})$ ist $\sgn(\sigma)=(-1)^{k_r-r}$.
 \end{kor}
 
 \begin{defn}
@@ -1207,7 +1207,7 @@ Für die Operation von \(G\) auf sich selbst durch Konjugation gilt:
 		Also ist \(G\) eine zyklische Gruppe.
 		Da \(G\) abelsch ist, gilt \(Z(G) = G \neq \{e\}\).
 	\item \(n\geq 2\): Aus dem Satz von Lagrange folgt, dass die Ordnung jeder Untergruppe $H$ von $G$ ein Teiler von $p^n$ ist, d.h. eine Primpotenz $p^k$ mit $0\leq k\leq n$.
-		Es seien $x_{1},...,x_{m}$ Repräsentanten der Konjugationsklassen von $G$.
+		Es seien $x_{1}, \dots ,x_{m}$ Repräsentanten der Konjugationsklassen von $G$.
 		Da $C_{G}(x_{i})$ eine Untergruppe ist, gilt \(|C_{G}(x_{i})|=p^{k_i}\) mit $0\leq k_{i} \leq n$ und $k_{i}=n$ nur für $x_i \in Z(G)$.
 
 		Über die Klassengleichung ist \[p^n=|X|=|Z(G)|+\sum_{x_{i}\notin Z(G)}p^{n-k_{i}}\] mit $n-k_{i}>0$.
@@ -1224,7 +1224,7 @@ Für die Operation von \(G\) auf sich selbst durch Konjugation gilt:
 \end{thm}
 
 \begin{proof}
-	Es sei $\{x_{1},...,x_{m}\}$ ein Repräsentantensystem der Bahnen.
+	Es sei $\{x_{1}, \dots ,x_{m}\}$ ein Repräsentantensystem der Bahnen.
 	Wieder ist $|C_{G}(x_{i})|=p^{k_i}$ mit $0\leq k_{i} \leq n$ und $k_{i}=n$ nur für $x_{i} \in X^G$.
 	Die Bahnengleichung liefert, dass $|X|-|X^G|=\sum_{x_{i}\notin Z(G)}p^{n-k_{i}}$ ein Vielfaches von \(p\) ist.
 \end{proof}
@@ -1685,12 +1685,12 @@ Sei $G$ eine torsionsfreie endlich erzeugte abelsche Gruppe. Dann ist $G$ frei a
 
 \begin{proof}
 Sei $M$ ein endliches Erzeugendensystem von $G$. 
-Sei $\{m_{1},...,m_{k}\} \subset M$ eine maximale Teilmenge $\mathbb{Z}$-linear unabhängiger Elemente, d.h. aus $n_{1}m_{1}+...+n_{k}m_{k}=0$, mit $n_{1},...,n_{k} \in \mathbb{Z}$ folgt immer $n_{1}=...=n_{k}=0$. 
-Folglich gibt es zu jedem $m \in M, m \notin \{m_{1},...,m_{k}\}$ ein $n(m) \in \mathbb{Z}, n(m)\neq 0$ und geeignete Koeffizienten $n_{1},...,n_{k} \in \mathbb{Z}$ mit $n(m)=n_{1}m_{1}+...+n_{k}m_{k}$. 
-Sei $N$ ein gemeinsames Vielfaches von den (endlich vielen) Zahlen $n(m),m \in M-\{m_{1},...,m_{k}\}$. 
-Dann gilt: $Nm \in <m_{1},...,m_{k}>$ für alle $m \in M$.
+Sei $\{m_{1}, \dots ,m_{k}\} \subset M$ eine maximale Teilmenge $\mathbb{Z}$-linear unabhängiger Elemente, d.h. aus $n_{1}m_{1}+ \dots +n_{k}m_{k}=0$, mit $n_{1}, \dots ,n_{k} \in \mathbb{Z}$ folgt immer $n_{1}= \dots =n_{k}=0$. 
+Folglich gibt es zu jedem $m \in M, m \notin \{m_{1}, \dots ,m_{k}\}$ ein $n(m) \in \mathbb{Z}, n(m)\neq 0$ und geeignete Koeffizienten $n_{1}, \dots ,n_{k} \in \mathbb{Z}$ mit $n(m)=n_{1}m_{1}+ \dots +n_{k}m_{k}$. 
+Sei $N$ ein gemeinsames Vielfaches von den (endlich vielen) Zahlen $n(m),m \in M-\{m_{1}, \dots ,m_{k}\}$. 
+Dann gilt: $Nm \in <m_{1}, \dots ,m_{k}>$ für alle $m \in M$.
 
-Sei $\mu :G\rightarrow \langle m_{1},...,m_{k} \rangle $ durch $\mu (g)=Ng$ definiert. Da $G$ abelsch ist, ist $\mu$ ein Homomorphismus. Wegen $\ker(\mu ) \subset T(G) = \{ 0\}$ ist $\mu$ injektiv. Aus dem Homomorphiesatz folgt $G \cong \mu (G) \subset \langle m_{1},...,m_{k}\rangle$. D.h. $G$ ist eine Untergruppe einer freien abelschen Gruppe. Somit ist $G$ frei abelsch.
+Sei $\mu :G\rightarrow \langle m_{1}, \dots ,m_{k} \rangle $ durch $\mu (g)=Ng$ definiert. Da $G$ abelsch ist, ist $\mu$ ein Homomorphismus. Wegen $\ker(\mu ) \subset T(G) = \{ 0\}$ ist $\mu$ injektiv. Aus dem Homomorphiesatz folgt $G \cong \mu (G) \subset \langle m_{1}, \dots ,m_{k}\rangle$. D.h. $G$ ist eine Untergruppe einer freien abelschen Gruppe. Somit ist $G$ frei abelsch.
 \end{proof}
 
 \begin{kor}
@@ -1702,7 +1702,7 @@ $G/T(G)$ ist torsionsfrei und endlich erzeugt, also frei abelsch. Dann ist $T(G)
 
 $T(G)$ ist eine Torsionsuntergruppe, die endlich erzeugt ist. Daraus folgt: 
 
-$T(G)=\langle g_{1},...,g_{m}\rangle=\{ n_{1}g_{1}+...+n_{m}g_{m}:n_{j}\in \mathbb{Z}\}=\{ n_{1}g_{1}+...+n_{m}g_{m}:\|n_{j}\| \leq ord(g_{j})\} \Rightarrow \|T(G)\| < \infty$
+$T(G)=\langle g_{1}, \dots ,g_{m}\rangle=\{ n_{1}g_{1}+ \dots +n_{m}g_{m}:n_{j}\in \mathbb{Z}\}=\{ n_{1}g_{1}+\dots+n_{m}g_{m}:\|n_{j}\| \leq ord(g_{j})\} \Rightarrow \|T(G)\| < \infty$
 \end{proof}
 
 Endlich erzeugte freie abelsche Gruppen sind bekannt: Sie sind von der Form $F\cong \mathbb{Z}^{r}=\mathbb{Z} \oplus \dots\oplus \mathbb{Z}$, mit $r\geq 0$.
@@ -1711,7 +1711,7 @@ Man sollte daher auch die endlichen abelschen Gruppen klassifizieren.
 
 \begin{defn}
 Sei $G$ eine abelsche Gruppe und $p$ eine Primzahl. 
-Dann heißt $Gp=\{ g\in G:p^{n}g=O\text{ für} n\in  \mathbb{N} \} $ 
+Dann heißt $Gp=\{ g\in G:p^{n}g=O\text{ für} n \in \mathbb{N} \} $ 
 die \emph{p-primäre Komponente} von $G$.
 \end{defn}
 
@@ -1733,7 +1733,7 @@ Die Zerlegung ist bis auf die Reihenfolge der Summanden eindeutig.
 Sei $| G| =p_{1}^{m_{1}}\dots p_{r}^{m_{r}}$ die Primfaktorzerlegung von $| G|$. 
 Da die Ordnung eines Elements von $G$ immer $| G|$ teilt, gilt $Gp=\{ 0\}$ für alle $p$ prim $p\notin \{ p_{1},\dots,p_{r}\}$. Wir möchten zeigen:
 \begin{equation} \label{eq}
-Gp_{i}\bigcap \langle\bigcup_{j\neq i} Gp_{j}> ={0}
+Gp_{i} \bigcap \langle\bigcup_{j\neq i} Gp_{j} \rangle = \{ 0 \}
 \end{equation}
 Die Elemente von $\langle\bigcup_{j\neq i} Gp_{j}\rangle$ sind von der Form $g=\sum_{j\neq i} g_{j}, g_{j} \in Gp_{j}$. Damit folgt unter Beachtung von $ord(g_{j})=p_{j}^{\alpha_{j}}, \alpha_{j}\geq 0$ 
 \[(\prod_{j\neq i} p_{j}^{\alpha_{j}})g=0 \rightarrow ord(g)| (\prod_{j\neq i} p_{j}^{\alpha_{j}})\]
