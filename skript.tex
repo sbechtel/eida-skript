@@ -95,6 +95,7 @@
 % TODO Die Nummerierungen sind inkonsitent. Spricht was dagegen, sich in der Präambel auf was zu einigen und die [label=(\roman*)] etc. rauszukanten?
         % Ich wäre dafür Lemmata, Sätze und Korollare gemeinsam und zudem kapitelweise zu nummerieren. -- Fabian
 % TODO p-Primäre Komponenten Notation: p als Subindex?
+% TODO Einheitliche Verwendung des Begriffs nicht-leer/nicht leer/nichtleer
 
 \begin{document}
 
@@ -164,7 +165,7 @@
 
 \begin{proof}
 	\begin{enumerate}
-	\item $\inv{\Inv a}=a$ klar. Für $a,b\in G$: $(\Inv b\Inv a)ab=\Inv b(\Inv aa)b=\Inv beb=\Inv bb=e$ (andere Richtung analog) % FIXME Welche andere Richtung?
+	\item $\inv{\Inv a}=a$ klar. Für $a,b\in G$: $(\Inv b\Inv a)ab=\Inv b(\Inv aa)b=\Inv beb=\Inv bb=e$ (andere Richtung analog) % FIXME Welche andere Richtung? -- Gibt keine andere (Fabian)
 	\item $ab=ac$ impliziert $\Inv a(ab)=\Inv a(ac)$ impliziert $b=c$
 	\item Setze $x=\Inv ab$, dann erhält man $ax=a(\Inv ab)=(a\Inv a)b=eb=b$.
 		Die Eindeutigkeit folgt aus Punkt 2. \qedhere
@@ -188,7 +189,7 @@
 
 \begin{ex}
 	\begin{enumerate}
-	\item $K$ Körper, dann ist $\GL_n(K)$ ein Gruppe bzgl. Matrixmultiplikation.
+	\item $K$ Körper, dann ist $\GL_n(K)$ eine Gruppe bzgl. Matrixmultiplikation.
 	\item $M\neq \emptyset$ Menge, $(G, \cdot)$ Gruppe, definiere $\abb(M,G):=G^M$.
 		Für $f,g\in \abb(M,G)$ ist $f\cdot g$ gegeben durch $(f\cdot g)(m)=f(m)\cdot g(m)$ für $m\in M$.
 		Dann ist $(\abb(M,G), \cdot)$ eine Gruppe.
@@ -319,15 +320,15 @@
 		Also $m=kn$ mit $k \in \mathbb{Z}$. % FIXME Scoping-Katastrophe.
 		\item Es sei $m=\ord(g^{s}), n =\ord(g)$.
 		Aus $(g^{s})^{m}=e$ folgt (siehe 2), dass $n$ ein Teiler von $sm$ ist.
-		Dies liefert: $\frac{n}{(s,n)} \vert \frac{s}{(s,n)}m$. Somit $\frac{n}{(s,n)} \vert m$.
-		Nun möchten wir noch zeigen: $m \vert \frac{n}{(s,n)}$. $(g^{s})^{\frac{n}{(s,n)}} = (g^{n})^{\frac{s}{(s,n)}}=e^{\frac{s}{(s,n)}}=e$.
-		Daraus folgt $m \vert \frac{n}{(s,n)}$ (wegen 2).
+		Dies liefert: $\frac{n}{(s,n)} \divides \frac{s}{(s,n)}m$. Somit $\frac{n}{(s,n)} \divides m$.
+		Nun möchten wir noch zeigen: $m \divides \frac{n}{(s,n)}$. $(g^{s})^{\frac{n}{(s,n)}} = (g^{n})^{\frac{s}{(s,n)}}=e^{\frac{s}{(s,n)}}=e$.
+		Daraus folgt $m \divides \frac{n}{(s,n)}$ (wegen 2).
 		Also gilt $m = \frac{n}{(s,n)}$. \qedhere
 	\end{enumerate}
 \end{proof}
 
 \begin{lemma}
-	Es sei $G = \langle g \rangle$ eine zyklische Gruppe und $H \subset G,\; H\neq\{e\}$ eine Untergruppe von $G$. % TODO Wieso nicht {e}? Da gilt die Aussage trivial mit m = 0.
+        Es sei $G = \langle g \rangle$ eine zyklische Gruppe und $H \subset G,\; H\neq\{e\}$ eine Untergruppe von $G$. % TODO Wieso nicht {e}? Da gilt die Aussage trivial mit m = 0. Vorschlag: \mathbb{N} -> \mathbb{N}_0. Dann muss im proof aber noch eine Fallunterscheidung gemacht werden H = {e} und H \neq {e}.
 	Dann gibt es ein $m\in\mathbb{N}$ mit $H=\langle g^m\rangle$.
 \end{lemma}
 
@@ -338,7 +339,7 @@
 	Ist $k<0$, so gilt $g^{-k}=\inv{{g^k}}=\Inv{h}\in H$ und damit ist $-k$ in der Menge enthalten.
 	Wir wollen nun zeigen: $\langle g^{m} \rangle = H$.
 	\begin{enumerate}
-	\item $\langle g^{m} \rangle \subset H$ gilt wegen $g^{m} \in H$
+	\item $\langle g^{m} \rangle \subset H$ gilt wegen $g^{m} \in H$.
 	\item Es sei $j \in \mathbb{Z}$ mit $g^{j} \in H$. Divisionsalgorithmus liefert $j=lm+r$ mit $0 \leq r < m$: $g^{j} \in H \Rightarrow g^{r}=g^{-lm}g^{lm+r}=(g^{m})^{-l}g^{j}$. Also $g^{r} \in H$. Aus der Minimalität von M folgt $r=0$. Dies liefert $g^{j}=(g^{m})^{l} \in \langle g^{m} \rangle$ und somit gilt: $H \subset \langle g^{m} \rangle$ und die zwei Untergruppen stimmen überein. \qedhere
 	\end{enumerate}
 \end{proof}
@@ -347,6 +348,7 @@
 
 \begin{thm} % FIXME Beweis?
 	Alle Untergruppen einer zyklischen Gruppe sind zyklisch.
+        %TODO \ord(G) -> \lvert G \lvert, \ord nur für Gruppenelemente verwenden
 	Ist $\ord(G)=n$ endlich und $m$ ein Teiler von $n$, so ist $H = \langle g^{\frac{n}{m}}\rangle$ die einzige Untergruppe der Ordnung $m$.
 \end{thm}
 
