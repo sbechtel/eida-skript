@@ -798,7 +798,7 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
 	\[ \begin{tikzcd}
 		1 \arrow[r] & N \arrow[r, "i"] & G \arrow[r, "p"] & H \arrow[r] & 1
 	\end{tikzcd} \]
-	gegeben, wobei $i$ injektiv, $p$ surjektiv, $\im i = \ker p$ ($\nicefrac{G}{N} \cong H$).
+	gegeben, wobei $i$ injektiv, $p$ surjektiv, $\im i = \ker p$ ($\nicefrac{G}{N} \cong H$). %Mit Vorsicht zu genießen. Korrekt wäre G/(im i) \cong H. Im Allgemeinen ist N keine Untergruppe von G.
 \end{defn}
 
 \begin{ex}
@@ -808,7 +808,7 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
 \begin{defn}
 	Es seien $G$ eine Gruppe, $N\subseteq G$ Normalteiler von $G$ und $H\subseteq G$ beliebige Untergruppe, so dass gilt:
 	$$G=NH \quad \text{und} \quad N\cap H = \{e\}$$
-	Dann ist $G$ das \emph{semidirekte Produkt} von $N$ und $H$, Notation: $G=N\rtimes H$.
+	Dann ist $G$ das \emph{(innere) semidirekte Produkt} von $N$ und $H$, Notation: $G=N\rtimes H$.
 \end{defn}
 
 \begin{nb}
@@ -832,9 +832,10 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
 
 \begin{nb}
 	\begin{enumerate}[label=(\arabic*)]
-	\item Das semidirekte Produkt von $N$ und $H$ wird von $\gamma: H\to \Aut(N)$ eindeutig festgelegt.
+	\item Das semidirekte Produkt von $N$ und $H$ wird von $\gamma: H\to \Aut(N)$ eindeutig (bis auf Isomorphie) festgelegt.
 		Es gilt nämlich: $$(n_1h_1)(n_2h_2)=n_1(h_1n_2\Inv{h_1})h_1h_2=n_1\gamma_{h_1}(n_2)h_1h_2$$ wobei $$n_1\gamma_{h_1}(n_2)\in N, h_1h_2\in H.$$
-	\item Umgekehrt definiert ein Homomorphismus $\gamma: H\to\Aut(N)$ immer ein semidirektes Produkt $N\rtimes H$:
+                Damit ist $G$ zum äußeren semidirekten Produkt $N \rtimes_{\gamma_h} H$ isomorph.
+	\item Umgekehrt definiert ein Homomorphismus $\gamma: H\to\Aut(N)$ immer ein (äußeres) semidirektes Produkt $N\rtimes H$:
 		\begin{gather*}
 			G=(N\times H, \cdot_\gamma) \\
 			(n_1,h_1)\cdot_\gamma (n_2,h_2)=(n_1\gamma_{h_1}(n_2), h_1h_2)
@@ -857,7 +858,7 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
 		1 \arrow[r] & N \arrow[r, "i"] & G \arrow[r, "p"] & H \arrow[l, bend left, dashed, "s"] \arrow[r] & 1
 	\end{tikzcd} \]
 	spaltet, falls ein Homomorphismus $s: H\to G$ existiert, mit $p\circ s = \text{id}_H$.
-	$p$ heißt ein \defi{Schnitt} von $p$. % FIXME **p** heißt Schnitt von **p**? Eher nicht.
+	$s$ heißt ein \defi{Schnitt} von $p$.
 \end{defn}
 
 Für $G=N\rtimes H$ Gruppenerweiterung:
@@ -871,7 +872,12 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 	\[ \begin{tikzcd}
 		1 \arrow[r] & N \arrow[r,"i"] & G \arrow[r,"p"] & H \arrow[r] & 1
 	\end{tikzcd} \]
-	eine Gruppenerweiterung, die mit einem Schnitt $s:H\to G$ spaltet. Dann ist $G$ das semidirekte Produkt von $N$ und $H$, definiert durch $$\gamma: H\to \Aut(N), \quad h\mapsto \gamma_h.$$ % FIXME Was ist \gamma_h? Das geht nur, falls N und H eine gemeinsame Obergruppe haben. Ist hier \(i^{-1}\circ\gamma_{s(h)}\circ i\) gemeint?
+	eine Gruppenerweiterung, die mit einem Schnitt $s:H\to G$ spaltet. Dann ist $G$ das semidirekte Produkt von $N$ und $H$, definiert durch 
+        \[\gamma: H\to \Aut(N), \quad h\mapsto \gamma_h,\]
+        wobei
+        \[ i(\gamma_h(n)) = s(h)i(n)s(h)^{-1}.  \]
+        % FIXME Was ist \gamma_h? Das geht nur, falls N und H eine gemeinsame Obergruppe haben. Ist hier \(i^{-1}\circ\gamma_{s(h)}\circ i\) gemeint?
+        % -- Es handelt sich hier um ein äußeres semidirektes Produkt, die gemeinsame Obergruppe ist nicht vonnöten (Fabian)
 \end{thm}
 
 \begin{proof}
