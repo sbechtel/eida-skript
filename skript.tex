@@ -96,6 +96,7 @@
         % Ich wäre dafür Lemmata, Sätze und Korollare gemeinsam und zudem kapitelweise zu nummerieren. -- Fabian
 % TODO p-Primäre Komponenten Notation: p als Subindex?
 % TODO Einheitliche Verwendung des Begriffs nicht-leer/nicht leer/nichtleer
+% TODO Menge der Nebenklassen Einheitlich notieren (mit oder ohne Verwendung von nicefrac)
 
 \begin{document}
 
@@ -355,7 +356,7 @@
 \begin{proof}
   Dass jede Untergruppe $U$ einer zyklischen Gruppe $G = \langle g \rangle$ wiederum zyklisch ist, folgt aus dem vorangehenden Beweis. 
   
-  Sei nun $\lvert G \rvert = \ord(g) = n < \infty$ und $m \in \mathbb{N}$ mit $m \divides n$ und $U$ eine Untergruppe von $G$ mit $\lvert U \rvert = m$. Da $U$ zyklisch ist, existiert ein $k \in \mathbb{N}$, sodass $U = \langle g^k \rangle$. Mit dem Satz von Lagrange (später) folgt $(g^k)^m = e = g^n$, also $km \divides n$. Daraus folgt $\frac{n}{m} \divides k$, was $a^k \in \langle g^\frac{n}{m} \rangle$ impliziert. Dann ist aber $U \subseteq \langle{g^\frac{n}{m}} \rangle$ und mit $\lvert U \rvert = m = \lvert \langle g^\frac{n}{m} \rangle \rvert$ folgt $U = \langle{g^\frac{n}{m}} \rangle$.
+  Sei nun $\lvert G \rvert = \ord(g) = n < \infty$. Des Weiteren sei $m \in \mathbb{N}$ mit $m \divides n$ und $U$ eine Untergruppe von $G$ mit $\lvert U \rvert = m$. Da $U$ zyklisch ist, existiert ein $k \in \mathbb{N}$, sodass $U = \langle g^k \rangle$. Mit dem Satz von Lagrange (später) folgt $(g^k)^m = e = g^n$, also $km \divides n$. Daraus folgt $\frac{n}{m} \divides k$, was $g^k \in \langle g^\frac{n}{m} \rangle$ impliziert. Dann ist aber $U \subseteq \langle{g^\frac{n}{m}} \rangle$ und mit $\lvert U \rvert = m = \lvert \langle g^\frac{n}{m} \rangle \rvert$ folgt $U = \langle{g^\frac{n}{m}} \rangle$.
 \end{proof}
 
 \begin{defn}
@@ -407,7 +408,7 @@
 
 \begin{proof}
 	Zunächst ist \(f\) wohldefiniert, da für $b_{1},b_{2} \in G$ mit $Hb_{1}=Hb_{2}$ (das heißt \(b_1 \mathrel{\prescript{}{H}{\sim}} b_2\)) ein $h \in H$ mit $b_1 = hb_2$ exitiert.
-	Somit ist $b^{-1}H = (hb_2)^{-1}H = b_{2}^{-1}hH = b_{2}^{-1}H$.
+        Somit ist $b_{1}^{-1}H = (hb_2)^{-1}H = b_{2}^{-1}hH = b_{2}^{-1}H$.
 
 	Die Wohldefiniertheit von $$g: G/H \to H\backslash G, \quad aH \mapsto Ha^{-1}$$ folgt analog.
 	Nun ist $(g \circ f)(Hb) = g(b^{-1}H)=H(b^{-1})^{-1}=Hb$ und somit $g \circ f = \id_{H \backslash G}$.
@@ -528,8 +529,8 @@
 	\item Für beliebiges \(g \in G\) gilt \[e_H=f(e_G)=f(g\cdot_G g^{-1})=f(g)\cdot_{H}f(g^{-1})\] und somit \(f(g^{-1})=f(g)^{-1}\).
 	\item Für beliebige \(g, h \in G\) gilt
 		\begin{align*}
-			(a_1\circ a_2)(gh) &= a_1(a_2(gh)) = a_1(a_2(g)a_2(h)) = a_1(a_2(g))a_1(a_2(h))\\
-			&= (a_1\circ a_2)(g)(a_1\circ a_2)(h).\qedhere
+			(a_2\circ a_1)(gh) &= a_2(a_1(gh)) = a_2(a_1(g)a_1(h)) = a_2(a_1(g))a_2(a_1(h))\\
+			&= (a_2\circ a_1)(g)(a_2\circ a_1)(h).\qedhere
 		\end{align*}
 	\end{enumerate}
 \end{proof}
@@ -543,7 +544,7 @@
 		$$(\mathbb{R},+)\rightarrow(\mathbb{R}^*,\cdot), \quad x\mapsto e^x$$
 		ist ein Gruppenhomomorphismus.
 	\item Für $(G,+)$ abelsch ist
-		$$G\rightarrow G, \quad a\mapsto na = a+\dots+a \text{(n-mal)}$$
+		$$G\rightarrow G, \quad a\mapsto na = a+\dots+a \text{ (n-mal)}$$
 		ein Gruppenhomomorphismus.
 	\end{enumerate}
 \end{ex}
@@ -626,6 +627,10 @@
 	Daraus folgt $$f(a) = f(ea) = f(b(b^{-1}a)) = f(b) f(b^{-1}a) \stackrel{b^{-1}a \in N \subseteq \ker(f)}{=} f(b)e = f(b).$$
 	Die Abbildung $\bar{f}: G/N \rightarrow G'$ existiert somit und ist offensichtlich ein Gruppenhomomorphismus, denn es ist
 	$$\bar{f}(abN) = f(ab) = f(a)f(b) = \bar{f}(aN)\bar{f}(bN)$$ für alle $a, b \in G$.
+        
+        Angenommen es existiere eine weitere Abbildung $\tilde{f}$ mit obigen Eigenschaften. So gilt für $aN \in G/N$
+        \[ \tilde{f}(aN) = \tilde{f}(\pi(a)) = f(a) = \bar{f}(\pi(a)) = \bar{f}(aN) \]
+        aufgrund der Surjektivität von $\pi$. Daraus folgt $\tilde{f} = \bar{f}$.
 \end{proof}
 
 \begin{proof}[Beweis der Bemerkung]
@@ -1327,7 +1332,7 @@ Aber: Wenn \(h\) ein Teiler von $\ord(G)$ ist, existiert dann auch eine Untergru
 
 \begin{proof}
 \begin{enumerate}
-\item Wir zeigen die durch Induktion auf $\ord(G)$.
+\item Wir zeigen dies durch Induktion auf $\ord(G)$.
 Wir nehmen an, dass die Aussage für alle Gruppen gilt, deren Ordnung kleiner als \(\ord(G)\) ist.
 Wenn G eine echte Untergruppe H enthält, wobei $|H|$ durch p teilbar ist, existiert nach der Induktionsvor. eine Untergruppe von H von der Ordnung $p^\alpha$.(fertig) \\
 Wir können uns auf den Fall beschränken, dass $p^n \nmid \ord(H)$ für alle Untergruppen $H\neq G$gilt. \\
@@ -1464,7 +1469,7 @@ Es sei $G$ eine Gruppe, $\underline{G}$ und $\underline{H}$ Normalreihen in $G$.
 			&\underline{G}: G_0\subseteq G_1 \subseteq\dots\subseteq G_n \\
 			&\underline{H}: H_0\subseteq H_1\subseteq\dots\subseteq H_m 
 		\end{split}\]
-	die beiden Normalreihen. Wir setzen nun $G_{ij}:=G_i\cdot(G_{i+1}\cap H_j), H_{ij} := H_j\cdot(G_i\cap H_{j+1}$ für alle $i,j$ mit $G_{n+1}:=G=:H_{m+1}$.
+	die beiden Normalreihen. Wir setzen nun $G_{ij}:=G_i\cdot(G_{i+1}\cap H_j), H_{ij} := H_j\cdot(G_i\cap H_{j+1})$ für alle $i,j$ mit $G_{n+1}:=G=:H_{m+1}$.
 	
 	Es gilt nun: $G_{i,m}=G_{i+1}=G_{i+1,0}$ und $H_{n,j}=H_{j+1}=H_{0,j+1}$, so dass $\{G_{ij}\}$ und $\{H_{ij}\}$ Folgen von Untergruppen sind. Es ist klar, dass diese Verfeinerungen von $G$ bzw. $H$ von selber Länge sind. Wir müssen noch zeigen:
 	\begin{enumerate}[label=(\alph*)]
@@ -1583,7 +1588,7 @@ Direktes Produkt: $\prod_{i \in I} H_i \to (h_i)_{i \in I}$ mit $h_i \in H_i \; 
 
 \begin{defn}
   Die \emph{(äußere) direkte Summe} der Familie $(H_i)_{i \in I}$ von abelschen Gruppen ist 
-  \[ \bigoplus_{i \in I} H_i := \left\{ (h_i)_{i \in I} \in \Pi_{i \in I} H_i : h_i \neq 0 \text{ für nur endlich viele $i \in I$}\right\}. \]
+  \[ \bigoplus_{i \in I} H_i := \left\{ (h_i)_{i \in I} \in \prod_{i \in I} H_i : h_i \neq 0 \text{ für nur endlich viele $i \in I$}\right\}. \]
 \end{defn}
 
 \begin{nb}
