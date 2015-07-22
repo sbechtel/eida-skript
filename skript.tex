@@ -701,7 +701,7 @@
 \begin{defn}
 	Es sei $(G_i)_{i \in I}$ eine Familie von Gruppen.
 	Das \defi{äußere direkte Produkt} der Familie ist das kartesische Produkt $\prod_{i \in I}G_i$ mit der Verknüpfung $(a_i)_{i \in I} (b_i)_{i \in I} = (a_ib_i)_{i \in I}$.
-	Das neutrale Element ist $(e_i)_{i \in I}$ wobei die $e_i \in G_i$ jeweils neutral sind.
+	Das neutrale Element ist $(e_i)_{i \in I}$, wobei die $e_i \in G_i$ jeweils neutral sind.
 \end{defn}
 
 \begin{notation}
@@ -1005,17 +1005,19 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 		Das liefert uns \[a_j,\sigma(a_j),\sigma^2(a_j),\dots,\sigma^{l_j-1}(a_j)\in K_j\] und diese Elemente sind paarweise verschieden.
 		Aus der Definition folgt, dass $\sigma\upharpoonright_{K_j}=(a_j\sigma(a_j)\dots\sigma^{l_j-1}(a_j))\in S_{K_j}$ ein Zyklus der Länge $l_j$ ist.
 		Wenn wir dies für alle $j=1,\dots,r$ tun, erhalten wir:
-		\[\sigma = (a_1\dots\sigma^{l_1-1}(a_1))(a_2\dots\sigma^{l_2-1}(a_2))\dots(a_r\dots\sigma^{l_1-r}(a_r)).\]
+		\[\sigma = (a_1\dots\sigma^{l_1-1}(a_1))(a_2\dots\sigma^{l_2-1}(a_2))\dots(a_r\dots\sigma^{l_r-1}(a_r)).\]
 		Dies ist genau die gesuchte Darstellung, wenn man zudem $(a_j):=\text{id}$ für $l_j = 1$ definiert.
 
 		Eindeutigkeit: Es sei für $s\in\mathbb{N}$ $\sigma = \tau_1\tau_2\dots\tau_s$ eine andere Darstellung.
 		Dann ist $\sigma\upharpoonright_{\supp(\tau_k)} = \tau_k$ für alle $k$ ein Zyklus.
 		Damit ist $\supp(\tau_k) = K_j$ für ein $j=1,\dots,r$ und somit ist $\tau_k$ gerade ein solcher Zyklus wie in unserer Konstruktion.
 		Diese ist also eindeutig.
-	\item Es sei $\sigma\in S_n$ und $(m_1\dots m_k)$ ein Zyklus. Dann gilt
-		\[(\sigma(m_1\dots m_k)\Inv\sigma)(\sigma(m_{\alpha}))=(\sigma(m_1\dots m_k))(m_{\alpha}) = \sigma(m_{\alpha+1})\text{ mit }m_{k+1}:=m_1.\] 
-		Für $m\notin \{m_1,\dots,m_k\}$ gilt $(\sigma(m_1\dots m_k)\sigma^{-1})(\sigma(m))=(\sigma(m_1\dots m_k))(m) = \sigma(m)$.
-		Daraus folgt $\sigma\circ(m_1m_2\dots m_l)\circ\sigma^{-1} = (\sigma(m_1)\sigma(m_2)\dots\sigma(m_l))$.
+	\item Es sei $\sigma\in S_n$ und $(m_1\dots m_k)$ ein Zyklus. Dann gilt für $\alpha = 1,\dots,k$ 
+                \[(\sigma(m_1 \dots m_k)\Inv\sigma)(\sigma(m_{\alpha}))=(\sigma(m_1 \dots m_k))(m_{\alpha}) = \sigma(m_{\alpha+1})\]
+                mit $m_{k+1}:=m_1$.
+		Für $m\notin \{m_1, \dots, m_k\}$ gilt 
+                \[(\sigma(m_1 \dots m_k) \sigma^{-1}) (\sigma(m)) = ( \sigma(m_1 \dots m_k) )(m) = \sigma(m).\]
+		Daraus folgt $\sigma\circ(m_1m_2\dots m_k)\circ\sigma^{-1} = (\sigma(m_1)\sigma(m_2)\dots\sigma(m_k))$.
 	\item Wegen (a) genügt es zu zeigen, dass für alle $k\in\mathbb{N}$ alle k-Zyklen Produkte von Transpositionen sind.
 		Für einen beliebigen Zyklus gilt
 		\[(m_1\dots m_k) = (m_1m_2)(m_2m_3)\dots (m_{k-1}m_k).\]
@@ -1026,7 +1028,7 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 		1 & 3 & 4 & 2 \\ % (12)
 		2 & 3 & 4 & 1
 		\end{pmatrix}.\]
-		Anmerkung: Es reichen deutlich weniger Transpositionen aus, um $S_n$ zu erzeugen.\qedhere
+		Anmerkung: Es reichen deutlich weniger Transpositionen aus, um $S_n$ zu erzeugen\footnote{So gilt für $n \geq 2$ bereits $S_n = \langle (1 2) , (1 \dots n) \rangle$. Siehe Übung 3, Aufgabe G3.}.\qedhere
 	\end{enumerate}
 \end{proof}
 
@@ -1065,7 +1067,7 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 \end{kor}
 
 \begin{defn}
-	Die normale Untergruppe $A_n=\ker(\sgn)$ der geraden Permutationen wird die alternierende Gruppe genannt.
+	Die normale Untergruppe $A_n:=\ker(\sgn)$ der geraden Permutationen wird die alternierende Gruppe genannt.
 \end{defn}
 	
 \begin{nb}
