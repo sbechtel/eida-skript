@@ -1001,14 +1001,14 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 	\item Es sei $\sigma\in S_n, \sigma\neq\text{id}$. Für $m_1,m_2\in\{1,\dots,n\}=:M$ definieren wir 
 		\[m_1\sim m_2 :\Leftrightarrow \text{\(m_1 = \sigma^l(m_2)\) für ein \(l\in\mathbb{Z}\)}.\]
 		Dann ist $\sim$ eine Äquivalenzrelation auf $M$. Es sei $M = K_1\cup K_2\cup\dots\cup K_r$ die Zerlegung von $M$ in disjunkte Äquivalenzklassen.
-		Wir betrachten $a_j\in K_j$ beliebig. Es sei $l_j$ die kleinste positive Zahl mit $\sigma^{l_j}(a_j) = a_j$. % FIXME Existenz?
+                Wir betrachten $a_j\in K_j$ beliebig. Es sei $l_j$ die kleinste positive Zahl mit $\sigma^{l_j}(a_j) = a_j$.\footnote{Ein solches $l_j$ existiert aufgrund der vorausgesetzten Endlichkeit der symmetrischen Gruppe nach dem Satz von Lagrange. Es gilt also $l_j \leq \ord(\sigma)$.} % FIXME Existenz? -- Fixed?
 		Das liefert uns \[a_j,\sigma(a_j),\sigma^2(a_j),\dots,\sigma^{l_j-1}(a_j)\in K_j\] und diese Elemente sind paarweise verschieden.
 		Aus der Definition folgt, dass $\sigma\upharpoonright_{K_j}=(a_j\sigma(a_j)\dots\sigma^{l_j-1}(a_j))\in S_{K_j}$ ein Zyklus der Länge $l_j$ ist.
 		Wenn wir dies für alle $j=1,\dots,r$ tun, erhalten wir:
 		\[\sigma = (a_1\dots\sigma^{l_1-1}(a_1))(a_2\dots\sigma^{l_2-1}(a_2))\dots(a_r\dots\sigma^{l_r-1}(a_r)).\]
 		Dies ist genau die gesuchte Darstellung, wenn man zudem $(a_j):=\text{id}$ für $l_j = 1$ definiert.
 
-		Eindeutigkeit: Es sei für $s\in\mathbb{N}$ $\sigma = \tau_1\tau_2\dots\tau_s$ eine andere Darstellung.
+		Eindeutigkeit: Für $s\in\mathbb{N}$ sei $\sigma = \tau_1\tau_2\dots\tau_s$ eine andere Darstellung.
 		Dann ist $\sigma\upharpoonright_{\supp(\tau_k)} = \tau_k$ für alle $k$ ein Zyklus.
 		Damit ist $\supp(\tau_k) = K_j$ für ein $j=1,\dots,r$ und somit ist $\tau_k$ gerade ein solcher Zyklus wie in unserer Konstruktion.
 		Diese ist also eindeutig.
