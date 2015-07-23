@@ -1157,7 +1157,7 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 		$$i_a : G \to G, \quad x \mapsto axa^{-1}$$
 		immer ein Automorphismus von G.
 		$$i: G \to \Aut(G) \subseteq S_G, \quad a \mapsto i_a$$
-		ein Gruppenhomomorphismus, d.h. eine Operation von $G$ auf sich selbst.
+		ist ein Gruppenhomomorphismus, d.h. eine Operation von $G$ auf sich selbst.
 		\begin{proof}
 			Für alle \(a, b, x \in G\) ist \[i_{ab}(x)=abx(ab)^{-1}=abxb^{-1}a^{-1}=a(i_b(x))a^{-1}=i_a(i_b(x))=(i_a\circ i_b)(x).\qedhere\]
 		\end{proof}
@@ -1285,7 +1285,7 @@ Aber: Wenn \(h\) ein Teiler von $\ord(G)$ ist, existiert dann auch eine Untergru
 \end{thm}
 
 \begin{proof}
-	Induktion auf $\ord(G)$
+	Induktion über $\ord(G)$
 	\begin{itemize}
 	\item Induktionsstart: $\ord(G)=1$ ist klar
 	\item Induktionsschritt: Wir nehmen an, dass die Aussage für alle Gruppen \(T\) gilt mit $\ord(T)<\ord(G)$.
@@ -1336,12 +1336,18 @@ Aber: Wenn \(h\) ein Teiler von $\ord(G)$ ist, existiert dann auch eine Untergru
 \begin{enumerate}
 \item Wir zeigen dies durch Induktion auf $\ord(G)$.
 Wir nehmen an, dass die Aussage für alle Gruppen gilt, deren Ordnung kleiner als \(\ord(G)\) ist.
-Wenn G eine echte Untergruppe H enthält, wobei $|H|$ durch p teilbar ist, existiert nach der Induktionsvor. eine Untergruppe von H von der Ordnung $p^\alpha$.(fertig) \\
-Wir können uns auf den Fall beschränken, dass $p^n \nmid \ord(H)$ für alle Untergruppen $H\neq G$gilt. \\
-$(a_{i}){i \in I}$ Repräsentantensystem der Konjugationsklassen. \\
-$p^n q=|G|=|Z(G)|+\sum_{x_{i}\notin Z(G)}\dfrac{|G|}{|C_{G}(a_{i})|}$ \\
-$p^n \nmid |C_{G}(a_{i})|$ ergibt sich aus der Annahme $p^n \mid |G|$. \\
-Daraus folgt: $\dfrac{|G|}{|C_{G}(a_{i})|}$ ist durch p teilbar. Daraus folgt, dass $|Z(G)|$ durch p teilbar ist. Aus dem Satz von Cauchy folgt dann, dass $b \in Z(G)$ mit $\ord(b)=p$ existiert.
+Wenn G eine echte Untergruppe H enthält, wobei $|H|$ durch p teilbar ist, existiert nach der Induktionsvoraussetzung eine Untergruppe von H von der Ordnung $p^\alpha$.(fertig) 
+%FIXME Damit die im Beweis vorgenommene Fallunterscheidung gilt, sollte angenommen werden, dass |H| durch p^n teilbar ist!
+
+Wir können uns auf den Fall beschränken, dass $p^n \nmid \ord(H)$ für alle Untergruppen $H\neq G$ gilt. 
+Sei $(a_{i}),{i \in I}$ ein Repräsentantensystem der (nicht-zentralen) Konjugationsklassen, so gilt
+\[ p^n q=|G|=|Z(G)|+\sum_{a_{i}\notin Z(G)}\dfrac{|G|}{|C_{G}(a_{i})|}. \]
+$p^n \nmid |C_{G}(a_{i})|$ ergibt sich aus der Annahme $p^n \mid |G|$.  %FIXME: Folgt eher aus der Annahme, p^n \nmid \ord(H) f.a. Untergruppen (Fabian)
+Daraus folgt: $\dfrac{|G|}{|C_{G}(a_{i})|}$ ist durch p teilbar. 
+%Verbesserungsvorschlag:
+%Da nach Voraussetzung $p^n \nmid |C_{G}(a_{i})|$, ergibt sich mit der Annahme $p^n \divides |G|$, dass $\dfrac{|G|}{|C_{G}(a_{i})|}$ für alle $i \in I$ durch p teilbar ist.
+Daraus folgt, dass $|Z(G)|$ durch p teilbar ist. 
+Aus dem Satz von Cauchy folgt dann, dass $b \in Z(G)$ mit $\ord(b)=p$ existiert.
 
 % VL 09.06.
 Da $b$ im Zentrum von $G$ liegt, ist $\langle b \rangle$ eine normale Untergruppe von $G$. Wir betrachten die Faktorgruppe $G/ \langle b \rangle$. Es gilt
@@ -1351,9 +1357,9 @@ Da $b$ im Zentrum von $G$ liegt, ist $\langle b \rangle$ eine normale Untergrupp
 	$$ p^{\alpha - 1} = |\bar{S}| = \frac{|S|}{| \langle b \rangle |} = \frac{|S|}{p}. $$
 	Somit gilt $|S| = p^{\alpha}$ und $S$ ist die gesuchte $p$-Gruppe.
 	
-	\item Sei $H$ ein $p$-Untergruppe und $S$ ein $p$-Sylowuntergruppe. $H$ operiert auf die Menge $X = G/S$ durch
+	\item Sei $H$ eine $p$-Untergruppe und $S$ eine $p$-Sylowuntergruppe. $H$ operiert auf der Menge $X = G/S$ durch
 	$$ H \times X \rightarrow X, h \cdot gS := (hg)S.$$
-	Es gilt $|X| = \frac{|G|}{|S|} = \frac{p^nq}{p^n} = q$. Da $H$ eine $p$-Gruppe ist, gilt $|X^H| = |X| = q \ (modp)$. Da $q$ prim zu $p$ ist, ist $|X^H|$ nicht durch $p$ teilbar. Insbesondere kann $X^H$ nicht leer sein, denn $p \divides 0$. Es gibt also ein $g \in G$ mit $gS \in X^H$. Für alle $h \in H$ gilt dann $(hg)S = gS$ und somit $g^{-1}hg \in S$ und $h \in gSg^{-1}$. Dies liefert, dass $H$ in $gSg^{-1}$ enthalten ist.
+	Es gilt $|X| = \frac{|G|}{|S|} = \frac{p^nq}{p^n} = q$. Da $H$ eine $p$-Gruppe ist, gilt $|X^H| = |X| = q \ (\mod p)$. Da $q$ prim zu $p$ ist, ist $|X^H|$ nicht durch $p$ teilbar. Insbesondere kann $X^H$ nicht leer sein, denn $p \divides 0$. Es gibt also ein $g \in G$ mit $gS \in X^H$. Für alle $h \in H$ gilt dann $(hg)S = gS$ und somit $g^{-1}hg \in S$ und $h \in gSg^{-1}$. Dies liefert, dass $H$ in $gSg^{-1}$ enthalten ist.
 	
 	\item siehe unten.
 \end{enumerate}
@@ -1367,7 +1373,7 @@ Da $b$ im Zentrum von $G$ liegt, ist $\langle b \rangle$ eine normale Untergrupp
 	Sei $S$ ein $p$-Sylowuntergruppe d.h. $|S| = p^n$. Dann ist $gSg^{-1}$ ein Untergruppe der Ordnung $p^n$ (für $g \in G$ beliebig), d.h. $gSg^{-1}$ ist eine $p$-Sylowuntergruppe. Es sei $S'$ ein beliebige Sylowuntergruppe von $G$. Aus 2. folgt: $S' \subseteq gSg^{-1}$ für ein $g \in G$. $|S'| = p^n = |gSg^{-1}|$ impliziert $S' = gSg^{-1}$.
 \end{proof}
 
-Bevor wir den dritten Teil des Sylow-Satzes beweisen, wenden wir uns folgender allgemeiner Frage zu: Wie bestimmt man die Anzahl der zu einer gegebenen Untergruppe konjugierten Untergruppen? Es sei $\mathcal{U}$ die Menge aller Untergruppen von G und $ G \times \mathcal{U} \rightarrow \mathcal{U}, g \cdot H \mapsto gHg^{-1} $ eine Gruppenoperation.
+Bevor wir den dritten Teil des Sylow-Satzes beweisen, wenden wir uns folgender allgemeiner Frage zu: Wie bestimmt man die Anzahl der zu einer gegebenen Untergruppe konjugierten Untergruppen? Es sei $\mathcal{U}$ die Menge aller Untergruppen von G und $ G \times \mathcal{U} \rightarrow \mathcal{U}, (g , H) \mapsto g \cdot H := gHg^{-1} $ eine Gruppenoperation.
 
 \begin{defn}
 	Der Stabilisator einer Untergruppe $H$ von $G$ unter dieser Operation heißt \emph{Normalisator} von $H$: $N_G(H) = \{ g \in G: gHg^{-1} = H \}$. \\
@@ -1396,7 +1402,7 @@ Für den Beweis des dritten Teils benötigen wir folgendes Lemma:
 	Aus der Inklusionskette $S \subseteq N_G(S) \subseteq G$ folgt
 	$$[N_G(S):S] [G:N_G(S)] = [G:S] \Leftrightarrow [N_G(S):S] s = q \text{, d.h. } s \divides q.$$
 	Wir lassen $S$ wie folgt auf X operieren:
-	$$S \times X \rightarrow X, g \cdot T \mapsto gTg^{-1}.$$
+	$$S \times X \rightarrow X, (g, T) \mapsto gTg^{-1}.$$
 	$S \in X$ ist ein Fixpunkt dieser Operation. Wir möchten zeigen, dass dieser der einzige Fixpunkt ist. Da $S$ eine $p$-Gruppe ist, gilt dann: $s = |X| = |X^S| = 1 \pmod{p}$ (was zu zeigen war).
 	\begin{align*}
 		T \in X^S &\Leftrightarrow &gTg^{-1} = T \text{ für alle } g \in S \\
