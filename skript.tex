@@ -354,9 +354,14 @@
 \end{thm}
 
 \begin{proof}
-  Dass jede Untergruppe $U$ einer zyklischen Gruppe $G = \langle g \rangle$ wiederum zyklisch ist, folgt aus dem vorangehenden Beweis. 
-  
-  Sei nun $\lvert G \rvert = \ord(g) = n < \infty$. Des Weiteren sei $m \in \mathbb{N}$ mit $m \divides n$ und $U$ eine Untergruppe von $G$ mit $\lvert U \rvert = m$. Da $U$ zyklisch ist, existiert ein $k \in \mathbb{N}$, sodass $U = \langle g^k \rangle$. Mit dem Satz von Lagrange (später) folgt $(g^k)^m = e = g^n$, also $km \divides n$. Daraus folgt $\frac{n}{m} \divides k$, was $g^k \in \langle g^\frac{n}{m} \rangle$ impliziert. Dann ist aber $U \subseteq \langle{g^\frac{n}{m}} \rangle$ und mit $\lvert U \rvert = m = \lvert \langle g^\frac{n}{m} \rangle \rvert$ folgt $U = \langle{g^\frac{n}{m}} \rangle$.
+	Dass jede Untergruppe $U$ einer zyklischen Gruppe $G = \langle g \rangle$ wiederum zyklisch ist, folgt aus dem vorangehenden Beweis. 
+
+	Sei nun $\lvert G \rvert = \ord(g) = n < \infty$.
+	Des Weiteren sei $m \in \mathbb{N}$ mit $m \divides n$ und $U$ eine Untergruppe von $G$ mit $\lvert U \rvert = m$.
+	Da $U$ zyklisch ist, existiert ein $k \in \mathbb{N}$, sodass $U = \langle g^k \rangle$.
+	Mit dem Satz von Lagrange (später) folgt $(g^k)^m = e = g^n$, also $n \divides km$.
+	Daraus folgt $\frac{n}{m} \divides k$, was $g^k \in \langle g^\frac{n}{m} \rangle$ impliziert.
+	Dann ist aber $U \subseteq \langle{g^\frac{n}{m}} \rangle$ und mit $\lvert U \rvert = m = \lvert \langle g^\frac{n}{m} \rangle \rvert$ folgt $U = \langle{g^\frac{n}{m}} \rangle$.
 \end{proof}
 
 \begin{defn}
@@ -408,7 +413,7 @@
 
 \begin{proof}
 	Zunächst ist \(f\) wohldefiniert, da für $b_{1},b_{2} \in G$ mit $Hb_{1}=Hb_{2}$ (das heißt \(b_1 \mathrel{\prescript{}{H}{\sim}} b_2\)) ein $h \in H$ mit $b_1 = hb_2$ exitiert.
-        Somit ist $b_{1}^{-1}H = (hb_2)^{-1}H = b_{2}^{-1}hH = b_{2}^{-1}H$.
+	Somit ist $b_{1}^{-1}H = (hb_2)^{-1}H = b_{2}^{-1}hH = b_{2}^{-1}H$.
 
 	Die Wohldefiniertheit von $$g: G/H \to H\backslash G, \quad aH \mapsto Ha^{-1}$$ folgt analog.
 	Nun ist $(g \circ f)(Hb) = g(b^{-1}H)=H(b^{-1})^{-1}=Hb$ und somit $g \circ f = \id_{H \backslash G}$.
@@ -544,7 +549,7 @@
 		$$(\mathbb{R},+)\rightarrow(\mathbb{R}^*,\cdot), \quad x\mapsto e^x$$
 		ist ein Gruppenhomomorphismus.
 	\item Für $(G,+)$ abelsch ist
-		$$G\rightarrow G, \quad a\mapsto na = a+\dots+a \text{ (n-mal)}$$
+		$$G\rightarrow G, \quad a\mapsto na = a+\dots+a \text{ (\(n\)-mal)}$$
 		ein Gruppenhomomorphismus.
 	\end{enumerate}
 \end{ex}
@@ -620,17 +625,17 @@
 \end{kor}
 
 \begin{proof}[Beweis des Satzes]
-	Aus dem kommutativen Diagramm folgt, dass $\bar{f}(aN) = f(a)$ sein sollte für jedes $aN \in G/N$.
-	Wir zeigen zuerst, dass $\bar{f}$ wohldefiniert ist.
+	Zunächst muss für ein solches \(\bar f\) und jedes \(aN \in G/N = \pi(G)\)
+	\[\bar f(aN) = \bar f(\pi(a)) = f(a)\]
+	gelten.
+	Hieraus folgt bereits die Eindeutigkeit im Falle der Existenz.
+
+	Wir zeigen noch, dass $\bar{f}$ hierdurch wohldefiniert ist.
 	Es seien $a, b \in G$ mit $aN = bN$.
-	Dann gilt $a \sim_{N} b$ und also $b^{-1}a \in N$.
-	Daraus folgt $$f(a) = f(ea) = f(b(b^{-1}a)) = f(b) f(b^{-1}a) \stackrel{b^{-1}a \in N \subseteq \ker(f)}{=} f(b)e = f(b).$$
+	Dann gilt $a \sim_{N} b$ und somit $b^{-1}a \in N \subseteq \ker(f)$, insbesondere also \(f(b^{-1}a) = e\).
+	Daraus folgt $$f(a) = f(ea) = f(b(b^{-1}a)) = f(b) f(b^{-1}a) = f(b)e = f(b).$$
 	Die Abbildung $\bar{f}: G/N \rightarrow G'$ existiert somit und ist offensichtlich ein Gruppenhomomorphismus, denn es ist
-	$$\bar{f}(abN) = f(ab) = f(a)f(b) = \bar{f}(aN)\bar{f}(bN)$$ für alle $a, b \in G$.
-        
-        Angenommen es existiere eine weitere Abbildung $\tilde{f}$ mit obigen Eigenschaften. So gilt für $aN \in G/N$
-        \[ \tilde{f}(aN) = \tilde{f}(\pi(a)) = f(a) = \bar{f}(\pi(a)) = \bar{f}(aN) \]
-        aufgrund der Surjektivität von $\pi$. Daraus folgt $\tilde{f} = \bar{f}$.
+	$$\bar{f}((aN)(bN)) = \bar{f}(abN) = f(ab) = f(a)f(b) = \bar{f}(aN)\bar{f}(bN)$$ für alle $a, b \in G$.
 \end{proof}
 
 \begin{proof}[Beweis der Bemerkung]
@@ -1000,8 +1005,10 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 	\begin{enumerate}[label=(\alph*)]
 	\item Es sei $\sigma\in S_n, \sigma\neq\text{id}$. Für $m_1,m_2\in\{1,\dots,n\}=:M$ definieren wir 
 		\[m_1\sim m_2 :\Leftrightarrow \text{\(m_1 = \sigma^l(m_2)\) für ein \(l\in\mathbb{Z}\)}.\]
-		Dann ist $\sim$ eine Äquivalenzrelation auf $M$. Es sei $M = K_1\cup K_2\cup\dots\cup K_r$ die Zerlegung von $M$ in disjunkte Äquivalenzklassen.
-                Wir betrachten $a_j\in K_j$ beliebig. Es sei $l_j$ die kleinste positive Zahl mit $\sigma^{l_j}(a_j) = a_j$.\footnote{Ein solches $l_j$ existiert aufgrund der vorausgesetzten Endlichkeit der symmetrischen Gruppe nach dem Satz von Lagrange. Es gilt also $l_j \leq \ord(\sigma)$.} % FIXME Existenz? -- Fixed?
+		Dann ist $\sim$ eine Äquivalenzrelation auf $M$.
+		Es sei $M = K_1\cup K_2\cup\dots\cup K_r$ die Zerlegung von $M$ in disjunkte Äquivalenzklassen.
+		Wir betrachten $a_j\in K_j$ beliebig.
+		Es sei $l_j$ die kleinste positive Zahl mit $\sigma^{l_j}(a_j) = a_j$.\footnote{Ein solches $l_j$ existiert aufgrund der vorausgesetzten Endlichkeit der symmetrischen Gruppe nach dem Satz von Lagrange. Es gilt also $l_j \leq \ord(\sigma)$.}
 		Das liefert uns \[a_j,\sigma(a_j),\sigma^2(a_j),\dots,\sigma^{l_j-1}(a_j)\in K_j\] und diese Elemente sind paarweise verschieden.
 		Aus der Definition folgt, dass $\sigma\upharpoonright_{K_j}=(a_j\sigma(a_j)\dots\sigma^{l_j-1}(a_j))\in S_{K_j}$ ein Zyklus der Länge $l_j$ ist.
 		Wenn wir dies für alle $j=1,\dots,r$ tun, erhalten wir:
@@ -1012,25 +1019,35 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 		Dann ist $\sigma\upharpoonright_{\supp(\tau_k)} = \tau_k$ für alle $k$ ein Zyklus.
 		Damit ist $\supp(\tau_k) = K_j$ für ein $j=1,\dots,r$ und somit ist $\tau_k$ gerade ein solcher Zyklus wie in unserer Konstruktion.
 		Diese ist also eindeutig.
-	\item Es sei $\sigma\in S_n$ und $(m_1\dots m_k)$ ein Zyklus. Dann gilt für $\alpha = 1,\dots,k$ 
-                \[(\sigma(m_1 \dots m_k)\Inv\sigma)(\sigma(m_{\alpha}))=(\sigma(m_1 \dots m_k))(m_{\alpha}) = \sigma(m_{\alpha+1})\]
-                mit $m_{k+1}:=m_1$.
-		Für $m\notin \{m_1, \dots, m_k\}$ gilt 
-                \[(\sigma(m_1 \dots m_k) \sigma^{-1}) (\sigma(m)) = ( \sigma(m_1 \dots m_k) )(m) = \sigma(m).\]
+	\item Es sei $\sigma\in S_n$ und $(m_1\dots m_k)$ ein Zyklus.
+		Dann gilt für $\alpha = 1,\dots,k$
+		\[(\sigma(m_1 \dots m_k)\Inv\sigma)(\sigma(m_{\alpha}))=(\sigma(m_1 \dots m_k))(m_{\alpha}) = \sigma(m_{\alpha+1})\]
+		mit $m_{k+1}:=m_1$.
+		Für $m\notin \{m_1, \dots, m_k\}$ gilt
+		\[(\sigma(m_1 \dots m_k) \sigma^{-1}) (\sigma(m)) = ( \sigma(m_1 \dots m_k) )(m) = \sigma(m).\]
 		Daraus folgt $\sigma\circ(m_1m_2\dots m_k)\circ\sigma^{-1} = (\sigma(m_1)\sigma(m_2)\dots\sigma(m_k))$.
 	\item Wegen (a) genügt es zu zeigen, dass für alle $k\in\mathbb{N}$ alle k-Zyklen Produkte von Transpositionen sind.
 		Für einen beliebigen Zyklus gilt
-		\[(m_1\dots m_k) = (m_1m_2)(m_2m_3)\dots (m_{k-1}m_k).\]
-		Beispiel: $(1234) = (12)(23)(34)$. Graphisch veranschaulicht:
+		\[(m_1\dots m_k) = (m_1m_2)(m_2m_3)\dots (m_{k-1}m_k).\qedhere\]
+	\end{enumerate}
+\end{proof}
+
+\begin{nb}
+	Es reichen deutlich weniger Transpositionen aus, um $S_n$ zu erzeugen.
+\end{nb}
+
+\begin{ex}
+	\begin{itemize}
+	\item $(1234) = (12)(23)(34)$. Graphisch veranschaulicht:
 		\[\begin{pmatrix}
 		1 & 2 & 3 & 4 \\ % (34)
 		1 & 2 & 4 & 3 \\ % (23)
 		1 & 3 & 4 & 2 \\ % (12)
 		2 & 3 & 4 & 1
 		\end{pmatrix}.\]
-		Anmerkung: Es reichen deutlich weniger Transpositionen aus, um $S_n$ zu erzeugen\footnote{So gilt für $n \geq 2$ bereits $S_n = \langle (1 2) , (1 \dots n) \rangle$. Siehe Übung 3, Aufgabe G3.}.\qedhere
-	\end{enumerate}
-\end{proof}
+	\item Für $n \geq 2$ gilt bereits $S_n = \langle (1 2) , (1 \dots n) \rangle$.\footnote{Siehe Übung 3, Aufgabe G3.}
+	\end{itemize}
+\end{ex}
 
 \begin{defn}
 	Für $\sigma\in S_n$ ist das Signum von $\sigma$ definiert als
