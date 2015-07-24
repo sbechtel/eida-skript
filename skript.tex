@@ -625,17 +625,17 @@
 \end{kor}
 
 \begin{proof}[Beweis des Satzes]
-	Aus dem kommutativen Diagramm folgt, dass $\bar{f}(aN) = f(a)$ sein sollte für jedes $aN \in G/N$.
-	Wir zeigen zuerst, dass $\bar{f}$ wohldefiniert ist.
-	Es seien $a, b \in G$ mit $aN = bN$.
-	Dann gilt $a \sim_{N} b$ und also $b^{-1}a \in N$.
-	Daraus folgt $$f(a) = f(ea) = f(b(b^{-1}a)) = f(b) f(b^{-1}a) \stackrel{b^{-1}a \in N \subseteq \ker(f)}{=} f(b)e = f(b).$$
-	Die Abbildung $\bar{f}: G/N \rightarrow G'$ existiert somit und ist offensichtlich ein Gruppenhomomorphismus, denn es ist
-	$$\bar{f}(abN) = f(ab) = f(a)f(b) = \bar{f}(aN)\bar{f}(bN)$$ für alle $a, b \in G$.
+	Zunächst muss für ein solches \(\bar f\) und jedes \(aN \in G/N = \pi(G)\)
+	\[\bar f(aN) = \bar f(\pi(a)) = f(a)\]
+	gelten.
+	Hieraus folgt bereits die Eindeutigkeit im Falle der Existenz.
 
-	Angenommen es existiere eine weitere Abbildung $\tilde{f}$ mit obigen Eigenschaften. So gilt für $aN \in G/N$
-	\[ \tilde{f}(aN) = \tilde{f}(\pi(a)) = f(a) = \bar{f}(\pi(a)) = \bar{f}(aN) \]
-	aufgrund der Surjektivität von $\pi$. Daraus folgt $\tilde{f} = \bar{f}$.
+	Wir zeigen noch, dass $\bar{f}$ hierdurch wohldefiniert ist.
+	Es seien $a, b \in G$ mit $aN = bN$.
+	Dann gilt $a \sim_{N} b$ und somit $b^{-1}a \in N \subseteq \ker(f)$, insbesondere also \(f(b^{-1}a) = e\).
+	Daraus folgt $$f(a) = f(ea) = f(b(b^{-1}a)) = f(b) f(b^{-1}a) = f(b)e = f(b).$$
+	Die Abbildung $\bar{f}: G/N \rightarrow G'$ existiert somit und ist offensichtlich ein Gruppenhomomorphismus, denn es ist
+	$$\bar{f}((aN)(bN)) = \bar{f}(abN) = f(ab) = f(a)f(b) = \bar{f}(aN)\bar{f}(bN)$$ für alle $a, b \in G$.
 \end{proof}
 
 \begin{proof}[Beweis der Bemerkung]
