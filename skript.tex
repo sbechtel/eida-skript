@@ -888,6 +888,7 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
         \[ i(\gamma_h(n)) = s(h)i(n)s(h)^{-1}.  \]
         % FIXME Was ist \gamma_h? Das geht nur, falls N und H eine gemeinsame Obergruppe haben. Ist hier \(i^{-1}\circ\gamma_{s(h)}\circ i\) gemeint?
         % -- Es handelt sich hier um ein äußeres semidirektes Produkt, die gemeinsame Obergruppe ist nicht vonnöten (Fabian)
+        %    -- Der Fall einer gemeinsamen Obergruppe ist jedoch der einzige, in dem wir \gamma_h definiert haben. *Das* ist mein Problem. \gamma_h kann kein semidirektes Produkt definieren, ohne dass wir \gamma_h definiert haben. (Peter)
 \end{thm}
 
 \begin{proof}
@@ -1071,7 +1072,8 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 
 % VL 26.5.
 \begin{kor}
-	Jede gerade Permutation ist das Produkt einer geraden Anzahl von Transpositionen. Jede ungerade Permutation ist Produkt einer ungeraden Anzahl von Transpositionen.
+	Jede gerade Permutation ist das Produkt einer geraden Anzahl von Transpositionen.
+	Jede ungerade Permutation ist Produkt einer ungeraden Anzahl von Transpositionen.
 \end{kor}
 
 \begin{ex}
@@ -1190,7 +1192,8 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 \end{ex}
 
 \begin{defn}
-	Seien $X$ und $Y$ $G$-Mengen. Dann ist $f: X \rightarrow Y$ ein $G$-Homomorphismus, falls $f(gx)=g(f(x))$ ist. % FIXME Für alle g \in G?
+	Seien $X$ und $Y$ $G$-Mengen.
+	Dann ist $f: X \rightarrow Y$ ein $G$-Homomorphismus, falls $f(gx)=g(f(x))$ ist. % FIXME Für alle g \in G?
 \end{defn}
 
 \begin{thm}
@@ -1352,33 +1355,35 @@ Aber: Wenn \(h\) ein Teiler von $\ord(G)$ ist, existiert dann auch eine Untergru
 \begin{proof}
 \begin{enumerate}
 \item Wir zeigen dies durch Induktion auf $\ord(G)$.
-Wir nehmen an, dass die Aussage für alle Gruppen gilt, deren Ordnung kleiner als \(\ord(G)\) ist.
-Wenn G eine echte Untergruppe H enthält, wobei $|H|$ durch p teilbar ist, existiert nach der Induktionsvoraussetzung eine Untergruppe von H von der Ordnung $p^\alpha$.(fertig) 
-%FIXME Damit die im Beweis vorgenommene Fallunterscheidung gilt, sollte angenommen werden, dass |H| durch p^n teilbar ist!
+	Wir nehmen an, dass die Aussage für alle Gruppen gilt, deren Ordnung kleiner als \(\ord(G)\) ist.
+	Wenn \(G\) eine echte Untergruppe \(H\) enthält, deren Ordnung durch \(p^n\) teilbar ist, existiert nach der Induktionsvoraussetzung eine Untergruppe von \(H\) von der Ordnung $p^\alpha$.
+	Wir können uns also auf den Fall beschränken, dass $p^n \nmid \ord(H)$ für alle Untergruppen $H\neq G$ gilt.
 
-Wir können uns auf den Fall beschränken, dass $p^n \nmid \ord(H)$ für alle Untergruppen $H\neq G$ gilt. 
-Sei $(a_{i}),{i \in I}$ ein Repräsentantensystem der (nicht-zentralen) Konjugationsklassen, so gilt
-\[ p^n q=|G|=|Z(G)|+\sum_{a_{i}\notin Z(G)}\dfrac{|G|}{|C_{G}(a_{i})|}. \]
-$p^n \nmid |C_{G}(a_{i})|$ ergibt sich aus der Annahme $p^n \mid |G|$.  %FIXME: Folgt eher aus der Annahme, p^n \nmid \ord(H) f.a. Untergruppen (Fabian)
-Daraus folgt: $\dfrac{|G|}{|C_{G}(a_{i})|}$ ist durch p teilbar. 
-%Verbesserungsvorschlag:
-%Da nach Voraussetzung $p^n \nmid |C_{G}(a_{i})|$, ergibt sich mit der Annahme $p^n \divides |G|$, dass $\dfrac{|G|}{|C_{G}(a_{i})|}$ für alle $i \in I$ durch p teilbar ist.
-Daraus folgt, dass $|Z(G)|$ durch p teilbar ist. 
-Aus dem Satz von Cauchy folgt dann, dass $b \in Z(G)$ mit $\ord(b)=p$ existiert.
+	Ist $(a_i)_{i \in I}$ ein Repräsentantensystem der Konjugationsklassen, so gilt
+	\[p^nq = |G| = |Z(G)|+\sum_{a_{i}\notin Z(G)}\dfrac{|G|}{|C_{G}(a_{i})|} = |Z(G)|+\sum_{a_{i}\notin Z(G)}[G:C_G(a_i)].\]
+	Da die \(C_G(a_i)\) für alle \(a_i \not\in Z(G)\) echte Untergruppen sind, gilt $p^n \nmid |C_G(a_i)|$.
+	Aus der Annahme $p^n \mid |G|$ ergibt sich also \(p \mid [G:C_G(a_i)]\), weshalb auch $|Z(G)|$ durch \(p\) teilbar ist.
+	Aus dem Satz von Cauchy folgt dann, dass $b \in Z(G)$ mit $\ord(b)=p$ existiert.
 
-% VL 09.06.
-Da $b$ im Zentrum von $G$ liegt, ist $\langle b \rangle$ eine normale Untergruppe von $G$. Wir betrachten die Faktorgruppe $G/ \langle b \rangle$. Es gilt
-	$$ |G/ \langle b \rangle | = \frac{|G|}{| \langle b \rangle |} = p^{n-1}q < p^nq. $$
-	Nach Induktionsvoraussetzung enthält $G / \langle b \rangle$ eine Untergruppe $\bar{S}$ der Ordnung $p^{\alpha - 1}$. Es sei $S = \{ x \in G : x \langle b \rangle \in \bar{S} \}$. $S$ ist eine Untergruppe von G und es gilt $ \bar{S} \cong S/ \langle b \rangle$, denn für die natürliche Projektion $p: S \rightarrow \bar{S}$ gilt $\ker(p) = \langle b \rangle$ und somit ist der Homomorphiesatz anwendbar.
-	Das liefert
-	$$ p^{\alpha - 1} = |\bar{S}| = \frac{|S|}{| \langle b \rangle |} = \frac{|S|}{p}. $$
+	% VL 09.06.
+	Da $b$ im Zentrum von $G$ liegt, ist $\langle b \rangle$ eine normale Untergruppe von $G$.
+	Wir betrachten die Faktorgruppe $G/ \langle b \rangle$.
+	Es gilt $$|G/\langle b\rangle| = \frac{|G|}{|\langle b\rangle|} = p^{n-1}q < p^nq.$$
+	Nach Induktionsvoraussetzung enthält $G/\langle b\rangle$ eine Untergruppe $\bar{S}$ der Ordnung $p^{\alpha - 1}$. Es sei $S = \{x \in G : x \langle b \rangle \in \bar{S}\}$.\footnote{Es ist \(S = \pi^{-1}(\bar S)\) das Urbild der Untergruppe \(\bar S\) bzgl. der natürlichen Projektion \(\pi: G \to G/\langle b\rangle\). Eine weitere Konstruktionsmöglichkeit wäre \(S = \bigcup_{s \in\bar S} s\), wobei ein jeder sich für die am intuitivsten scheinende Variante entscheiden möge.}
+	$S$ ist eine Untergruppe von \(G\) und es gilt $\bar{S} \cong S/\langle b\rangle$, denn für die natürliche Projektion $p: S \rightarrow \bar{S}$ gilt $\ker(p) = \langle b\rangle$ und somit ist der Homomorphiesatz anwendbar.
+	Das liefert $$p^{\alpha - 1} = |\bar{S}| = \frac{|S|}{| \langle b \rangle |} = \frac{|S|}{p}.$$
 	Somit gilt $|S| = p^{\alpha}$ und $S$ ist die gesuchte $p$-Gruppe.
-	
-	\item Sei $H$ eine $p$-Untergruppe und $S$ eine $p$-Sylowuntergruppe. $H$ operiert auf der Menge $X = G/S$ durch
-	$$ H \times X \rightarrow X, h \cdot gS := (hg)S.$$
-	Es gilt $|X| = \frac{|G|}{|S|} = \frac{p^nq}{p^n} = q$. Da $H$ eine $p$-Gruppe ist, gilt $|X^H| = |X| = q \ (\mod p)$. Da $q$ prim zu $p$ ist, ist $|X^H|$ nicht durch $p$ teilbar. Insbesondere kann $X^H$ nicht leer sein, denn $p \divides 0$. Es gibt also ein $g \in G$ mit $gS \in X^H$. Für alle $h \in H$ gilt dann $(hg)S = gS$ und somit $g^{-1}hg \in S$ und $h \in gSg^{-1}$. Dies liefert, dass $H$ in $gSg^{-1}$ enthalten ist.
-	
-	\item siehe unten.
+\item Sei $H$ eine $p$-Untergruppe und $S$ eine $p$-Sylowuntergruppe.
+	$H$ operiert auf der Menge $X = G/S$ durch
+	$$H \times X \rightarrow X, \quad (h, gS) \mapsto h \cdot gS := (hg)S.$$
+	Es gilt $|X| = \frac{|G|}{|S|} = \frac{p^nq}{p^n} = q$.
+	Da $H$ eine $p$-Gruppe ist, gilt $|X^H| = |X| = q \pmod{p}$. % FIXME: Wieso? Außerdem: "\equiv" statt "="?
+	Da $q$ prim zu $p$ ist, ist $|X^H|$ nicht durch $p$ teilbar.
+	Insbesondere kann $X^H$ nicht leer sein, denn $p \divides 0$.
+	Es gibt also ein $g \in G$ mit $gS \in X^H$.
+	Für alle $h \in H$ gilt dann $(hg)S = gS$ und somit $g^{-1}hg \in S$ und $h \in gSg^{-1}$.
+	Dies liefert, dass $H$ in $gSg^{-1}$ enthalten ist.
+\item Siehe unten. \qedhere
 \end{enumerate}
 \end{proof}
 
@@ -1387,15 +1392,22 @@ Da $b$ im Zentrum von $G$ liegt, ist $\langle b \rangle$ eine normale Untergrupp
 \end{kor}
 
 \begin{proof}
-	Sei $S$ ein $p$-Sylowuntergruppe d.h. $|S| = p^n$. Dann ist $gSg^{-1}$ ein Untergruppe der Ordnung $p^n$ (für $g \in G$ beliebig), d.h. $gSg^{-1}$ ist eine $p$-Sylowuntergruppe. Es sei $S'$ ein beliebige Sylowuntergruppe von $G$. Aus 2. folgt: $S' \subseteq gSg^{-1}$ für ein $g \in G$. $|S'| = p^n = |gSg^{-1}|$ impliziert $S' = gSg^{-1}$.
+	Sei $S$ ein $p$-Sylowuntergruppe mit \(|S| = p^n\).
+	Dann ist $gSg^{-1}$ ein Untergruppe der Ordnung $p^n$ (für $g \in G$ beliebig), d.h.\ $gSg^{-1}$ ist eine $p$-Sylowuntergruppe.
+
+	Es sei $S'$ ein beliebige \(p\)-Sylowuntergruppe von $G$.
+	Aus 2. folgt: $S' \subseteq gSg^{-1}$ für ein $g \in G$.
+	$|S'| = p^n = |gSg^{-1}|$ impliziert $S' = gSg^{-1}$.
 \end{proof}
 
-Bevor wir den dritten Teil des Sylow-Satzes beweisen, wenden wir uns folgender allgemeiner Frage zu: Wie bestimmt man die Anzahl der zu einer gegebenen Untergruppe konjugierten Untergruppen? Es sei $\mathcal{U}$ die Menge aller Untergruppen von G und $ G \times \mathcal{U} \rightarrow \mathcal{U}, (g , H) \mapsto g \cdot H := gHg^{-1} $ eine Gruppenoperation.
+Bevor wir den dritten Teil des Sylow-Satzes beweisen, wenden wir uns folgender allgemeiner Frage zu:
+Wie bestimmt man die Anzahl der zu einer gegebenen Untergruppe konjugierten Untergruppen?
+Es sei $\mathcal{U}$ die Menge aller Untergruppen von \(G\) und $G \times \mathcal{U} \rightarrow \mathcal{U}, (g , H) \mapsto g \cdot H := gHg^{-1}$ eine Gruppenoperation.
 
 \begin{defn}
-	Der Stabilisator einer Untergruppe $H$ von $G$ unter dieser Operation heißt \emph{Normalisator} von $H$: $N_G(H) = \{ g \in G: gHg^{-1} = H \}$. \\
-	Die zu $H$ konjugierten Untergruppen bilden die Bahn $G \cdot H$ von $H$. Es gilt also
-	$$ |G \cdot H| = | \{ A \in \mathcal{U} : A = gHg^{-1} \text{ mit } g \in G \} | = [G:N_G(H)] .$$
+	Der Stabilisator einer Untergruppe $H$ von $G$ unter dieser Operation heißt \emph{Normalisator} von $H$: $N_G(H) = \{ g \in G: gHg^{-1} = H \}$.
+	Die zu $H$ konjugierten Untergruppen bilden die Bahn $G \cdot H$ von $H$.
+	Es gilt also $$|G \cdot H| = | \{ gHg^{-1} \in \mathcal{U} : g \in G \} | = [G:N_G(H)].$$
 	Für eine endliche Gruppe $G$ ist diese Anzahl immer ein Teiler von $|G|$.
 \end{defn}
 
