@@ -1449,7 +1449,7 @@ Für den Beweis des dritten Teils benötigen wir folgendes Lemma:
 
 \begin{proof}
 	Es sei $s$ die Anzahl der $p$-Sylowuntergruppen von $G$. Aus Teil 3 des Sylow-Satzes folgt $s \divides q, s \equiv 1 \pmod{p}$. Da $q \not \equiv 1 \pmod{p}$, muss $s = 1$ gelten, denn die Primzahl $q$ ist nur durch $1$ und $q$ teilbar. \\
-	Es gibt also eine einzige $p$-Sylowuntergruppe $S$ von $G$. Aus Teil 2 des Sylow-Satzes folgt $gSg^{-1} = S$ für alle $g \in G$. Somit ist $S$ eine normale Untergruppe. \\
+	Es gibt also eine einzige $p$-Sylowuntergruppe $S$ von $G$. Aus Teil 2 des Sylow-Satzes folgt $gSg^{-1} = S$ für alle $g \in G$. Somit ist $S$ eine normale Untergruppe. \\ %FIXME Wozu den zweiten Sylowsatz. Die Aussage sollte eigentlich direkt daraus folgen, dass die Konjugation als ein Isomorphismus die Gruppenordnung unverändert lässt. Eventueller Fix betrifft dann auch die Aussage im thm. zur einfachen Gruppe der Ordnung 30
 	Für die Anzahl $r$ der $q$-Sylowuntergruppen gilt: $r \divides p$ und $r \equiv 1 \pmod{q}$. Wenn $r = p$, dann gilt $r = p \not = 1 \pmod{q}$ (wegen $p < q$). Dies ist also nicht möglich. Es gilt dann $r = 1$. Es existiert genau eine $q$-Sylowuntergruppe $R$ von $G$ und $R$ ist deswegen ein Normalteiler von $G$. Da $S$ und $R$ normal sind, ist $SR = \{ ab : a \in S, b \in R\}$ eine normale Untergruppe. \\
 	$S \cap R = \{ e\}$ (die Elemente müssen Ordnung $1$ haben). Dies ergibt, dass $SR$ das (innere) direkte Produkt von $S$ und $R$ ist. Insbesondere gilt $|SR| = |S \times R| = |S||R| = pq = |G|$. Folglich gilt $G = S \times R$. Man zeigt dann, $G = \langle ab \rangle \text{ mit } \langle a \rangle = S, \langle b \rangle = R$ zyklisch.
 \end{proof}
