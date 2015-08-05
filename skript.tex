@@ -1012,8 +1012,14 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 		Dann ist $\sim$ eine Äquivalenzrelation auf $M$.
 		Es sei $M = K_1\cup K_2\cup\dots\cup K_r$ die Zerlegung von $M$ in disjunkte Äquivalenzklassen.
 		Wir betrachten $a_j\in K_j$ beliebig.
-		Es sei $l_j$ die kleinste positive Zahl mit $\sigma^{l_j}(a_j) = a_j$.\footnote{Ein solches $l_j$ existiert aufgrund der vorausgesetzten Endlichkeit der symmetrischen Gruppe nach dem Satz von Lagrange. Es gilt also $l_j \leq \ord(\sigma)$.}
-		Das liefert uns \[a_j,\sigma(a_j),\sigma^2(a_j),\dots,\sigma^{l_j-1}(a_j)\in K_j\] und diese Elemente sind paarweise verschieden.
+		Es sei $l_j$ die kleinste positive Zahl mit $\sigma^{l_j}(a_j) = a_j$.\footnote{Ein solches $l_j$ existiert aufgrund der vorausgesetzten Endlichkeit der symmetrischen Gruppe nach dem Satz von Lagrange. Es gilt also $l_j \leq \ord(\sigma)$.} %FIXME Auf den zweiten Blick glaube ich , dass sogar l_j = |K_j| gelten muss, nach Definition der Äquivalenzrelation (Fabian)
+		Das liefert uns \[a_j,\sigma(a_j),\sigma^2(a_j),\dots,\sigma^{l_j-1}(a_j)\in K_j\] und diese Elemente sind paarweise verschieden. 
+                %FIXME Folgendes muss noch hinzugefügt werden: 
+                % BEGIN
+                % Aufgrund der Konstruktion der Äquivalenzrelation gilt sogar \[ \{ a_j,\sigma(a_j),\sigma^2(a_j),\dots,\sigma^{l_j-1}(a_j) \} =  K_j\] 
+                % END
+                % ansonsten ist nicht klar, wieso die unten folgende Gleichheit \sigma = (a_1\dots ... gelten sollte.
+                % (Fabian)
 		Aus der Definition folgt, dass $\sigma\upharpoonright_{K_j}=(a_j\sigma(a_j)\dots\sigma^{l_j-1}(a_j))\in S_{K_j}$ ein Zyklus der Länge $l_j$ ist.
 		Wenn wir dies für alle $j=1,\dots,r$ tun, erhalten wir:
 		\[\sigma = (a_1\dots\sigma^{l_1-1}(a_1))(a_2\dots\sigma^{l_2-1}(a_2))\dots(a_r\dots\sigma^{l_r-1}(a_r)).\]
@@ -1196,7 +1202,7 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 
 \begin{defn}
 	Seien $X$ und $Y$ $G$-Mengen.
-	Dann ist $f: X \rightarrow Y$ ein $G$-Homomorphismus, falls $f(gx)=g(f(x))$ ist. % FIXME Für alle g \in G?
+	Dann ist $f: X \rightarrow Y$ ein $G$-Homomorphismus, falls $f(gx)=g(f(x))$ ist, für alle $x \in X und g \in G$.
 \end{defn}
 
 \begin{thm}
@@ -1278,7 +1284,7 @@ Für die Operation von \(G\) auf sich selbst durch Konjugation gilt:
 
 \subsection{Die sylowschen Sätze}
 
-Der Satz von Lagrange gibt uns die Teilbarkeit $\ord(H) \divides \ord(G)$ für jede Untergruppe $H$ von $G$.
+Der Satz von Lagrange gibt uns die Teilbarkeit $\ord(H) \divides \ord(G)$ für jede Untergruppe $H$ einer endlichen Gruppe $G$.
 Aber: Wenn \(h\) ein Teiler von $\ord(G)$ ist, existiert dann auch eine Untergruppe \(H \subseteq G\) mit $\ord(H)=h$?
 
 \begin{thm}
@@ -1292,19 +1298,20 @@ Aber: Wenn \(h\) ein Teiler von $\ord(G)$ ist, existiert dann auch eine Untergru
 	\item Induktionsstart: Sei \(n=1\), d.h. $|G|=p$.
 		Daraus folgt: $G=\langle a\rangle$ ist zyklisch und der Erzeuger \(a\) hat Ordnung \(p\).
 	\item Induktionsschritt: Wir nehmen an, dass die Aussage für jede Gruppe der Ordnung $pm'$ mit $m'<n$ gilt.
-		Es sei $h\neq e$ ein beliebiges Element von \(G\), und $m:=\ord(h)$.
+		Es sei $h\neq e$ ein beliebiges Element von \(G\) und $m:=\ord(h)$.
+
 		Wenn \(m\) durch \(p\) teilbar ist, enthält die zyklische Untergruppe $\langle h\rangle$ ein Element der Ordnung \(p\).
 
 		Wenn \(p\) kein Teiler von \(m\) ist, so ist, mit \(pn = |G| = |G/\langle h\rangle||\langle h\rangle| = |G/\langle h\rangle|m\), \(p\) ein Teiler von $|G/\langle h\rangle|<pn$.
 		Nach Induktionsvoraussetzung enthält die Gruppe $|G/\langle h\rangle|$\footnote{\(\langle h\rangle\) ist eine normale Untergruppe, da \(G\) abelsch ist.} ein Element $a\langle h\rangle$ der Ordnung \(p\).
 		Es sei $k:=\ord(a)$ die Ordnung des gewählten Repräsentanten $a \in G$.
-		Nun liefert \[(a\langle h\rangle)^k=a^k\langle h\rangle=\langle h\rangle\] die Teilbarkeit \(p = \ord(a\langle h\rangle) \mid k\).
+		Nun liefert \[(a\langle h\rangle)^k=a^k\langle h\rangle=\langle h\rangle\] die Teilbarkeit \(p = \ord(a\langle h\rangle) \divides k\).
 		Daraus folgt, dass $a^{\frac{k}{p}}$ ein Element von $\langle a\rangle \subseteq G$ der Ordnung \(p\) ist.\qedhere
 	\end{itemize}
 \end{proof}
 
 \begin{thm}[Cauchy]
-	Ist \(p\) eine Primzahl, die die Ordnung der endl. Gruppe \(G\) teilt, so enthält \(G\) ein Element der Ordnung \(p\).
+	Ist \(p\) eine Primzahl, die die Ordnung der endlichen Gruppe \(G\) teilt, so enthält \(G\) ein Element der Ordnung \(p\).
 \end{thm}
 
 \begin{proof}
@@ -1316,7 +1323,7 @@ Aber: Wenn \(h\) ein Teiler von $\ord(G)$ ist, existiert dann auch eine Untergru
 		Wir können annehmen, dass die Ordnung jeder Untergruppe $H \subsetneq G$ nicht durch \(p\) teilbar ist.
 		Insbesondere gilt, im Spezialfall der Zentralisation, $p \nmid \ord(C_{G}(a))$ für alle $a \notin Z(G)$.
 		Nun seien \(x_i\) für \(i \in I\) ein beliebiges Repräsentantensystem der Konjugationsklassen von \(G\).
-		Die Klassengleichung gibt uns dann \[|Z(G)| = |G| - \sum_{x_i \notin Z(G)}\dfrac{|G|}{|C_{G}(x_i)|}\] und somit $p \mid \ord(Z(G))$.
+		Die Klassengleichung gibt uns dann \[|Z(G)| = |G| - \sum_{x_i \notin Z(G)}\dfrac{|G|}{|C_{G}(x_i)|}\] und somit $p \divides \ord(Z(G))$.
 		Aus der Annahme folgt dann \(Z(G)=G\).
 		\(G\) ist also abelsch und die Aussage folgt aus dem vorherigen Satz.\qedhere
 \end{itemize}
@@ -1348,10 +1355,10 @@ Aber: Wenn \(h\) ein Teiler von $\ord(G)$ ist, existiert dann auch eine Untergru
 	Es sei \(G\) eine endliche Gruppe der Ordnung $|G|=p^n q$ mit \(p\) Primzahl, \(q\) teilerfremd zu \(p\).
 	Dann gelten:
 	\begin{enumerate}
-	\item \(G\) enthält eine Untergruppe der Ordnung $p^\alpha$ für jedes $1\leq \alpha \leq n$. % TODO Wieso nicht 0 \leq ...? Mit {e} ist das eine triviale Verstärkung des Satzes.
+	\item \(G\) enthält eine Untergruppe der Ordnung $p^\alpha$ für jedes $1\leq \alpha \leq n$. % TODO Wieso nicht 0 \leq ...? Mit {e} ist das eine triviale Verstärkung des Satzes. -- Ich halte das ausnahmsweise für viel zu trivial. Sinn des Satzes ist ja die Existenz von nichttrivialen p-Gruppen zu zeigen. (Fabian)
 	\item Es sei \(H\) eine \(p\)-Untergruppe von \(G\) und \(S\) eine \(p\)-Sylowuntergruppe.
 		Dann existiert ein $g \in G$ mit $H \subset gSg^{-1}$.
-	\item Die Anzahl der \(p\)-Sylowuntergruppen ist ein Teiler von \(q\) von der Form $s=1+kp$ mit $k \in \mathbb{N}$.
+	\item Die Anzahl $s$ der \(p\)-Sylowuntergruppen ist ein Teiler von \(q\) von der Form $s=1+kp$ mit $k \in \mathbb{N}$.
 	\end{enumerate}
 \end{thm}
 
@@ -1365,7 +1372,7 @@ Aber: Wenn \(h\) ein Teiler von $\ord(G)$ ist, existiert dann auch eine Untergru
 	Ist $(a_i)_{i \in I}$ ein Repräsentantensystem der Konjugationsklassen, so gilt
 	\[p^nq = |G| = |Z(G)|+\sum_{a_{i}\notin Z(G)}\dfrac{|G|}{|C_{G}(a_{i})|} = |Z(G)|+\sum_{a_{i}\notin Z(G)}[G:C_G(a_i)].\]
 	Da die \(C_G(a_i)\) für alle \(a_i \not\in Z(G)\) echte Untergruppen sind, gilt $p^n \nmid |C_G(a_i)|$.
-	Aus der Annahme $p^n \mid |G|$ ergibt sich also \(p \mid [G:C_G(a_i)]\), weshalb auch $|Z(G)|$ durch \(p\) teilbar ist.
+	Aus der Annahme $p^n \divides |G|$ ergibt sich also \(p \divides [G:C_G(a_i)]\), weshalb auch $|Z(G)|$ durch \(p\) teilbar ist.
 	Aus dem Satz von Cauchy folgt dann, dass $b \in Z(G)$ mit $\ord(b)=p$ existiert.
 
 	% VL 09.06.
@@ -1465,9 +1472,9 @@ Für den Beweis des dritten Teils benötigen wir folgendes Lemma:
 \begin{proof}
 	Es ist $|G| = 30 = 2\cdot 3\cdot 5$. Es seien $s$ die Anzahl der 5-Sylowuntergruppen und $t$ die der 3-Sylowuntergruppen. Angenommen, $G$ sei einfach. Dann gilt: $s>1$ und $t>1$, denn mit $s=1$ (bzw. $t=1$) wäre die 5-Sylowuntergruppe (bzw. 3-Sylowuntergruppe) normal wegen Konjugiertheit der Sylowgruppen zueinander (Teil 2 im Satz). Aus Teil (3) folgt
 		\[ s \divides 6,\; s\equiv 1(5)\Rightarrow s=6.\]
-	Also gibt es 6 verschiedene 5-Sylowuntergruppen, jede davon hat Ordnung $5$. Damit enthalten die 5-Sylowuntergruppen zusammen $6\cdot 4 =24$ Elemente und das neutrale Element. Analog gilt für $t$
+	Also gibt es 6 verschiedene 5-Sylowuntergruppen, jede davon hat Ordnung $5$. Da die 5-Sylowuntergruppen zyklisch sind, haben sie paarweise nur einen trivialen Schnitt. Damit enthalten die 5-Sylowuntergruppen zusammen $6\cdot 4 =24$ Elemente und das neutrale Element. Analog gilt für $t$
 		\[ t \divides 10,\; t\equiv 1(3) \Rightarrow t=10.\]
-	Damit enthalten die 3-Sylowuntergruppen $10\cdot 2=20$ Elemente und das neutrale Element.
+	Damit enthalten die 3-Sylowuntergruppen $10\cdot 2=20$ Elemente und das neutrale Element. Die nichttrivialen Elemente der 3-Sylowgruppen sind von denen der 5-Sylowgruppen verschieden, denn das einzige Element dessen Ordnung sowohl 5 als auch 3 teilt ist das neutrale.
 	
 	Aber: $20+24+1=45>30=\ord(G)$. Also kann $G$ nicht einfach sein.
 \end{proof}
@@ -1854,8 +1861,7 @@ Wir setzen $V := \pi ^{-1}(V') \subseteq G$. Wir möchten zeigen $G=\langle g\ra
 Sei $a\in G$. Dann gilt:
 \[ \pi (a)=c\pi (g)+\pi (v),c\in \mathbb{Z}, v\in V.\]
 Somit folgt:
-\[ \pi (a-cg-v )=0\in G/H\Rightarrow a=cg+v+h\Rightarrow G = \langle g\rangle \oplus V.\]
-\qedhere
+\[ \pi (a-cg-v )=0\in G/H\Rightarrow a=cg+v+h\Rightarrow G = \langle g\rangle \oplus V.\qedhere \]
 \end{enumerate} 
 \end{proof}
 
@@ -1909,7 +1915,7 @@ wobei $F\cong \nicefrac{G}{T(G)}$ frei abelsch vom Rang $r$ ist und
 	Wdh.: $p$ Primzahl, $G_p := \{x\in G: p^nx=0\text{ für ein $n\geq 0$}\}\subset T(G)$. Insbesondere gilt: $\left(T(G)\right)_p=G_p$. $G_p$ ist \emph{die} p-Sylowuntergruppe von $T(G)$.
 	
 	Für $p<p_1,\dots,p_t$ folgt aus dem letzten Satz
-		\[ G_p \cong \nicefrac{\Z}{p^{m_1}\Z}\oplus\dots\oplus\nicefrac{\Z}{p^{m_k}\Z}.\]
+		\[ G_p \cong \nicefrac{\Z}{p^{m_1}\Z}\oplus\dots\oplus\nicefrac{\Z}{p^{m_k}\Z}.\qedhere\]
 \end{proof}
 
 \begin{ex}
