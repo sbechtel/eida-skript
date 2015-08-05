@@ -438,7 +438,7 @@
 
 \begin{kor}[Satz von Lagrange]
 	Es gilt $\vert G\vert = [G:H]\cdot\vert H\vert$ für jede Untergruppe $H$ von $G$.
-	Besonders gilt: $\vert H\vert$ teilt $\vert G\vert$ und $\ord(g)$ ist ein Teiler von $\vert G\vert$ für jedes $g\in G$.
+	Besonders gilt für endliche Gruppen $G$: $\vert H\vert$ teilt $\vert G\vert$ und $\ord(g)$ ist ein Teiler von $\vert G\vert$ für jedes $g\in G$.
 \end{kor}
 
 \begin{proof}
@@ -1223,7 +1223,7 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 	\[x \sim y :\Leftrightarrow \text{\(x=gy\) für ein \(g\in G\).}\]
 	D.h. die Bahnen bilden eine Partition von $X$.
 	Für ein Repräsentantensystem $\{x_i\}_{i\in I}$ der Bahnen von \(X\) gilt somit die Bahnengleichung
-	$$|X|=\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}|Gx_i|=\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}[G:G_{x_i}]=|X^G|+\sum\limits_{\begin{subarray}{c}i \in I\\ x_i \notin X^G\end{subarray}}[G:G_{x_i}]$$
+	$$ |X| =\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}|Gx_i| =\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}[G:G_{x_i}] =|X^G|+\sum\limits_{\begin{subarray}{c}i \in I\\ x_i \notin X^G\end{subarray}}[G:G_{x_i}]. $$
 \end{nb}
 
 %VL 2.6.15
@@ -1231,7 +1231,7 @@ Für die Operation von \(G\) auf sich selbst durch Konjugation gilt:
 \begin{thm} [Klassengleichung]
 	Ist $\{x_{i}\}_{i \in I}$ ein Repräsentantensystem für die Konjugationsklassen der Gruppe \(G\), so gilt\footnote{Erinnerung: \(Z(G)=\{a \in G : \forall g \in G: ag=ga\}\) ist das Zentrum von \(G\) und \(C_G(x) = \{a \in G :ax = xa\}\) der Zentralisator von \(x\).}
 	\[|G|= |Z(G)|+\sum_{x_{i}\notin Z(G)}[G:C_{G}(x_{i})].\]
-	Für endliche Gruppen ist also $[G:G_{x_{i}}]=\dfrac{|G|}{|G_{x_{i}}|}$. % TODO WTF hat das mit dem Rest hier zu tun? Für alle Untergruppen gilt [G:H] = |G|/|H|.
+        Für endliche Gruppen ist also $[G:G_{x_{i}}]=\dfrac{|G|}{|G_{x_{i}}|}$. % TODO WTF hat das mit dem Rest hier zu tun? Für alle Untergruppen gilt [G:H] = |G|/|H|. -- Beachte das Wörtchen *endlich*. I.A. gilt nur |G| = [G:H] |H|. (Fabian)
 \end{thm}
 
 \begin{nb}
