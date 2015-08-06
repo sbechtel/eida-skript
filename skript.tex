@@ -1893,10 +1893,17 @@ Somit folgt:
 		\item $V_{j+1}\subset V_j$, die $V_j=\langle g_{j+1}\rangle\oplus V_{j+1}$ erfüllt.
 	\end{itemize}
 	Da $|G|$ endlich ist, existiert ein (minimaler) Index $k$, sodass $V_{k+1}=\{0\}$ gilt. Das heißt für $k$ gilt $V_k\neq \{0\},\; V_{k+1}=\{0\}$. Dann gilt weiterhin
-	\[ G = \langle g_1\rangle\oplus V_1 = \langle g_1\rangle\oplus\langle g_2\rangle\oplus V_2 = \dots = \langle g_1\rangle\oplus\langle g_2\rangle\oplus\dots\oplus\langle g_k\rangle\oplus V_{k+1}=\{0\}.\]
+	\[ 
+        G 
+        = \langle g_1\rangle\oplus V_1 
+        = \langle g_1\rangle\oplus\langle g_2\rangle\oplus V_2 
+        = \dots 
+        = \langle g_1\rangle\oplus\langle g_2\rangle\oplus\dots\oplus\langle g_k\rangle\oplus \underbrace{V_{k+1}}_{=\{0\}}.\]
 	Wenn man $H_j:=\langle g_j\rangle$ definiert, gilt also
 	\[ G = H_1\oplus\dots\oplus H_j\oplus\dots\oplus H_k,\]
-	wobei $H_j$ zyklisch der Ordnung $p^{m_j}$ ist und $m_1\geq m_2\geq\dots\geq m_k$. Wir müssen noch zeigen, dass die $m_j$ eindeutig bestimmt sind ($g_j$ und $V_j$ sind \emph{nicht} eindeutig). Für eine abelsche Gruppe $A$ und $s\in\mathbb{Z},\; s\geq 1$, setzen wir $A(s) := \{x\in A:sx=0\}$. $A(s)$ ist eine Untergruppe, denn $A(s) = \ker(A\to^{\mu_s}A),\;\mu_s(a):=sa$ und $\mu_s$ ist für abelsche Gruppen immer ein Gruppenhomomorphismus. Ferner induziert jeder Homomorphismus $A\to B$ von abelschen Gruppen einen Homomorphismus $A(s)\to B(s)$. Für nicht abelsche Gruppen ist die Abbildung schon für $s=2$ kein Homomorphismus. Im Fall von $G$ erhalten wir für $s=p$:
+	wobei $H_j$ zyklisch der Ordnung $p^{m_j}$ ist und $m_1\geq m_2\geq\dots\geq m_k$. 
+        
+        Wir müssen noch zeigen, dass die $m_j$ eindeutig bestimmt sind ($g_j$ und $V_j$ sind \emph{nicht} eindeutig). Für eine abelsche Gruppe $A$ und $s\in\mathbb{Z},\; s\geq 1$, setzen wir $A(s) := \{x\in A:sx=0\}$. $A(s)$ ist eine Untergruppe, denn $A(s) = \ker(A \overset{\mu_s}{\to} A),\;\mu_s(a):=sa$ und $\mu_s$ ist für abelsche Gruppen immer ein Gruppenhomomorphismus. Ferner induziert jeder Homomorphismus $A\to B$ von abelschen Gruppen einen Homomorphismus $A(s)\to B(s)$. Für nicht abelsche Gruppen ist die Abbildung schon für $s=2$ kein Homomorphismus. Im Fall von $G$ erhalten wir für $s=p$:
 	\[ G(p) = H_1(p)\oplus H_2(p)\oplus\dots\oplus H_k(p).\]
 	Da $H_j$ immer zyklisch von Ordnung $p^{m_j}$, $m_j\geq 1$, ist, ist $H_j(p)$ eine zyklische Gruppe der Ordnung $p$. Daraus folgt $|G(p)|=p^k$. Dies zeigt, dass $k$ durch $G$ eindeutig bestimmt wird. Für $s=p^{\alpha}$, $\alpha\geq 1$ beliebig, erhalten wir
 	\begin{itemize}
