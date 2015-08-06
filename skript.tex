@@ -513,7 +513,7 @@
 
 \begin{defn}
 	Es seien $(G,\cdot_G)$ und $(H,\cdot_H)$ Gruppen.
-	Ein Gruppenhomomorphismus von $G$ in $H$ ist eine Abbildung $f:G\rightarrow H$, so dass	$$f(a\cdot_{G}b)=f(a)\cdot_{H}f(b)$$ für alle $a,b\in G$ gilt.
+	Ein Gruppenhomomorphismus von $G$ in $H$ ist eine Abbildung $f:G\rightarrow H$, sodass	$$f(a\cdot_{G}b)=f(a)\cdot_{H}f(b)$$ für alle $a,b\in G$ gilt.
 \end{defn}
 
 \begin{lemma}[Eigenschaften von Homomorphismen]
@@ -609,7 +609,7 @@
 
 \begin{thm}[Homomorphiesatz]
 	Es sei $f: G \rightarrow G'$ ein Gruppenhomomorphismus und \(N\) ein Normalteiler von \(G\).
-	Ist \(N\) im Kern von \(f\) enthalten, so gibt es genau einen Gruppenhomomorphismus $\bar{f}: G/N \rightarrow G'$, so dass das folgende Diagramm kommutiert:
+	Ist \(N\) im Kern von \(f\) enthalten, so gibt es genau einen Gruppenhomomorphismus $\bar{f}: G/N \rightarrow G'$, sodass das folgende Diagramm kommutiert:
 	\[\begin{tikzcd}
 		G \arrow[rd,"\pi"] \arrow[rr,"f=\bar f\circ \pi"] & & G'\\
 		& G/N \arrow[ru,"\bar f"] &
@@ -741,7 +741,7 @@
 \end{nb}
 
 \begin{defn}
-	Sei $G$ eine Gruppe und $(N_i)_{i\in I}$ eine Familie von normalen Untergruppen, so dass gilt:
+	Sei $G$ eine Gruppe und $(N_i)_{i\in I}$ eine Familie von normalen Untergruppen, sodass gilt:
 	\begin{enumerate}[label=(\roman*)]
 		\item $G=\langle\bigcup_{i\in I} N_i\rangle$
 		\item $N_{i_0} \cap \langle\bigcup_{i\in I \setminus \{i_0\}} N_i\rangle = \{e\}$ für jedes $i_0\in I$.
@@ -816,7 +816,7 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
 \end{ex}
 
 \begin{defn}
-	Es seien $G$ eine Gruppe, $N\subseteq G$ Normalteiler von $G$ und $H\subseteq G$ beliebige Untergruppe, so dass gilt:
+	Es seien $G$ eine Gruppe, $N\subseteq G$ Normalteiler von $G$ und $H\subseteq G$ beliebige Untergruppe, sodass gilt:
 	$$G=NH \quad \text{und} \quad N\cap H = \{e\}$$
 	Dann ist $G$ das \emph{(innere) semidirekte Produkt} von $N$ und $H$, Notation: $G=N\rtimes H$.
 \end{defn}
@@ -967,7 +967,7 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 	Es sei $M\neq\emptyset$ eine Menge und $\sigma$ eine Permutation von $M$.
 	\begin{enumerate}
 	\item Der \defi{Träger} von $\sigma$ ist $\supp(\sigma) := \{m\in M: \sigma(m)\neq m\}$.
-	\item Ein \defi{Zyklus} der Länge $l$ ist eine Permutation $\sigma\in S_M$ mit $l = |\supp(\sigma)|$, so dass
+	\item Ein \defi{Zyklus} der Länge $l$ ist eine Permutation $\sigma\in S_M$ mit $l = |\supp(\sigma)|$, sodass
 		\[\supp(\sigma) = \{m_1,m_2,\dots,m_l\}\text{ mit }\sigma(m_j) = m_{j+1},\; 1\leq j<l,\; \sigma(m_l) = m_1.\]
 		Für einen solchen Zyklus schreiben wir $\sigma = (m_1m_2\dots m_l)$.
 	\item 2-Zyklen werden \defi{Transpositionen} genannt.
@@ -1483,8 +1483,8 @@ Für den Beweis des dritten Teils benötigen wir folgendes Lemma:
 
 \begin{defn}
 	Es sei $G$ eine Gruppe. Eine Normalreihe in $G$ ist eine Folge von Untergruppen
-		\[ \{e\} = G_0 \subseteq G_1 \subseteq G_2 \subseteq\dots\subseteq G_n=G\qquad n\geq 1\qquad(n=0\text{ für } G=\{e\})\]
-	so dass für alle $i,1\leq i\leq n$ $G_{i-1}$ Normalteiler von $G_i$ ist.
+		\[ \{e\} = G_0 \subseteq G_1 \subseteq G_2 \subseteq\dots\subseteq G_n=G\qquad n\geq 1\qquad(n=0\text{ für } G=\{e\}),\]
+	sodass für alle $i$ mit $1\leq i\leq n$ die Untergruppe $G_{i-1}$ Normalteiler von $G_i$ ist.
 \end{defn}
 
 \begin{nb}
@@ -1500,7 +1500,7 @@ Für den Beweis des dritten Teils benötigen wir folgendes Lemma:
 	zwei Normalreihen.
 	\begin{itemize}
 		\item $\underline{H}$ ist eine Verfeinerung von $\underline{G}$, wenn $\underline{H}$ aus $\underline{G}$ durch das Einfügen von Untergruppen erhalten werden kann.
-		\item $\underline{G}$ und $\underline{H}$ heißen äquivalent, wenn $m=n$ gilt und es eine Permutation $\sigma\in S_n$ gibt, so dass 
+		\item $\underline{G}$ und $\underline{H}$ heißen äquivalent, wenn $m=n$ gilt und es eine Permutation $\sigma\in S_n$ gibt, sodass 
 		\[ G_j/G_{j-1}\cong H_{\sigma(j)}/H_{\sigma(j)-1}\]
 			für alle $1\leq j\leq n$ gilt.
 	\end{itemize}
@@ -1518,7 +1518,7 @@ Es sei $G$ eine Gruppe, $\underline{G}$ und $\underline{H}$ Normalreihen in $G$.
 		\end{split}\]
 	die beiden Normalreihen. Wir setzen nun $G_{ij}:=G_i\cdot(G_{i+1}\cap H_j), H_{ij} := H_j\cdot(G_i\cap H_{j+1})$ für alle $i,j$ mit $G_{n+1}:=G=:H_{m+1}$.
 	
-	Es gilt nun: $G_{i,m}=G_{i+1}=G_{i+1,0}$ und $H_{n,j}=H_{j+1}=H_{0,j+1}$, so dass $\{G_{ij}\}$ und $\{H_{ij}\}$ Folgen von Untergruppen sind. Es ist klar, dass diese Verfeinerungen von $G$ bzw. $H$ von selber Länge sind. Wir müssen noch zeigen:
+	Es gilt nun: $G_{i,m}=G_{i+1}=G_{i+1,0}$ und $H_{n,j}=H_{j+1}=H_{0,j+1}$, sodass $\{G_{ij}\}$ und $\{H_{ij}\}$ Folgen von Untergruppen sind. Es ist klar, dass diese Verfeinerungen von $G$ bzw. $H$ von selber Länge sind. Wir müssen noch zeigen:
 	\begin{enumerate}[label=(\alph*)]
 		\item $G_{ij}\subseteq G_{i,j+1}$ und $H_{ij}\subseteq H_{i,j+1}$ sind normal, damit beide Normalreihen sind,
 		\item $G_{i,j+1}/G_{i,j}$ und $H_{i+1,j}/H_{i,j}$ sind beide isomorph zu $\nicefrac{(G_{i+1}\cap H_{j+1})}{(G_{i+1}\cap H_{j})\cdot(G_{i}\cap H_{j+1})}$.
@@ -1619,11 +1619,11 @@ Es sei $G$ eine Gruppe, $\underline{G}$ und $\underline{H}$ Normalreihen in $G$.
 
 Motivation: Beschreibung von Nullstellen von Polynomen durch Radikale
 \begin{itemize}
-  \item Grad $2$: $x^2 + 2px + q = 0 \leadsto p\text{-}q\text{Formel} \quad x_{1,2} = -p \pm \sqrt{p^{2} - q} $
+  \item Grad $2$: $x^2 + 2px + q = 0 \leadsto p\text{-}q\text{-Formel} \quad x_{1,2} = -p \pm \sqrt{p^{2} - q} $
   \item Grad $3,4$: Ähnliche Formeln, die $\sqrt[2]{}, \sqrt[3]{}, \sqrt[4]{}$ enthalten
 \end{itemize}
 
-Aus der Tatsache, dass $S_n$ nicht auflösbar ist für $n \geq 5$ folgt, dass solche Formeln für allgemeine Polynome vom Grad $n \geq 5$ nicht mehr möglich sind
+Aus der Tatsache, dass $S_n$ nicht auflösbar ist für $n \geq 5$ folgt, dass solche Formeln für allgemeine Polynome vom Grad $n \geq 5$ nicht mehr möglich sind.
 
 \subsection{Abelsche Gruppen}
 
@@ -1645,7 +1645,7 @@ Direktes Produkt: $\prod_{i \in I} H_i \to (h_i)_{i \in I}$ mit $h_i \in H_i \; 
 Wie im Fall der direkten Produkte zeigt man das Folgende:
 
 \begin{thm}
-  Es sei $(H_i)_{i \in I}$ eine Familie von Untergruppen einer abelschen Gruppe $G$. Dann sind die folgenden Aussagen äquivalent
+  Es sei $(H_i)_{i \in I}$ eine Familie von Untergruppen einer abelschen Gruppe $G$. Dann sind die folgenden Aussagen äquivalent:
 \begin{itemize}
   \item[(i)]  $G$ wird durch $\cup_{i \in I} H_i$ erzeugt und für jedes $i_0 \in I$ gilt 
     \[ H_{i_0} \cap \langle \bigcup_{i \neq i_0} H_i \rangle = \left\{ 0 \right\}. \]
@@ -1662,7 +1662,7 @@ Wie im Fall der direkten Produkte zeigt man das Folgende:
 \end{nb}
 
 \begin{defn}
-  Eine abelsche Gruppe heißt \emph{frei}, wenn eine Teilmenge $X \subset G$ existiert, so dass
+  Eine abelsche Gruppe heißt \emph{frei}, wenn eine Teilmenge $X \subset G$ existiert, sodass
   \begin{itemize}
     \item[(i)] $\operatorname{ord}(x) = \infty$ gilt für alle $x \in X$
     \item[(ii)] $G = \bigoplus_{x \in X} \langle x \rangle$.
@@ -1699,7 +1699,8 @@ Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:
 \end{thm}
 \begin{proof}
   Es sei $g \in G$ beliebig. Es gilt: $g = \sum_{x \in X}m_x x$ ($ m_x = 0$ für fast alle $x$). \\
-  Wir setzen $\tilde{f}(g) := \sum_{x \in X} m_x f(x)$ (Summe ist wieder endlich, insbesondere unabhängig von Summationsreihenfolge). Dies ist wohldefiniert, weil die Summe endlich ist. $\tilde{f}$ ist dann ein Gruppenhomomorphismus, der $f$ fortsetzt.  \\
+  Wir setzen $\tilde{f}(g) := \sum_{x \in X} m_x f(x)$ (Summe ist wieder endlich, insbesondere unabhängig von Summationsreihenfolge). Dies ist wohldefiniert, weil die Summe endlich ist. $\tilde{f}$ ist dann ein Gruppenhomomorphismus, der $f$ fortsetzt.
+
   Es sei $\varphi : G \to H$ ein Homomorphismus, der $f$ fortsetzt. Dann gilt für alle $x_1,\dots,x_l \in X, m_1,\dots,m_l \in \mathbb{Z}$: 
   \begin{align*}
   \varphi(m_1 x_1 + \dots + m_l x_l) 
@@ -1738,10 +1739,10 @@ Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:
 %Vorlesung 7.7.15
 
 \begin{nb}
-Ziel ist die Klassifizierung der endlichen erzeugten abelschen Gruppen:
+Ziel ist die Klassifizierung der endlich erzeugten abelschen Gruppen:
 \begin{enumerate}
-\item Schritt: Zeige $G \cong F \oplus T(G)$ mit endlich erzeugten freie abelsche Gruppe (also $F \cong \mathbb{Z}^{r}, r \geq 1$) und der endlichen Torsionsuntergruppe $T(G)$ von G
-\item Schritt: Zeige (mit Sylow) die Zerlegung $T(G) = \bigoplus_{p\text{ prim}} G_{p}$ mit geeigneten p-Gruppen $G_{p}$
+\item Schritt: Zeige $G \cong F \oplus T(G)$ mit endlich erzeugten freie abelsche Gruppe (also $F \cong \mathbb{Z}^{r}, r \geq 1$) und der endlichen Torsionsuntergruppe $T(G)$ von G.
+\item Schritt: Zeige (mit Sylow) die Zerlegung $T(G) = \bigoplus_{p\text{ prim}} G_{p}$ mit geeigneten p-Gruppen $G_{p}$.
 \item Schritt: Klassifizierung der p-Gruppen $G_{p}$, diese sind aus endlichen Produkten (endlicher) zyklischer Gruppen aufgebaut.
 \end{enumerate}
 \end{nb}
@@ -1755,7 +1756,7 @@ Sei $M$ ein endliches Erzeugendensystem von $G$.
 Sei $\{m_{1}, \dots ,m_{k}\} \subset M$ eine maximale Teilmenge $\mathbb{Z}$-linear unabhängiger Elemente, d.h. aus $n_{1}m_{1}+ \dots +n_{k}m_{k}=0$, mit $n_{1}, \dots ,n_{k} \in \mathbb{Z}$ folgt immer $n_{1}= \dots =n_{k}=0$. 
 Folglich gibt es zu jedem $m \in M, m \notin \{m_{1}, \dots ,m_{k}\}$ ein $n(m) \in \mathbb{Z}, n(m)\neq 0$ und geeignete Koeffizienten $n_{1}, \dots ,n_{k} \in \mathbb{Z}$ mit $n(m)=n_{1}m_{1}+ \dots +n_{k}m_{k}$. 
 Sei $N$ ein gemeinsames Vielfaches von den (endlich vielen) Zahlen $n(m),m \in M-\{m_{1}, \dots ,m_{k}\}$. 
-Dann gilt: $Nm \in <m_{1}, \dots ,m_{k}>$ für alle $m \in M$.
+Dann gilt: $Nm \in \langle m_{1}, \dots ,m_{k} \rangle$ für alle $m \in M$.
 
 Sei $\mu :G\rightarrow \langle m_{1}, \dots ,m_{k} \rangle $ durch $\mu (g)=Ng$ definiert. Da $G$ abelsch ist, ist $\mu$ ein Homomorphismus. Wegen $\ker(\mu ) \subset T(G) = \{ 0\}$ ist $\mu$ injektiv. Aus dem Homomorphiesatz folgt $G \cong \mu (G) \subset \langle m_{1}, \dots ,m_{k}\rangle$. D.h. $G$ ist eine Untergruppe einer freien abelschen Gruppe. Somit ist $G$ frei abelsch.
 \end{proof}
@@ -1851,12 +1852,12 @@ $G/H$ ist eine abelsche p-Gruppe mit $|G/H|<|G|$ und $\pi (g)\in G/H$ ist eine E
 ($\pi$ ist surjektiv; $\ord(\pi (g))$ ist die kleinste Zahl $m\geq 1$ mit $mg\in H$)
 
 Da die maximale Ordnung in $G/H$ höchstens $\ord(g)=p^{\alpha}$ ist, reicht es zu zeigen, dass $\ord(\pi (g))=p^{\alpha}$ gilt.
-$m=\ord(\pi (g))$ ist die kleinste positive Zahl, so dass $mg\in H$. Aus $\langle g\rangle \cap H=\{ 0\}$ folgt:
+$m=\ord(\pi (g))$ ist die kleinste positive Zahl, sodass $mg\in H$. Aus $\langle g\rangle \cap H=\{ 0\}$ folgt:
 \[ mg\in \langle g\rangle \cap H=\{ 0\} \Rightarrow mg=0 \Rightarrow p^{\alpha}=\ord(g) \divides m\]
 Ferner gilt:
 \[ p^{\alpha}\pi (g)=\pi (p^{\alpha}g)=\pi(0) =0\Rightarrow m \divides p^{\alpha}\]
 Also gilt $m=p^{\alpha}$. Es folgt $G/H=\langle \pi (g)\rangle \oplus V'$. 
-Wir setzen $V := \pi ^{-1}(V') \subseteq G$. Wir möchten zeigen $G=\langle g\rangle \oplus V$. Es sei $a\in \mathbb{Z}$, so dass $ag\in V$. Dann gilt:
+Wir setzen $V := \pi ^{-1}(V') \subseteq G$. Wir möchten zeigen $G=\langle g\rangle \oplus V$. Es sei $a\in \mathbb{Z}$, sodass $ag\in V$. Dann gilt:
 \[ \pi (ag)\in \langle \pi (g)\rangle\ \cap V'=\{ 0\}\Rightarrow ag\in H\Rightarrow ag=0\Rightarrow \langle g\rangle \cap V=\{ 0\}.\]
 Sei $a\in G$. Dann gilt:
 \[ \pi (a)=c\pi (g)+\pi (v),c\in \mathbb{Z}, v\in V.\]
@@ -1872,10 +1873,10 @@ Somit folgt:
 	mit $|V_1|=\frac{|G|}{p^{m_1}}=p^{n-m_1}$. Induktiv definiert man für jedes $n\in\mathbb{N},j\geq 1$:
 	\begin{itemize}
 		\item $g_{j+1}\in V_j$ ein Element maximaler Ordnung in $V_j$,
-		\item $m_{j+1}\in\mathbb{N}$, so dass $\ord(g_{j+1})=m_{j+1}$,
+		\item $m_{j+1}\in\mathbb{N}$, sodass $\ord(g_{j+1})=m_{j+1}$,
 		\item $V_{j+1}\subset V_j$, die $V_j=\langle g_{j+1}\rangle\oplus V_{j+1}$ erfüllt.
 	\end{itemize}
-	Da $|G|$ endlich ist, existiert ein (minimaler) Index $k$, so dass $V_{k+1}=\{0\}$ gilt. Das heißt für $k$ gilt $V_k\neq \{0\},\; V_{k+1}=\{0\}$. Dann gilt weiterhin
+	Da $|G|$ endlich ist, existiert ein (minimaler) Index $k$, sodass $V_{k+1}=\{0\}$ gilt. Das heißt für $k$ gilt $V_k\neq \{0\},\; V_{k+1}=\{0\}$. Dann gilt weiterhin
 	\[ G = \langle g_1\rangle\oplus V_1 = \langle g_1\rangle\oplus\langle g_2\rangle\oplus V_2 = \dots = \langle g_1\rangle\oplus\langle g_2\rangle\oplus\dots\oplus\langle g_k\rangle\oplus V_{k+1}=\{0\}.\]
 	Wenn man $H_j:=\langle g_j\rangle$ definiert, gilt also
 	\[ G = H_1\oplus\dots\oplus H_j\oplus\dots\oplus H_k,\]
@@ -1891,7 +1892,7 @@ Somit folgt:
 		\item für $G$ ergibt dies
 			\[G(p^{\alpha})=H_1(p^{\alpha})\oplus\dots\oplus H_k(p^{\alpha}).\]
 	\end{itemize}
-	Es sei $k'$ der größte Index, so dass $m_{k'}\geq\alpha$ gilt. Daraus folgt
+	Es sei $k'$ der größte Index, sodass $m_{k'}\geq\alpha$ gilt. Daraus folgt
 	\[|G(p^{\alpha})|=p^{\alpha k'}\cdot p^{m_{k'+1}}\cdot\dots\cdot p^{m_k} = p^{\alpha k'+m_{k'+1}+\dots+m_k}.\]
 	Mithilfe der obigen Formel werden $m_1,\dots,m_k$ von endlich vielen Werten von $|G(p^{\alpha})|$ eindeutig bestimmt.
 	
@@ -1901,7 +1902,7 @@ Somit folgt:
 \begin{kor}
 	Eine endlich erzeugte abelsche Gruppe $G$ ist immer eine direkte Summe endlich vieler zyklischer Gruppen, deren Ordnung unendlich oder Potenz einer Primzahl ist.
 	
-	Es existieren eine endlich bestimmte Zahl $r\geq 0$ und eindeutig bestimmte Primpotenzen $q_1,\dots q_l$, so dass gilt:
+	Es existieren eine endlich bestimmte Zahl $r\geq 0$ und eindeutig bestimmte Primpotenzen $q_1,\dots q_l$, sodass gilt:
 	\[ G\cong F\oplus T(G), \]
 wobei $F\cong \nicefrac{G}{T(G)}$ frei abelsch vom Rang $r$ ist und 
 	\[ T(G) \cong \nicefrac{\Z}{q_1\Z}\oplus\nicefrac{\Z}{q_2\Z}\oplus\dots\oplus\nicefrac{\Z}{q_l\Z}.\]
