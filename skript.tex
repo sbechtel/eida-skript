@@ -303,7 +303,7 @@
 
 \begin{proof} % TODO Diesen Beweis überspringe ich gerade. -- Peter 
 	\begin{enumerate}
-		\item Wir nehmen an: Für $i,j \in \mathbb{Z}$, oBdA $j>i$ gilt $g^{i}=g^{j}$.
+		\item Wir nehmen an: Für $i,j \in \mathbb{Z}$, o.B.d.A. $j>i$ gilt $g^{i}=g^{j}$.
 		Dann gilt $g^{j-i}=g^{j}(g^{i})^{-1}=e$.
 		Es sei dann n die kleinste positive Zahl, die $g^{n}=e$ erfüllt.
 		Sei $m \in \mathbb{Z}$ beliebig.
@@ -773,7 +773,7 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
 \begin{proof}
 	(i) äquivalent (i)': Dies folgt aus $$\langle\bigcup_{i=1}^r N_i\rangle = \{a_1^{\xi_1}\dots a_k^{\xi_k}: a_j\in N_1\cup\dots \cup N_r, \xi_j = \pm 1\}$$ und der Tatsache, dass die $N_j$ normale Untergruppen sind, die für paarweise verschiedene $j\neq j'$ kommutieren.
 
-	(ii)' impliziert (ii): OBdA gelte $i_0=1$.
+	(ii)' impliziert (ii): O.B.d.A. gelte $i_0=1$.
 	Wir möchten zeigen, dass $$N_1\cap \langle N_2\cup\dots \cup N_r\rangle = N_1 \cap (N_2\dots N_r)= \{e\}$$ ist.
 	Sei $x\in N_1\cap \langle N_2\dots N_r\rangle$.
 	Dann gilt $x=n_1\in N_1$ und $x=n_2\dots n_r$ mit $n_i\in N_i$ für $i\geq 2$.
@@ -1115,7 +1115,7 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 		&= (a_{2j-1}a_{2j}b_{2j-1})(a_{2j-1}a_{2j}b_{2j})
 	\end{align*}
 	ein Produkt von 3-Zyklen.
-	Wenn es ein gemeinsames Element gibt, also \(|\{a_{2j-1},b_{2j-1}\} \cap \{a_{2j},b_{2j}\}| = 1\) ist, kann mit \((ab) = (ba)\) oBdA $b_{2j-1}=a_{2j}$ angenommen werden und wir haben über $(a_{2_{j-1}}a_{2_j})(a_{2_j}b_{2_j})=(a_{2_{j-1}}a_{2j}b_{2j})$ einen 3-Zyklus.
+	Wenn es ein gemeinsames Element gibt, also \(|\{a_{2j-1},b_{2j-1}\} \cap \{a_{2j},b_{2j}\}| = 1\) ist, kann mit \((ab) = (ba)\) o.B.d.A. $b_{2j-1}=a_{2j}$ angenommen werden und wir haben über $(a_{2_{j-1}}a_{2_j})(a_{2_j}b_{2_j})=(a_{2_{j-1}}a_{2j}b_{2j})$ einen 3-Zyklus.
 	Für \(\{a_{2j-1},b_{2j-1}\} = \{a_{2j},b_{2j}\}\) ist schließlich \((a_{2j-1}b_{2j-1})(a_{2j}b_{2j}) = \id\).
 
 	Somit kann \((a_{2j-1}b_{2j-1})(a_{2j}b_{2j})\) als Produkt von 3-Zyklen geschrieben werden und auch \(\sigma = \prod_{j = 1}^m (a_{2j-1}b_{2j-1})(a_{2j}b_{2j})\) ist ein Produkt von 3-Zyklen.
@@ -1698,8 +1698,8 @@ Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:
   Sei $G$ eine freie abelsche Gruppe mit Basis $X$ und $H$ eine beliebige abelsche Gruppe. Sei $f : X \to H$ eine Abbildung, Dann existiert ein eindeutig bestimmter Homomorphismus $\tilde{f}: G \to H$, der $f$ fortsetzt, d.h. mit $\tilde{f}(x) = f(x)$ für alle $x \in X$.
 \end{thm}
 \begin{proof}
-  Es sei $g \in G$ beliebig. Es gilt: $g = \sum_{x \in X}m_x x$ ($ m_x = 0$ für fast alle $x$). \\
-  Wir setzen $\tilde{f}(g) := \sum_{x \in X} m_x f(x)$ (Summe ist wieder endlich, insbesondere unabhängig von Summationsreihenfolge). Dies ist wohldefiniert, weil die Summe endlich ist. $\tilde{f}$ ist dann ein Gruppenhomomorphismus, der $f$ fortsetzt.
+  Es sei $g \in G$ beliebig. Es gilt: $g = \sum_{x \in X}m_x x$ ($ m_x = 0$ für fast alle $x$).
+  Wir setzen $\tilde{f}(g) := \sum_{x \in X} m_x f(x)$ (Summe ist wieder endlich, insbesondere unabhängig von Summationsreihenfolge). Dies ist wohldefiniert, weil die Summe endlich ist. $\tilde{f}$ ist dann ein Gruppenhomomorphismus, der $f$ fortsetzt. %FIXME Eigentlich folgt die Wohldefiniertheit daraus, dass jedes g eine EINDEUTIGE Darstellung als Z-Linearkombination von Basiselementen besitzt. Dies beinhaltet zudem die benötigte Endlichkeit der Summe (Fabian)
 
   Es sei $\varphi : G \to H$ ein Homomorphismus, der $f$ fortsetzt. Dann gilt für alle $x_1,\dots,x_l \in X, m_1,\dots,m_l \in \mathbb{Z}$: 
   \begin{align*}
@@ -1714,7 +1714,7 @@ Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:
 \end{proof} 
 
 \begin{kor}
-  Jede abelsche Gruppe $G$ ist Faktorguppe einer freien abelschen Gruppe. D.h. zu jeder abelschen Gruppe $G$ gibt es eine freie abelsche Gruppe $F$ mit einem surjektiven Homomorphismus $f: F \to G$.
+  Jede abelsche Gruppe $G$ ist (isomorph zu einer) Faktorguppe einer freien abelschen Gruppe. D.h. zu jeder abelschen Gruppe $G$ gibt es eine freie abelsche Gruppe $F$ mit einem surjektiven Homomorphismus $f: F \to G$.
 \end{kor}
 
 \begin{proof}
@@ -1722,7 +1722,8 @@ Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:
   \[ F := \bigoplus_{g \in G} H_g \cong \bigoplus_{g \in G} \mathbb{Z} \]
   $F$ ist dann eine freie abelsche Gruppe mit Basis $X = \left\{  x_g \,\vert\, g \in G \right\}$.
 
-  Wir betrachten $f : X \to G, x_g \mapsto g$. Diese Abbildung $f$ wird nach dem obigen Satz durch einen Homomorphismus $\tilde{f}: F\to G$ fortgesetzt, der offensichtlich surjektiv ist.
+  Wir betrachten $f : X \to G, x_g \mapsto g$. Diese Abbildung $f$ wird nach dem obigen Satz durch einen Homomorphismus $\tilde{f}: F\to G$ fortgesetzt, der offensichtlich surjektiv ist. 
+  Unter Verwendung des Homomorphiesatzes folgt sogleich $F / \ker(\tilde f) \cong G$.
 \end{proof}
 
 \begin{thm}
@@ -1733,15 +1734,28 @@ Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:
   "$\Leftarrow$": $\lvert X_1 \rvert = \lvert X_2 \rvert$ bedeutet, dass es eine Bijektion $f: X_1 \to X_2$ gibt. Es sei $\tilde{f}: G_1 \to G_2 $ der Gruppenhomomorphismus der $f : X_1 \to X_2 \subset G_2$ fortsetzt.
   Ähnlich existiert ein Homomorphismus $\tilde{g}: G_2 \to G_1$, der $f^{-1}$ fortsetzt. Da $(\tilde{g} \circ \tilde{f})(x) = (f^{-1} \circ f)(x) = x $ für alle $x \in X_1$ gilt, ist $\tilde{g} \circ \tilde{f} $ eine Fortsetzung von $\operatorname{id}_{X_1} : X_1 \to X_1$. Aus der Eindeutigkeit folgt dann, dass $\tilde{g} \circ \tilde{f} = \operatorname{id}_{G_1}$. Genauso zeigt man: $\tilde{f} \circ \tilde{g} = \operatorname{id}_{G_2}$. Da $\tilde{f}$ das Inverse $\tilde{g}$ besitzt, ist $\tilde{f}: G_1 \to G_2$ dann ein Isomorphismus.
 
-  "$\Rightarrow$": Es sei $p $ eine Primzahl, $G$ eine abelsche Gruppe. $pG = \left\{ pg \,\vert\, g \in G \right\}$ ist dann eine Untergruppe von $G$. Dann ist $V = G / pG$ ein Vektorraum über $\mathbb{F}_p = \mathbb{Z}/p\mathbb{Z}$. Sei $G \to G/pG = V, g\mapsto \overline{g} = g + pG$  die natürliche Projektion. Wenn $G$ eine freie abelsche Gruppe mit Basis $X$ ist, dann ist $ \overline{X} = \left\{ \overline{x} \,\vert\, x \in X \right\} $ eine Basis vom Vektorraum $V$. Nun ist die Abbildung $X \to \overline{X}, x \mapsto \overline{x} = x + pG$ ist eine Bijektion: Sie ist offensichtlich surjektiv; für Injektivität nehme man an, es existieren $x, x' \in X$ mit $x \neq x'$ und $\overline{x} = \overline{x'}$. Daraus folgt $ x - x' \in pG$, was wiederum $x - x' = p \, ( \sum_{y \in X} m_y y )  = \sum_{y \in X} \left( p m_y \right) y $ impliziert. Aus der Eindeutigkeit der Darstellung in $G$ folgt $p m_x = 1$, bzw. $p m_{x'} = -1$ wobei $m_x, m_{x'} \in \mathbb{Z}$ $\leadsto$  Widerspruch. Somit ist die Abbildung auch injektiv.
+  "$\Rightarrow$": Es sei $p $ eine Primzahl, $G$ eine freie abelsche Gruppe. 
+  $pG = \left\{ pg \,\vert\, g \in G \right\}$ ist dann eine Untergruppe von $G$. 
+  Dann ist $V = G / pG$ ein Vektorraum über $\mathbb{F}_p = \mathbb{Z}/p\mathbb{Z}$. 
+  Sei $G \to G/pG = V, g\mapsto \overline{g} = g + pG$  die natürliche Projektion. 
+  Wenn $G$ eine freie abelsche Gruppe mit Basis $X$ ist, dann ist $ \overline{X} = \left\{ \overline{x} \,\vert\, x \in X \right\} $ eine Basis vom Vektorraum $V$. 
+  Nun ist die Abbildung $X \to \overline{X}, x \mapsto \overline{x} = x + pG$ ist eine Bijektion: Sie ist offensichtlich surjektiv; 
+  für Injektivität nehme man an, es existieren $x, x' \in X$ mit $x \neq x'$ und $\overline{x} = \overline{x'}$. 
+  Daraus folgt $ x - x' \in pG$, was wiederum $x - x' = p \, ( \sum_{y \in X} m_y y )  = \sum_{y \in X} \left( p m_y \right) y $ impliziert. 
+  Aus der Eindeutigkeit der Darstellung in $G$ folgt $p m_x = 1$, bzw. $p m_{x'} = -1$ wobei $m_x, m_{x'} \in \mathbb{Z}$ $\leadsto$  Widerspruch. Somit ist die Abbildung auch injektiv.
+  %@Sebastian: FIXME Hier fehlt noch der Nachweis der Basiseigenschaft, d.h. Lineare U. und Erzeugendensystem, der am Anfang der Vorlesung vom 30.06. erbracht wurde (Fabian)
 \end{proof}
+
+%Vorlesung 30.06.15
+
+
 
 %Vorlesung 7.7.15
 
 \begin{nb}
 Ziel ist die Klassifizierung der endlich erzeugten abelschen Gruppen:
 \begin{enumerate}
-\item Schritt: Zeige $G \cong F \oplus T(G)$ mit endlich erzeugten freie abelsche Gruppe (also $F \cong \mathbb{Z}^{r}, r \geq 1$) und der endlichen Torsionsuntergruppe $T(G)$ von G.
+\item Schritt: Zeige $G \cong F \oplus T(G)$ mit $F$ endlich erzeugter freier abelscher Gruppe (also $F \cong \mathbb{Z}^{r}, r \geq 1$) und der endlichen Torsionsuntergruppe $T(G)$ von G.
 \item Schritt: Zeige (mit Sylow) die Zerlegung $T(G) = \bigoplus_{p\text{ prim}} G_{p}$ mit geeigneten p-Gruppen $G_{p}$.
 \item Schritt: Klassifizierung der p-Gruppen $G_{p}$, diese sind aus endlichen Produkten (endlicher) zyklischer Gruppen aufgebaut.
 \end{enumerate}
@@ -1754,11 +1768,11 @@ Sei $G$ eine torsionsfreie endlich erzeugte abelsche Gruppe. Dann ist $G$ frei a
 \begin{proof}
 Sei $M$ ein endliches Erzeugendensystem von $G$. 
 Sei $\{m_{1}, \dots ,m_{k}\} \subset M$ eine maximale Teilmenge $\mathbb{Z}$-linear unabhängiger Elemente, d.h. aus $n_{1}m_{1}+ \dots +n_{k}m_{k}=0$, mit $n_{1}, \dots ,n_{k} \in \mathbb{Z}$ folgt immer $n_{1}= \dots =n_{k}=0$. 
-Folglich gibt es zu jedem $m \in M, m \notin \{m_{1}, \dots ,m_{k}\}$ ein $n(m) \in \mathbb{Z}, n(m)\neq 0$ und geeignete Koeffizienten $n_{1}, \dots ,n_{k} \in \mathbb{Z}$ mit $n(m)=n_{1}m_{1}+ \dots +n_{k}m_{k}$. 
+Folglich gibt es zu jedem $m \in M, m \notin \{m_{1}, \dots ,m_{k}\}$ ein $n(m) \in \mathbb{Z}, n(m)\neq 0$ und geeignete Koeffizienten $n_{1}, \dots ,n_{k} \in \mathbb{Z}$ mit $n(m)m=n_{1}m_{1}+ \dots +n_{k}m_{k}$.\footnote{Man betrachte hierzu eine aufgrund der Maximalität des Systems $\{m_1,\dots,m_k\}$ existierende nichttriviale $\mathbb{Z}$-Linearkombination der $0 \in G$ durch die Elemente aus $\{m,m_1,\dots,m_k\}$.}
 Sei $N$ ein gemeinsames Vielfaches von den (endlich vielen) Zahlen $n(m),m \in M-\{m_{1}, \dots ,m_{k}\}$. 
 Dann gilt: $Nm \in \langle m_{1}, \dots ,m_{k} \rangle$ für alle $m \in M$.
 
-Sei $\mu :G\rightarrow \langle m_{1}, \dots ,m_{k} \rangle $ durch $\mu (g)=Ng$ definiert. Da $G$ abelsch ist, ist $\mu$ ein Homomorphismus. Wegen $\ker(\mu ) \subset T(G) = \{ 0\}$ ist $\mu$ injektiv. Aus dem Homomorphiesatz folgt $G \cong \mu (G) \subset \langle m_{1}, \dots ,m_{k}\rangle$. D.h. $G$ ist eine Untergruppe einer freien abelschen Gruppe. Somit ist $G$ frei abelsch.
+Sei $\mu :G\rightarrow \langle m_{1}, \dots ,m_{k} \rangle $ durch $\mu (g)=Ng$ definiert. Da $G$ abelsch ist, ist $\mu$ ein Homomorphismus. Wegen $\ker(\mu ) \subset T(G) = \{ 0\}$ ist $\mu$ injektiv. Aus dem Homomorphiesatz folgt $G \cong \mu (G) \subset \langle m_{1}, \dots ,m_{k}\rangle$. D.h. $G$ ist zu einer Untergruppe einer freien abelschen Gruppe isomorph. Somit ist nach Satz \ref{} $G$ frei abelsch. %@Sebastian: FIXME Der referenzierte Satz wurde noch nicht getext (VL 30.06.).
 \end{proof}
 
 \begin{kor}
@@ -1766,11 +1780,11 @@ Jede endlich erzeugte abelsche Gruppe ist eine direkte Summe einer freien abelsc
 \end{kor}
 
 \begin{proof}
-$G/T(G)$ ist torsionsfrei und endlich erzeugt, also frei abelsch. Dann ist $T(G)$ ein direkter Summand: $G = T(G) \oplus F,F\cong G/T(G)$.
+  $G/T(G)$ ist torsionsfrei nach Lemma \ref{} und endlich erzeugt, also frei abelsch. Dann ist $T(G)$ nach Korollar \ref{} ein direkter Summand: $G = T(G) \oplus F,F\cong G/T(G)$. %@Sebastian: FIXME Das referenzierte Lemma und das referenzierte Korollar wurden noch nicht getext (VL 30.06.)
 
 $T(G)$ ist eine Torsionsuntergruppe, die endlich erzeugt ist. Daraus folgt: 
 
-$T(G)=\langle g_{1}, \dots ,g_{m}\rangle=\{ n_{1}g_{1}+ \dots +n_{m}g_{m}:n_{j}\in \mathbb{Z}\}=\{ n_{1}g_{1}+\dots+n_{m}g_{m}:\|n_{j}\| \leq \ord(g_{j})\} \Rightarrow \|T(G)\| < \infty$
+$T(G)=\langle g_{1}, \dots ,g_{m}\rangle=\{ n_{1}g_{1}+ \dots +n_{m}g_{m}:n_{j}\in \mathbb{Z}\}=\{ n_{1}g_{1}+\dots+n_{m}g_{m}:|n_{j}| \leq \ord(g_{j})\} \Rightarrow |T(G)| < \infty$ %einfache Striche statt doppelten für Betrag und Gruppenordnung
 \end{proof}
 
 Endlich erzeugte freie abelsche Gruppen sind bekannt: Sie sind von der Form $F\cong \mathbb{Z}^{r}=\mathbb{Z} \oplus \dots\oplus \mathbb{Z}$, mit $r\geq 0$.
@@ -1779,15 +1793,15 @@ Man sollte daher auch die endlichen abelschen Gruppen klassifizieren.
 
 \begin{defn}
 Sei $G$ eine abelsche Gruppe und $p$ eine Primzahl. 
-Dann heißt $Gp=\{ g\in G:p^{n}g=O\text{ für} n \in \mathbb{N} \} $ 
+Dann heißt $G_p=\{ g\in G:p^{n}g=O \text{ für } n \in \mathbb{N} \} $ 
 die \emph{p-primäre Komponente} von $G$.
 \end{defn}
 
 \begin{nb}
 \begin{itemize}
-\item $Gp\subset G$ ist eine Untergruppe (da $G$ abelsch).
-\item Die Elemente von $Gp$ sind genau die $g\in G$, deren Ordnung eine Potenz von $p$ ist.
-\item Alle p-Untergruppen von $G$ sind in $Gp$ enthalten, d.h. $Gp$ ist die einzige p-Sylowuntergruppe von $G$.
+\item $G_p\subset G$ ist eine Untergruppe (da $G$ abelsch).
+\item Die Elemente von $G_p$ sind genau die $g\in G$, deren Ordnung eine Potenz von $p$ ist.
+\item Alle p-Untergruppen von $G$ sind in $G_p$ enthalten, d.h. $G_p$ ist die einzige p-Sylowuntergruppe von $G$.
 \end{itemize}
 \end{nb}
 
@@ -1799,15 +1813,17 @@ Die Zerlegung ist bis auf die Reihenfolge der Summanden eindeutig.
 
 \begin{proof}
 Sei $| G| =p_{1}^{m_{1}}\dots p_{r}^{m_{r}}$ die Primfaktorzerlegung von $| G|$. 
-Da die Ordnung eines Elements von $G$ immer $| G|$ teilt, gilt $Gp=\{ 0\}$ für alle $p$ prim $p\notin \{ p_{1},\dots,p_{r}\}$. Wir möchten zeigen:
+Da die Ordnung eines Elements von $G$ immer $| G|$ teilt, gilt $G_p=\{ 0\}$ für alle $p$ prim $p\notin \{ p_{1},\dots,p_{r}\}$. Wir möchten zeigen:
 \begin{equation} \label{eq}
-Gp_{i} \bigcap \langle\bigcup_{j\neq i} Gp_{j} \rangle = \{ 0 \}
+G_{p_{i}} \bigcap \langle\bigcup_{j\neq i} G_{p_{j}} \rangle = \{ 0 \}
 \end{equation}
-Die Elemente von $\langle\bigcup_{j\neq i} Gp_{j}\rangle$ sind von der Form $g=\sum_{j\neq i} g_{j}, g_{j} \in Gp_{j}$. Damit folgt unter Beachtung von $\ord(g_{j})=p_{j}^{\alpha_{j}}, \alpha_{j}\geq 0$ 
+Die Elemente von $\langle\bigcup_{j\neq i} G_{p_{j}}\rangle$ sind von der Form $g=\sum_{j\neq i} g_{j}, g_{j} \in G_{p_{j}}$. Damit folgt unter Beachtung von $\ord(g_{j})=p_{j}^{\alpha_{j}}, \alpha_{j}\geq 0$ 
 \[(\prod_{j\neq i} p_{j}^{\alpha_{j}})g=0 \rightarrow \ord(g) \divides (\prod_{j\neq i} p_{j}^{\alpha_{j}}).\]
-Gilt zusätzlich $g \in Gp_{i}$, so erhalten wir:
+Gilt zusätzlich $g \in G_{p_{i}}$, so erhalten wir:
 \[ \ord(g)=p_{i}^{\alpha_{i}} \divides (\prod_{j\neq i} p_{j}^{\alpha_{j}})\Rightarrow p_{i}^{\alpha_{i}}=1 \Rightarrow \ord(g)=1.\]
-Aus \eqref{eq} folgt $\langle\bigcup_{1\leq i\leq r} Gp_{i}\rangle = \bigoplus_{p\text{ prim}} Gp$.
+Aus \eqref{eq} folgt 
+$$\langle\bigcup_{1\leq i\leq r} G_{p_{i}}\rangle = \underbrace{\bigoplus_{1 \leq i \leq r} G_{p_i}}_{\text{Ordnung: } |G_{p_1}|\cdot|G_{p_2}|\cdots|G_{p_r}| = p_1^{m_1}\cdots p_r^{m_r} = |G|} \subseteq G$$
+und somit $\bigoplus_{1 \leq i \leq r} G_{p_i} = G$.
 \end{proof}
 
 Da $T(G)$ immer eine direkte Summe von endlichen abelschen p-Gruppen ist, möchten wir diese klassifizieren. Das Hauptresultat ist:
@@ -1824,11 +1840,11 @@ Es gilt: $m_{1}+\dots+m_{k}=n$.
 
 \begin{lemma}
 Es sei $G$ eine abelsche p-Gruppe und $g\in G$ ein Element maximaler Ordnung. 
-Dann ist $\langle p\rangle$ ein direkter Summand von $G$ ($G=\langle p\rangle\oplus H, H\subset G$ geeignet).
+Dann ist $\langle g\rangle$ ein direkter Summand von $G$ ($G=\langle g\rangle\oplus H, H\subset G$ geeignet).
 \end{lemma}
 
 \begin{proof}
-Es sei $p^{\alpha}$ die maximale Ordnung eines Elements in $G$ und $g\in G$ mit $\ord(g)=p^{\alpha}$. OBdA $\langle g\rangle \neq G$ 
+Es sei $p^{\alpha}$ die maximale Ordnung eines Elements in $G$ und $g\in G$ mit $\ord(g)=p^{\alpha}$. O.B.d.A. $\langle g\rangle \neq G$ 
 \begin{enumerate}
 \item Schritt: Wir möchten zeigen, dass es eine Untergruppe $H\subseteq G$ gibt mit $|H|=p, H\cap \langle g\rangle =\{ 0\}$.
 
@@ -1848,7 +1864,7 @@ Die Untergruppe $H=\langle h'\rangle$ erfüllt $\langle g\rangle \cap H=\{ 0\}$.
 
 Es sei $g\in G$ ein Element maximaler Ordnung und $H\subseteq G$ wie im 1. Schritt. 
 Wir betrachten die natürliche Projektion $\pi :G\rightarrow G/H$. 
-$G/H$ ist eine abelsche p-Gruppe mit $|G/H|<|G|$ und $\pi (g)\in G/H$ ist eine Element maximaler Ordnung.
+$G/H$ ist eine abelsche p-Gruppe mit $|G/H|<|G|$ und $\pi (g)\in G/H$ ist ein Element maximaler Ordnung.
 ($\pi$ ist surjektiv; $\ord(\pi (g))$ ist die kleinste Zahl $m\geq 1$ mit $mg\in H$)
 
 Da die maximale Ordnung in $G/H$ höchstens $\ord(g)=p^{\alpha}$ ist, reicht es zu zeigen, dass $\ord(\pi (g))=p^{\alpha}$ gilt.
@@ -1856,7 +1872,7 @@ $m=\ord(\pi (g))$ ist die kleinste positive Zahl, sodass $mg\in H$. Aus $\langle
 \[ mg\in \langle g\rangle \cap H=\{ 0\} \Rightarrow mg=0 \Rightarrow p^{\alpha}=\ord(g) \divides m\]
 Ferner gilt:
 \[ p^{\alpha}\pi (g)=\pi (p^{\alpha}g)=\pi(0) =0\Rightarrow m \divides p^{\alpha}\]
-Also gilt $m=p^{\alpha}$. Es folgt $G/H=\langle \pi (g)\rangle \oplus V'$. 
+Also gilt $m=p^{\alpha}$. Aus der Induktionsvoraussetzung folgt $G/H=\langle \pi (g)\rangle \oplus V'$. 
 Wir setzen $V := \pi ^{-1}(V') \subseteq G$. Wir möchten zeigen $G=\langle g\rangle \oplus V$. Es sei $a\in \mathbb{Z}$, sodass $ag\in V$. Dann gilt:
 \[ \pi (ag)\in \langle \pi (g)\rangle\ \cap V'=\{ 0\}\Rightarrow ag\in H\Rightarrow ag=0\Rightarrow \langle g\rangle \cap V=\{ 0\}.\]
 Sei $a\in G$. Dann gilt:
