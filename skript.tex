@@ -1036,7 +1036,7 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 		Für $m\notin \{m_1, \dots, m_k\}$ gilt
 		\[(\sigma(m_1 \dots m_k) \sigma^{-1}) (\sigma(m)) = ( \sigma(m_1 \dots m_k) )(m) = \sigma(m).\]
 		Daraus folgt $\sigma\circ(m_1m_2\dots m_k)\circ\sigma^{-1} = (\sigma(m_1)\sigma(m_2)\dots\sigma(m_k))$.
-	\item Wegen (a) genügt es zu zeigen, dass für alle $k\in\mathbb{N}$ alle k-Zyklen Produkte von Transpositionen sind.
+	\item Wegen (a) genügt es zu zeigen, dass für alle $k\in\mathbb{N}$ alle $k$-Zyklen Produkte von Transpositionen sind.
 		Für einen beliebigen Zyklus gilt
 		\[(m_1\dots m_k) = (m_1m_2)(m_2m_3)\dots (m_{k-1}m_k).\qedhere\]
 	\end{enumerate}
@@ -1268,7 +1268,7 @@ Für die Operation von \(G\) auf sich selbst durch Konjugation gilt:
 \end{proof}
 
 \begin{thm}
-	Es sei G eine p-Gruppe, die auf einer endlichen Menge X operiert. Dann ist
+	Es sei G eine $p$-Gruppe, die auf einer endlichen Menge X operiert. Dann ist
 	\begin{equation*}
 		|X^G|\equiv |X| \pmod{p}.
 	\end{equation*}
@@ -1756,8 +1756,8 @@ Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:
 Ziel ist die Klassifizierung der endlich erzeugten abelschen Gruppen:
 \begin{enumerate}
 \item Schritt: Zeige $G \cong F \oplus T(G)$ mit $F$ endlich erzeugter freier abelscher Gruppe (also $F \cong \mathbb{Z}^{r}, r \geq 1$) und der endlichen Torsionsuntergruppe $T(G)$ von G.
-\item Schritt: Zeige (mit Sylow) die Zerlegung $T(G) = \bigoplus_{p\text{ prim}} G_{p}$ mit geeigneten p-Gruppen $G_{p}$.
-\item Schritt: Klassifizierung der p-Gruppen $G_{p}$, diese sind aus endlichen Produkten (endlicher) zyklischer Gruppen aufgebaut.
+\item Schritt: Zeige (mit Sylow) die Zerlegung $T(G) = \bigoplus_{p\text{ prim}} G_{p}$ mit geeigneten $p$-Gruppen $G_{p}$.
+\item Schritt: Klassifizierung der $p$-Gruppen $G_{p}$, diese sind aus endlichen Produkten (endlicher) zyklischer Gruppen aufgebaut.
 \end{enumerate}
 \end{nb}
 
@@ -1794,14 +1794,14 @@ Man sollte daher auch die endlichen abelschen Gruppen klassifizieren.
 \begin{defn}
 Sei $G$ eine abelsche Gruppe und $p$ eine Primzahl. 
 Dann heißt $G_p=\{ g\in G:p^{n}g=O \text{ für } n \in \mathbb{N} \} $ 
-die \emph{p-primäre Komponente} von $G$.
+die \emph{$p$-primäre Komponente} von $G$.
 \end{defn}
 
 \begin{nb}
 \begin{itemize}
 \item $G_p\subset G$ ist eine Untergruppe (da $G$ abelsch).
 \item Die Elemente von $G_p$ sind genau die $g\in G$, deren Ordnung eine Potenz von $p$ ist.
-\item Alle p-Untergruppen von $G$ sind in $G_p$ enthalten, d.h. $G_p$ ist die einzige p-Sylowuntergruppe von $G$.
+\item Alle $p$-Untergruppen von $G$ sind in $G_p$ enthalten, d.h. $G_p$ ist die einzige $p$-Sylowuntergruppe von $G$.
 \end{itemize}
 \end{nb}
 
@@ -1826,7 +1826,7 @@ $$\langle\bigcup_{1\leq i\leq r} G_{p_{i}}\rangle = \underbrace{\bigoplus_{1 \le
 und somit $\bigoplus_{1 \leq i \leq r} G_{p_i} = G$.
 \end{proof}
 
-Da $T(G)$ immer eine direkte Summe von endlichen abelschen p-Gruppen ist, möchten wir diese klassifizieren. Das Hauptresultat ist:
+Da $T(G)$ immer eine direkte Summe von endlichen abelschen $p$-Gruppen ist, möchten wir diese klassifizieren. Das Hauptresultat ist:
 
 \begin{thm}
 Es sei $p$ eine Primzahl und $n\in \mathbb{N}$. 
@@ -1839,7 +1839,7 @@ Es gilt: $m_{1}+\dots+m_{k}=n$.
 \end{nb}
 
 \begin{lemma}
-Es sei $G$ eine abelsche p-Gruppe und $g\in G$ ein Element maximaler Ordnung. 
+Es sei $G$ eine abelsche $p$-Gruppe und $g\in G$ ein Element maximaler Ordnung. 
 Dann ist $\langle g\rangle$ ein direkter Summand von $G$ ($G=\langle g\rangle\oplus H, H\subset G$ geeignet).
 \end{lemma}
 
@@ -1849,7 +1849,7 @@ Es sei $p^{\alpha}$ die maximale Ordnung eines Elements in $G$ und $g\in G$ mit 
 \item Schritt: Wir möchten zeigen, dass es eine Untergruppe $H\subseteq G$ gibt mit $|H|=p, H\cap \langle g\rangle =\{ 0\}$.
 
 Es sei $h \in G,h\notin \langle g \rangle$ beliebig.
-Es sei $\ord(h+\langle g\rangle)=p^{\beta}$ die Ordnung von $h+\langle p\rangle$ in der p-Gruppe $G/\langle g\rangle$.
+Es sei $\ord(h+\langle g\rangle)=p^{\beta}$ die Ordnung von $h+\langle p\rangle$ in der $p$-Gruppe $G/\langle g\rangle$.
 Wegen $h\notin \langle g\rangle$ ist $\beta\geq1$. 
 Da $p^{\beta}(h+\langle g\rangle)=\langle g\rangle$ ist, gilt $p^{\beta}h=lg$ mit geeigneten $l\in \mathbb{Z}$. 
 Da $p^{\alpha}$ die maximale Ordnung eines Elements von $G$ ist, ist $\ord(h)$ ein Teiler von $p^{\alpha}$ und somit gilt:
@@ -1864,7 +1864,7 @@ Die Untergruppe $H=\langle h'\rangle$ erfüllt $\langle g\rangle \cap H=\{ 0\}$.
 
 Es sei $g\in G$ ein Element maximaler Ordnung und $H\subseteq G$ wie im 1. Schritt. 
 Wir betrachten die natürliche Projektion $\pi :G\rightarrow G/H$. 
-$G/H$ ist eine abelsche p-Gruppe mit $|G/H|<|G|$ und $\pi (g)\in G/H$ ist ein Element maximaler Ordnung.
+$G/H$ ist eine abelsche $p$-Gruppe mit $|G/H|<|G|$ und $\pi (g)\in G/H$ ist ein Element maximaler Ordnung.
 ($\pi$ ist surjektiv; $\ord(\pi (g))$ ist die kleinste Zahl $m\geq 1$ mit $mg\in H$)
 
 Da die maximale Ordnung in $G/H$ höchstens $\ord(g)=p^{\alpha}$ ist, reicht es zu zeigen, dass $\ord(\pi (g))=p^{\alpha}$ gilt.
@@ -1932,11 +1932,11 @@ wobei $F\cong \nicefrac{G}{T(G)}$ frei abelsch vom Rang $r$ ist und
 \end{kor}
 
 \begin{proof}
-	Die Gruppe $F:=\nicefrac{G}{T(G)}$ ist frei abelsch. Also ist $G\cong F\oplus T(G)$. Da $G$ endlich erzeugt ist, gilt $\rank(F)=r<\infty$. $T(G)$ ist eine endlich erzeugbare abelsche Torsionsgruppe. Also ist $T(G)$ endlich. Wir betrachten die Zerlegung von $T(G)$ in p-primäre Komponenten
+	Die Gruppe $F:=\nicefrac{G}{T(G)}$ ist frei abelsch. Also ist $G\cong F\oplus T(G)$. Da $G$ endlich erzeugt ist, gilt $\rank(F)=r<\infty$. $T(G)$ ist eine endlich erzeugbare abelsche Torsionsgruppe. Also ist $T(G)$ endlich. Wir betrachten die Zerlegung von $T(G)$ in $p$-primäre Komponenten
 	\[ T(G) = G_{p_1}\oplus\dots\oplus G_{p_t}, \]
 	wobei $p_1,\dots,p_t$ die Primfaktoren von $|T(G)|=p_1^{e_1}\dots p_t^{e_t}$ sind.
 	
-	Wdh.: $p$ Primzahl, $G_p := \{x\in G: p^nx=0\text{ für ein $n\geq 0$}\}\subset T(G)$. Insbesondere gilt: $\left(T(G)\right)_p=G_p$. $G_p$ ist \emph{die} p-Sylowuntergruppe von $T(G)$.
+	Wdh.: $p$ Primzahl, $G_p := \{x\in G: p^nx=0\text{ für ein $n\geq 0$}\}\subset T(G)$. Insbesondere gilt: $\left(T(G)\right)_p=G_p$. $G_p$ ist \emph{die} $p$-Sylowuntergruppe von $T(G)$.
 	
 	Für $p<p_1,\dots,p_t$ folgt aus dem letzten Satz
 		\[ G_p \cong \nicefrac{\Z}{p^{m_1}\Z}\oplus\dots\oplus\nicefrac{\Z}{p^{m_k}\Z}.\qedhere\]
