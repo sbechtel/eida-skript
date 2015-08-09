@@ -882,9 +882,9 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 	\[ \begin{tikzcd}
 		1 \arrow[r] & N \arrow[r,"i"] & G \arrow[r,"p"] & H \arrow[r] & 1
 	\end{tikzcd} \]
-	eine Gruppenerweiterung, die mit einem Schnitt $s:H\to G$ spaltet. Dann ist $G$ das semidirekte Produkt von $N$ und $H$, definiert durch 
+	eine Gruppenerweiterung, die mit einem Schnitt $s:H\to G$ spaltet. Dann ist $G$ isomorph zum (äußeren) semidirekte Produkt von $N$ und $H$, definiert durch 
         \[\gamma: H\to \Aut(N), \quad h\mapsto \gamma_h,\]
-        wobei
+        wobei $\gamma_h : N \to N$ gegeben ist durch
         \[ i(\gamma_h(n)) = s(h)i(n)s(h)^{-1}.  \]
         % FIXME Was ist \gamma_h? Das geht nur, falls N und H eine gemeinsame Obergruppe haben. Ist hier \(i^{-1}\circ\gamma_{s(h)}\circ i\) gemeint?
         % -- Es handelt sich hier um ein äußeres semidirektes Produkt, die gemeinsame Obergruppe ist nicht vonnöten (Fabian)
@@ -895,7 +895,7 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 \end{thm}
 
 \begin{proof}
-	Wir setzen $\rho: N\rtimes H \to G, (n,h)\mapsto i(n)s(h)$ und zeigen, dass $\rho$ ein Homomorphismus ist:
+	Wir setzen $\rho: N\rtimes H \to G, (n,h)\mapsto i(n)s(h)$ und zeigen, dass $\rho$ ein Homomorphismus ist: Für alle $n_1,n_2 \in N$ und $h_1,h_2 \in H$ gilt
 	\begin{align*}
 		\rho((n_1,h_1)\cdot (n_2,h_2)) &= \rho(n_1\gamma_{h_1}(n_2), h_1h_2) = i(n_1)i(\gamma_{h_1}(n_2))s(h_1)s(h_2)\\
 		&= i(n_1)s(h_1)i(n_2)\Inv{s(h_1)}s(h_1)s(h_2) = \rho(n_1,h_1)\rho(n_2,h_2).
@@ -1163,9 +1163,9 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 	
 \begin{defn} Es sei $\bullet: G \times X \to X$ eine Gruppenoperation.
 	\begin{enumerate}
-	\item Für $x\in X$ heißt $Gx=\{gx : g \in G\}$ die Bahn (oder Orbit) von X. 
-	\item Die Untergruppe $G_x:=\{g\in G : gx=x\}$ heißt Isotropiegruppe (oder Stabilisator) von $x$.
-	\item Menge der Fixpunkte unter $G$: $X^G:=\{x \in X : \forall g \in G: gx=x\}$
+	\item Für $x\in X$ heißt $Gx := \{gx : g \in G\}$ die Bahn (oder Orbit) von X. 
+	\item Die Untergruppe $G_x:= \{g\in G : gx=x\}$ heißt Isotropiegruppe (oder Stabilisator) von $x$.
+	\item Menge der Fixpunkte unter $G$: $X^G := \{x \in X : \forall g \in G: gx=x\}$
 	\item Die Gruppenoperation ist treu, falls $\tau:G \rightarrow S_X$ injektiv ist.
 	\item Die Gruppenoperation ist transitiv, wenn $X$ eine Bahn ist.
 	\end{enumerate}
@@ -1184,9 +1184,9 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 	\item $G$ operiert auf sich selbst durch Konjugation.
 		Für \(a \in G\) ist die Konjugation mit $a$
 		$$i_a : G \to G, \quad x \mapsto axa^{-1}$$
-		immer ein Automorphismus von G.
+		für alle $x \in G$ ein Automorphismus von G. Somit ist die Abbildung
 		$$i: G \to \Aut(G) \subseteq S_G, \quad a \mapsto i_a$$
-		ist ein Gruppenhomomorphismus, d.h. eine Operation von $G$ auf sich selbst.
+		ein wohldefinierter Gruppenhomomorphismus, d.h. eine Operation von $G$ auf sich selbst.
 		\begin{proof}
 			Für alle \(a, b, x \in G\) ist \[i_{ab}(x)=abx(ab)^{-1}=abxb^{-1}a^{-1}=a(i_b(x))a^{-1}=i_a(i_b(x))=(i_a\circ i_b)(x).\qedhere\]
 		\end{proof}
@@ -1226,7 +1226,7 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 \end{proof}
 
 \begin{nb}
-	Die Bahnen einer $G$-Operation sind die Äquivalenzklassen bezüglich der Äquivalenzrelation
+	Die Bahnen einer Gruppenoperation sind die Äquivalenzklassen bezüglich der Äquivalenzrelation
 	\[x \sim y :\Leftrightarrow \text{\(x=gy\) für ein \(g\in G\).}\]
 	D.h. die Bahnen bilden eine Partition von $X$.
 	Für ein Repräsentantensystem $\{x_i\}_{i\in I}$ der Bahnen von \(X\) gilt somit die Bahnengleichung
@@ -1269,7 +1269,7 @@ Für die Operation von \(G\) auf sich selbst durch Konjugation gilt:
 \end{proof}
 
 \begin{thm}
-	Es sei G eine $p$-Gruppe, die auf einer endlichen Menge X operiert. Dann ist
+	Es sei G eine $p$-Gruppe, die auf einer endlichen Menge $X$ operiert. Dann ist
 	\begin{equation*}
 		|X^G|\equiv |X| \pmod{p}.
 	\end{equation*}
@@ -1380,7 +1380,7 @@ Aber: Wenn \(h\) ein Teiler von $\ord(G)$ ist, existiert dann auch eine Untergru
 	Da $b$ im Zentrum von $G$ liegt, ist $\langle b \rangle$ eine normale Untergruppe von $G$.
 	Wir betrachten die Faktorgruppe $G/ \langle b \rangle$.
 	Es gilt $$|G/\langle b\rangle| = \frac{|G|}{|\langle b\rangle|} = p^{n-1}q < p^nq.$$
-	Nach Induktionsvoraussetzung enthält $G/\langle b\rangle$ eine Untergruppe $\bar{S}$ der Ordnung $p^{\alpha - 1}$. Es sei $S = \{x \in G : x \langle b \rangle \in \bar{S}\}$.\footnote{Es ist \(S = \pi^{-1}(\bar S)\) das Urbild der Untergruppe \(\bar S\) bzgl. der natürlichen Projektion \(\pi: G \to G/\langle b\rangle\). Eine weitere Konstruktionsmöglichkeit wäre \(S = \bigcup_{s \in\bar S} s\), wobei ein jeder sich für die am intuitivsten scheinende Variante entscheiden möge.}
+        Nach Induktionsvoraussetzung enthält $G/\langle b\rangle$ eine Untergruppe $\bar{S}$ der Ordnung $p^{\alpha - 1}$. Es sei $S = \{x \in G : x \langle b \rangle \in \bar{S}\}$.\footnote{Es ist \(S = \pi^{-1}(\bar S)\) das Urbild der Untergruppe \(\bar S\) bzgl. der natürlichen Projektion \(\pi: G \to G/\langle b\rangle\). Eine weitere Konstruktionsmöglichkeit wäre \(S = \bigcup_{s \in\bar S} s\), wobei ein jeder sich für die am intuitivsten scheinende Variante entscheiden möge.} %FIXME Sollte es vielleicht \bigcup_{s \langle b \rangle \in \bar S} heißen? Zur einheitlichen Notation schlage ich vor das kleine s zusätzlich noch durch ein x zu ersetzten, so wie es auch im Beweis verwendet wird. (Fabian)
 	$S$ ist eine Untergruppe von \(G\) und es gilt $\bar{S} \cong S/\langle b\rangle$, denn für die natürliche Projektion $p: S \rightarrow \bar{S}$ gilt $\ker(p) = \langle b\rangle$ und somit ist der Homomorphiesatz anwendbar.
 	Das liefert $$p^{\alpha - 1} = |\bar{S}| = \frac{|S|}{| \langle b \rangle |} = \frac{|S|}{p}.$$
 	Somit gilt $|S| = p^{\alpha}$ und $S$ ist die gesuchte $p$-Gruppe.
@@ -1441,7 +1441,7 @@ Für den Beweis des dritten Teils benötigen wir folgendes Lemma:
 	Sei $X$ die Menge aller $p$-Sylowuntergruppen von $G$, $S \in X$ beliebig (Existenz: siehe Teil 1), $s := |X|$. Es gilt $s = [G:N_G(S)]$. \\
 	Aus der Inklusionskette $S \subseteq N_G(S) \subseteq G$ folgt
 	$$[N_G(S):S] [G:N_G(S)] = [G:S] \Leftrightarrow [N_G(S):S] s = q \text{, d.h. } s \divides q.$$
-	Wir lassen $S$ wie folgt auf X operieren:
+	Wir lassen $S$ wie folgt auf $X$ operieren:
 	$$S \times X \rightarrow X, (g, T) \mapsto gTg^{-1}.$$
 	$S \in X$ ist ein Fixpunkt dieser Operation. Wir möchten zeigen, dass dieser der einzige Fixpunkt ist. Da $S$ eine $p$-Gruppe ist, gilt dann: $s = |X| = |X^S| = 1 \pmod{p}$ (was zu zeigen war).
 	\begin{align*}
@@ -1820,7 +1820,7 @@ Die Zerlegung ist bis auf die Reihenfolge der Summanden eindeutig.
 Sei $| G| =p_{1}^{m_{1}}\dots p_{r}^{m_{r}}$ die Primfaktorzerlegung von $| G|$. 
 Da die Ordnung eines Elements von $G$ immer $| G|$ teilt, gilt $G_p=\{ 0\}$ für alle $p$ prim $p\notin \{ p_{1},\dots,p_{r}\}$. Wir möchten zeigen:
 \begin{equation} \label{eq}
-G_{p_{i}} \bigcap \langle\bigcup_{j\neq i} G_{p_{j}} \rangle = \{ 0 \}
+G_{p_{i}} \,\cap\, \langle\bigcup_{j\neq i} G_{p_{j}} \rangle = \{ 0 \}
 \end{equation}
 Die Elemente von $\langle\bigcup_{j\neq i} G_{p_{j}}\rangle$ sind von der Form $g=\sum_{j\neq i} g_{j}, g_{j} \in G_{p_{j}}$. Damit folgt unter Beachtung von $\ord(g_{j})=p_{j}^{\alpha_{j}}, \alpha_{j}\geq 0$ 
 \[(\prod_{j\neq i} p_{j}^{\alpha_{j}})g=0 \rightarrow \ord(g) \divides (\prod_{j\neq i} p_{j}^{\alpha_{j}}).\]
