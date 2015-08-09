@@ -894,6 +894,31 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
         %       -- Das Einzige was dem Beweis dieses Satzes aus meiner Sicht fehlt ist, der Beweis der Wohldefiniertheit von \gamma (Fabian)
 \end{thm}
 
+%\begin{proof}[$\gamma_h$ ist wohldefiniert]
+%  Zunächst soll nachgewiesen werden, dass $\gamma_h \in \Aut(N)$. 
+%  Da nach Voraussetzung $\im(i) = \ker(p)$ gilt, ist $\im(i)$ Normalteiler von $G$. 
+%  Für alle $n \in N$ und $h \in H$ gilt somit $s(h) i(n) s(h)^{-1} \in \im(i)$. 
+%  Als Monomorphismus ist $i$ insbesondere ein Isomorphismus auf $\im(i)$. 
+%  Im Folgenden bezeichne $i^{-1}: \im(i) \to N$ den entsprechenden Umkehrhomomorphismus. 
+%  Somit lässt sich für alle $h \in H$ eine Abbildung $\gamma_h (n) := i^{-1}( s(h)i(n)s(h)^{-1} )$ definieren.
+%
+%  Die so definierte Abbildung ist für alle $h \in H$ ein Gruppenhomomorphismus. Denn für $n,m \in N$ gilt
+%  \begin{align*}
+%    \gamma_h(nm) 
+%    &= i^{-1}( s(h) i(nm) s(h)^{-1}) = i^{-1}( s(h) i(n) s(h)^{-1}\, s(h) i(m) s(h)^{-1} ) \\
+%    &= i^{-1}(s(h)i(n)s(h)^{-1})\, i^{-1}(s(h)i(m)s(h)^{-1}) \\
+%    &= \gamma_h(n) \gamma_h(m).
+%  \end{align*}
+%
+%  Des Weiteren ist $\gamma_h$ injektiv. 
+%  Denn für $n \in \ker(\gamma_h)$ gilt $\gamma_h(n) = e_N$ und damit $e_G = i(e_N) = s(h)i(n)s(h)^{-1}$.
+%  Aus der Injektivität von $i$ folgt also $n = e_N$.
+%
+%  Letztlich ist $\gamma_h$ auch surjektiv.
+%  Für ein $n \in N$ setze $m = i^{-1}(s(h)^{-1}i(n)s(h))$.
+%  Daraus folgt die Behauptung.
+%\end{proof}
+
 \begin{proof}
 	Wir setzen $\rho: N\rtimes H \to G, (n,h)\mapsto i(n)s(h)$ und zeigen, dass $\rho$ ein Homomorphismus ist: Für alle $n_1,n_2 \in N$ und $h_1,h_2 \in H$ gilt
 	\begin{align*}
