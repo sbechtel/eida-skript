@@ -44,9 +44,9 @@
 
 % Environments
 % Stuff with proof
-\newtheorem{thm}{Satz}
-\newtheorem{lemma}{Lemma}
-\newtheorem{kor}{Korollar}
+\newtheorem{thm}{Satz}[section]
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{kor}[thm]{Korollar}
 % Definition-like stuff
 \theoremstyle{definition}
 \newtheorem*{defn}{Definition}
@@ -303,7 +303,7 @@
 
 \begin{proof} % TODO Diesen Beweis überspringe ich gerade. -- Peter 
 	\begin{enumerate}
-		\item Wir nehmen an: Für $i,j \in \mathbb{Z}$, oBdA $j>i$ gilt $g^{i}=g^{j}$.
+		\item Wir nehmen an: Für $i,j \in \mathbb{Z}$, o.B.d.A. $j>i$ gilt $g^{i}=g^{j}$.
 		Dann gilt $g^{j-i}=g^{j}(g^{i})^{-1}=e$.
 		Es sei dann n die kleinste positive Zahl, die $g^{n}=e$ erfüllt.
 		Sei $m \in \mathbb{Z}$ beliebig.
@@ -438,7 +438,7 @@
 
 \begin{kor}[Satz von Lagrange]
 	Es gilt $\vert G\vert = [G:H]\cdot\vert H\vert$ für jede Untergruppe $H$ von $G$.
-	Besonders gilt: $\vert H\vert$ teilt $\vert G\vert$ und $\ord(g)$ ist ein Teiler von $\vert G\vert$ für jedes $g\in G$.
+	Besonders gilt für endliche Gruppen $G$: $\vert H\vert$ teilt $\vert G\vert$ und $\ord(g)$ ist ein Teiler von $\vert G\vert$ für jedes $g\in G$.
 \end{kor}
 
 \begin{proof}
@@ -513,7 +513,7 @@
 
 \begin{defn}
 	Es seien $(G,\cdot_G)$ und $(H,\cdot_H)$ Gruppen.
-	Ein Gruppenhomomorphismus von $G$ in $H$ ist eine Abbildung $f:G\rightarrow H$, so dass	$$f(a\cdot_{G}b)=f(a)\cdot_{H}f(b)$$ für alle $a,b\in G$ gilt.
+	Ein Gruppenhomomorphismus von $G$ in $H$ ist eine Abbildung $f:G\rightarrow H$, sodass	$$f(a\cdot_{G}b)=f(a)\cdot_{H}f(b)$$ für alle $a,b\in G$ gilt.
 \end{defn}
 
 \begin{lemma}[Eigenschaften von Homomorphismen]
@@ -609,7 +609,7 @@
 
 \begin{thm}[Homomorphiesatz]
 	Es sei $f: G \rightarrow G'$ ein Gruppenhomomorphismus und \(N\) ein Normalteiler von \(G\).
-	Ist \(N\) im Kern von \(f\) enthalten, so gibt es genau einen Gruppenhomomorphismus $\bar{f}: G/N \rightarrow G'$, so dass das folgende Diagramm kommutiert:
+	Ist \(N\) im Kern von \(f\) enthalten, so gibt es genau einen Gruppenhomomorphismus $\bar{f}: G/N \rightarrow G'$, sodass das folgende Diagramm kommutiert:
 	\[\begin{tikzcd}
 		G \arrow[rd,"\pi"] \arrow[rr,"f=\bar f\circ \pi"] & & G'\\
 		& G/N \arrow[ru,"\bar f"] &
@@ -741,7 +741,7 @@
 \end{nb}
 
 \begin{defn}
-	Sei $G$ eine Gruppe und $(N_i)_{i\in I}$ eine Familie von normalen Untergruppen, so dass gilt:
+	Sei $G$ eine Gruppe und $(N_i)_{i\in I}$ eine Familie von normalen Untergruppen, sodass gilt:
 	\begin{enumerate}[label=(\roman*)]
 		\item $G=\langle\bigcup_{i\in I} N_i\rangle$
 		\item $N_{i_0} \cap \langle\bigcup_{i\in I \setminus \{i_0\}} N_i\rangle = \{e\}$ für jedes $i_0\in I$.
@@ -773,7 +773,7 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
 \begin{proof}
 	(i) äquivalent (i)': Dies folgt aus $$\langle\bigcup_{i=1}^r N_i\rangle = \{a_1^{\xi_1}\dots a_k^{\xi_k}: a_j\in N_1\cup\dots \cup N_r, \xi_j = \pm 1\}$$ und der Tatsache, dass die $N_j$ normale Untergruppen sind, die für paarweise verschiedene $j\neq j'$ kommutieren.
 
-	(ii)' impliziert (ii): OBdA gelte $i_0=1$.
+	(ii)' impliziert (ii): O.B.d.A. gelte $i_0=1$.
 	Wir möchten zeigen, dass $$N_1\cap \langle N_2\cup\dots \cup N_r\rangle = N_1 \cap (N_2\dots N_r)= \{e\}$$ ist.
 	Sei $x\in N_1\cap \langle N_2\dots N_r\rangle$.
 	Dann gilt $x=n_1\in N_1$ und $x=n_2\dots n_r$ mit $n_i\in N_i$ für $i\geq 2$.
@@ -816,7 +816,7 @@ Wir werden uns demnächst nur mit endlichen Produkten beschäftigen.
 \end{ex}
 
 \begin{defn}
-	Es seien $G$ eine Gruppe, $N\subseteq G$ Normalteiler von $G$ und $H\subseteq G$ beliebige Untergruppe, so dass gilt:
+	Es seien $G$ eine Gruppe, $N\subseteq G$ Normalteiler von $G$ und $H\subseteq G$ beliebige Untergruppe, sodass gilt:
 	$$G=NH \quad \text{und} \quad N\cap H = \{e\}$$
 	Dann ist $G$ das \emph{(innere) semidirekte Produkt} von $N$ und $H$, Notation: $G=N\rtimes H$.
 \end{defn}
@@ -882,17 +882,45 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 	\[ \begin{tikzcd}
 		1 \arrow[r] & N \arrow[r,"i"] & G \arrow[r,"p"] & H \arrow[r] & 1
 	\end{tikzcd} \]
-	eine Gruppenerweiterung, die mit einem Schnitt $s:H\to G$ spaltet. Dann ist $G$ das semidirekte Produkt von $N$ und $H$, definiert durch 
+	eine Gruppenerweiterung, die mit einem Schnitt $s:H\to G$ spaltet. Dann ist $G$ isomorph zum (äußeren) semidirekte Produkt von $N$ und $H$, definiert durch 
         \[\gamma: H\to \Aut(N), \quad h\mapsto \gamma_h,\]
-        wobei
+        wobei $\gamma_h : N \to N$ gegeben ist durch
         \[ i(\gamma_h(n)) = s(h)i(n)s(h)^{-1}.  \]
         % FIXME Was ist \gamma_h? Das geht nur, falls N und H eine gemeinsame Obergruppe haben. Ist hier \(i^{-1}\circ\gamma_{s(h)}\circ i\) gemeint?
         % -- Es handelt sich hier um ein äußeres semidirektes Produkt, die gemeinsame Obergruppe ist nicht vonnöten (Fabian)
         %    -- Der Fall einer gemeinsamen Obergruppe ist jedoch der einzige, in dem wir \gamma_h definiert haben. *Das* ist mein Problem. \gamma_h kann kein semidirektes Produkt definieren, ohne dass wir \gamma_h definiert haben. (Peter)
+        %       -- Siehe (2) in der Bemerkung davor. Jede Abbildung \gamma: H -> Aut(N), h -> \gamma_h:= \gamma(h) definiert ein äußeres semidirektes Produkt, also eine Gruppe auf der Trägermenge NxH mit einer speziellen Multiplikation. So verstehe ich das zumindest. Dieser Satz hier schränkt die im Falle eines Schnittes möglichen Automorphismen noch etwas ein. Da i injektiv ist, lässt sich so anscheinend ein Automorphismus definieren. Reicht das nicht aus? (Fabian)
+        %       -- Dieser Satz ist auch bekannt als "Splitting-Lemma for Groups". Dieser Artikel könnte weiterhelfen http://cykenleung.blogspot.de/2012/12/a-splitting-lemma-for-groups.html (Fabian)
+        %       -- Das Einzige was dem Beweis dieses Satzes aus meiner Sicht fehlt ist, der Beweis der Wohldefiniertheit von \gamma (Fabian)
 \end{thm}
 
+%\begin{proof}[$\gamma_h$ ist wohldefiniert]
+%  Zunächst soll nachgewiesen werden, dass $\gamma_h \in \Aut(N)$. 
+%  Da nach Voraussetzung $\im(i) = \ker(p)$ gilt, ist $\im(i)$ Normalteiler von $G$. 
+%  Für alle $n \in N$ und $h \in H$ gilt somit $s(h) i(n) s(h)^{-1} \in \im(i)$. 
+%  Als Monomorphismus ist $i$ insbesondere ein Isomorphismus auf $\im(i)$. 
+%  Im Folgenden bezeichne $i^{-1}: \im(i) \to N$ den entsprechenden Umkehrhomomorphismus. 
+%  Somit lässt sich für alle $h \in H$ eine Abbildung $\gamma_h (n) := i^{-1}( s(h)i(n)s(h)^{-1} )$ definieren.
+%
+%  Die so definierte Abbildung ist für alle $h \in H$ ein Gruppenhomomorphismus. Denn für $n,m \in N$ gilt
+%  \begin{align*}
+%    \gamma_h(nm) 
+%    &= i^{-1}( s(h) i(nm) s(h)^{-1}) = i^{-1}( s(h) i(n) s(h)^{-1}\, s(h) i(m) s(h)^{-1} ) \\
+%    &= i^{-1}(s(h)i(n)s(h)^{-1})\, i^{-1}(s(h)i(m)s(h)^{-1}) \\
+%    &= \gamma_h(n) \gamma_h(m).
+%  \end{align*}
+%
+%  Des Weiteren ist $\gamma_h$ injektiv. 
+%  Denn für $n \in \ker(\gamma_h)$ gilt $\gamma_h(n) = e_N$ und damit $e_G = i(e_N) = s(h)i(n)s(h)^{-1}$.
+%  Aus der Injektivität von $i$ folgt also $n = e_N$.
+%
+%  Letztlich ist $\gamma_h$ auch surjektiv.
+%  Für ein $n \in N$ setze $m = i^{-1}(s(h)^{-1}i(n)s(h))$.
+%  Daraus folgt die Behauptung.
+%\end{proof}
+
 \begin{proof}
-	Wir setzen $\rho: N\rtimes H \to G, (n,h)\mapsto i(n)s(h)$ und zeigen, dass $\rho$ ein Homomorphismus ist:
+	Wir setzen $\rho: N\rtimes H \to G, (n,h)\mapsto i(n)s(h)$ und zeigen, dass $\rho$ ein Homomorphismus ist: Für alle $n_1,n_2 \in N$ und $h_1,h_2 \in H$ gilt
 	\begin{align*}
 		\rho((n_1,h_1)\cdot (n_2,h_2)) &= \rho(n_1\gamma_{h_1}(n_2), h_1h_2) = i(n_1)i(\gamma_{h_1}(n_2))s(h_1)s(h_2)\\
 		&= i(n_1)s(h_1)i(n_2)\Inv{s(h_1)}s(h_1)s(h_2) = \rho(n_1,h_1)\rho(n_2,h_2).
@@ -915,6 +943,7 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 \end{proof}
 
 \begin{ex}
+\label{ex:semidirekt}
 
 \begin{enumerate}[label=(\alph*)]
 	\item Für einen beliebigen Körper $K$ zerfällt (bzw. spaltet)
@@ -964,7 +993,7 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 	Es sei $M\neq\emptyset$ eine Menge und $\sigma$ eine Permutation von $M$.
 	\begin{enumerate}
 	\item Der \defi{Träger} von $\sigma$ ist $\supp(\sigma) := \{m\in M: \sigma(m)\neq m\}$.
-	\item Ein \defi{Zyklus} der Länge $l$ ist eine Permutation $\sigma\in S_M$ mit $l = |\supp(\sigma)|$, so dass
+	\item Ein \defi{Zyklus} der Länge $l$ ist eine Permutation $\sigma\in S_M$ mit $l = |\supp(\sigma)|$, sodass
 		\[\supp(\sigma) = \{m_1,m_2,\dots,m_l\}\text{ mit }\sigma(m_j) = m_{j+1},\; 1\leq j<l,\; \sigma(m_l) = m_1.\]
 		Für einen solchen Zyklus schreiben wir $\sigma = (m_1m_2\dots m_l)$.
 	\item 2-Zyklen werden \defi{Transpositionen} genannt.
@@ -1009,8 +1038,14 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 		Dann ist $\sim$ eine Äquivalenzrelation auf $M$.
 		Es sei $M = K_1\cup K_2\cup\dots\cup K_r$ die Zerlegung von $M$ in disjunkte Äquivalenzklassen.
 		Wir betrachten $a_j\in K_j$ beliebig.
-		Es sei $l_j$ die kleinste positive Zahl mit $\sigma^{l_j}(a_j) = a_j$.\footnote{Ein solches $l_j$ existiert aufgrund der vorausgesetzten Endlichkeit der symmetrischen Gruppe nach dem Satz von Lagrange. Es gilt also $l_j \leq \ord(\sigma)$.}
-		Das liefert uns \[a_j,\sigma(a_j),\sigma^2(a_j),\dots,\sigma^{l_j-1}(a_j)\in K_j\] und diese Elemente sind paarweise verschieden.
+		Es sei $l_j$ die kleinste positive Zahl mit $\sigma^{l_j}(a_j) = a_j$.\footnote{Ein solches $l_j$ existiert aufgrund der vorausgesetzten Endlichkeit der symmetrischen Gruppe nach dem Satz von Lagrange. Es gilt also $l_j \leq \ord(\sigma)$.} %FIXME Auf den zweiten Blick glaube ich , dass sogar l_j = |K_j| gelten muss, nach Definition der Äquivalenzrelation (Fabian)
+		Das liefert uns \[a_j,\sigma(a_j),\sigma^2(a_j),\dots,\sigma^{l_j-1}(a_j)\in K_j\] und diese Elemente sind paarweise verschieden. 
+                %FIXME Folgendes muss noch hinzugefügt werden: 
+                % BEGIN
+                % Aufgrund der Konstruktion der Äquivalenzrelation gilt sogar \[ \{ a_j,\sigma(a_j),\sigma^2(a_j),\dots,\sigma^{l_j-1}(a_j) \} =  K_j\] 
+                % END
+                % ansonsten ist nicht klar, wieso die unten folgende Gleichheit \sigma = (a_1\dots ... gelten sollte.
+                % (Fabian)
 		Aus der Definition folgt, dass $\sigma\upharpoonright_{K_j}=(a_j\sigma(a_j)\dots\sigma^{l_j-1}(a_j))\in S_{K_j}$ ein Zyklus der Länge $l_j$ ist.
 		Wenn wir dies für alle $j=1,\dots,r$ tun, erhalten wir:
 		\[\sigma = (a_1\dots\sigma^{l_1-1}(a_1))(a_2\dots\sigma^{l_2-1}(a_2))\dots(a_r\dots\sigma^{l_r-1}(a_r)).\]
@@ -1027,7 +1062,7 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 		Für $m\notin \{m_1, \dots, m_k\}$ gilt
 		\[(\sigma(m_1 \dots m_k) \sigma^{-1}) (\sigma(m)) = ( \sigma(m_1 \dots m_k) )(m) = \sigma(m).\]
 		Daraus folgt $\sigma\circ(m_1m_2\dots m_k)\circ\sigma^{-1} = (\sigma(m_1)\sigma(m_2)\dots\sigma(m_k))$.
-	\item Wegen (a) genügt es zu zeigen, dass für alle $k\in\mathbb{N}$ alle k-Zyklen Produkte von Transpositionen sind.
+	\item Wegen (a) genügt es zu zeigen, dass für alle $k\in\mathbb{N}$ alle $k$-Zyklen Produkte von Transpositionen sind.
 		Für einen beliebigen Zyklus gilt
 		\[(m_1\dots m_k) = (m_1m_2)(m_2m_3)\dots (m_{k-1}m_k).\qedhere\]
 	\end{enumerate}
@@ -1106,10 +1141,10 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 		&= (a_{2j-1}a_{2j}b_{2j-1})(a_{2j-1}a_{2j}b_{2j})
 	\end{align*}
 	ein Produkt von 3-Zyklen.
-	Wenn es ein gemeinsames Element gibt, also \(|\{a_{2j-1}b_{2j-1}\}\cap\{a_{2j}b_{2j}\}| = 1\) ist, kann mit \((ab) = (ba)\) oBdA $b_{2j-1}=a_{2j}$ angenommen werden und wir haben über $(a_{2_{j-1}}a_{2_j})(a_{2_j}b_{2_j})=(a_{2_{j-1}}a_{2j}b_{2j})$ einen 3-Zyklus.
-	Für \(\{a_{2j-1}b_{2j-1}\} = \{a_{2j}b_{2j}\}\) ist schließlich \((a_{2j-1}b_{2j-1})(a_{2j}b_{2j}) = \id\).
+	Wenn es ein gemeinsames Element gibt, also \(|\{a_{2j-1},b_{2j-1}\} \cap \{a_{2j},b_{2j}\}| = 1\) ist, kann mit \((ab) = (ba)\) o.B.d.A. $b_{2j-1}=a_{2j}$ angenommen werden und wir haben über $(a_{2_{j-1}}a_{2_j})(a_{2_j}b_{2_j})=(a_{2_{j-1}}a_{2j}b_{2j})$ einen 3-Zyklus.
+	Für \(\{a_{2j-1},b_{2j-1}\} = \{a_{2j},b_{2j}\}\) ist schließlich \((a_{2j-1}b_{2j-1})(a_{2j}b_{2j}) = \id\).
 
-	Somit kann \((a_{2j-1}b_{2j-1})(a_{2j}b_{2j})\) als Produkt von 3-Zyklen geschrieben werden und auch \(\sigma = \prod_{j = 1}^m (a_{2j-1}b_{2j-1})(a_{2j}b_{2j})\) ist ein Produkt von 3-Zykeln.
+	Somit kann \((a_{2j-1}b_{2j-1})(a_{2j}b_{2j})\) als Produkt von 3-Zyklen geschrieben werden und auch \(\sigma = \prod_{j = 1}^m (a_{2j-1}b_{2j-1})(a_{2j}b_{2j})\) ist ein Produkt von 3-Zyklen.
 \end{proof}
 	
 \begin{ex}
@@ -1153,9 +1188,9 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 	
 \begin{defn} Es sei $\bullet: G \times X \to X$ eine Gruppenoperation.
 	\begin{enumerate}
-	\item Für $x\in X$ heißt $Gx=\{gx : g \in G\}$ die Bahn (oder Orbit) von X. 
-	\item Die Untergruppe $G_x:=\{g\in G : gx=x\}$ heißt Isotropiegruppe (oder Stabilisator) von $x$.
-	\item Menge der Fixpunkte unter $G$: $X^G:=\{x \in X : \forall g \in G: gx=x\}$
+	\item Für $x\in X$ heißt $Gx := \{gx : g \in G\}$ die Bahn (oder Orbit) von X. 
+	\item Die Untergruppe $G_x:= \{g\in G : gx=x\}$ heißt Isotropiegruppe (oder Stabilisator) von $x$.
+	\item Menge der Fixpunkte unter $G$: $X^G := \{x \in X : \forall g \in G: gx=x\}$
 	\item Die Gruppenoperation ist treu, falls $\tau:G \rightarrow S_X$ injektiv ist.
 	\item Die Gruppenoperation ist transitiv, wenn $X$ eine Bahn ist.
 	\end{enumerate}
@@ -1174,9 +1209,9 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 	\item $G$ operiert auf sich selbst durch Konjugation.
 		Für \(a \in G\) ist die Konjugation mit $a$
 		$$i_a : G \to G, \quad x \mapsto axa^{-1}$$
-		immer ein Automorphismus von G.
+		für alle $x \in G$ ein Automorphismus von G. Somit ist die Abbildung
 		$$i: G \to \Aut(G) \subseteq S_G, \quad a \mapsto i_a$$
-		ist ein Gruppenhomomorphismus, d.h. eine Operation von $G$ auf sich selbst.
+		ein wohldefinierter Gruppenhomomorphismus, d.h. eine Operation von $G$ auf sich selbst.
 		\begin{proof}
 			Für alle \(a, b, x \in G\) ist \[i_{ab}(x)=abx(ab)^{-1}=abxb^{-1}a^{-1}=a(i_b(x))a^{-1}=i_a(i_b(x))=(i_a\circ i_b)(x).\qedhere\]
 		\end{proof}
@@ -1193,7 +1228,7 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 
 \begin{defn}
 	Seien $X$ und $Y$ $G$-Mengen.
-	Dann ist $f: X \rightarrow Y$ ein $G$-Homomorphismus, falls $f(gx)=g(f(x))$ ist. % FIXME Für alle g \in G?
+	Dann ist $f: X \rightarrow Y$ ein $G$-Homomorphismus, falls $f(gx)=g(f(x))$ ist, für alle $x \in X und g \in G$.
 \end{defn}
 
 \begin{thm}
@@ -1216,11 +1251,11 @@ wobei $i: N\to G, n\mapsto (n,e_H), p:G\to H, (n,h)\mapsto h$ ist $j:H\to G, h\m
 \end{proof}
 
 \begin{nb}
-	Die Bahnen einer $G$-Operation sind die Äquivalenzklassen bezüglich der Äquivalenzrelation
+	Die Bahnen einer Gruppenoperation sind die Äquivalenzklassen bezüglich der Äquivalenzrelation
 	\[x \sim y :\Leftrightarrow \text{\(x=gy\) für ein \(g\in G\).}\]
 	D.h. die Bahnen bilden eine Partition von $X$.
 	Für ein Repräsentantensystem $\{x_i\}_{i\in I}$ der Bahnen von \(X\) gilt somit die Bahnengleichung
-	$$|X|=\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}|Gx_i|=\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}[G:G_{x_i}]=|X^G|+\sum\limits_{\begin{subarray}{c}i \in I\\ x_i \notin X^G\end{subarray}}[G:G_{x_i}]$$
+	$$ |X| =\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}|Gx_i| =\sum\limits_{\begin{subarray}{1}i \in I\end{subarray}}[G:G_{x_i}] =|X^G|+\sum\limits_{\begin{subarray}{c}i \in I\\ x_i \notin X^G\end{subarray}}[G:G_{x_i}]. $$
 \end{nb}
 
 %VL 2.6.15
@@ -1228,7 +1263,7 @@ Für die Operation von \(G\) auf sich selbst durch Konjugation gilt:
 \begin{thm} [Klassengleichung]
 	Ist $\{x_{i}\}_{i \in I}$ ein Repräsentantensystem für die Konjugationsklassen der Gruppe \(G\), so gilt\footnote{Erinnerung: \(Z(G)=\{a \in G : \forall g \in G: ag=ga\}\) ist das Zentrum von \(G\) und \(C_G(x) = \{a \in G :ax = xa\}\) der Zentralisator von \(x\).}
 	\[|G|= |Z(G)|+\sum_{x_{i}\notin Z(G)}[G:C_{G}(x_{i})].\]
-	Für endliche Gruppen ist also $[G:G_{x_{i}}]=\dfrac{|G|}{|G_{x_{i}}|}$. % TODO WTF hat das mit dem Rest hier zu tun? Für alle Untergruppen gilt [G:H] = |G|/|H|.
+        Für endliche Gruppen ist also $[G:G_{x_{i}}]=\dfrac{|G|}{|G_{x_{i}}|}$. % TODO WTF hat das mit dem Rest hier zu tun? Für alle Untergruppen gilt [G:H] = |G|/|H|. -- Beachte das Wörtchen *endlich*. I.A. gilt nur |G| = [G:H] |H|. (Fabian)
 \end{thm}
 
 \begin{nb}
@@ -1259,7 +1294,7 @@ Für die Operation von \(G\) auf sich selbst durch Konjugation gilt:
 \end{proof}
 
 \begin{thm}
-	Es sei G eine p-Gruppe, die auf einer endlichen Menge X operiert. Dann ist
+	Es sei G eine $p$-Gruppe, die auf einer endlichen Menge $X$ operiert. Dann ist
 	\begin{equation*}
 		|X^G|\equiv |X| \pmod{p}.
 	\end{equation*}
@@ -1275,7 +1310,7 @@ Für die Operation von \(G\) auf sich selbst durch Konjugation gilt:
 
 \subsection{Die sylowschen Sätze}
 
-Der Satz von Lagrange gibt uns die Teilbarkeit $\ord(H) \divides \ord(G)$ für jede Untergruppe $H$ von $G$.
+Der Satz von Lagrange gibt uns die Teilbarkeit $\ord(H) \divides \ord(G)$ für jede Untergruppe $H$ einer endlichen Gruppe $G$.
 Aber: Wenn \(h\) ein Teiler von $\ord(G)$ ist, existiert dann auch eine Untergruppe \(H \subseteq G\) mit $\ord(H)=h$?
 
 \begin{thm}
@@ -1289,19 +1324,20 @@ Aber: Wenn \(h\) ein Teiler von $\ord(G)$ ist, existiert dann auch eine Untergru
 	\item Induktionsstart: Sei \(n=1\), d.h. $|G|=p$.
 		Daraus folgt: $G=\langle a\rangle$ ist zyklisch und der Erzeuger \(a\) hat Ordnung \(p\).
 	\item Induktionsschritt: Wir nehmen an, dass die Aussage für jede Gruppe der Ordnung $pm'$ mit $m'<n$ gilt.
-		Es sei $h\neq e$ ein beliebiges Element von \(G\), und $m:=\ord(h)$.
+		Es sei $h\neq e$ ein beliebiges Element von \(G\) und $m:=\ord(h)$.
+
 		Wenn \(m\) durch \(p\) teilbar ist, enthält die zyklische Untergruppe $\langle h\rangle$ ein Element der Ordnung \(p\).
 
 		Wenn \(p\) kein Teiler von \(m\) ist, so ist, mit \(pn = |G| = |G/\langle h\rangle||\langle h\rangle| = |G/\langle h\rangle|m\), \(p\) ein Teiler von $|G/\langle h\rangle|<pn$.
 		Nach Induktionsvoraussetzung enthält die Gruppe $|G/\langle h\rangle|$\footnote{\(\langle h\rangle\) ist eine normale Untergruppe, da \(G\) abelsch ist.} ein Element $a\langle h\rangle$ der Ordnung \(p\).
 		Es sei $k:=\ord(a)$ die Ordnung des gewählten Repräsentanten $a \in G$.
-		Nun liefert \[(a\langle h\rangle)^k=a^k\langle h\rangle=\langle h\rangle\] die Teilbarkeit \(p = \ord(a\langle h\rangle) \mid k\).
+		Nun liefert \[(a\langle h\rangle)^k=a^k\langle h\rangle=\langle h\rangle\] die Teilbarkeit \(p = \ord(a\langle h\rangle) \divides k\).
 		Daraus folgt, dass $a^{\frac{k}{p}}$ ein Element von $\langle a\rangle \subseteq G$ der Ordnung \(p\) ist.\qedhere
 	\end{itemize}
 \end{proof}
 
 \begin{thm}[Cauchy]
-	Ist \(p\) eine Primzahl, die die Ordnung der endl. Gruppe \(G\) teilt, so enthält \(G\) ein Element der Ordnung \(p\).
+	Ist \(p\) eine Primzahl, die die Ordnung der endlichen Gruppe \(G\) teilt, so enthält \(G\) ein Element der Ordnung \(p\).
 \end{thm}
 
 \begin{proof}
@@ -1313,7 +1349,7 @@ Aber: Wenn \(h\) ein Teiler von $\ord(G)$ ist, existiert dann auch eine Untergru
 		Wir können annehmen, dass die Ordnung jeder Untergruppe $H \subsetneq G$ nicht durch \(p\) teilbar ist.
 		Insbesondere gilt, im Spezialfall der Zentralisation, $p \nmid \ord(C_{G}(a))$ für alle $a \notin Z(G)$.
 		Nun seien \(x_i\) für \(i \in I\) ein beliebiges Repräsentantensystem der Konjugationsklassen von \(G\).
-		Die Klassengleichung gibt uns dann \[|Z(G)| = |G| - \sum_{x_i \notin Z(G)}\dfrac{|G|}{|C_{G}(x_i)|}\] und somit $p \mid \ord(Z(G))$.
+		Die Klassengleichung gibt uns dann \[|Z(G)| = |G| - \sum_{x_i \notin Z(G)}\dfrac{|G|}{|C_{G}(x_i)|}\] und somit $p \divides \ord(Z(G))$.
 		Aus der Annahme folgt dann \(Z(G)=G\).
 		\(G\) ist also abelsch und die Aussage folgt aus dem vorherigen Satz.\qedhere
 \end{itemize}
@@ -1327,7 +1363,7 @@ Aber: Wenn \(h\) ein Teiler von $\ord(G)$ ist, existiert dann auch eine Untergru
 	\begin{itemize}
 	\item["$\Rightarrow$":] Nach Lagrange gilt für jedes \(g\in G\) die Teilbarkeit \(\ord(g) \divides \ord(G)=p^n\), woraus folgt, dass $\ord(g)=p^k$ für ein \(k \leq n\) ist.
 	\item["$\Leftarrow$":] Zwecks Kontraposition sei die Ordnung von \(G\) von der Form $\ord(G)=p^\alpha q$ mit $q\neq 1$ teilerfremd zu \(p\).
-		Dann enthält \(G\) ein Element der Ordnung \(p\) für jeden Primfaktor von \(q\), somit ist die Ordnung mancher Elemente nicht von der Form $p^k$.
+		Dann existiert nach dem Satz von Cauchy für jeden Primfaktor $p'$ von \(q\) ein Element $g \in G$ mit \(\ord(g)=p'\). Somit ist die Ordnung von $g$ nicht von der Form $p^k$ im Widerspruch zur Voraussetzung.
 	\end{itemize}
 \end{proof}
 
@@ -1345,10 +1381,10 @@ Aber: Wenn \(h\) ein Teiler von $\ord(G)$ ist, existiert dann auch eine Untergru
 	Es sei \(G\) eine endliche Gruppe der Ordnung $|G|=p^n q$ mit \(p\) Primzahl, \(q\) teilerfremd zu \(p\).
 	Dann gelten:
 	\begin{enumerate}
-	\item \(G\) enthält eine Untergruppe der Ordnung $p^\alpha$ für jedes $1\leq \alpha \leq n$. % TODO Wieso nicht 0 \leq ...? Mit {e} ist das eine triviale Verstärkung des Satzes.
+	\item \(G\) enthält eine Untergruppe der Ordnung $p^\alpha$ für jedes $1\leq \alpha \leq n$. % TODO Wieso nicht 0 \leq ...? Mit {e} ist das eine triviale Verstärkung des Satzes. -- Ich halte das ausnahmsweise für viel zu trivial. Sinn des Satzes ist ja die Existenz von nichttrivialen p-Gruppen zu zeigen. (Fabian)
 	\item Es sei \(H\) eine \(p\)-Untergruppe von \(G\) und \(S\) eine \(p\)-Sylowuntergruppe.
 		Dann existiert ein $g \in G$ mit $H \subset gSg^{-1}$.
-	\item Die Anzahl der \(p\)-Sylowuntergruppen ist ein Teiler von \(q\) von der Form $s=1+kp$ mit $k \in \mathbb{N}$.
+	\item Die Anzahl $s$ der \(p\)-Sylowuntergruppen ist ein Teiler von \(q\) von der Form $s=1+kp$ mit $k \in \mathbb{N}$.
 	\end{enumerate}
 \end{thm}
 
@@ -1362,14 +1398,14 @@ Aber: Wenn \(h\) ein Teiler von $\ord(G)$ ist, existiert dann auch eine Untergru
 	Ist $(a_i)_{i \in I}$ ein Repräsentantensystem der Konjugationsklassen, so gilt
 	\[p^nq = |G| = |Z(G)|+\sum_{a_{i}\notin Z(G)}\dfrac{|G|}{|C_{G}(a_{i})|} = |Z(G)|+\sum_{a_{i}\notin Z(G)}[G:C_G(a_i)].\]
 	Da die \(C_G(a_i)\) für alle \(a_i \not\in Z(G)\) echte Untergruppen sind, gilt $p^n \nmid |C_G(a_i)|$.
-	Aus der Annahme $p^n \mid |G|$ ergibt sich also \(p \mid [G:C_G(a_i)]\), weshalb auch $|Z(G)|$ durch \(p\) teilbar ist.
+	Aus der Annahme $p^n \divides |G|$ ergibt sich also \(p \divides [G:C_G(a_i)]\), weshalb auch $|Z(G)|$ durch \(p\) teilbar ist.
 	Aus dem Satz von Cauchy folgt dann, dass $b \in Z(G)$ mit $\ord(b)=p$ existiert.
 
 	% VL 09.06.
 	Da $b$ im Zentrum von $G$ liegt, ist $\langle b \rangle$ eine normale Untergruppe von $G$.
 	Wir betrachten die Faktorgruppe $G/ \langle b \rangle$.
 	Es gilt $$|G/\langle b\rangle| = \frac{|G|}{|\langle b\rangle|} = p^{n-1}q < p^nq.$$
-	Nach Induktionsvoraussetzung enthält $G/\langle b\rangle$ eine Untergruppe $\bar{S}$ der Ordnung $p^{\alpha - 1}$. Es sei $S = \{x \in G : x \langle b \rangle \in \bar{S}\}$.\footnote{Es ist \(S = \pi^{-1}(\bar S)\) das Urbild der Untergruppe \(\bar S\) bzgl. der natürlichen Projektion \(\pi: G \to G/\langle b\rangle\). Eine weitere Konstruktionsmöglichkeit wäre \(S = \bigcup_{s \in\bar S} s\), wobei ein jeder sich für die am intuitivsten scheinende Variante entscheiden möge.}
+        Nach Induktionsvoraussetzung enthält $G/\langle b\rangle$ eine Untergruppe $\bar{S}$ der Ordnung $p^{\alpha - 1}$. Es sei $S = \{x \in G : x \langle b \rangle \in \bar{S}\}$.\footnote{Es ist \(S = \pi^{-1}(\bar S)\) das Urbild der Untergruppe \(\bar S\) bzgl. der natürlichen Projektion \(\pi: G \to G/\langle b\rangle\). Eine weitere Konstruktionsmöglichkeit wäre \(S = \bigcup_{s \in\bar S} s\), wobei ein jeder sich für die am intuitivsten scheinende Variante entscheiden möge.} %FIXME Sollte es vielleicht \bigcup_{s \langle b \rangle \in \bar S} heißen? Zur einheitlichen Notation schlage ich vor das kleine s zusätzlich noch durch ein x zu ersetzten, so wie es auch im Beweis verwendet wird. (Fabian)
 	$S$ ist eine Untergruppe von \(G\) und es gilt $\bar{S} \cong S/\langle b\rangle$, denn für die natürliche Projektion $p: S \rightarrow \bar{S}$ gilt $\ker(p) = \langle b\rangle$ und somit ist der Homomorphiesatz anwendbar.
 	Das liefert $$p^{\alpha - 1} = |\bar{S}| = \frac{|S|}{| \langle b \rangle |} = \frac{|S|}{p}.$$
 	Somit gilt $|S| = p^{\alpha}$ und $S$ ist die gesuchte $p$-Gruppe.
@@ -1450,15 +1486,19 @@ Für den Beweis des dritten Teils benötigen wir folgendes Lemma:
 \underline{Anwendungen/Folgerungen des Sylow-Satzes}
 
 \begin{thm}
-	Es seien $p, q$ Primzahlen mit $p < q$ und $p \nmid q-1$.
+	Es seien $p, q$ Primzahlen mit $p < q$ und $p \nmid q-1$.\footnote{Dies schließt gerade den Fall $p = 2, q = 3$ aus. Ein Isomorphietyp von Gruppen der Ordnung 6 ist nämlich $D_6$ und diese Gruppe ist nicht zyklisch. S.a. Beispiel \ref{ex:semidirekt}.}
 	Dann ist jede Gruppe $G$ der Ordnung $pq$ eine zyklische Gruppe.
 \end{thm}
 
 \begin{proof}
-	Es sei $s$ die Anzahl der $p$-Sylowuntergruppen von $G$. Aus Teil 3 des Sylow-Satzes folgt $s \divides q, s \equiv 1 \pmod{p}$. Da $q \not \equiv 1 \pmod{p}$, muss $s = 1$ gelten, denn die Primzahl $q$ ist nur durch $1$ und $q$ teilbar. \\
-	Es gibt also eine einzige $p$-Sylowuntergruppe $S$ von $G$. Aus Teil 2 des Sylow-Satzes folgt $gSg^{-1} = S$ für alle $g \in G$. Somit ist $S$ eine normale Untergruppe. \\ %FIXME Wozu den zweiten Sylowsatz. Die Aussage sollte eigentlich direkt daraus folgen, dass die Konjugation als ein Isomorphismus die Gruppenordnung unverändert lässt. Eventueller Fix betrifft dann auch die Aussage im thm. zur einfachen Gruppe der Ordnung 30
-	Für die Anzahl $r$ der $q$-Sylowuntergruppen gilt: $r \divides p$ und $r \equiv 1 \pmod{q}$. Wenn $r = p$, dann gilt $r = p \not = 1 \pmod{q}$ (wegen $p < q$). Dies ist also nicht möglich. Es gilt dann $r = 1$. Es existiert genau eine $q$-Sylowuntergruppe $R$ von $G$ und $R$ ist deswegen ein Normalteiler von $G$. Da $S$ und $R$ normal sind, ist $SR = \{ ab : a \in S, b \in R\}$ eine normale Untergruppe. \\
-	$S \cap R = \{ e\}$ (die Elemente müssen Ordnung $1$ haben). Dies ergibt, dass $SR$ das (innere) direkte Produkt von $S$ und $R$ ist. Insbesondere gilt $|SR| = |S \times R| = |S||R| = pq = |G|$. Folglich gilt $G = S \times R$. Man zeigt dann, $G = \langle ab \rangle \text{ mit } \langle a \rangle = S, \langle b \rangle = R$ zyklisch.
+	Es sei $s$ die Anzahl der $p$-Sylowuntergruppen von $G$. Aus Teil 3 des Sylow-Satzes folgt $s \divides q$ und $s \equiv 1 \pmod{p}$. Da $q \not \equiv 1 \pmod{p}$, muss $s = 1$ gelten, denn die Primzahl $q$ ist nur durch $1$ und $q$ teilbar. 
+
+	Es gibt also eine einzige $p$-Sylowuntergruppe $S$ von $G$. Aus Teil 2 des Sylow-Satzes folgt $gSg^{-1} = S$ für alle $g \in G$. Somit ist $S$ eine normale Untergruppe. %FIXME Wozu den zweiten Sylowsatz. Die Aussage sollte eigentlich direkt daraus folgen, dass die Konjugation als ein Isomorphismus die Gruppenordnung unverändert lässt. Eventueller Fix betrifft dann auch die Aussage im thm. zur einfachen Gruppe der Ordnung 30
+	Für die Anzahl $r$ der $q$-Sylowuntergruppen gilt: $r \divides p$ und $r \equiv 1 \pmod{q}$. Wenn $r = p$, dann gilt $r = p \not = 1 \pmod{q}$ (wegen $p < q$). Dies ist also nicht möglich. Es gilt dann $r = 1$. Es existiert genau eine $q$-Sylowuntergruppe $R$ von $G$ und $R$ ist deswegen ein Normalteiler von $G$. Da $S$ und $R$ normal sind, ist $SR = \{ ab : a \in S, b \in R\}$ eine normale Untergruppe. 
+
+	Es gilt $S \cap R = \{ e\}$ (die Elemente müssen Ordnung $1$ haben). Dies ergibt, dass $SR$ das (innere) direkte Produkt von $S$ und $R$ ist. Insbesondere gilt $|SR| = |S \times R| = |S||R| = pq = |G|$. Folglich gilt $G = SR \cong S \times R$. 
+
+        Wir zeigen nun $G = \langle ab \rangle$. Dazu sei $S =  \langle a \rangle$ und $R =  \langle b \rangle$. Es gilt $ (ab)^{pq} = (a^p)^q (b^q)^p = e$ und damit $\ord(ab) \divides pq$. Da $p$ und $q$ teilerfremde Primzahlen sind folgt $ (ab)^p = a^p b^p = b^p \neq e$ und  $(ab)^q = a^q b^q = a^q \neq e$. Also gilt $\ord(ab) = pq$.
 \end{proof}
 
 % VL 16.06.
@@ -1469,9 +1509,9 @@ Für den Beweis des dritten Teils benötigen wir folgendes Lemma:
 \begin{proof}
 	Es ist $|G| = 30 = 2\cdot 3\cdot 5$. Es seien $s$ die Anzahl der 5-Sylowuntergruppen und $t$ die der 3-Sylowuntergruppen. Angenommen, $G$ sei einfach. Dann gilt: $s>1$ und $t>1$, denn mit $s=1$ (bzw. $t=1$) wäre die 5-Sylowuntergruppe (bzw. 3-Sylowuntergruppe) normal wegen Konjugiertheit der Sylowgruppen zueinander (Teil 2 im Satz). Aus Teil (3) folgt
 		\[ s \divides 6,\; s\equiv 1(5)\Rightarrow s=6.\]
-	Also gibt es 6 verschiedene 5-Sylowuntergruppen, jede davon hat Ordnung $5$. Damit enthalten die 5-Sylowuntergruppen zusammen $6\cdot 4 =24$ Elemente und das neutrale Element. Analog gilt für $t$
+	Also gibt es 6 verschiedene 5-Sylowuntergruppen, jede davon hat Ordnung $5$. Da die 5-Sylowuntergruppen Primzahlordnung haben und damit insbesondere zyklisch sind, haben sie paarweise nur einen trivialen Schnitt. Damit enthalten die 5-Sylowuntergruppen zusammen $6\cdot 4 =24$ Elemente und das neutrale Element. Analog gilt für $t$
 		\[ t \divides 10,\; t\equiv 1(3) \Rightarrow t=10.\]
-	Damit enthalten die 3-Sylowuntergruppen $10\cdot 2=20$ Elemente und das neutrale Element.
+	Damit enthalten die 3-Sylowuntergruppen $10\cdot 2=20$ Elemente und das neutrale Element. Die nichttrivialen Elemente der 3-Sylowuntergruppen sind von denen der 5-Sylowuntergruppen verschieden, denn das einzige Element, dessen Ordnung sowohl 5 als auch 3 teilt, ist das neutrale.
 	
 	Aber: $20+24+1=45>30=\ord(G)$. Also kann $G$ nicht einfach sein.
 \end{proof}
@@ -1480,8 +1520,8 @@ Für den Beweis des dritten Teils benötigen wir folgendes Lemma:
 
 \begin{defn}
 	Es sei $G$ eine Gruppe. Eine Normalreihe in $G$ ist eine Folge von Untergruppen
-		\[ \{e\} = G_0 \subseteq G_1 \subseteq G_2 \subseteq\dots\subseteq G_n=G\qquad n\geq 1\qquad(n=0\text{ für } G=\{e\})\]
-	so dass für alle $i,1\leq i\leq n$ $G_{i-1}$ Normalteiler von $G_i$ ist.
+		\[ \{e\} = G_0 \subseteq G_1 \subseteq G_2 \subseteq\dots\subseteq G_n=G\qquad n\geq 1\qquad(n=0\text{ für } G=\{e\}),\]
+	sodass für alle $i$ mit $1\leq i\leq n$ die Untergruppe $G_{i-1}$ Normalteiler von $G_i$ ist.
 \end{defn}
 
 \begin{nb}
@@ -1497,7 +1537,7 @@ Für den Beweis des dritten Teils benötigen wir folgendes Lemma:
 	zwei Normalreihen.
 	\begin{itemize}
 		\item $\underline{H}$ ist eine Verfeinerung von $\underline{G}$, wenn $\underline{H}$ aus $\underline{G}$ durch das Einfügen von Untergruppen erhalten werden kann.
-		\item $\underline{G}$ und $\underline{H}$ heißen äquivalent, wenn $m=n$ gilt und es eine Permutation $\sigma\in S_n$ gibt, so dass 
+		\item $\underline{G}$ und $\underline{H}$ heißen äquivalent, wenn $m=n$ gilt und es eine Permutation $\sigma\in S_n$ gibt, sodass 
 		\[ G_j/G_{j-1}\cong H_{\sigma(j)}/H_{\sigma(j)-1}\]
 			für alle $1\leq j\leq n$ gilt.
 	\end{itemize}
@@ -1515,7 +1555,7 @@ Es sei $G$ eine Gruppe, $\underline{G}$ und $\underline{H}$ Normalreihen in $G$.
 		\end{split}\]
 	die beiden Normalreihen. Wir setzen nun $G_{ij}:=G_i\cdot(G_{i+1}\cap H_j), H_{ij} := H_j\cdot(G_i\cap H_{j+1})$ für alle $i,j$ mit $G_{n+1}:=G=:H_{m+1}$.
 	
-	Es gilt nun: $G_{i,m}=G_{i+1}=G_{i+1,0}$ und $H_{n,j}=H_{j+1}=H_{0,j+1}$, so dass $\{G_{ij}\}$ und $\{H_{ij}\}$ Folgen von Untergruppen sind. Es ist klar, dass diese Verfeinerungen von $G$ bzw. $H$ von selber Länge sind. Wir müssen noch zeigen:
+	Es gilt nun: $G_{i,m}=G_{i+1}=G_{i+1,0}$ und $H_{n,j}=H_{j+1}=H_{0,j+1}$, sodass $\{G_{ij}\}$ und $\{H_{ij}\}$ Folgen von Untergruppen sind. Es ist klar, dass diese Verfeinerungen von $G$ bzw. $H$ von selber Länge sind. Wir müssen noch zeigen:
 	\begin{enumerate}[label=(\alph*)]
 		\item $G_{ij}\subseteq G_{i,j+1}$ und $H_{ij}\subseteq H_{i,j+1}$ sind normal, damit beide Normalreihen sind,
 		\item $G_{i,j+1}/G_{i,j}$ und $H_{i+1,j}/H_{i,j}$ sind beide isomorph zu $\nicefrac{(G_{i+1}\cap H_{j+1})}{(G_{i+1}\cap H_{j})\cdot(G_{i}\cap H_{j+1})}$.
@@ -1616,11 +1656,11 @@ Es sei $G$ eine Gruppe, $\underline{G}$ und $\underline{H}$ Normalreihen in $G$.
 
 Motivation: Beschreibung von Nullstellen von Polynomen durch Radikale
 \begin{itemize}
-  \item Grad $2$: $x^2 + 2px + q = 0 \leadsto p\text{-}q\text{Formel} \quad x_{1,2} = -p \pm \sqrt{p^{2} - q} $
+  \item Grad $2$: $x^2 + 2px + q = 0 \leadsto p\text{-}q\text{-Formel} \quad x_{1,2} = -p \pm \sqrt{p^{2} - q} $
   \item Grad $3,4$: Ähnliche Formeln, die $\sqrt[2]{}, \sqrt[3]{}, \sqrt[4]{}$ enthalten
 \end{itemize}
 
-Aus der Tatsache, dass $S_n$ nicht auflösbar ist für $n \geq 5$ folgt, dass solche Formeln für allgemeine Polynome vom Grad $n \geq 5$ nicht mehr möglich sind
+Aus der Tatsache, dass $S_n$ nicht auflösbar ist für $n \geq 5$ folgt, dass solche Formeln für allgemeine Polynome vom Grad $n \geq 5$ nicht mehr möglich sind.
 
 \subsection{Abelsche Gruppen}
 
@@ -1642,7 +1682,7 @@ Direktes Produkt: $\prod_{i \in I} H_i \to (h_i)_{i \in I}$ mit $h_i \in H_i \; 
 Wie im Fall der direkten Produkte zeigt man das Folgende:
 
 \begin{thm}
-  Es sei $(H_i)_{i \in I}$ eine Familie von Untergruppen einer abelschen Gruppe $G$. Dann sind die folgenden Aussagen äquivalent
+  Es sei $(H_i)_{i \in I}$ eine Familie von Untergruppen einer abelschen Gruppe $G$. Dann sind die folgenden Aussagen äquivalent:
 \begin{itemize}
   \item[(i)]  $G$ wird durch $\cup_{i \in I} H_i$ erzeugt und für jedes $i_0 \in I$ gilt 
     \[ H_{i_0} \cap \langle \bigcup_{i \neq i_0} H_i \rangle = \left\{ 0 \right\}. \]
@@ -1659,7 +1699,7 @@ Wie im Fall der direkten Produkte zeigt man das Folgende:
 \end{nb}
 
 \begin{defn}
-  Eine abelsche Gruppe heißt \emph{frei}, wenn eine Teilmenge $X \subset G$ existiert, so dass
+  Eine abelsche Gruppe heißt \emph{frei}, wenn eine Teilmenge $X \subset G$ existiert, sodass
   \begin{itemize}
     \item[(i)] $\operatorname{ord}(x) = \infty$ gilt für alle $x \in X$
     \item[(ii)] $G = \bigoplus_{x \in X} \langle x \rangle$.
@@ -1695,8 +1735,9 @@ Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:
   Sei $G$ eine freie abelsche Gruppe mit Basis $X$ und $H$ eine beliebige abelsche Gruppe. Sei $f : X \to H$ eine Abbildung, Dann existiert ein eindeutig bestimmter Homomorphismus $\tilde{f}: G \to H$, der $f$ fortsetzt, d.h. mit $\tilde{f}(x) = f(x)$ für alle $x \in X$.
 \end{thm}
 \begin{proof}
-  Es sei $g \in G$ beliebig. Es gilt: $g = \sum_{x \in X}m_x x$ ($ m_x = 0$ für fast alle $x$). \\
-  Wir setzen $\tilde{f}(g) := \sum_{x \in X} m_x f(x)$ (Summe ist wieder endlich, insbesondere unabhängig von Summationsreihenfolge). Dies ist wohldefiniert, weil die Summe endlich ist. $\tilde{f}$ ist dann ein Gruppenhomomorphismus, der $f$ fortsetzt.  \\
+  Es sei $g \in G$ beliebig. Es gilt: $g = \sum_{x \in X}m_x x$ ($ m_x = 0$ für fast alle $x$).
+  Wir setzen $\tilde{f}(g) := \sum_{x \in X} m_x f(x)$ (Summe ist wieder endlich, insbesondere unabhängig von Summationsreihenfolge). Dies ist wohldefiniert, weil die Summe endlich ist. $\tilde{f}$ ist dann ein Gruppenhomomorphismus, der $f$ fortsetzt. %FIXME Eigentlich folgt die Wohldefiniertheit daraus, dass jedes g eine EINDEUTIGE Darstellung als Z-Linearkombination von Basiselementen besitzt. Dies beinhaltet zudem die benötigte Endlichkeit der Summe (Fabian)
+
   Es sei $\varphi : G \to H$ ein Homomorphismus, der $f$ fortsetzt. Dann gilt für alle $x_1,\dots,x_l \in X, m_1,\dots,m_l \in \mathbb{Z}$: 
   \begin{align*}
   \varphi(m_1 x_1 + \dots + m_l x_l) 
@@ -1710,7 +1751,7 @@ Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:
 \end{proof} 
 
 \begin{kor}
-  Jede abelsche Gruppe $G$ ist Faktorguppe einer freien abelschen Gruppe. D.h. zu jeder abelschen Gruppe $G$ gibt es eine freie abelsche Gruppe $F$ mit einem surjektiven Homomorphismus $f: F \to G$.
+  Jede abelsche Gruppe $G$ ist (isomorph zu einer) Faktorguppe einer freien abelschen Gruppe. D.h. zu jeder abelschen Gruppe $G$ gibt es eine freie abelsche Gruppe $F$ mit einem surjektiven Homomorphismus $f: F \to G$.
 \end{kor}
 
 \begin{proof}
@@ -1718,7 +1759,8 @@ Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:
   \[ F := \bigoplus_{g \in G} H_g \cong \bigoplus_{g \in G} \mathbb{Z} \]
   $F$ ist dann eine freie abelsche Gruppe mit Basis $X = \left\{  x_g \,\vert\, g \in G \right\}$.
 
-  Wir betrachten $f : X \to G, x_g \mapsto g$. Diese Abbildung $f$ wird nach dem obigen Satz durch einen Homomorphismus $\tilde{f}: F\to G$ fortgesetzt, der offensichtlich surjektiv ist.
+  Wir betrachten $f : X \to G, x_g \mapsto g$. Diese Abbildung $f$ wird nach dem obigen Satz durch einen Homomorphismus $\tilde{f}: F\to G$ fortgesetzt, der offensichtlich surjektiv ist. 
+  Unter Verwendung des Homomorphiesatzes folgt sogleich $F / \ker(\tilde f) \cong G$.
 \end{proof}
 
 \begin{thm}
@@ -1729,17 +1771,30 @@ Freie abelsche Gruppen genießen die folgende universelle Eigenschaft:
   "$\Leftarrow$": $\lvert X_1 \rvert = \lvert X_2 \rvert$ bedeutet, dass es eine Bijektion $f: X_1 \to X_2$ gibt. Es sei $\tilde{f}: G_1 \to G_2 $ der Gruppenhomomorphismus der $f : X_1 \to X_2 \subset G_2$ fortsetzt.
   Ähnlich existiert ein Homomorphismus $\tilde{g}: G_2 \to G_1$, der $f^{-1}$ fortsetzt. Da $(\tilde{g} \circ \tilde{f})(x) = (f^{-1} \circ f)(x) = x $ für alle $x \in X_1$ gilt, ist $\tilde{g} \circ \tilde{f} $ eine Fortsetzung von $\operatorname{id}_{X_1} : X_1 \to X_1$. Aus der Eindeutigkeit folgt dann, dass $\tilde{g} \circ \tilde{f} = \operatorname{id}_{G_1}$. Genauso zeigt man: $\tilde{f} \circ \tilde{g} = \operatorname{id}_{G_2}$. Da $\tilde{f}$ das Inverse $\tilde{g}$ besitzt, ist $\tilde{f}: G_1 \to G_2$ dann ein Isomorphismus.
 
-  "$\Rightarrow$": Es sei $p $ eine Primzahl, $G$ eine abelsche Gruppe. $pG = \left\{ pg \,\vert\, g \in G \right\}$ ist dann eine Untergruppe von $G$. Dann ist $V = G / pG$ ein Vektorraum über $\mathbb{F}_p = \mathbb{Z}/p\mathbb{Z}$. Sei $G \to G/pG = V, g\mapsto \overline{g} = g + pG$  die natürliche Projektion. Wenn $G$ eine freie abelsche Gruppe mit Basis $X$ ist, dann ist $ \overline{X} = \left\{ \overline{x} \,\vert\, x \in X \right\} $ eine Basis vom Vektorraum $V$. Nun ist die Abbildung $X \to \overline{X}, x \mapsto \overline{x} = x + pG$ ist eine Bijektion: Sie ist offensichtlich surjektiv; für Injektivität nehme man an, es existieren $x, x' \in X$ mit $x \neq x'$ und $\overline{x} = \overline{x'}$. Daraus folgt $ x - x' \in pG$, was wiederum $x - x' = p \, ( \sum_{y \in X} m_y y )  = \sum_{y \in X} \left( p m_y \right) y $ impliziert. Aus der Eindeutigkeit der Darstellung in $G$ folgt $p m_x = 1$, bzw. $p m_{x'} = -1$ wobei $m_x, m_{x'} \in \mathbb{Z}$ $\leadsto$  Widerspruch. Somit ist die Abbildung auch injektiv.
+  "$\Rightarrow$": Es sei $p $ eine Primzahl, $G$ eine freie abelsche Gruppe. 
+  $pG = \left\{ pg \,\vert\, g \in G \right\}$ ist dann eine Untergruppe von $G$. 
+  Dann ist $V = G / pG$ ein Vektorraum über $\mathbb{F}_p = \mathbb{Z}/p\mathbb{Z}$. 
+  Sei $G \to G/pG = V, g\mapsto \overline{g} = g + pG$  die natürliche Projektion. 
+  Wenn $G$ eine freie abelsche Gruppe mit Basis $X$ ist, dann ist $ \overline{X} = \left\{ \overline{x} \,\vert\, x \in X \right\} $ eine Basis vom Vektorraum $V$. 
+  Nun ist die Abbildung $X \to \overline{X}, x \mapsto \overline{x} = x + pG$ ist eine Bijektion: Sie ist offensichtlich surjektiv; 
+  für Injektivität nehme man an, es existieren $x, x' \in X$ mit $x \neq x'$ und $\overline{x} = \overline{x'}$. 
+  Daraus folgt $ x - x' \in pG$, was wiederum $x - x' = p \, ( \sum_{y \in X} m_y y )  = \sum_{y \in X} \left( p m_y \right) y $ impliziert. 
+  Aus der Eindeutigkeit der Darstellung in $G$ folgt $p m_x = 1$, bzw. $p m_{x'} = -1$ wobei $m_x, m_{x'} \in \mathbb{Z}$ $\leadsto$  Widerspruch. Somit ist die Abbildung auch injektiv.
+  %@Sebastian: FIXME Hier fehlt noch der Nachweis der Basiseigenschaft, d.h. Lineare U. und Erzeugendensystem, der am Anfang der Vorlesung vom 30.06. erbracht wurde (Fabian)
 \end{proof}
+
+%Vorlesung 30.06.15
+
+
 
 %Vorlesung 7.7.15
 
 \begin{nb}
-Ziel ist die Klassifizierung der endlichen erzeugten abelschen Gruppen:
+Ziel ist die Klassifizierung der endlich erzeugten abelschen Gruppen:
 \begin{enumerate}
-\item Schritt: Zeige $G \cong F \oplus T(G)$ mit endlich erzeugten freie abelsche Gruppe (also $F \cong \mathbb{Z}^{r}, r \geq 1$) und der endlichen Torsionsuntergruppe $T(G)$ von G
-\item Schritt: Zeige (mit Sylow) die Zerlegung $T(G) = \bigoplus_{p\text{ prim}} G_{p}$ mit geeigneten p-Gruppen $G_{p}$
-\item Schritt: Klassifizierung der p-Gruppen $G_{p}$, diese sind aus endlichen Produkten (endlicher) zyklischer Gruppen aufgebaut.
+\item Schritt: Zeige $G \cong F \oplus T(G)$ mit $F$ endlich erzeugter freier abelscher Gruppe (also $F \cong \mathbb{Z}^{r}, r \geq 1$) und der endlichen Torsionsuntergruppe $T(G)$ von G.
+\item Schritt: Zeige (mit Sylow) die Zerlegung $T(G) = \bigoplus_{p\text{ prim}} G_{p}$ mit geeigneten $p$-Gruppen $G_{p}$.
+\item Schritt: Klassifizierung der $p$-Gruppen $G_{p}$, diese sind aus endlichen Produkten (endlicher) zyklischer Gruppen aufgebaut.
 \end{enumerate}
 \end{nb}
 
@@ -1750,11 +1805,11 @@ Sei $G$ eine torsionsfreie endlich erzeugte abelsche Gruppe. Dann ist $G$ frei a
 \begin{proof}
 Sei $M$ ein endliches Erzeugendensystem von $G$. 
 Sei $\{m_{1}, \dots ,m_{k}\} \subset M$ eine maximale Teilmenge $\mathbb{Z}$-linear unabhängiger Elemente, d.h. aus $n_{1}m_{1}+ \dots +n_{k}m_{k}=0$, mit $n_{1}, \dots ,n_{k} \in \mathbb{Z}$ folgt immer $n_{1}= \dots =n_{k}=0$. 
-Folglich gibt es zu jedem $m \in M, m \notin \{m_{1}, \dots ,m_{k}\}$ ein $n(m) \in \mathbb{Z}, n(m)\neq 0$ und geeignete Koeffizienten $n_{1}, \dots ,n_{k} \in \mathbb{Z}$ mit $n(m)=n_{1}m_{1}+ \dots +n_{k}m_{k}$. 
+Folglich gibt es zu jedem $m \in M, m \notin \{m_{1}, \dots ,m_{k}\}$ ein $n(m) \in \mathbb{Z}, n(m)\neq 0$ und geeignete Koeffizienten $n_{1}, \dots ,n_{k} \in \mathbb{Z}$ mit $n(m)m=n_{1}m_{1}+ \dots +n_{k}m_{k}$.\footnote{Man betrachte hierzu eine aufgrund der Maximalität des Systems $\{m_1,\dots,m_k\}$ existierende nichttriviale $\mathbb{Z}$-Linearkombination der $0 \in G$ durch die Elemente aus $\{m,m_1,\dots,m_k\}$.}
 Sei $N$ ein gemeinsames Vielfaches von den (endlich vielen) Zahlen $n(m),m \in M-\{m_{1}, \dots ,m_{k}\}$. 
-Dann gilt: $Nm \in <m_{1}, \dots ,m_{k}>$ für alle $m \in M$.
+Dann gilt: $Nm \in \langle m_{1}, \dots ,m_{k} \rangle$ für alle $m \in M$.
 
-Sei $\mu :G\rightarrow \langle m_{1}, \dots ,m_{k} \rangle $ durch $\mu (g)=Ng$ definiert. Da $G$ abelsch ist, ist $\mu$ ein Homomorphismus. Wegen $\ker(\mu ) \subset T(G) = \{ 0\}$ ist $\mu$ injektiv. Aus dem Homomorphiesatz folgt $G \cong \mu (G) \subset \langle m_{1}, \dots ,m_{k}\rangle$. D.h. $G$ ist eine Untergruppe einer freien abelschen Gruppe. Somit ist $G$ frei abelsch.
+Sei $\mu :G\rightarrow \langle m_{1}, \dots ,m_{k} \rangle $ durch $\mu (g)=Ng$ definiert. Da $G$ abelsch ist, ist $\mu$ ein Homomorphismus. Wegen $\ker(\mu ) \subset T(G) = \{ 0\}$ ist $\mu$ injektiv. Aus dem Homomorphiesatz folgt $G \cong \mu (G) \subset \langle m_{1}, \dots ,m_{k}\rangle$. D.h. $G$ ist zu einer Untergruppe einer freien abelschen Gruppe isomorph. Somit ist nach Satz \ref{} $G$ frei abelsch. %@Sebastian: FIXME Der referenzierte Satz wurde noch nicht getext (VL 30.06.).
 \end{proof}
 
 \begin{kor}
@@ -1762,11 +1817,11 @@ Jede endlich erzeugte abelsche Gruppe ist eine direkte Summe einer freien abelsc
 \end{kor}
 
 \begin{proof}
-$G/T(G)$ ist torsionsfrei und endlich erzeugt, also frei abelsch. Dann ist $T(G)$ ein direkter Summand: $G = T(G) \oplus F,F\cong G/T(G)$.
+  $G/T(G)$ ist torsionsfrei nach Lemma \ref{} und endlich erzeugt, also frei abelsch. Dann ist $T(G)$ nach Korollar \ref{} ein direkter Summand: $G = T(G) \oplus F,F\cong G/T(G)$. %@Sebastian: FIXME Das referenzierte Lemma und das referenzierte Korollar wurden noch nicht getext (VL 30.06.)
 
 $T(G)$ ist eine Torsionsuntergruppe, die endlich erzeugt ist. Daraus folgt: 
 
-$T(G)=\langle g_{1}, \dots ,g_{m}\rangle=\{ n_{1}g_{1}+ \dots +n_{m}g_{m}:n_{j}\in \mathbb{Z}\}=\{ n_{1}g_{1}+\dots+n_{m}g_{m}:\|n_{j}\| \leq \ord(g_{j})\} \Rightarrow \|T(G)\| < \infty$
+$T(G)=\langle g_{1}, \dots ,g_{m}\rangle=\{ n_{1}g_{1}+ \dots +n_{m}g_{m}:n_{j}\in \mathbb{Z}\}=\{ n_{1}g_{1}+\dots+n_{m}g_{m}:|n_{j}| \leq \ord(g_{j})\} \Rightarrow |T(G)| < \infty$ %einfache Striche statt doppelten für Betrag und Gruppenordnung
 \end{proof}
 
 Endlich erzeugte freie abelsche Gruppen sind bekannt: Sie sind von der Form $F\cong \mathbb{Z}^{r}=\mathbb{Z} \oplus \dots\oplus \mathbb{Z}$, mit $r\geq 0$.
@@ -1775,15 +1830,15 @@ Man sollte daher auch die endlichen abelschen Gruppen klassifizieren.
 
 \begin{defn}
 Sei $G$ eine abelsche Gruppe und $p$ eine Primzahl. 
-Dann heißt $Gp=\{ g\in G:p^{n}g=O\text{ für} n \in \mathbb{N} \} $ 
-die \emph{p-primäre Komponente} von $G$.
+Dann heißt $G_p=\{ g\in G:p^{n}g=O \text{ für } n \in \mathbb{N} \} $ 
+die \emph{$p$-primäre Komponente} von $G$.
 \end{defn}
 
 \begin{nb}
 \begin{itemize}
-\item $Gp\subset G$ ist eine Untergruppe (da $G$ abelsch).
-\item Die Elemente von $Gp$ sind genau die $g\in G$, deren Ordnung eine Potenz von $p$ ist.
-\item Alle p-Untergruppen von $G$ sind in $Gp$ enthalten, d.h. $Gp$ ist die einzige p-Sylowuntergruppe von $G$.
+\item $G_p\subset G$ ist eine Untergruppe (da $G$ abelsch).
+\item Die Elemente von $G_p$ sind genau die $g\in G$, deren Ordnung eine Potenz von $p$ ist.
+\item Alle $p$-Untergruppen von $G$ sind in $G_p$ enthalten, d.h. $G_p$ ist die einzige $p$-Sylowuntergruppe von $G$.
 \end{itemize}
 \end{nb}
 
@@ -1795,18 +1850,20 @@ Die Zerlegung ist bis auf die Reihenfolge der Summanden eindeutig.
 
 \begin{proof}
 Sei $| G| =p_{1}^{m_{1}}\dots p_{r}^{m_{r}}$ die Primfaktorzerlegung von $| G|$. 
-Da die Ordnung eines Elements von $G$ immer $| G|$ teilt, gilt $Gp=\{ 0\}$ für alle $p$ prim $p\notin \{ p_{1},\dots,p_{r}\}$. Wir möchten zeigen:
+Da die Ordnung eines Elements von $G$ immer $| G|$ teilt, gilt $G_p=\{ 0\}$ für alle $p$ prim $p\notin \{ p_{1},\dots,p_{r}\}$. Wir möchten zeigen:
 \begin{equation} \label{eq}
-Gp_{i} \bigcap \langle\bigcup_{j\neq i} Gp_{j} \rangle = \{ 0 \}
+G_{p_{i}} \,\cap\, \langle\bigcup_{j\neq i} G_{p_{j}} \rangle = \{ 0 \}
 \end{equation}
-Die Elemente von $\langle\bigcup_{j\neq i} Gp_{j}\rangle$ sind von der Form $g=\sum_{j\neq i} g_{j}, g_{j} \in Gp_{j}$. Damit folgt unter Beachtung von $\ord(g_{j})=p_{j}^{\alpha_{j}}, \alpha_{j}\geq 0$ 
+Die Elemente von $\langle\bigcup_{j\neq i} G_{p_{j}}\rangle$ sind von der Form $g=\sum_{j\neq i} g_{j}, g_{j} \in G_{p_{j}}$. Damit folgt unter Beachtung von $\ord(g_{j})=p_{j}^{\alpha_{j}}, \alpha_{j}\geq 0$ 
 \[(\prod_{j\neq i} p_{j}^{\alpha_{j}})g=0 \rightarrow \ord(g) \divides (\prod_{j\neq i} p_{j}^{\alpha_{j}}).\]
-Gilt zusätzlich $g \in Gp_{i}$, so erhalten wir:
+Gilt zusätzlich $g \in G_{p_{i}}$, so erhalten wir:
 \[ \ord(g)=p_{i}^{\alpha_{i}} \divides (\prod_{j\neq i} p_{j}^{\alpha_{j}})\Rightarrow p_{i}^{\alpha_{i}}=1 \Rightarrow \ord(g)=1.\]
-Aus \eqref{eq} folgt $\langle\bigcup_{1\leq i\leq r} Gp_{i}\rangle = \bigoplus_{p\text{ prim}} Gp$.
+Aus \eqref{eq} folgt 
+$$\langle\bigcup_{1\leq i\leq r} G_{p_{i}}\rangle = \underbrace{\bigoplus_{1 \leq i \leq r} G_{p_i}}_{\text{Ordnung: } |G_{p_1}|\cdot|G_{p_2}|\cdots|G_{p_r}| = p_1^{m_1}\cdots p_r^{m_r} = |G|} \subseteq G$$
+und somit $\bigoplus_{1 \leq i \leq r} G_{p_i} = G$.
 \end{proof}
 
-Da $T(G)$ immer eine direkte Summe von endlichen abelschen p-Gruppen ist, möchten wir diese klassifizieren. Das Hauptresultat ist:
+Da $T(G)$ immer eine direkte Summe von endlichen abelschen $p$-Gruppen ist, möchten wir diese klassifizieren. Das Hauptresultat ist:
 
 \begin{thm}
 Es sei $p$ eine Primzahl und $n\in \mathbb{N}$. 
@@ -1819,17 +1876,17 @@ Es gilt: $m_{1}+\dots+m_{k}=n$.
 \end{nb}
 
 \begin{lemma}
-Es sei $G$ eine abelsche p-Gruppe und $g\in G$ ein Element maximaler Ordnung. 
-Dann ist $\langle p\rangle$ ein direkter Summand von $G$ ($G=\langle p\rangle\oplus H, H\subset G$ geeignet).
+Es sei $G$ eine abelsche $p$-Gruppe und $g\in G$ ein Element maximaler Ordnung. 
+Dann ist $\langle g\rangle$ ein direkter Summand von $G$ ($G=\langle g\rangle\oplus H, H\subset G$ geeignet).
 \end{lemma}
 
 \begin{proof}
-Es sei $p^{\alpha}$ die maximale Ordnung eines Elements in $G$ und $g\in G$ mit $\ord(g)=p^{\alpha}$. OBdA $\langle g\rangle \neq G$ 
+Es sei $p^{\alpha}$ die maximale Ordnung eines Elements in $G$ und $g\in G$ mit $\ord(g)=p^{\alpha}$. O.B.d.A. $\langle g\rangle \neq G$ 
 \begin{enumerate}
 \item Schritt: Wir möchten zeigen, dass es eine Untergruppe $H\subseteq G$ gibt mit $|H|=p, H\cap \langle g\rangle =\{ 0\}$.
 
 Es sei $h \in G,h\notin \langle g \rangle$ beliebig.
-Es sei $\ord(h+\langle g\rangle)=p^{\beta}$ die Ordnung von $h+\langle p\rangle$ in der p-Gruppe $G/\langle g\rangle$.
+Es sei $\ord(h+\langle g\rangle)=p^{\beta}$ die Ordnung von $h+\langle p\rangle$ in der $p$-Gruppe $G/\langle g\rangle$.
 Wegen $h\notin \langle g\rangle$ ist $\beta\geq1$. 
 Da $p^{\beta}(h+\langle g\rangle)=\langle g\rangle$ ist, gilt $p^{\beta}h=lg$ mit geeigneten $l\in \mathbb{Z}$. 
 Da $p^{\alpha}$ die maximale Ordnung eines Elements von $G$ ist, ist $\ord(h)$ ein Teiler von $p^{\alpha}$ und somit gilt:
@@ -1844,22 +1901,21 @@ Die Untergruppe $H=\langle h'\rangle$ erfüllt $\langle g\rangle \cap H=\{ 0\}$.
 
 Es sei $g\in G$ ein Element maximaler Ordnung und $H\subseteq G$ wie im 1. Schritt. 
 Wir betrachten die natürliche Projektion $\pi :G\rightarrow G/H$. 
-$G/H$ ist eine abelsche p-Gruppe mit $|G/H|<|G|$ und $\pi (g)\in G/H$ ist eine Element maximaler Ordnung.
+$G/H$ ist eine abelsche $p$-Gruppe mit $|G/H|<|G|$ und $\pi (g)\in G/H$ ist ein Element maximaler Ordnung.
 ($\pi$ ist surjektiv; $\ord(\pi (g))$ ist die kleinste Zahl $m\geq 1$ mit $mg\in H$)
 
 Da die maximale Ordnung in $G/H$ höchstens $\ord(g)=p^{\alpha}$ ist, reicht es zu zeigen, dass $\ord(\pi (g))=p^{\alpha}$ gilt.
-$m=\ord(\pi (g))$ ist die kleinste positive Zahl, so dass $mg\in H$. Aus $\langle g\rangle \cap H=\{ 0\}$ folgt:
+$m=\ord(\pi (g))$ ist die kleinste positive Zahl, sodass $mg\in H$. Aus $\langle g\rangle \cap H=\{ 0\}$ folgt:
 \[ mg\in \langle g\rangle \cap H=\{ 0\} \Rightarrow mg=0 \Rightarrow p^{\alpha}=\ord(g) \divides m\]
 Ferner gilt:
 \[ p^{\alpha}\pi (g)=\pi (p^{\alpha}g)=\pi(0) =0\Rightarrow m \divides p^{\alpha}\]
-Also gilt $m=p^{\alpha}$. Es folgt $G/H=\langle \pi (g)\rangle \oplus V'$. 
-Wir setzen $V := \pi ^{-1}(V') \subseteq G$. Wir möchten zeigen $G=\langle g\rangle \oplus V$. Es sei $a\in \mathbb{Z}$, so dass $ag\in V$. Dann gilt:
+Also gilt $m=p^{\alpha}$. Aus der Induktionsvoraussetzung folgt $G/H=\langle \pi (g)\rangle \oplus V'$. 
+Wir setzen $V := \pi ^{-1}(V') \subseteq G$. Wir möchten zeigen $G=\langle g\rangle \oplus V$. Es sei $a\in \mathbb{Z}$, sodass $ag\in V$. Dann gilt:
 \[ \pi (ag)\in \langle \pi (g)\rangle\ \cap V'=\{ 0\}\Rightarrow ag\in H\Rightarrow ag=0\Rightarrow \langle g\rangle \cap V=\{ 0\}.\]
 Sei $a\in G$. Dann gilt:
 \[ \pi (a)=c\pi (g)+\pi (v),c\in \mathbb{Z}, v\in V.\]
 Somit folgt:
-\[ \pi (a-cg-v )=0\in G/H\Rightarrow a=cg+v+h\Rightarrow G = \langle g\rangle \oplus V.\]
-\qedhere
+\[ \pi (a-cg-v )=0\in G/H\Rightarrow a=cg+v+h\Rightarrow G = \langle g\rangle \oplus V.\qedhere \]
 \end{enumerate} 
 \end{proof}
 
@@ -1870,14 +1926,21 @@ Somit folgt:
 	mit $|V_1|=\frac{|G|}{p^{m_1}}=p^{n-m_1}$. Induktiv definiert man für jedes $n\in\mathbb{N},j\geq 1$:
 	\begin{itemize}
 		\item $g_{j+1}\in V_j$ ein Element maximaler Ordnung in $V_j$,
-		\item $m_{j+1}\in\mathbb{N}$, so dass $\ord(g_{j+1})=m_{j+1}$,
+		\item $m_{j+1}\in\mathbb{N}$, sodass $\ord(g_{j+1})=m_{j+1}$,
 		\item $V_{j+1}\subset V_j$, die $V_j=\langle g_{j+1}\rangle\oplus V_{j+1}$ erfüllt.
 	\end{itemize}
-	Da $|G|$ endlich ist, existiert ein (minimaler) Index $k$, so dass $V_{k+1}=\{0\}$ gilt. Das heißt für $k$ gilt $V_k\neq \{0\},\; V_{k+1}=\{0\}$. Dann gilt weiterhin
-	\[ G = \langle g_1\rangle\oplus V_1 = \langle g_1\rangle\oplus\langle g_2\rangle\oplus V_2 = \dots = \langle g_1\rangle\oplus\langle g_2\rangle\oplus\dots\oplus\langle g_k\rangle\oplus V_{k+1}=\{0\}.\]
+	Da $|G|$ endlich ist, existiert ein (minimaler) Index $k$, sodass $V_{k+1}=\{0\}$ gilt. Das heißt für $k$ gilt $V_k\neq \{0\},\; V_{k+1}=\{0\}$. Dann gilt weiterhin
+	\[ 
+        G 
+        = \langle g_1\rangle\oplus V_1 
+        = \langle g_1\rangle\oplus\langle g_2\rangle\oplus V_2 
+        = \dots 
+        = \langle g_1\rangle\oplus\langle g_2\rangle\oplus\dots\oplus\langle g_k\rangle\oplus \underbrace{V_{k+1}}_{=\{0\}}.\]
 	Wenn man $H_j:=\langle g_j\rangle$ definiert, gilt also
 	\[ G = H_1\oplus\dots\oplus H_j\oplus\dots\oplus H_k,\]
-	wobei $H_j$ zyklisch der Ordnung $p^{m_j}$ ist und $m_1\geq m_2\geq\dots\geq m_k$. Wir müssen noch zeigen, dass die $m_j$ eindeutig bestimmt sind ($g_j$ und $V_j$ sind \emph{nicht} eindeutig). Für eine abelsche Gruppe $A$ und $s\in\mathbb{Z},\; s\geq 1$, setzen wir $A(s) := \{x\in A:sx=0\}$. $A(s)$ ist eine Untergruppe, denn $A(s) = \ker(A\to^{\mu_s}A),\;\mu_s(a):=sa$ und $\mu_s$ ist für abelsche Gruppen immer ein Gruppenhomomorphismus. Ferner induziert jeder Homomorphismus $A\to B$ von abelschen Gruppen einen Homomorphismus $A(s)\to B(s)$. Für nicht abelsche Gruppen ist die Abbildung schon für $s=2$ kein Homomorphismus. Im Fall von $G$ erhalten wir für $s=p$:
+	wobei $H_j$ zyklisch der Ordnung $p^{m_j}$ ist und $m_1\geq m_2\geq\dots\geq m_k$. 
+        
+        Wir müssen noch zeigen, dass die $m_j$ eindeutig bestimmt sind ($g_j$ und $V_j$ sind \emph{nicht} eindeutig). Für eine abelsche Gruppe $A$ und $s\in\mathbb{Z},\; s\geq 1$, setzen wir $A(s) := \{x\in A:sx=0\}$. $A(s)$ ist eine Untergruppe, denn $A(s) = \ker(A \overset{\mu_s}{\to} A),\;\mu_s(a):=sa$ und $\mu_s$ ist für abelsche Gruppen immer ein Gruppenhomomorphismus. Ferner induziert jeder Homomorphismus $A\to B$ von abelschen Gruppen einen Homomorphismus $A(s)\to B(s)$. Für nicht abelsche Gruppen ist die Abbildung schon für $s=2$ kein Homomorphismus. Im Fall von $G$ erhalten wir für $s=p$:
 	\[ G(p) = H_1(p)\oplus H_2(p)\oplus\dots\oplus H_k(p).\]
 	Da $H_j$ immer zyklisch von Ordnung $p^{m_j}$, $m_j\geq 1$, ist, ist $H_j(p)$ eine zyklische Gruppe der Ordnung $p$. Daraus folgt $|G(p)|=p^k$. Dies zeigt, dass $k$ durch $G$ eindeutig bestimmt wird. Für $s=p^{\alpha}$, $\alpha\geq 1$ beliebig, erhalten wir
 	\begin{itemize}
@@ -1889,7 +1952,7 @@ Somit folgt:
 		\item für $G$ ergibt dies
 			\[G(p^{\alpha})=H_1(p^{\alpha})\oplus\dots\oplus H_k(p^{\alpha}).\]
 	\end{itemize}
-	Es sei $k'$ der größte Index, so dass $m_{k'}\geq\alpha$ gilt. Daraus folgt
+	Es sei $k'$ der größte Index, sodass $m_{k'}\geq\alpha$ gilt. Daraus folgt
 	\[|G(p^{\alpha})|=p^{\alpha k'}\cdot p^{m_{k'+1}}\cdot\dots\cdot p^{m_k} = p^{\alpha k'+m_{k'+1}+\dots+m_k}.\]
 	Mithilfe der obigen Formel werden $m_1,\dots,m_k$ von endlich vielen Werten von $|G(p^{\alpha})|$ eindeutig bestimmt.
 	
@@ -1899,21 +1962,21 @@ Somit folgt:
 \begin{kor}
 	Eine endlich erzeugte abelsche Gruppe $G$ ist immer eine direkte Summe endlich vieler zyklischer Gruppen, deren Ordnung unendlich oder Potenz einer Primzahl ist.
 	
-	Es existieren eine endlich bestimmte Zahl $r\geq 0$ und eindeutig bestimmte Primpotenzen $q_1,\dots q_l$, so dass gilt:
+	Es existieren eine endlich bestimmte Zahl $r\geq 0$ und eindeutig bestimmte Primpotenzen $q_1,\dots q_l$, sodass gilt:
 	\[ G\cong F\oplus T(G), \]
 wobei $F\cong \nicefrac{G}{T(G)}$ frei abelsch vom Rang $r$ ist und 
 	\[ T(G) \cong \nicefrac{\Z}{q_1\Z}\oplus\nicefrac{\Z}{q_2\Z}\oplus\dots\oplus\nicefrac{\Z}{q_l\Z}.\]
 \end{kor}
 
 \begin{proof}
-	Die Gruppe $F:=\nicefrac{G}{T(G)}$ ist frei abelsch. Also ist $G\cong F\oplus T(G)$. Da $G$ endlich erzeugt ist, gilt $\rank(F)=r<\infty$. $T(G)$ ist eine endlich erzeugbare abelsche Torsionsgruppe. Also ist $T(G)$ endlich. Wir betrachten die Zerlegung von $T(G)$ in p-primäre Komponenten
+	Die Gruppe $F:=\nicefrac{G}{T(G)}$ ist frei abelsch. Also ist $G\cong F\oplus T(G)$. Da $G$ endlich erzeugt ist, gilt $\rank(F)=r<\infty$. $T(G)$ ist eine endlich erzeugbare abelsche Torsionsgruppe. Also ist $T(G)$ endlich. Wir betrachten die Zerlegung von $T(G)$ in $p$-primäre Komponenten
 	\[ T(G) = G_{p_1}\oplus\dots\oplus G_{p_t}, \]
 	wobei $p_1,\dots,p_t$ die Primfaktoren von $|T(G)|=p_1^{e_1}\dots p_t^{e_t}$ sind.
 	
-	Wdh.: $p$ Primzahl, $G_p := \{x\in G: p^nx=0\text{ für ein $n\geq 0$}\}\subset T(G)$. Insbesondere gilt: $\left(T(G)\right)_p=G_p$. $G_p$ ist \emph{die} p-Sylowuntergruppe von $T(G)$.
+	Wdh.: $p$ Primzahl, $G_p := \{x\in G: p^nx=0\text{ für ein $n\geq 0$}\}\subset T(G)$. Insbesondere gilt: $\left(T(G)\right)_p=G_p$. $G_p$ ist \emph{die} $p$-Sylowuntergruppe von $T(G)$.
 	
 	Für $p<p_1,\dots,p_t$ folgt aus dem letzten Satz
-		\[ G_p \cong \nicefrac{\Z}{p^{m_1}\Z}\oplus\dots\oplus\nicefrac{\Z}{p^{m_k}\Z}.\]
+		\[ G_p \cong \nicefrac{\Z}{p^{m_1}\Z}\oplus\dots\oplus\nicefrac{\Z}{p^{m_k}\Z}.\qedhere\]
 \end{proof}
 
 \begin{ex}
